@@ -1,0 +1,8 @@
+{
+  "name": "Hammer & Code — Tradie SaaS & Growth Hub",
+  "description": "Hammer & Code is an elite growth suite for Aussie tradies. Evolve your trade business with automated video ad copy, partnership builders, strategic SaaS pipelines, and our signature Zenna AI Receptionist.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
