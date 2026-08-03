@@ -3,8 +3,13 @@ import { createServer as createViteServer } from "vite";
 import path from "path";
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import dotenv from "dotenv";
+import twilio from "twilio";
+import { initDB, getLeads, saveLead, getCalls, logCall, getSetting, setSetting } from "./db.js";
 
 dotenv.config();
+
+// Initialize SQLite database
+initDB();
 
 async function startServer() {
   const app = express();
@@ -13,67 +18,92 @@ async function startServer() {
   app.use(express.json());
   app.use(express.urlencoded({ extended: true }));
 
-  // --- CRM & STATE (In-Memory for now) ---
-  const crm = {
-    leads: [
-      { name: 'Mike Torrence', phone: '+61 412 891 044', status: 'New', value: '$12,500', time: '2:14 PM', notes: 'Pending proposal on custom mobile SaaS MVP and stripe backend billing workflow.' },
-      { name: 'Sandra Wu', phone: '+61 423 044 112', status: 'Scheduled', value: '$1,800', time: '11:32 AM', notes: 'Scheduled developer scoping block for React web app launch tomorrow morning.' },
-      { name: 'Daniel Nguyen', phone: '+61 401 553 221', status: 'Won', value: '$8,000', time: '8:45 AM', notes: 'Successfully deployed AI Assistant portal. Highly satisfied repeat enterprise client.' },
-    ],
-    calls: [
-      { id: '1', from: '+61 412 891 044', timestamp: new Date(Date.now() - 3600000).toISOString(), duration: '45s', status: 'Caught & Notified' },
-      { id: '2', from: '+61 423 044 112', timestamp: new Date(Date.now() - 7200000).toISOString(), duration: '1m 20s', status: 'Live Personalized Response' }
-    ],
-    config: {
-      businessName: process.env.BUSINESS_NAME || "Zenna App Studio",
-      ownerName: process.env.OWNER_NAME || "Operator",
-      ownerPhone: process.env.OWNER_PHONE || "",
-      bookingLink: process.env.BOOKING_LINK || "https://calendly.com/zenna-app-studio",
+  // --- TWILIO CLIENT ---
+  const twilioAccountSid = process.env.TWILIO_ACCOUNT_SID;
+  const twilioAuthToken = process.env.TWILIO_AUTH_TOKEN;
+  const twilioFromNumber = process.env.TWILIO_FROM_NUMBER;
+
+  const twilioClient = (twilioAccountSid && twilioAuthToken) 
+    ? twilio(twilioAccountSid, twilioAuthToken) 
+    : null;
+
+  async function sendSMS(to: string, body: string) {
+    if (!twilioClient || !twilioFromNumber) {
+      console.log(`[SMS Demo Mode] To: ${to} | Message: ${body}`);
+      return { success: true, demo: true };
     }
+    try {
+      const msg = await twilioClient.messages.create({
+        to,
+        from: twilioFromNumber,
+        body
+      });
+      console.log(`[SMS Sent] SID: ${msg.sid} -> ${to}`);
+      return { success: true, sid: msg.sid };
+    } catch (err: any) {
+      console.error(`[SMS Error] ${err.message}`);
+      return { success: false, error: err.message };
+    }
+  }
+
+  // --- CONFIGURATION ---
+  const config = {
+    businessName: process.env.BUSINESS_NAME || "Hartley Plumbing & Drainage",
+    ownerName: process.env.OWNER_NAME || "Dave",
+    ownerPhone: process.env.OWNER_PHONE || "+61400000000",
+    bookingLink: process.env.BOOKING_LINK || "https://zenna.au/book",
+    calloutFee: process.env.CALLOUT_FEE || "$150"
   };
 
-  // Helper helper to normalize numbers for uniform lookups
+  // Helper to normalize numbers for uniform lookups
   function normalizePhone(num: string): string {
     return num.replace(/\D/g, '').replace(/^61/, '0').replace(/^00/, '0');
   }
 
   // --- AI LOGIC (Gemini) ---
-  const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY!);
+  const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY || "demo");
   const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
 
   async function askZenna(systemPrompt: string, userMessage: string) {
+    if (!process.env.GEMINI_API_KEY) {
+      return `G'day! Zenna here from ${config.businessName}. We've caught your call and will text you back shortly! 🤙`;
+    }
     try {
       const result = await model.generateContent([
-        { text: `${systemPrompt}\n\nUser: ${userMessage}` }
+        { text: `${systemPrompt}\n\nUser Message/Trigger: ${userMessage}` }
       ]);
       return result.response.text();
     } catch (error) {
       console.error("Gemini Error:", error);
-      return "Hello! Zenna here. We've got your number, and we will get right back to you.";
+      return `G'day! Zenna here, ${config.ownerName}'s AI receptionist at ${config.businessName}. We're on the tools right now, how can we get you sorted today?`;
     }
   }
 
   // --- API ROUTES ---
   app.get("/api/health", (req, res) => {
-    res.json({ status: "ok", product: "Zenna" });
+    res.json({ status: "ok", product: "Zenna", db: "SQLite Active" });
   });
 
   app.get("/api/stats", (req, res) => {
+    const leadsList = getLeads() as any[];
+    const callsList = getCalls() as any[];
+    const confirmedValue = leadsList.reduce((acc, current) => {
+      const val = parseInt(String(current.job_value || '$0').replace(/[^0-9]/g, '')) || 0;
+      return val + acc;
+    }, 0);
+
     res.json({
       today: {
-        confirmedValue: crm.leads.reduce((acc, current) => {
-          const val = parseInt(current.value.replace(/[^0-9]/g, '')) || 0;
-          return val + acc;
-        }, 0),
-        newLeads: crm.leads.length,
-        callsCaught: crm.calls.length,
-        actionRequired: "Review Mike T. custom SaaS MVP wireframe"
+        confirmedValue: confirmedValue,
+        newLeads: leadsList.length,
+        callsCaught: callsList.length,
+        actionRequired: "Review upcoming schedule and site diagnostic dispatches"
       }
     });
   });
 
   app.get("/api/leads", (req, res) => {
-    res.json(crm.leads);
+    res.json(getLeads());
   });
 
   app.post("/api/leads", (req, res) => {
@@ -81,16 +111,8 @@ async function startServer() {
     if (!name || !phone) {
       return res.status(400).json({ error: "Name and phone are required" });
     }
-    const newLead = {
-      name,
-      phone,
-      value: value || "$0",
-      status: status || "New",
-      time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
-      notes: notes || "Manual CRM entry"
-    };
-    crm.leads.push(newLead);
-    res.json({ success: true, lead: newLead });
+    saveLead({ name, phone, job_value: value || '$0', status: status || 'New', notes: notes || '' });
+    res.json({ success: true, lead: { name, phone, status, job_value: value, notes } });
   });
 
   // Client lookup endpoint by phone
@@ -101,7 +123,8 @@ async function startServer() {
     }
 
     const normQuery = normalizePhone(phoneQuery);
-    const matched = crm.leads.find(lead => normalizePhone(lead.phone) === normQuery || normQuery.includes(normalizePhone(lead.phone)) || normalizePhone(lead.phone).includes(normQuery));
+    const leads = getLeads() as any[];
+    const matched = leads.find(lead => normalizePhone(lead.phone) === normQuery || normQuery.includes(normalizePhone(lead.phone)) || normalizePhone(lead.phone).includes(normQuery));
 
     if (matched) {
       return res.json({
@@ -132,7 +155,8 @@ async function startServer() {
     }
 
     const normQuery = normalizePhone(phone);
-    const matched = crm.leads.find(lead => normalizePhone(lead.phone) === normQuery || normQuery.includes(normalizePhone(lead.phone)) || normalizePhone(lead.phone).includes(normQuery));
+    const leads = getLeads() as any[];
+    const matched = leads.find(lead => normalizePhone(lead.phone) === normQuery || normQuery.includes(normalizePhone(lead.phone)) || normalizePhone(lead.phone).includes(normQuery));
 
     let clientContext = "";
     let lookupGreeting = "";
@@ -143,7 +167,7 @@ Name: ${matched.name}
 Phone: ${matched.phone}
 Project/Notes: ${matched.notes}
 Current Status: ${matched.status}
-Value: ${matched.value}`;
+Value: ${matched.job_value || matched.value}`;
       
       lookupGreeting = `Recognised existing customer ${matched.name}.`;
     } else {
@@ -155,28 +179,36 @@ This caller is not in your CRM directory yet. Introduce yourself as Zenna, colle
       lookupGreeting = `Identified new potential caller.`;
     }
 
-    const systemPrompt = `You are Zenna, the ultra-smart voice AI receptionist for ${crm.config.businessName} (owner: ${crm.config.ownerName}).
-    You are on the line taking a live voice call. Use the CRM database lookup info provided below to customize your response contextually.
-    
-    CRITICAL: 
-    - If they are an existing client, greet them by their name, refer directly to their current project status/notes, and offer specific updates. DO NOT pretend you do not know them.
-    - If they are dynamic or new, be warm, introduce the business, and ask what custom software, mobile app, or SaaS idea they'd like to build.
-    
-    ${clientContext}
+    const systemPrompt = `ROLE: You are "Zenna", the elite AI Receptionist for "${config.businessName}" (Owner: ${config.ownerName}).
+TONE: Authentic, helpful, direct Australian trade professionalism ("G'day", "no worries", "too easy").
+QUALIFICATION:
+1. Greet caller and ask for Name + Suburb/Address.
+2. Scope of work (burst pipes, blocked drain, maintenance).
+3. Call-out & diagnostic fee: State standard call-out diagnostic fee of ${config.calloutFee} AUD.
 
-    Keep the response highly realistic, spoken, professional but warm (not robotic). Speak in 1-2 smooth, conversational sentences suitable for a live phone conversation. Keep it within 35-50 words. No robotic lists.`;
+${clientContext}
+
+Keep the response highly realistic, spoken, professional but warm. Speak in 1-2 smooth, conversational sentences suitable for a live phone conversation.`;
 
     const voiceScript = await askZenna(systemPrompt, "The customer has dialed in and call is answered live.");
     
-    // Log calls caught
-    const newCall = {
-      id: String(crm.calls.length + 1),
-      from: phone,
-      timestamp: new Date().toISOString(),
-      duration: '45s',
-      status: matched ? 'Live Personalized Answer' : 'Call Logged & Handled'
-    };
-    crm.calls.push(newCall);
+    // Log call into SQLite
+    logCall({
+      from_number: phone,
+      message: voiceScript,
+      status: matched ? 'Live Personalized Answer' : 'Call Logged & Handled',
+      sms_sent: true
+    });
+
+    if (!matched) {
+      saveLead({
+        name: "Potential Lead",
+        phone: phone,
+        status: "New",
+        job_value: "$0",
+        notes: "First call caught by Zenna AI receptionist"
+      });
+    }
 
     res.json({
       success: true,
@@ -189,19 +221,20 @@ This caller is not in your CRM directory yet. Introduce yourself as Zenna, colle
         notes: "First call caught. Profile automatically drafted by Zenna Lookup."
       },
       script: voiceScript,
-      call: newCall
+      status: "Call Logged & Processed"
     });
   });
 
   app.post("/api/ask", async (req, res) => {
     const { question } = req.body;
+    const leadsList = getLeads() as any[];
     const stats = {
       confirmedToday: 4200,
-      newLeads: crm.leads.length,
+      newLeads: leadsList.length,
       pipelineValue: 14500
     };
     
-    const systemPrompt = `You are Zenna, a business assistant for ${crm.config.ownerName} at ${crm.config.businessName}. 
+    const systemPrompt = `You are Zenna, a business assistant for ${config.ownerName} at ${config.businessName}. 
     Answer questions about the business based on this context: ${JSON.stringify(stats)}. 
     Be concise, warm, and chief-of-staff professional.`;
     
@@ -218,12 +251,12 @@ This caller is not in your CRM directory yet. Introduce yourself as Zenna, colle
       return res.status(400).json({ error: "Client name and project notes are required" });
     }
 
-    const systemPrompt = `You are Zenna, the AI Elite workflow assistant for ${crm.config.businessName}.
+    const systemPrompt = `You are Zenna, the AI Elite workflow assistant for ${config.businessName}.
     Given the client "${clientName}" and their project request: "${clientNotes}".
     Create a highly realistic, professional, formatted Australian software development and app scoping quote (GST inclusive 10%).
     
     Structure the output as a JSON object containing:
-    1. "intro": A warm, professional introductory note addressed to ${clientName} mentioning ${crm.config.businessName}.
+    1. "intro": A warm, professional introductory note addressed to ${clientName} mentioning ${config.businessName}.
     2. "items": An array of object items, each with "description" and "price" (formatted string e.g. "$1,500"). Be realistic with SaaS MVP build, database design, visual UI layout, and Stripe checkout configuration pricing!
     3. "gst": The calculated GST component of the total.
     4. "total": The calculated combined total (e.g. "$4,950").
@@ -253,7 +286,7 @@ This caller is not in your CRM directory yet. Introduce yourself as Zenna, colle
       res.json({
         success: true,
         quote: {
-          intro: `G'day ${clientName}, here is the initial scoping estimate for ${crm.config.businessName} to kick off building your app: ${clientNotes}.`,
+          intro: `G'day ${clientName}, here is the initial scoping estimate for ${config.businessName} to kick off building your app: ${clientNotes}.`,
           items: [
             { description: "Interactive React Frontend & UI/UX wireframes", price: "$2,850.00" },
             { description: "Database design, secure Firestore endpoints, and server configuration", price: "$3,500.00" }
@@ -274,7 +307,7 @@ This caller is not in your CRM directory yet. Introduce yourself as Zenna, colle
       return res.status(400).json({ error: "Client details are required for developer dispatching." });
     }
 
-    const systemPrompt = `You are Zenna, the lead DevOps and delivery coordinator for ${crm.config.businessName}.
+    const systemPrompt = `You are Zenna, the lead DevOps and delivery coordinator for ${config.businessName}.
     We are spinning up the local workspace and launching the project scaffold for client ${clientName} for their SaaS project: "${clientNotes}".
     
     Structure the response as a JSON object containing:
@@ -426,31 +459,78 @@ This caller is not in your CRM directory yet. Introduce yourself as Zenna, colle
   // Twilio Missed Call Webhook
   app.post("/webhook/missed-call", async (req, res) => {
     const { From, CallSid } = req.body;
-    console.log(`Missed call from: ${From}`);
+    const callerPhone = From || "Unknown";
+    console.log(`⚡ [Missed Call] From: ${callerPhone} (SID: ${CallSid})`);
 
-    const systemPrompt = `You are Zenna, the AI receptionist for ${crm.config.businessName}. 
-    Write a warm, professional missed call SMS response. Under 160 characters. 
-    Mention that you'll call them back soon or they can text back with their inquiry.
-    ${crm.config.bookingLink ? `If they want to book a time directly, include this link: ${crm.config.bookingLink}` : ""}`;
+    const systemPrompt = `ROLE: You are "Zenna", the elite AI receptionist for "${config.businessName}" (Owner: ${config.ownerName}).
+Write a warm, concise missed call SMS text-back under 160 characters.
+Acknowledge that ${config.ownerName} is on-site / underground right now. Ask what job they need sorted and provide booking link: ${config.bookingLink}`;
     
-    const smsContent = await askZenna(systemPrompt, "The owner missed a call from this person.");
+    const smsContent = await askZenna(systemPrompt, `Missed call from caller: ${callerPhone}`);
     
-    // In a real app, we'd call Twilio API here.
-    // For now, we log it.
-    const newLead = {
-      name: "Unknown Caller",
-      phone: From || "Unknown",
-      value: "$0",
-      time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+    // Save to SQLite Database
+    saveLead({
+      name: "Missed Call Lead",
+      phone: callerPhone,
       status: "New",
-      notes: "Missed call caught by Zenna",
-      smsSent: smsContent
-    };
-    
-    crm.leads.push(newLead);
-    crm.calls.push({ id: CallSid, from: From || "Unknown", timestamp: new Date().toISOString(), duration: 'N/A', status: 'Missed' });
+      job_value: "$0",
+      notes: `Missed call caught by Zenna AI. SMS sent: "${smsContent}"`
+    });
 
-    res.json({ success: true, message: smsContent });
+    logCall({
+      call_id: CallSid || `missed_${Date.now()}`,
+      from_number: callerPhone,
+      message: smsContent,
+      status: "Missed Call - Auto SMS Dispatched",
+      sms_sent: true
+    });
+
+    // Send real SMS if Twilio credentials exist
+    const smsResult = await sendSMS(callerPhone, smsContent);
+
+    res.json({ success: true, message: smsContent, smsSent: smsResult });
+  });
+
+  // Twilio SMS Incoming Webhook
+  app.post("/webhook/sms", async (req, res) => {
+    const { From, Body } = req.body;
+    const callerPhone = From || "Unknown";
+    console.log(`📩 [Incoming SMS] From: ${callerPhone} | Body: ${Body}`);
+
+    const systemPrompt = `ROLE: You are "Zenna", the AI Receptionist for "${config.businessName}" (Owner: ${config.ownerName}).
+Respond to incoming SMS inquiring about jobs or service dispatches.
+Tone: Aussie tradie professional ("G'day", "too easy").
+Mention our standard call-out diagnostic fee is ${config.calloutFee}.
+Keep under 200 characters.`;
+
+    const reply = await askZenna(systemPrompt, `SMS received from ${callerPhone}: ${Body}`);
+
+    saveLead({
+      name: "SMS Lead",
+      phone: callerPhone,
+      status: "Contacted",
+      notes: `Incoming SMS: "${Body}" | Zenna Reply: "${reply}"`
+    });
+
+    const smsResult = await sendSMS(callerPhone, reply);
+    res.json({ success: true, reply, smsSent: smsResult });
+  });
+
+  // Daily Evening 6 PM Summary Briefing to Owner
+  app.post("/api/brief", async (req, res) => {
+    const leads = getLeads() as any[];
+    const calls = getCalls() as any[];
+
+    const todayLeads = leads.length;
+    const todayCalls = calls.length;
+
+    const briefText = `G'day ${config.ownerName}! 📊 Zenna Daily Briefing:\nToday caught ${todayCalls} calls & ${todayLeads} leads.\nCheck dashboard: ${config.bookingLink}/dashboard`;
+
+    if (config.ownerPhone) {
+      await sendSMS(config.ownerPhone, briefText);
+    }
+
+    res.json({ success: true, brief: briefText });
   });
 
   // --- VITE MIDDLEWARE ---
