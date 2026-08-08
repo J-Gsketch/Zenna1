@@ -14,7 +14,26 @@ dotenv.config();
 initDB();
 
 async function startServer() {
-  const app = express();
+  
+// --- VIP SLACK LOGGER ---
+const sendSlackAlert = async (message: string, isError = false) => {
+  const webhookUrl = process.env.SLACK_WEBHOOK_URL;
+  if (!webhookUrl) return; // Silent skip if no slack webhook configured
+  
+  try {
+    await fetch(webhookUrl, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ 
+        text: isError ? `🚨 *CRITICAL ERROR* 🚨\n${message}` : `💰 *VIP LEAD CAPTURE* 💰\n${message}` 
+      })
+    });
+  } catch (e) {
+    console.error("Failed to send Slack alert", e);
+  }
+};
+
+const app = express();
   const PORT = 3000;
 
   app.use(express.json());
@@ -355,6 +374,9 @@ Keep the response highly realistic, spoken, professional but warm. Speak in 1-2 
       });
     }
 
+    if (!matched) {
+      sendSlackAlert(`Zenna answered a new call from ${phone}! Follow up immediately in the CRM.`, false);
+    }
     res.json({
       success: true,
       found: !!matched,
