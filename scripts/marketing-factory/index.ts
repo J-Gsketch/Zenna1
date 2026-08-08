@@ -47,7 +47,7 @@ async function generateCampaignScript(trade: string, city: string) {
         config: { responseMimeType: "application/json" }
     });
     
-    return JSON.parse(response.text());
+    return JSON.parse(response.text);
 }
 
 /**
