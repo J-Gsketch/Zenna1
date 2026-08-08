@@ -10,6 +10,10 @@ import { initDB, getLeads, saveLead, getCalls, logCall, getSetting, setSetting, 
 
 dotenv.config();
 
+import Stripe from 'stripe';
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || 'sk_test_mock', { apiVersion: '2025-01-27.acacia' });
+
+
 // Initialize SQLite database
 initDB();
 
@@ -35,6 +39,47 @@ const sendSlackAlert = async (message: string, isError = false) => {
 
 const app = express();
   const PORT = 3000;
+
+
+// --- STRIPE WEBHOOKS ---
+// We use express.raw to retain the raw body for Stripe signature validation
+app.post('/api/stripe-webhook', express.raw({ type: 'application/json' }), async (req: any, res: any) => {
+  const sig = req.headers['stripe-signature'];
+  const endpointSecret = process.env.STRIPE_WEBHOOK_SECRET;
+
+  let event;
+  try {
+    // If running in a Firebase function, req.rawBody is available. Otherwise, fallback to req.body buffer from express.raw.
+    const rawBody = req.rawBody || req.body;
+    if (endpointSecret && endpointSecret !== 'mock_secret') {
+        event = stripe.webhooks.constructEvent(rawBody, sig, endpointSecret);
+    } else {
+        // Fallback for local testing without signature validation
+        event = JSON.parse(req.body.toString());
+    }
+  } catch (err: any) {
+    console.error(`⚠️  Webhook signature verification failed:`, err.message);
+    sendSlackAlert(`🚨 Stripe Webhook Verification Failed: ${err.message}`, true);
+    return res.status(400).send(`Webhook Error: ${err.message}`);
+  }
+
+  // Handle the event
+  if (event.type === 'checkout.session.completed') {
+    const session = event.data.object;
+    const tenant_id = session.client_reference_id || session.metadata?.tenant_id;
+    
+    if (tenant_id) {
+      console.log(`💰 Stripe Session Completed for Tenant: ${tenant_id}`);
+      await setSetting(tenant_id, 'subscriptionStatus', 'Active - Pro');
+      sendSlackAlert(`🎉 NEW PAYING CUSTOMER! Tenant ${tenant_id} just upgraded to Active - Pro via Stripe.`, false);
+    } else {
+      console.error("⚠️  Stripe session completed, but no tenant_id found in metadata.");
+    }
+  }
+
+  res.json({ received: true });
+});
+
 
   app.use(express.json());
   app.use(express.urlencoded({ extended: true }));
