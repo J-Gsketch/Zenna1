@@ -78,7 +78,12 @@ const Scene3 = ({ headline, themeColor }: { headline: string, themeColor: string
 
 export const ZennaAd = ({ headline = "Never Miss a Lead Again.", themeColor = "#D4AF37" }: { headline?: string, themeColor?: string }) => {
   return (
-    <AbsoluteFill style={{ fontFamily: 'sans-serif' }}>
+    <AbsoluteFill style={{ fontFamily: 'sans-serif', backgroundColor: '#0a0a0a' }}>
+      {/* Viral Watermark */}
+      <div style={{ position: 'absolute', bottom: 40, right: 40, zIndex: 100, color: 'rgba(255,255,255,0.4)', fontSize: 28, fontWeight: 'bold', letterSpacing: 2 }}>
+        ⚡ POWERED BY ZENNA
+      </div>
+      
       <Sequence from={0} durationInFrames={90}>
         <Scene1 themeColor={themeColor} />
       </Sequence>
