@@ -1,9 +1,10 @@
-import fs from 'fs';
-import path from 'path';
+import { initializeApp, getApps } from 'firebase-admin/app';
+import { getFirestore } from 'firebase-admin/firestore';
 
-const dbPath = path.resolve(process.cwd(), 'zenna_db.json');
+let db: FirebaseFirestore.Firestore;
 
 export interface Lead {
+  tenant_id: string;
   phone: string;
   name: string;
   status: string;
@@ -14,6 +15,7 @@ export interface Lead {
 }
 
 export interface CallLog {
+  tenant_id: string;
   id: string;
   call_id: string;
   from_number: string;
@@ -23,72 +25,49 @@ export interface CallLog {
   sms_sent: boolean;
 }
 
-interface DBData {
-  leads: Lead[];
-  calls: CallLog[];
-  settings: Record<string, string>;
-}
-
-const defaultData: DBData = {
-  leads: [
-    { phone: '+61412891044', name: 'Mike Torrence', status: 'New', job_value: '$12,500', notes: 'Pending proposal on custom mobile SaaS MVP and stripe backend billing workflow.', created_at: new Date().toISOString() },
-    { phone: '+61423044112', name: 'Sandra Wu', status: 'Scheduled', job_value: '$1,800', notes: 'Scheduled developer scoping block for React web app launch tomorrow morning.', created_at: new Date().toISOString() },
-    { phone: '+61401553221', name: 'Daniel Nguyen', status: 'Won', job_value: '$8,000', notes: 'Successfully deployed AI Assistant portal. Highly satisfied repeat enterprise client.', created_at: new Date().toISOString() }
-  ],
-  calls: [
-    { id: '1', call_id: 'c-101', from_number: '+61412891044', timestamp: new Date(Date.now() - 3600000).toISOString(), message: 'Missed call from Mike Torrence', status: 'Caught & Notified', sms_sent: true },
-    { id: '2', call_id: 'c-102', from_number: '+61423044112', timestamp: new Date(Date.now() - 7200000).toISOString(), message: 'Live AI reception response', status: 'Live Personalized Response', sms_sent: true }
-  ],
-  settings: {}
-};
-
-function readDB(): DBData {
-  try {
-    if (!fs.existsSync(dbPath)) {
-      fs.writeFileSync(dbPath, JSON.stringify(defaultData, null, 2), 'utf-8');
-      return defaultData;
-    }
-    const raw = fs.readFileSync(dbPath, 'utf-8');
-    return JSON.parse(raw);
-  } catch (err) {
-    console.error('Error reading zenna_db.json, using defaults:', err);
-    return defaultData;
+export async function initDB() {
+  if (!getApps().length) {
+    initializeApp();
+  }
+  if (!db) {
+    db = getFirestore('zenna-db');
+    console.log(`⚡ Firestore Database initialized (Multi-Tenant Mode)`);
   }
 }
 
-function writeDB(data: DBData) {
-  try {
-    fs.writeFileSync(dbPath, JSON.stringify(data, null, 2), 'utf-8');
-  } catch (err) {
-    console.error('Error writing zenna_db.json:', err);
-  }
+export async function getLeads(tenant_id: string): Promise<Lead[]> {
+  await initDB();
+  const snap = await db.collection('leads')
+    .where('tenant_id', '==', tenant_id)
+    .orderBy('created_at', 'desc')
+    .get();
+  return snap.docs.map(d => d.data() as Lead);
 }
 
-export function initDB() {
-  const data = readDB();
-  console.log('⚡ Pure JSON Database initialized at:', dbPath, `(${data.leads.length} leads loaded)`);
-}
+export async function saveLead(tenant_id: string, lead: { phone: string; name: string; status?: string; job_value?: string; notes?: string }) {
+  await initDB();
+  const snap = await db.collection('leads')
+    .where('tenant_id', '==', tenant_id)
+    .where('phone', '==', lead.phone)
+    .limit(1)
+    .get();
 
-export function getLeads(): Lead[] {
-  return readDB().leads;
-}
-
-export function saveLead(lead: { phone: string; name: string; status?: string; job_value?: string; notes?: string }) {
-  const data = readDB();
-  const existingIdx = data.leads.findIndex(l => l.phone === lead.phone);
   const now = new Date().toISOString();
-
-  if (existingIdx >= 0) {
-    data.leads[existingIdx] = {
-      ...data.leads[existingIdx],
-      name: lead.name || data.leads[existingIdx].name,
-      status: lead.status || data.leads[existingIdx].status,
-      job_value: lead.job_value || data.leads[existingIdx].job_value,
-      notes: lead.notes || data.leads[existingIdx].notes,
+  
+  if (!snap.empty) {
+    const docRef = snap.docs[0].ref;
+    const existing = snap.docs[0].data() as Lead;
+    await docRef.update({
+      name: lead.name || existing.name,
+      status: lead.status || existing.status,
+      job_value: lead.job_value || existing.job_value,
+      notes: lead.notes || existing.notes,
       last_reply: now
-    };
+    });
   } else {
-    data.leads.unshift({
+    const docRef = db.collection('leads').doc();
+    await docRef.set({
+      tenant_id,
       phone: lead.phone,
       name: lead.name,
       status: lead.status || 'New',
@@ -97,37 +76,55 @@ export function saveLead(lead: { phone: string; name: string; status?: string; j
       created_at: now
     });
   }
-
-  writeDB(data);
 }
 
-export function getCalls(): CallLog[] {
-  return readDB().calls;
+export async function getCalls(tenant_id: string): Promise<CallLog[]> {
+  await initDB();
+  const snap = await db.collection('calls')
+    .where('tenant_id', '==', tenant_id)
+    .orderBy('timestamp', 'desc')
+    .get();
+  return snap.docs.map(d => d.data() as CallLog);
 }
 
-export function logCall(call: { call_id?: string; from_number: string; message: string; status: string; sms_sent?: boolean }) {
-  const data = readDB();
-  const newCall: CallLog = {
-    id: String(data.calls.length + 1),
-    call_id: call.call_id || `call_${Date.now()}`,
+export async function logCall(tenant_id: string, call: { call_id?: string; from_number: string; message: string; status: string; sms_sent?: boolean }) {
+  await initDB();
+  const idStr = Date.now().toString();
+  const finalCall: CallLog = {
+    tenant_id,
+    id: idStr,
+    call_id: call.call_id || `call_${idStr}`,
     from_number: call.from_number,
     timestamp: new Date().toISOString(),
     message: call.message,
     status: call.status,
-    sms_sent: call.sms_sent ?? false
+    sms_sent: Boolean(call.sms_sent)
   };
-
-  data.calls.unshift(newCall);
-  writeDB(data);
+  
+  await db.collection('calls').doc(finalCall.id).set(finalCall);
 }
 
-export function getSetting(key: string, defaultValue: string = ''): string {
-  const data = readDB();
-  return data.settings[key] ?? defaultValue;
+export async function getSetting(tenant_id: string, key: string, defaultValue: string = ''): Promise<string> {
+  await initDB();
+  const doc = await db.collection('tenants').doc(tenant_id).collection('settings').doc(key).get();
+  if (doc.exists) {
+    return doc.data()?.value || defaultValue;
+  }
+  return defaultValue;
 }
 
-export function setSetting(key: string, value: string) {
-  const data = readDB();
-  data.settings[key] = value;
-  writeDB(data);
+export async function setSetting(tenant_id: string, key: string, value: string) {
+  await initDB();
+  await db.collection('tenants').doc(tenant_id).collection('settings').doc(key).set({ value }, { merge: true });
+}
+
+export async function getTenantByTwilioNumber(twilioNumber: string): Promise<string | null> {
+  await initDB();
+  const snap = await db.collection('tenants')
+    .where('twilio_number', '==', twilioNumber)
+    .limit(1)
+    .get();
+  
+  if (snap.empty) return null;
+  return snap.docs[0].id;
 }

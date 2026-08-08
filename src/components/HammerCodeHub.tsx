@@ -68,8 +68,32 @@ export default function HammerCodeHub({ businessName }: HammerCodeHubProps) {
     }
   });
 
-  const [activeSubTab, setActiveSubTab] = useState<'marketing' | 'video' | 'partnership' | 'pricing' | 'socials'>('marketing');
+  const [activeSubTab, setActiveSubTab] = useState<'marketing' | 'video' | 'partnership' | 'pricing' | 'socials' | 'adpack'>('marketing');
   const [copiedText, setCopiedText] = useState<string | null>(null);
+  
+  // Production Ad Pack States
+  const [adCopyContent, setAdCopyContent] = useState<string | null>(null);
+  const [videoScriptContent, setVideoScriptContent] = useState<string | null>(null);
+  const [isLoadingAdPack, setIsLoadingAdPack] = useState(false);
+
+  const fetchAdPack = async () => {
+    if (adCopyContent && videoScriptContent) return;
+    setIsLoadingAdPack(true);
+    try {
+      const [res1, res2] = await Promise.all([
+        fetch('/api/marketing/ad-copy'),
+        fetch('/api/marketing/video-scripts')
+      ]);
+      const data1 = await res1.json();
+      const data2 = await res2.json();
+      if (data1.success) setAdCopyContent(data1.content);
+      if (data2.success) setVideoScriptContent(data2.content);
+    } catch (e) {
+      console.error("Error fetching ad pack:", e);
+    } finally {
+      setIsLoadingAdPack(false);
+    }
+  };
 
   const handleCopy = (text: string, label: string) => {
     navigator.clipboard.writeText(text);
@@ -256,25 +280,29 @@ export default function HammerCodeHub({ businessName }: HammerCodeHubProps) {
         <div className="lg:col-span-2 space-y-6">
 
           {/* Sub Tab Navigation */}
-          <div className="bg-[#111] border border-white/5 p-1 rounded-sm grid grid-cols-5 gap-1 shadow-md">
+          <div className="bg-[#111] border border-white/5 p-1 rounded-sm grid grid-cols-3 md:grid-cols-6 gap-1 shadow-md">
             {[
               { id: 'marketing', label: 'Fast-Scale Pipeline', icon: Target },
               { id: 'video', label: 'Ad Script', icon: Video },
+              { id: 'adpack', label: 'Production Ad Pack', icon: Tv },
               { id: 'partnership', label: 'MOU Builder', icon: FileSignature },
               { id: 'pricing', label: 'Pricing Audit', icon: Calculator },
               { id: 'socials', label: 'Caption Generator', icon: CheckSquare }
             ].map((tab) => (
               <button
                 key={tab.id}
-                onClick={() => setActiveSubTab(tab.id as any)}
-                className={`py-3 px-1 rounded-sm text-[10px] font-bold uppercase tracking-wider transition-all flex flex-col sm:flex-row items-center justify-center gap-2 ${
+                onClick={() => {
+                  setActiveSubTab(tab.id as any);
+                  if (tab.id === 'adpack') fetchAdPack();
+                }}
+                className={`py-3 px-1 rounded-sm text-[10px] font-bold uppercase tracking-wider transition-all flex flex-col sm:flex-row items-center justify-center gap-1.5 ${
                   activeSubTab === tab.id 
                     ? 'bg-orange-600 text-white shadow-sm' 
                     : 'text-muted hover:text-paper hover:bg-white/5'
                 }`}
               >
-                <tab.icon className="w-4 h-4 flex-shrink-0" />
-                <span className="hidden sm:inline">{tab.label}</span>
+                <tab.icon className="w-3.5 h-3.5 flex-shrink-0" />
+                <span className="hidden sm:inline text-[9px]">{tab.label}</span>
               </button>
             ))}
           </div>
@@ -403,6 +431,66 @@ export default function HammerCodeHub({ businessName }: HammerCodeHubProps) {
                   </div>
 
                 </div>
+              </div>
+            )}
+
+            {activeSubTab === 'adpack' && (
+              <div className="space-y-6">
+                <div className="flex items-center justify-between border-b border-white/5 pb-4">
+                  <div>
+                    <span className="text-[10px] text-orange-500 uppercase font-bold tracking-widest font-mono">CONSOLIDATED MARKETING DRIVE ASSETS</span>
+                    <h2 className="font-serif text-2xl text-paper mt-1">Production Paid Ad Copy & Video Blueprints</h2>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <button 
+                      onClick={() => fetchAdPack()}
+                      className="flex items-center gap-1.5 px-3 py-1.5 rounded bg-white/5 hover:bg-white/10 text-muted hover:text-paper text-xs transition-all font-mono"
+                    >
+                      <RotateCcw className="w-3.5 h-3.5" /> Refresh Drive Files
+                    </button>
+                  </div>
+                </div>
+
+                {isLoadingAdPack ? (
+                  <div className="py-20 text-center space-y-3">
+                    <div className="w-8 h-8 border-2 border-orange-500 border-t-transparent rounded-full animate-spin mx-auto" />
+                    <p className="text-xs text-muted font-mono">Loading marketing blueprints from Drive files...</p>
+                  </div>
+                ) : (
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    {/* Paid Ad Copy Pack */}
+                    <div className="space-y-3">
+                      <div className="flex items-center justify-between">
+                        <h4 className="text-xs font-bold uppercase tracking-wider text-orange-400 font-mono">1. Paid Ad Copy Pack (FB, IG & Google Search)</h4>
+                        <button 
+                          onClick={() => handleCopy(adCopyContent || '', 'adcopy')}
+                          className="text-[10px] font-mono text-muted hover:text-paper bg-white/5 px-2 py-1 rounded"
+                        >
+                          {copiedText === 'adcopy' ? 'Copied!' : 'Copy Copy Pack'}
+                        </button>
+                      </div>
+                      <div className="bg-[#111] border border-white/10 rounded-sm p-4 text-[10px] text-paper font-mono max-h-[380px] overflow-y-auto leading-relaxed whitespace-pre-wrap">
+                        {adCopyContent || "Ad copy file loading..."}
+                      </div>
+                    </div>
+
+                    {/* Video Blueprints & Veo Prompts */}
+                    <div className="space-y-3">
+                      <div className="flex items-center justify-between">
+                        <h4 className="text-xs font-bold uppercase tracking-wider text-amber-400 font-mono">2. High-Production Video Blueprints (Veo)</h4>
+                        <button 
+                          onClick={() => handleCopy(videoScriptContent || '', 'videoscripts')}
+                          className="text-[10px] font-mono text-muted hover:text-paper bg-white/5 px-2 py-1 rounded"
+                        >
+                          {copiedText === 'videoscripts' ? 'Copied!' : 'Copy Script Pack'}
+                        </button>
+                      </div>
+                      <div className="bg-[#111] border border-white/10 rounded-sm p-4 text-[10px] text-paper font-mono max-h-[380px] overflow-y-auto leading-relaxed whitespace-pre-wrap">
+                        {videoScriptContent || "Video marketing file loading..."}
+                      </div>
+                    </div>
+                  </div>
+                )}
               </div>
             )}
 

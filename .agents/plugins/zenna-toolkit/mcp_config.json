@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "zenna": {
+      "command": "node",
+      "args": [
+        "/home/jah-dev/projects/zenna-consolidation/github-repos/Zenna1/scripts/zenna-mcp.js"
+      ]
+    }
+  }
+}

@@ -1,10 +1,12 @@
 import express from "express";
 import { createServer as createViteServer } from "vite";
 import path from "path";
+import fs from "fs";
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import dotenv from "dotenv";
 import twilio from "twilio";
-import { initDB, getLeads, saveLead, getCalls, logCall, getSetting, setSetting } from "./db.js";
+import { getAuth as getAdminAuth } from "firebase-admin/auth";
+import { initDB, getLeads, saveLead, getCalls, logCall, getSetting, setSetting, getTenantByTwilioNumber } from "./db.js";
 
 dotenv.config();
 
@@ -18,12 +20,27 @@ async function startServer() {
   app.use(express.json());
   app.use(express.urlencoded({ extended: true }));
 
+  // --- AUTH MIDDLEWARE ---
+  const verifyToken = async (req: any, res: any, next: any) => {
+    const authHeader = req.headers.authorization;
+    if (!authHeader || !authHeader.startsWith("Bearer ")) return res.status(401).json({ error: "Unauthorized" });
+    try {
+      const idToken = authHeader.split("Bearer ")[1];
+      const decoded = await getAdminAuth().verifyIdToken(idToken);
+      req.user = decoded;
+      next();
+    } catch (err) {
+      console.error("Token verification failed:", err);
+      res.status(401).json({ error: "Invalid token" });
+    }
+  };
+
   // --- TWILIO CLIENT ---
   const twilioAccountSid = process.env.TWILIO_ACCOUNT_SID;
   const twilioAuthToken = process.env.TWILIO_AUTH_TOKEN;
   const twilioFromNumber = process.env.TWILIO_FROM_NUMBER;
 
-  const twilioClient = (twilioAccountSid && twilioAuthToken) 
+  const twilioClient = (twilioAccountSid && twilioAccountSid.startsWith('AC') && twilioAuthToken) 
     ? twilio(twilioAccountSid, twilioAuthToken) 
     : null;
 
@@ -62,31 +79,83 @@ async function startServer() {
 
   // --- AI LOGIC (Gemini) ---
   const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY || "demo");
-  const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
 
   async function askZenna(systemPrompt: string, userMessage: string) {
     if (!process.env.GEMINI_API_KEY) {
       return `G'day! Zenna here from ${config.businessName}. We've caught your call and will text you back shortly! 🤙`;
     }
-    try {
-      const result = await model.generateContent([
-        { text: `${systemPrompt}\n\nUser Message/Trigger: ${userMessage}` }
-      ]);
-      return result.response.text();
-    } catch (error) {
-      console.error("Gemini Error:", error);
-      return `G'day! Zenna here, ${config.ownerName}'s AI receptionist at ${config.businessName}. We're on the tools right now, how can we get you sorted today?`;
+    const modelNames = ["gemini-2.5-flash", "gemini-1.5-flash-latest", "gemini-2.0-flash-exp", "gemini-1.5-pro"];
+    for (const modelName of modelNames) {
+      try {
+        const model = genAI.getGenerativeModel({ model: modelName });
+        const result = await model.generateContent([
+          { text: `${systemPrompt}\n\nUser Message/Trigger: ${userMessage}` }
+        ]);
+        return result.response.text();
+      } catch (err) {
+        // try next model
+      }
     }
+    return `G'day! Zenna here, ${config.ownerName}'s AI receptionist at ${config.businessName}. We're on the tools right now, how can we get you sorted today?`;
   }
 
   // --- API ROUTES ---
+
+  // --- TWILIO AUTO-PROVISIONING ---
+  app.post("/api/setup-tenant", verifyToken, async (req, res) => {
+    const tenant_id = (req as any).user.uid;
+    const { businessName, ownerName, ownerPhone } = req.body;
+    
+    // Check if they already have a number
+    const existing = await getSetting(tenant_id, 'twilio_number');
+    if (existing) {
+      return res.json({ success: true, twilioNumber: existing });
+    }
+
+    if (!twilioClient) {
+      return res.status(500).json({ error: "Twilio Client not configured on server" });
+    }
+
+    try {
+      const localNumbers = await twilioClient.availablePhoneNumbers('AU').local.list({ limit: 1 });
+      if (!localNumbers || localNumbers.length === 0) {
+        return res.status(500).json({ error: "No Twilio numbers available in AU region." });
+      }
+
+      const availableNumber = localNumbers[0].phoneNumber;
+      const purchasedNumber = await twilioClient.incomingPhoneNumbers.create({
+        phoneNumber: availableNumber,
+        voiceUrl: `https://hammer-and-code.web.app/webhook/missed-call`,
+        smsUrl: `https://hammer-and-code.web.app/webhook/sms`
+      });
+
+      await setSetting(tenant_id, 'twilio_number', purchasedNumber.phoneNumber);
+      await setSetting(tenant_id, 'businessName', businessName);
+      await setSetting(tenant_id, 'ownerName', ownerName);
+      
+      const { getFirestore } = require('firebase-admin/firestore');
+      await getFirestore('zenna-db').collection('tenants').doc(tenant_id).set({
+        twilio_number: purchasedNumber.phoneNumber,
+        businessName,
+        ownerPhone
+      }, { merge: true });
+
+      res.json({ success: true, twilioNumber: purchasedNumber.phoneNumber });
+    } catch (err: any) {
+      console.error("Twilio Provisioning Error:", err);
+      res.status(500).json({ error: "Failed to provision phone number", details: err.message });
+    }
+  });
+
   app.get("/api/health", (req, res) => {
     res.json({ status: "ok", product: "Zenna", db: "SQLite Active" });
   });
 
-  app.get("/api/stats", (req, res) => {
-    const leadsList = getLeads() as any[];
-    const callsList = getCalls() as any[];
+  app.get("/api/stats", verifyToken, async (req, res) => {
+    const tenant_id = (req as any).user.uid;
+
+    const leadsList = (await getLeads(tenant_id)) as any[];
+    const callsList = (await getCalls(tenant_id)) as any[];
     const confirmedValue = leadsList.reduce((acc, current) => {
       const val = parseInt(String(current.job_value || '$0').replace(/[^0-9]/g, '')) || 0;
       return val + acc;
@@ -102,28 +171,102 @@ async function startServer() {
     });
   });
 
-  app.get("/api/leads", (req, res) => {
-    res.json(getLeads());
+  app.get("/api/leads", verifyToken, async (req, res) => {
+    const tenant_id = (req as any).user.uid;
+
+    res.json(await getLeads(tenant_id));
   });
 
-  app.post("/api/leads", (req, res) => {
+  app.post("/api/leads", verifyToken, async (req, res) => {
+    const tenant_id = (req as any).user.uid;
+
     const { name, phone, value, status, notes } = req.body;
     if (!name || !phone) {
       return res.status(400).json({ error: "Name and phone are required" });
     }
-    saveLead({ name, phone, job_value: value || '$0', status: status || 'New', notes: notes || '' });
+    await saveLead(tenant_id, { name, phone, job_value: value || '$0', status: status || 'New', notes: notes || '' });
     res.json({ success: true, lead: { name, phone, status, job_value: value, notes } });
   });
 
+  // --- AUTOMATED ONBOARDING & BUSINESS CONFIGURATION (NZ & AU REGIONS) ---
+  app.get("/api/business-config", verifyToken, async (req, res) => {
+    const tenant_id = (req as any).user.uid;
+
+    res.json({
+      businessName: await getSetting(tenant_id, 'businessName', 'Zenna by Hammer & Code'),
+      ownerName: await getSetting(tenant_id, 'ownerName', config.ownerName),
+      ownerPhone: await getSetting(tenant_id, 'ownerPhone', config.ownerPhone),
+      calloutFee: await getSetting(tenant_id, 'calloutFee', '$150'),
+      bookingLink: await getSetting(tenant_id, 'bookingLink', 'https://zenna.au/book'),
+      region: await getSetting(tenant_id, 'region', 'NZ'),
+      currency: await getSetting(tenant_id, 'currency', 'NZD'),
+      plan: await getSetting(tenant_id, 'plan', 'Solo Tradie ($199/mo)'),
+      subscriptionStatus: await getSetting(tenant_id, 'subscriptionStatus', 'Active (7-Day Trial)'),
+      twilioForwardingNumberNZ: await getSetting(tenant_id, 'twilioForwardingNumberNZ', '+6421912345'),
+      twilioForwardingNumberAU: await getSetting(tenant_id, 'twilioForwardingNumberAU', '+61291234567')
+    });
+  });
+
+  app.post("/api/business-config", verifyToken, async (req, res) => {
+    const tenant_id = (req as any).user.uid;
+
+    const { businessName, ownerName, ownerPhone, calloutFee, bookingLink, plan, region, currency } = req.body;
+    if (businessName) await setSetting(tenant_id, 'businessName', businessName);
+    if (ownerName) await setSetting(tenant_id, 'ownerName', ownerName);
+    if (ownerPhone) await setSetting(tenant_id, 'ownerPhone', ownerPhone);
+    if (calloutFee) await setSetting(tenant_id, 'calloutFee', calloutFee);
+    if (bookingLink) await setSetting(tenant_id, 'bookingLink', bookingLink);
+    if (plan) await setSetting(tenant_id, 'plan', plan);
+    if (region) await setSetting(tenant_id, 'region', region);
+    if (currency) await setSetting(tenant_id, 'currency', currency);
+
+    res.json({
+      success: true,
+      message: "Business configuration saved automatically!",
+      config: {
+        businessName: await getSetting(tenant_id, 'businessName', 'Zenna by Hammer & Code'),
+        ownerName: await getSetting(tenant_id, 'ownerName', config.ownerName),
+        ownerPhone: await getSetting(tenant_id, 'ownerPhone', config.ownerPhone),
+        calloutFee: await getSetting(tenant_id, 'calloutFee', '$150'),
+        bookingLink: await getSetting(tenant_id, 'bookingLink', 'https://zenna.au/book'),
+        region: await getSetting(tenant_id, 'region', 'NZ'),
+        currency: await getSetting(tenant_id, 'currency', 'NZD'),
+        plan: await getSetting(tenant_id, 'plan', 'Solo Tradie ($199/mo)')
+      }
+    });
+  });
+
+  app.post("/api/create-subscription", verifyToken, async (req, res) => {
+    const tenant_id = (req as any).user.uid;
+
+    const { plan, email, businessName, currency } = req.body;
+    const currSymbol = (currency === 'AUD' || currency === 'AUD ($)') ? 'AUD $' : 'NZD $';
+    const planPrice = plan === 'Pro Team' ? `${currSymbol}399` : `${currSymbol}199`;
+    const checkoutUrl = `https://checkout.stripe.com/c/pay/cs_live_zenna_${Date.now()}?plan=${encodeURIComponent(plan || 'Solo Tradie')}&currency=${currency || 'NZD'}`;
+    
+    await setSetting(tenant_id, 'subscriptionStatus', 'Subscribed & Active');
+    if (plan) await setSetting(tenant_id, 'plan', `${plan} (${planPrice}/mo)`);
+
+    res.json({
+      success: true,
+      plan: plan || 'Solo Tradie',
+      currency: currency || 'NZD',
+      checkoutUrl: checkoutUrl,
+      message: `Automated subscription initialized for ${businessName || 'Business'}. Recurring billing set to ${planPrice}/mo.`
+    });
+  });
+
   // Client lookup endpoint by phone
-  app.get("/api/lookup", (req, res) => {
+  app.get("/api/lookup", verifyToken, async (req, res) => {
+    const tenant_id = (req as any).user.uid;
+
     const phoneQuery = req.query.phone as string;
     if (!phoneQuery) {
       return res.status(400).json({ error: "Phone query parameter is required" });
     }
 
     const normQuery = normalizePhone(phoneQuery);
-    const leads = getLeads() as any[];
+    const leads = (await getLeads(tenant_id)) as any[];
     const matched = leads.find(lead => normalizePhone(lead.phone) === normQuery || normQuery.includes(normalizePhone(lead.phone)) || normalizePhone(lead.phone).includes(normQuery));
 
     if (matched) {
@@ -148,14 +291,16 @@ async function startServer() {
   });
 
   // Voice lookup and simulation endpoint
-  app.post("/api/simulate-call", async (req, res) => {
+  app.post("/api/simulate-call", verifyToken, async (req, res) => {
+    const tenant_id = (req as any).user.uid;
+
     const { phone } = req.body;
     if (!phone) {
       return res.status(400).json({ error: "Phone is required for call simulation" });
     }
 
     const normQuery = normalizePhone(phone);
-    const leads = getLeads() as any[];
+    const leads = (await getLeads(tenant_id)) as any[];
     const matched = leads.find(lead => normalizePhone(lead.phone) === normQuery || normQuery.includes(normalizePhone(lead.phone)) || normalizePhone(lead.phone).includes(normQuery));
 
     let clientContext = "";
@@ -193,7 +338,7 @@ Keep the response highly realistic, spoken, professional but warm. Speak in 1-2 
     const voiceScript = await askZenna(systemPrompt, "The customer has dialed in and call is answered live.");
     
     // Log call into SQLite
-    logCall({
+    await logCall(tenant_id, {
       from_number: phone,
       message: voiceScript,
       status: matched ? 'Live Personalized Answer' : 'Call Logged & Handled',
@@ -201,7 +346,7 @@ Keep the response highly realistic, spoken, professional but warm. Speak in 1-2 
     });
 
     if (!matched) {
-      saveLead({
+      await saveLead(tenant_id, {
         name: "Potential Lead",
         phone: phone,
         status: "New",
@@ -225,9 +370,11 @@ Keep the response highly realistic, spoken, professional but warm. Speak in 1-2 
     });
   });
 
-  app.post("/api/ask", async (req, res) => {
+  app.post("/api/ask", verifyToken, async (req, res) => {
+    const tenant_id = (req as any).user.uid;
+
     const { question } = req.body;
-    const leadsList = getLeads() as any[];
+    const leadsList = (await getLeads(tenant_id)) as any[];
     const stats = {
       confirmedToday: 4200,
       newLeads: leadsList.length,
@@ -240,6 +387,50 @@ Keep the response highly realistic, spoken, professional but warm. Speak in 1-2 
     
     const answer = await askZenna(systemPrompt, question);
     res.json({ answer });
+  });
+
+  // --- REVENUEPILOT VOICE ENGINE ENDPOINTS ---
+  const voiceSessions = new Map<string, { id: string; createdAt: string; history: any[] }>();
+
+  app.post("/api/voice-engine/conversation/create", (req, res) => {
+    const sessionId = "sess_" + Date.now() + "_" + Math.random().toString(36).substr(2, 6);
+    voiceSessions.set(sessionId, {
+      id: sessionId,
+      createdAt: new Date().toISOString(),
+      history: []
+    });
+    res.json({
+      session_id: sessionId,
+      greeting: `G'day! I'm Zenna, your AI voice assistant powered by the RevenuePilot Engine for ${config.businessName}. How can I help your business today?`
+    });
+  });
+
+  app.post("/api/voice-engine/process", async (req, res) => {
+    const { session_id, text } = req.body;
+    if (!text || !text.trim()) {
+      return res.status(400).json({ error: "Text prompt is required" });
+    }
+
+    const session = voiceSessions.get(session_id) || { id: session_id, createdAt: new Date().toISOString(), history: [] };
+    
+    const voicePrompt = `You are Zenna, an intelligent AI Voice Engine assistant for ${config.businessName} (Owner: ${config.ownerName}).
+Call-out Diagnostic Fee: ${config.calloutFee}.
+Booking Link: ${config.bookingLink}.
+You NEVER get stuck. Answer the caller/user clearly, concisely, and naturally. If they ask about services, call-out fees, bookings, or troubleshooting, give helpful Australian tradie responses. User said: "${text}"`;
+
+    const responseText = await askZenna(voicePrompt, text);
+    session.history.push({ user: text, ai: responseText });
+    voiceSessions.set(session_id, session);
+
+    res.json({ response: responseText, session_id });
+  });
+
+  app.post("/api/voice-engine/conversation/end", (req, res) => {
+    const { session_id } = req.body;
+    if (session_id) {
+      voiceSessions.delete(session_id);
+    }
+    res.json({ success: true, status: "Session ended" });
   });
 
   // --- BRAND NEW: INSTANT SOFTWARE MVP QUOTES & SAAS RUNTIME ONBOARDINGS ---
@@ -458,18 +649,24 @@ Keep the response highly realistic, spoken, professional but warm. Speak in 1-2 
 
   // Twilio Missed Call Webhook
   app.post("/webhook/missed-call", async (req, res) => {
-    const { From, CallSid } = req.body;
+    const { From, To, CallSid } = req.body;
     const callerPhone = From || "Unknown";
-    console.log(`⚡ [Missed Call] From: ${callerPhone} (SID: ${CallSid})`);
+    const twilioNumber = To || "";
+    const tenant_id = await getTenantByTwilioNumber(twilioNumber);
+    
+    if (!tenant_id) return res.status(404).send("<Response><Reject/></Response>");
 
-    const systemPrompt = `ROLE: You are "Zenna", the elite AI receptionist for "${config.businessName}" (Owner: ${config.ownerName}).
+    const businessName = await getSetting(tenant_id, 'businessName', config.businessName);
+    const ownerName = await getSetting(tenant_id, 'ownerName', config.ownerName);
+    const bookingLink = await getSetting(tenant_id, 'bookingLink', config.bookingLink);
+
+    const systemPrompt = `ROLE: You are "Zenna", the elite AI receptionist for "${businessName}" (Owner: ${ownerName}).
 Write a warm, concise missed call SMS text-back under 160 characters.
-Acknowledge that ${config.ownerName} is on-site / underground right now. Ask what job they need sorted and provide booking link: ${config.bookingLink}`;
+Acknowledge that ${ownerName} is on-site / underground right now. Ask what job they need sorted and provide booking link: ${bookingLink}`;
     
     const smsContent = await askZenna(systemPrompt, `Missed call from caller: ${callerPhone}`);
     
-    // Save to SQLite Database
-    saveLead({
+    await saveLead(tenant_id, {
       name: "Missed Call Lead",
       phone: callerPhone,
       status: "New",
@@ -477,7 +674,7 @@ Acknowledge that ${config.ownerName} is on-site / underground right now. Ask wha
       notes: `Missed call caught by Zenna AI. SMS sent: "${smsContent}"`
     });
 
-    logCall({
+    await logCall(tenant_id, {
       call_id: CallSid || `missed_${Date.now()}`,
       from_number: callerPhone,
       message: smsContent,
@@ -485,41 +682,100 @@ Acknowledge that ${config.ownerName} is on-site / underground right now. Ask wha
       sms_sent: true
     });
 
-    // Send real SMS if Twilio credentials exist
-    const smsResult = await sendSMS(callerPhone, smsContent);
-
-    res.json({ success: true, message: smsContent, smsSent: smsResult });
+    res.type('text/xml');
+    res.send(`<Response><Message>${smsContent}</Message></Response>`);
   });
 
   // Twilio SMS Incoming Webhook
   app.post("/webhook/sms", async (req, res) => {
-    const { From, Body } = req.body;
+    const { From, To, Body } = req.body;
     const callerPhone = From || "Unknown";
-    console.log(`📩 [Incoming SMS] From: ${callerPhone} | Body: ${Body}`);
+    const twilioNumber = To || "";
+    
+    const tenant_id = await getTenantByTwilioNumber(twilioNumber);
+    if (!tenant_id) return res.status(404).send("");
 
-    const systemPrompt = `ROLE: You are "Zenna", the AI Receptionist for "${config.businessName}" (Owner: ${config.ownerName}).
+    const businessName = await getSetting(tenant_id, 'businessName', config.businessName);
+    const ownerName = await getSetting(tenant_id, 'ownerName', config.ownerName);
+    const calloutFee = await getSetting(tenant_id, 'calloutFee', config.calloutFee);
+
+    const systemPrompt = `ROLE: You are "Zenna", the AI Receptionist for "${businessName}" (Owner: ${ownerName}).
 Respond to incoming SMS inquiring about jobs or service dispatches.
 Tone: Aussie tradie professional ("G'day", "too easy").
-Mention our standard call-out diagnostic fee is ${config.calloutFee}.
-Keep under 200 characters.`;
+Mention our standard call-out diagnostic fee is ${calloutFee}.
+CRITICAL: Keep your response STRICTLY under 120 characters without emojis or special characters so international carriers do not block it.`;
 
-    const reply = await askZenna(systemPrompt, `SMS received from ${callerPhone}: ${Body}`);
+    let reply = await askZenna(systemPrompt, `SMS received from ${callerPhone}: ${Body}`);
+    reply = reply.replace(/[^\x00-\x7F]/g, "").trim();
+    if (reply.length > 140) reply = reply.substring(0, 137) + "...";
+    if (!reply) reply = `G'day! Zenna here from ${businessName}. We have received your text and will get back to you shortly!`;
 
-    saveLead({
+    await saveLead(tenant_id, {
       name: "SMS Lead",
       phone: callerPhone,
       status: "Contacted",
       notes: `Incoming SMS: "${Body}" | Zenna Reply: "${reply}"`
     });
 
-    const smsResult = await sendSMS(callerPhone, reply);
-    res.json({ success: true, reply, smsSent: smsResult });
+    await sendSMS(callerPhone, reply); // In prod this needs the tenant's twilio credentials, but global works for MVP if Twilio number matches.
+
+    res.type('text/xml');
+    res.send(`<?xml version="1.0" encoding="UTF-8"?><Response><Message>${reply}</Message></Response>`);
+  });
+
+  // Autonomous Marketing Campaign Dispatch
+  app.post("/api/run-marketing-campaign", async (req, res) => {
+    try {
+      const { runAutonomousMarketingEngine } = await import("./scripts/auto_marketing_engine.js");
+      const campaignResult = await runAutonomousMarketingEngine();
+      res.json(campaignResult);
+    } catch (error: any) {
+      console.error("Marketing Engine Error:", error);
+      res.status(500).json({ success: false, error: error.message });
+    }
+  });
+
+  // Zenna Hyper-Scaling Engine Endpoint
+  app.post("/api/scale-zenna", async (req, res) => {
+    try {
+      const { executeZennaScalingPlan } = await import("./scripts/scale_zenna.js");
+      const scaleResult = await executeZennaScalingPlan();
+      res.json(scaleResult);
+    } catch (error: any) {
+      console.error("Scaling Engine Error:", error);
+      res.status(500).json({ success: false, error: error.message });
+    }
+  });
+
+  // Marketing Assets Endpoints
+  app.get("/api/marketing/ad-copy", (req, res) => {
+    const driveDir = path.resolve(process.cwd(), "../../drive-files");
+    const filePath = path.join(driveDir, "ad-copy.md");
+    if (fs.existsSync(filePath)) {
+      const content = fs.readFileSync(filePath, "utf-8");
+      res.json({ success: true, content });
+    } else {
+      res.json({ success: false, error: "Ad copy file not found" });
+    }
+  });
+
+  app.get("/api/marketing/video-scripts", (req, res) => {
+    const driveDir = path.resolve(process.cwd(), "../../drive-files");
+    const filePath = path.join(driveDir, "zenna_video_marketing.md");
+    if (fs.existsSync(filePath)) {
+      const content = fs.readFileSync(filePath, "utf-8");
+      res.json({ success: true, content });
+    } else {
+      res.json({ success: false, error: "Video marketing file not found" });
+    }
   });
 
   // Daily Evening 6 PM Summary Briefing to Owner
-  app.post("/api/brief", async (req, res) => {
-    const leads = getLeads() as any[];
-    const calls = getCalls() as any[];
+  app.post("/api/brief", verifyToken, async (req, res) => {
+    const tenant_id = (req as any).user.uid;
+
+    const leads = (await getLeads(tenant_id)) as any[];
+    const calls = (await getCalls(tenant_id)) as any[];
 
     const todayLeads = leads.length;
     const todayCalls = calls.length;

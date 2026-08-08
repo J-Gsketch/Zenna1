@@ -35,8 +35,11 @@ import {
   Wrench
 } from 'lucide-react';
 import { cn } from './lib/utils';
-import { initAuth, googleSignIn, logout as googleLogout, getAccessToken } from './lib/googleAuth';
+import { initAuth, login, connectDrive, logout as googleLogout, getAccessToken } from './lib/googleAuth';
 import HammerCodeHub from './components/HammerCodeHub';
+import { OnboardingModal } from './components/OnboardingModal';
+import { CyberpunkDashboard } from './components/CyberpunkDashboard';
+import { AiAdStudio } from './components/AiAdStudio';
 import { 
   Cloud, 
   Folder, 
@@ -48,7 +51,7 @@ import {
 } from 'lucide-react';
 
 // --- Types ---
-type Page = 'landing' | 'setup' | 'dashboard';
+type Page = 'landing' | 'setup' | 'dashboard' | 'cyberpunk' | 'ad_studio';
 
 // --- Sub-components ---
 
@@ -85,7 +88,7 @@ const Landing = ({ onGetStarted }: { onGetStarted: () => void }) => {
           transition={{ delay: 0.2 }}
           className="text-gold font-medium tracking-[0.2em] uppercase text-xs"
         >
-          AI Receptionist & Business Intelligence
+          Built for Tradies & Contractors
         </motion.p>
         
         <motion.h1 
@@ -94,7 +97,7 @@ const Landing = ({ onGetStarted }: { onGetStarted: () => void }) => {
           transition={{ delay: 0.4 }}
           className="font-serif text-6xl md:text-8xl leading-[0.95] max-w-3xl"
         >
-          She answers.<br />So you <em className="italic text-gold">don't</em> have to.
+          Never miss a lead.<br />Stay on the <em className="italic text-gold">tools.</em>
         </motion.h1>
 
         <motion.p 
@@ -103,7 +106,7 @@ const Landing = ({ onGetStarted }: { onGetStarted: () => void }) => {
           transition={{ delay: 0.6 }}
           className="text-muted text-lg max-w-md leading-relaxed"
         >
-          Zenna catches every missed call, recovers every lead, and briefs you on your business — while you focus on the work.
+          Zenna is your AI receptionist. She catches missed calls, books quotes via SMS, and sends you a daily wrap-up.
         </motion.p>
 
         <motion.div 
@@ -136,7 +139,7 @@ const Landing = ({ onGetStarted }: { onGetStarted: () => void }) => {
               <div className="bg-[#1c1c1e] border border-white/5 rounded-2xl p-6 max-w-xs shadow-2xl">
                 <p className="text-[10px] text-gold uppercase tracking-widest mb-2">Zenna</p>
                 <p className="text-sm leading-relaxed text-paper">
-                  G'day! Thanks for getting in touch with Hartley Plumbing — our team is currently on the tools responding to an urgent job, but we've got your query! We'll call back soon, or text us here.
+                  G'day! Thanks for calling Hartley Plumbing. Our team is currently on the tools, but we've got your query! What do you need help with? We'll call back soon, or text us here.
                 </p>
                 <p className="text-[10px] text-muted text-right mt-2">Today 2:14 PM · Delivered</p>
               </div>
@@ -159,7 +162,7 @@ const Landing = ({ onGetStarted }: { onGetStarted: () => void }) => {
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-1">
           {[
-            { num: '01', title: 'A call comes in', desc: "You're on a job. Under a car. With a patient. The phone rings and you can't answer." },
+            { num: '01', title: 'A call comes in', desc: "You're on site. Up a ladder. Under a sink. The phone rings and you can't answer." },
             { num: '02', title: 'Zenna catches it', desc: "Within seconds, Zenna sends a warm, personalised SMS. She knows your business and your hours." },
             { num: '03', title: 'The lead is alive', desc: "The caller gets a response. Zenna handles the talk, captures details, and logs them to your dashboard." },
           ].map((step, i) => (
@@ -381,6 +384,7 @@ const Dashboard = ({ businessName }: { businessName: string }) => {
   const [isZennaSynthesizing, setIsZennaSynthesizing] = useState(false);
   
   // Custom lead creation modal states
+  const [showOnboardingModal, setShowOnboardingModal] = useState(false);
   const [showAddLeadModal, setShowAddLeadModal] = useState(false);
   const [leadFormData, setLeadFormData] = useState({
     name: '',
@@ -564,7 +568,7 @@ const Dashboard = ({ businessName }: { businessName: string }) => {
   const handleGoogleLogin = async () => {
     setIsGoogleLoading(true);
     try {
-      const result = await googleSignIn();
+      const result = await connectDrive();
       if (result) {
         setGoogleUser(result.user);
         setDriveToken(result.accessToken);
@@ -926,12 +930,15 @@ Compiled by Zenna Business Intelligence Relay.
   useEffect(() => {
     fetchData();
     const unsubscribe = initAuth(
-      (user, token) => {
+      (user) => {
         setGoogleUser(user);
-        setDriveToken(token);
+        const token = getAccessToken();
+        if (token) {
+          setDriveToken(token);
+          fetchDriveFiles(token);
+          fetchCalendarEvents(token);
+        }
         setIsGoogleLoading(false);
-        fetchDriveFiles(token);
-        fetchCalendarEvents(token);
       },
       () => {
         setGoogleUser(null);
@@ -1103,6 +1110,19 @@ Compiled by Zenna Business Intelligence Relay.
               </button>
             </>
           )}
+
+          <div className="pt-8 pb-2">
+            <p className="px-4 text-[10px] uppercase tracking-widest text-muted hidden lg:block">Upcoming Features</p>
+          </div>
+          <button 
+            type="button"
+            disabled
+            className="w-full flex items-center gap-4 px-4 py-3 rounded text-muted/30 cursor-not-allowed text-left outline-none relative group"
+          >
+            <TrendingUp className="w-5 h-5 flex-shrink-0" />
+            <span className="hidden lg:inline text-sm font-medium">Marketing Pro</span>
+            <span className="hidden lg:flex absolute right-4 text-[9px] uppercase tracking-widest bg-white/5 px-2 py-1 rounded text-muted/50">Coming Soon</span>
+          </button>
         </nav>
 
         <div className="px-6 pt-8 border-t border-white/5">
@@ -1132,6 +1152,13 @@ Compiled by Zenna Business Intelligence Relay.
               <span className={cn("w-2 h-2 rounded-full animate-pulse", currentModule === 'hammerCode' ? "bg-orange-500" : "bg-green-500")} />
               {currentModule === 'hammerCode' ? "Melb Metro Campaign Node Active" : "Zenna Voice Engine Live"}
             </div>
+            <button
+              onClick={() => setShowOnboardingModal(true)}
+              className="flex items-center gap-1.5 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white text-[11px] font-medium px-3 py-1.5 rounded-lg shadow-lg shadow-blue-500/20 transition-all border border-blue-400/30"
+            >
+              <Zap className="w-3.5 h-3.5" />
+              Auto Onboarding & Billing
+            </button>
             <p className="text-muted text-[10px] uppercase tracking-widest font-mono">Tuesday · 16 June 2026</p>
           </div>
         </header>
@@ -2836,6 +2863,15 @@ Created automatically via Zenna Unified Addons Cloud System. No manual paper-pus
             </motion.div>
           </div>
         )}
+        {/* Onboarding & Subscription Modal */}
+        <OnboardingModal 
+          isOpen={showOnboardingModal} 
+          onClose={() => setShowOnboardingModal(false)} 
+          onSaved={() => {
+            fetchData();
+            setShowOnboardingModal(false);
+          }} 
+        />
       </AnimatePresence>
     </div>
   );
@@ -2847,23 +2883,92 @@ Created automatically via Zenna Unified Addons Cloud System. No manual paper-pus
 export default function App() {
   const [page, setPage] = useState<Page>('landing');
   const [businessName, setBusinessName] = useState("Zenna App Studio");
+  const [user, setUser] = useState<any>(null);
+  const [authLoading, setAuthLoading] = useState(true);
+
+  useEffect(() => {
+    const unsubscribe = initAuth(
+      (u) => { 
+        setUser(u); 
+        setAuthLoading(false); 
+        // If they were stuck on landing, move them inside
+        if (page === 'landing') setPage('setup'); 
+      }, 
+      () => { 
+        setUser(null); 
+        setAuthLoading(false); 
+        setPage('landing'); // Force landing if logged out
+      }
+    );
+    return () => unsubscribe && unsubscribe();
+  }, [page]);
+
+  if (authLoading) {
+    return (
+      <div className="min-h-screen bg-slate-950 flex items-center justify-center">
+        <div className="text-cyan-500 font-mono text-sm tracking-widest uppercase animate-pulse">
+          Initializing Zenna OS...
+        </div>
+      </div>
+    );
+  }
 
   return (
-    <div className="font-sans">
+    <div className="font-sans min-h-screen bg-slate-950">
+      {/* Top Floating View Toggle (Only show if logged in) */}
+      {user && (
+        <div className="fixed bottom-4 right-4 z-50 flex items-center gap-2 bg-slate-900/90 backdrop-blur-md border border-cyan-500/40 p-1.5 rounded-full shadow-[0_0_20px_rgba(0,240,255,0.2)]">
+          <button
+            onClick={() => setPage('cyberpunk')}
+            className={`px-3 py-1.5 rounded-full text-xs font-mono transition-all ${page === 'cyberpunk' ? 'bg-cyan-500 text-black font-bold shadow-[0_0_10px_rgba(0,240,255,0.5)]' : 'text-slate-400 hover:text-white'}`}
+          >
+            ⚡ Cyberpunk OS (禅那)
+          </button>
+          <button
+            onClick={() => setPage('dashboard')}
+            className={`px-3 py-1.5 rounded-full text-xs font-mono transition-all ${page === 'dashboard' ? 'bg-amber-500 text-black font-bold' : 'text-slate-400 hover:text-white'}`}
+          >
+            📊 Standard CRM
+          </button>
+          <button
+            onClick={async () => { await googleLogout(); }}
+            className={`px-3 py-1.5 rounded-full text-xs font-mono transition-all text-red-400 hover:text-red-300`}
+          >
+            Log Out
+          </button>
+        </div>
+      )}
+
       <AnimatePresence mode="wait">
         {page === 'landing' && (
           <motion.div key="landing" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
-            <Landing onGetStarted={() => setPage('setup')} />
+            <Landing onGetStarted={async () => {
+              try {
+                await import('./lib/googleAuth').then(m => m.login());
+              } catch(e) {
+                console.error(e);
+              }
+            }} />
           </motion.div>
         )}
-        {page === 'setup' && (
+        {page === 'setup' && user && (
           <motion.div key="setup" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
-            <Setup onComplete={() => setPage('dashboard')} setBusinessName={setBusinessName} />
+            <Setup onComplete={() => setPage('cyberpunk')} setBusinessName={setBusinessName} />
           </motion.div>
         )}
-        {page === 'dashboard' && (
-          <motion.div key="dashboard" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+        {page === 'cyberpunk' && user && (
+          <motion.div key="cyberpunk" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+            <CyberpunkDashboard />
+          </motion.div>
+        )}
+        {page === 'dashboard' && user && (
+          <motion.div key="dashboard" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
             <Dashboard businessName={businessName} />
+          </motion.div>
+        )}
+        {page === 'ad_studio' && user && (
+          <motion.div key="ad_studio" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+            <AiAdStudio onBack={() => setPage('cyberpunk')} />
           </motion.div>
         )}
       </AnimatePresence>

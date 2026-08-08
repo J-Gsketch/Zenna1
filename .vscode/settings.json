@@ -1,0 +1,8 @@
+{
+    "editor.codeActions.triggerOnFocusChange": true,
+    "python.pyrefly.typeCheckingMode": "auto",
+    "python.pyrefly.disableTypeErrors": false,
+    "python.pyrefly.disableLanguageServices": false,
+    "python.analysis.showHoverGoToLinks": true,
+    "python.analysis.autoImportCompletions": true
+}

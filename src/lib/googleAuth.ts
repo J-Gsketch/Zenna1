@@ -1,45 +1,65 @@
 import { initializeApp } from 'firebase/app';
+import { getAnalytics, isSupported } from 'firebase/analytics';
 import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged, User, Auth } from 'firebase/auth';
 import firebaseConfig from '../../firebase-applet-config.json';
 
 const app = initializeApp(firebaseConfig);
+
+// Initialize Analytics safely
+export let analytics: any = null;
+isSupported().then((supported) => {
+  if (supported) {
+    analytics = getAnalytics(app);
+  }
+});
+
 export const auth: Auth = getAuth(app);
 
-const provider = new GoogleAuthProvider();
-// Request Google Drive and Calendar scopes
-provider.addScope('https://www.googleapis.com/auth/drive');
-provider.addScope('https://www.googleapis.com/auth/drive.file');
-provider.addScope('https://www.googleapis.com/auth/calendar');
-provider.addScope('https://www.googleapis.com/auth/calendar.events');
+// Provider for basic login (No scary scopes)
+const baseProvider = new GoogleAuthProvider();
+
+// Provider for Drive/Calendar connection (Scary scopes)
+const driveProvider = new GoogleAuthProvider();
+driveProvider.addScope('https://www.googleapis.com/auth/drive');
+driveProvider.addScope('https://www.googleapis.com/auth/drive.file');
+driveProvider.addScope('https://www.googleapis.com/auth/calendar');
+driveProvider.addScope('https://www.googleapis.com/auth/calendar.events');
 
 let isSigningIn = false;
-let cachedAccessToken: string | null = null;
+let cachedAccessToken: string | null = null; // Drive token
 
-// Initialize auth state listener
 export const initAuth = (
-  onAuthSuccess?: (user: User, token: string) => void,
+  onAuthSuccess?: (user: User) => void,
   onAuthFailure?: () => void
 ) => {
-  return onAuthStateChanged(auth, async (user: User | null) => {
-    if (user) {
-      if (cachedAccessToken) {
-        if (onAuthSuccess) onAuthSuccess(user, cachedAccessToken);
-      } else if (!isSigningIn) {
-        cachedAccessToken = null;
-        if (onAuthFailure) onAuthFailure();
-      }
-    } else {
-      cachedAccessToken = null;
+  return onAuthStateChanged(auth, (user: User | null) => {
+    if (user && !isSigningIn) {
+      if (onAuthSuccess) onAuthSuccess(user);
+    } else if (!user && !isSigningIn) {
       if (onAuthFailure) onAuthFailure();
     }
   });
 };
 
-// Initiate Google Sign In
-export const googleSignIn = async (): Promise<{ user: User; accessToken: string } | null> => {
+// 1-Click Basic Login
+export const login = async (): Promise<User | null> => {
   try {
     isSigningIn = true;
-    const result = await signInWithPopup(auth, provider);
+    const result = await signInWithPopup(auth, baseProvider);
+    return result.user;
+  } catch (error: any) {
+    console.error('Zenna Login error:', error);
+    throw error;
+  } finally {
+    isSigningIn = false;
+  }
+};
+
+// Elevate privileges to connect Drive/Calendar
+export const connectDrive = async (): Promise<{ user: User; accessToken: string } | null> => {
+  try {
+    isSigningIn = true;
+    const result = await signInWithPopup(auth, driveProvider);
     const credential = GoogleAuthProvider.credentialFromResult(result);
     if (!credential?.accessToken) {
       throw new Error('Failed to obtain Google OAuth Access Token.');
@@ -47,16 +67,14 @@ export const googleSignIn = async (): Promise<{ user: User; accessToken: string 
     cachedAccessToken = credential.accessToken;
     return { user: result.user, accessToken: cachedAccessToken };
   } catch (error: any) {
-    console.error('Zenna Google Sign In error:', error);
+    console.error('Zenna Drive Connect error:', error);
     throw error;
   } finally {
     isSigningIn = false;
   }
 };
 
-export const getAccessToken = async (): Promise<string | null> => {
-  return cachedAccessToken;
-};
+export const getAccessToken = (): string | null => cachedAccessToken;
 
 export const logout = async () => {
   await auth.signOut();
