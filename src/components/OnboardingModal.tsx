@@ -77,8 +77,8 @@ export const OnboardingModal: React.FC<OnboardingModalProps> = ({ isOpen, onClos
               <Zap className="w-5 h-5" />
             </div>
             <div>
-              <h3 className="font-semibold text-lg">Zenna Automated Setup</h3>
-              <p className="text-xs text-slate-400">Self-Serve Onboarding & Dual-Currency Stripe Setup</p>
+              <h3 className="font-semibold text-lg">Zenna Done-For-You Setup</h3>
+              <p className="text-xs text-slate-400">10 minutes of your time — we handle the rest, live in 24 hours</p>
             </div>
           </div>
           <button onClick={onClose} className="text-slate-400 hover:text-white text-sm px-2 py-1 rounded bg-slate-800/50">✕</button>
@@ -105,7 +105,12 @@ export const OnboardingModal: React.FC<OnboardingModalProps> = ({ isOpen, onClos
         {/* Step 1: Business Form */}
         {step === 1 && (
           <form onSubmit={() => setStep(2)} className="space-y-4">
-            
+
+            <div className="bg-blue-950/30 border border-blue-500/20 rounded-xl p-3 text-xs text-blue-300 flex items-start gap-2">
+              <Zap className="w-4 h-4 shrink-0 mt-0.5 text-blue-400" />
+              <span>Just 5 quick answers. Our team configures your number, AI and billing for you — <strong>no tech skills needed.</strong> Prefer to talk it through? We'll do this with you on a 10-minute call.</span>
+            </div>
+
             {/* Region Selector */}
             <div className="bg-slate-950 p-3 rounded-xl border border-slate-800 flex items-center justify-between">
               <span className="text-xs text-slate-300 flex items-center gap-1.5 font-medium">
@@ -203,9 +208,9 @@ export const OnboardingModal: React.FC<OnboardingModalProps> = ({ isOpen, onClos
               >
                 <div className="flex justify-between items-start mb-2">
                   <h4 className="font-semibold text-sm">Solo Tradie</h4>
-                  <span className="text-xs bg-blue-500/20 text-blue-400 px-2 py-0.5 rounded font-mono">${currency} 199/mo</span>
+                  <span className="text-xs bg-blue-500/20 text-blue-400 px-2 py-0.5 rounded font-mono">${currency} 99/mo</span>
                 </div>
-                <p className="text-xs text-slate-400 mb-3">Perfect for sole operators & vans on the road.</p>
+                <p className="text-xs text-slate-400 mb-3">Perfect for sole operators & vans on the road. One saved job pays for the year.</p>
                 <ul className="text-[11px] text-slate-300 space-y-1">
                   <li className="flex items-center gap-1.5"><CheckCircle2 className="w-3 h-3 text-emerald-400" /> 1 Twilio Phone Line ({region})</li>
                   <li className="flex items-center gap-1.5"><CheckCircle2 className="w-3 h-3 text-emerald-400" /> Auto Missed-Call SMS</li>
@@ -219,7 +224,7 @@ export const OnboardingModal: React.FC<OnboardingModalProps> = ({ isOpen, onClos
               >
                 <div className="flex justify-between items-start mb-2">
                   <h4 className="font-semibold text-sm">Pro Team</h4>
-                  <span className="text-xs bg-emerald-500/20 text-emerald-400 px-2 py-0.5 rounded font-mono">${currency} 399/mo</span>
+                  <span className="text-xs bg-emerald-500/20 text-emerald-400 px-2 py-0.5 rounded font-mono">${currency} 249/mo</span>
                 </div>
                 <p className="text-xs text-slate-400 mb-3">For multi-van teams & larger operations.</p>
                 <ul className="text-[11px] text-slate-300 space-y-1">
@@ -231,7 +236,7 @@ export const OnboardingModal: React.FC<OnboardingModalProps> = ({ isOpen, onClos
             </div>
 
             <div className="p-3 bg-slate-950 border border-slate-800 rounded-lg text-xs text-slate-400 flex items-center justify-between">
-              <span className="flex items-center gap-2"><CreditCard className="w-4 h-4 text-emerald-400" /> 7-Day Free Trial included. Direct payouts to your NZ bank account.</span>
+              <span className="flex items-center gap-2"><CreditCard className="w-4 h-4 text-emerald-400" /> 7-Day Free Trial included, no card required. Concierge setup is free — we configure everything with you.</span>
               <span className="text-slate-500">Stripe Billing Active</span>
             </div>
 
@@ -265,7 +270,7 @@ export const OnboardingModal: React.FC<OnboardingModalProps> = ({ isOpen, onClos
                 <PhoneCall className="w-4 h-4" /> Final Step: Activate 1-Click Call Forwarding ({region})
               </h5>
               <p className="text-xs text-slate-300">
-                Dial the command below on your mobile phone to automatically forward missed calls to Zenna:
+                Our team will SMS you your Zenna number and walk you through this on a quick 10-minute call. Prefer to do it now? Dial the command below on your mobile to automatically forward missed calls to Zenna:
               </p>
 
               <div className="bg-slate-900 border border-slate-800 rounded-lg p-3 flex items-center justify-between font-mono text-sm text-emerald-400">
