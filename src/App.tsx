@@ -56,8 +56,13 @@ type Page = 'landing' | 'setup' | 'dashboard' | 'cyberpunk' | 'ad_studio';
 // --- Sub-components ---
 
 const Logo = () => (
-  <div className="font-serif text-2xl tracking-wider text-paper">
-    Zen<span className="text-gold">na</span>
+  <div className="flex items-center gap-3">
+    <div className="font-serif text-2xl tracking-wider text-paper">
+      Zen<span className="text-gold">na</span>
+    </div>
+    <span className="text-[10px] font-sans px-2 py-0.5 rounded bg-gold/10 text-gold border border-gold/20 uppercase tracking-widest font-semibold">
+      by Hammer &amp; Code
+    </span>
   </div>
 );
 
@@ -88,7 +93,7 @@ const Landing = ({ onGetStarted }: { onGetStarted: () => void }) => {
           transition={{ delay: 0.2 }}
           className="text-gold font-medium tracking-[0.2em] uppercase text-xs"
         >
-          Built for Tradies & Contractors
+          Zenna by Hammer &amp; Code • Built for Tradies &amp; Service Businesses
         </motion.p>
         
         <motion.h1 
@@ -106,7 +111,7 @@ const Landing = ({ onGetStarted }: { onGetStarted: () => void }) => {
           transition={{ delay: 0.6 }}
           className="text-muted text-lg max-w-md leading-relaxed"
         >
-          Zenna is your AI receptionist. She catches missed calls, books quotes via SMS, and sends you a daily wrap-up.
+          Zenna by Hammer &amp; Code is your multi-tenant AI receptionist. She catches missed calls, qualifies prospects, books deposits, and delivers daily executive briefings.
         </motion.p>
 
         <motion.div 

@@ -1,7 +1,7 @@
 import { initializeApp, getApps } from 'firebase-admin/app';
-import { getFirestore } from 'firebase-admin/firestore';
+import { getFirestore, Firestore } from 'firebase-admin/firestore';
 
-let db: FirebaseFirestore.Firestore;
+let db: Firestore;
 
 export interface Lead {
   tenant_id: string;
@@ -41,7 +41,7 @@ export async function getLeads(tenant_id: string): Promise<Lead[]> {
     .where('tenant_id', '==', tenant_id)
     .orderBy('created_at', 'desc')
     .get();
-  return snap.docs.map(d => d.data() as Lead);
+  return snap.docs.map((d: any) => d.data() as Lead);
 }
 
 export async function saveLead(tenant_id: string, lead: { phone: string; name: string; status?: string; job_value?: string; notes?: string }) {
@@ -84,7 +84,7 @@ export async function getCalls(tenant_id: string): Promise<CallLog[]> {
     .where('tenant_id', '==', tenant_id)
     .orderBy('timestamp', 'desc')
     .get();
-  return snap.docs.map(d => d.data() as CallLog);
+  return snap.docs.map((d: any) => d.data() as CallLog);
 }
 
 export async function logCall(tenant_id: string, call: { call_id?: string; from_number: string; message: string; status: string; sms_sent?: boolean }) {

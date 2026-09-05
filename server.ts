@@ -7,11 +7,12 @@ import dotenv from "dotenv";
 import twilio from "twilio";
 import { getAuth as getAdminAuth } from "firebase-admin/auth";
 import { initDB, getLeads, saveLead, getCalls, logCall, getSetting, setSetting, getTenantByTwilioNumber } from "./db.js";
+import { PLANS, FEATURE_MATRIX, createPlanCheckoutSession, formatPlanPrice } from "./features/copilot/plans/index.js";
 
 dotenv.config();
 
 import Stripe from 'stripe';
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || 'sk_test_mock', { apiVersion: '2025-01-27.acacia' });
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || 'sk_test_mock', { apiVersion: '2026-07-29.dahlia' as any });
 
 
 // Initialize SQLite database
@@ -300,24 +301,55 @@ app.post('/api/stripe-webhook', express.raw({ type: 'application/json' }), async
     });
   });
 
+  // Get available subscription plans and feature matrix for Zenna by Hammer & Code
+  app.get("/api/plans", (req, res) => {
+    res.json({
+      brand: "Zenna by Hammer & Code",
+      plans: PLANS,
+      featureMatrix: FEATURE_MATRIX
+    });
+  });
+
   app.post("/api/create-subscription", verifyToken, async (req, res) => {
     const tenant_id = (req as any).user.uid;
 
-    const { plan, email, businessName, currency } = req.body;
-    const currSymbol = (currency === 'AUD' || currency === 'AUD ($)') ? 'AUD $' : 'NZD $';
-    const planPrice = plan === 'Pro Team' ? `${currSymbol}399` : `${currSymbol}199`;
-    const checkoutUrl = `https://checkout.stripe.com/c/pay/cs_live_zenna_${Date.now()}?plan=${encodeURIComponent(plan || 'Solo Tradie')}&currency=${currency || 'NZD'}`;
-    
-    await setSetting(tenant_id, 'subscriptionStatus', 'Subscribed & Active');
-    if (plan) await setSetting(tenant_id, 'plan', `${plan} (${planPrice}/mo)`);
+    const { plan, planId, email, businessName, currency, billingInterval } = req.body;
+    const selectedPlanId = (planId || (plan === 'Pro Team' ? 'pro' : plan === 'Enterprise' ? 'enterprise' : 'starter')) as any;
+    const selectedCurrency = (currency === 'AUD' || currency === 'AUD ($)') ? 'AUD' : (currency === 'USD' ? 'USD' : 'NZD');
+    const interval = billingInterval === 'yearly' ? 'yearly' : 'monthly';
 
-    res.json({
-      success: true,
-      plan: plan || 'Solo Tradie',
-      currency: currency || 'NZD',
-      checkoutUrl: checkoutUrl,
-      message: `Automated subscription initialized for ${businessName || 'Business'}. Recurring billing set to ${planPrice}/mo.`
-    });
+    try {
+      const checkoutResult = await createPlanCheckoutSession(stripe, {
+        tenantId: tenant_id,
+        planId: selectedPlanId,
+        billingInterval: interval,
+        currency: selectedCurrency,
+        customerEmail: email,
+        businessName: businessName || 'Zenna Customer',
+        successUrl: process.env.STRIPE_SUCCESS_URL || 'https://hammer-and-code.web.app/dashboard?session_id={CHECKOUT_SESSION_ID}',
+        cancelUrl: process.env.STRIPE_CANCEL_URL || 'https://hammer-and-code.web.app/pricing'
+      });
+
+      const formattedPrice = formatPlanPrice(selectedPlanId, selectedCurrency, interval);
+      await setSetting(tenant_id, 'subscriptionStatus', 'Subscribed & Active');
+      await setSetting(tenant_id, 'plan', `${selectedPlanId.toUpperCase()} (${formattedPrice})`);
+
+      res.json({
+        success: true,
+        brand: 'Zenna by Hammer & Code',
+        planId: selectedPlanId,
+        plan: plan || selectedPlanId,
+        currency: selectedCurrency,
+        formattedPrice,
+        checkoutUrl: checkoutResult.url,
+        sessionId: checkoutResult.sessionId,
+        isMock: checkoutResult.isMock,
+        message: `Automated subscription initialized under Zenna by Hammer & Code for ${businessName || 'Business'}. Recurring billing set to ${formattedPrice}.`
+      });
+    } catch (err: any) {
+      console.error("Subscription Error:", err);
+      res.status(500).json({ success: false, error: err.message });
+    }
   });
 
   // Client lookup endpoint by phone
