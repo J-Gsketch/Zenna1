@@ -26,7 +26,7 @@ export const CyberpunkDashboard: React.FC = () => {
   const [googleAdStatus, setGoogleAdStatus] = useState<'idle' | 'active'>('idle');
   const [leads, setLeads] = useState<Lead[]>([]);
   const [voiceQuery, setVoiceQuery] = useState('Do you charge a call-out fee in Ponsonby?');
-  const [voiceResponse, setVoiceResponse] = useState("G'day! Zenna here from Hartley Plumbing. Standard call-out fee is $150. We can get you sorted in Ponsonby on Thursday morning!");
+  const [voiceResponse, setVoiceResponse] = useState("G'day! Zenna here from your business. Standard call-out fee is $150. We can get you sorted on Thursday morning!");
   const [isVoiceProcessing, setIsVoiceProcessing] = useState(false);
   const [systemLogs, setSystemLogs] = useState<string[]>([
     "[0805:1708] SYSTEM_BOOT :: Zenna Platform Matrix v2.5 Online",
@@ -139,7 +139,7 @@ export const CyberpunkDashboard: React.FC = () => {
         addLog(`[VOICE_ENGINE] 🎙️ Query Processed: "${voiceQuery}"`);
       }
     } catch (err) {
-      setVoiceResponse("G'day! Zenna here from Hartley Plumbing. Standard call-out fee is $150. We can get you sorted in Ponsonby on Thursday morning!");
+      setVoiceResponse("G'day! Zenna here from your business. Standard call-out fee is $150. We can get you sorted on Thursday morning!");
     } finally {
       setIsVoiceProcessing(false);
     }

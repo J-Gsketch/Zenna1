@@ -139,7 +139,7 @@ const Landing = ({ onGetStarted }: { onGetStarted: () => void }) => {
               <div className="bg-[#1c1c1e] border border-white/5 rounded-2xl p-6 max-w-xs shadow-2xl">
                 <p className="text-[10px] text-gold uppercase tracking-widest mb-2">Zenna</p>
                 <p className="text-sm leading-relaxed text-paper">
-                  G'day! Thanks for calling Hartley Plumbing. Our team is currently on the tools, but we've got your query! What do you need help with? We'll call back soon, or text us here.
+                  G'day! Thanks for calling. Our team is currently on the tools, but we've got your query! What do you need help with? We'll call back soon, or text us here.
                 </p>
                 <p className="text-[10px] text-muted text-right mt-2">Today 2:14 PM · Delivered</p>
               </div>
@@ -428,7 +428,7 @@ const Dashboard = ({ businessName }: { businessName: string }) => {
   // Twilio SMS Relay Settings
   const [twilioEnabled, setTwilioEnabled] = useState(true);
   const [autoDraftCRM, setAutoDraftCRM] = useState(true);
-  const [missedCallTemplate, setMissedCallTemplate] = useState("G'day, sorry we missed your ring. Zenna here from Hartley Plumbing. Our team is on the tools responding to an urgent job right now, but we've got your number. Reply with your job details or book a booking directly: https://calendly.com/hartley-plumbing");
+  const [missedCallTemplate, setMissedCallTemplate] = useState("G'day, sorry we missed your ring. Zenna here from [Your Business]. Our team is on the tools responding to an urgent job right now, but we've got your number. Reply with your job details or book a booking directly: [Your Booking Link]");
   const [isSavingTwilioConfig, setIsSavingTwilioConfig] = useState(false);
 
   // Stripe Trade Billing States
