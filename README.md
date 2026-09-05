@@ -26,3 +26,19 @@ View your app in AI Studio: https://ai.studio/apps/b6b91c21-42f1-486f-a5f7-6ab08
 2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
 3. Run the app:
    `npm run dev`
+
+## Launch Playbooks
+
+See the [`docs/`](docs) directory for the customer acquisition and
+deployment playbooks used to launch Zenna:
+
+- [Customer Acquisition Playbook](docs/CUSTOMER_ACQUISITION_PLAYBOOK.md)
+- [Outreach Templates](docs/OUTREACH_TEMPLATES.md)
+- [Email Sequences](docs/EMAIL_SEQUENCES.md)
+- [Community Engagement](docs/COMMUNITY_ENGAGEMENT.md)
+- [Sales & Demo Script](docs/SALES_DEMO_SCRIPT.md)
+- [Case Study Template](docs/CASE_STUDY_TEMPLATE.md)
+- [Deployment Checklist](docs/DEPLOYMENT_CHECKLIST.md)
+- [Metrics Tracking](docs/METRICS_TRACKING.md)
+- [Testimonial Capture](docs/TESTIMONIAL_CAPTURE.md)
+- [Referral Program](docs/REFERRAL_PROGRAM.md)
