@@ -20,6 +20,7 @@ const SCALING_ROADMAP: ScalingTarget[] = [
 
 export async function executeZennaScalingPlan() {
   console.log("⚡ [Hyper-Scale] Initializing Zenna 100+ Tradie Acquisition Engine...");
+  const tenantId = process.env.MARKETING_TENANT_ID || 'system';
 
   let totalTargetSubs = 0;
   let totalARR = 0;
@@ -43,7 +44,7 @@ export async function executeZennaScalingPlan() {
 
     const outreachMsg = `G'day ${bizName}! Never lose another $3k+ job to missed calls while on-site in ${city}. Zenna AI catches missed calls in < 3s & texts customers automatically. 7-Day Free Trial: https://zenna.au`;
 
-    saveLead({
+    saveLead(tenantId, {
       name: bizName,
       phone: phone,
       status: "Scale Target Prospect",
@@ -51,7 +52,7 @@ export async function executeZennaScalingPlan() {
       notes: `Zenna Scaling Engine Outreach -> City: ${city} | Message: "${outreachMsg}"`
     });
 
-    logCall({
+    logCall(tenantId, {
       call_id: `scale_${Date.now()}_${i}`,
       from_number: phone,
       message: outreachMsg,
@@ -70,9 +71,9 @@ export async function executeZennaScalingPlan() {
     });
   }
 
-  setSetting('scalingActive', 'true');
-  setSetting('targetSubscribers', String(totalTargetSubs));
-  setSetting('targetARR', `$${totalARR.toLocaleString()}`);
+  setSetting(tenantId, 'scalingActive', 'true');
+  setSetting(tenantId, 'targetSubscribers', String(totalTargetSubs));
+  setSetting(tenantId, 'targetARR', `$${totalARR.toLocaleString()}`);
 
   console.log(`🚀 [Hyper-Scale Complete] 20 Cities & Tradies Dispatched. Target ARR: $${totalARR.toLocaleString()}`);
 

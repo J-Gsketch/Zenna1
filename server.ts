@@ -11,13 +11,19 @@ import { initDB, getLeads, saveLead, getCalls, logCall, getSetting, setSetting, 
 dotenv.config();
 
 import Stripe from 'stripe';
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || 'sk_test_mock', { apiVersion: '2025-01-27.acacia' });
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || 'sk_test_mock', { apiVersion: '2026-07-29.dahlia' });
+
+export const SUBSCRIPTION_PLANS = {
+  starter: { name: 'Starter', monthlyCents: 9900, callLimit: 100, priceEnv: 'STRIPE_PRICE_STARTER' },
+  pro: { name: 'Pro', monthlyCents: 24900, callLimit: 500, priceEnv: 'STRIPE_PRICE_PRO' },
+  enterprise: { name: 'Enterprise', monthlyCents: 49900, callLimit: null, priceEnv: 'STRIPE_PRICE_ENTERPRISE' }
+} as const;
 
 
 // Initialize SQLite database
 initDB();
 
-async function startServer() {
+export async function startServer() {
   
 // --- VIP SLACK LOGGER ---
 const sendSlackAlert = async (message: string, isError = false) => {
@@ -39,6 +45,19 @@ const sendSlackAlert = async (message: string, isError = false) => {
 
 const app = express();
   const PORT = 3000;
+const requestCounts = new Map<string, { count: number; resetAt: number }>();
+const rateLimit = (limit: number, windowMs: number) => (req: any, res: any, next: any) => {
+  const key = req.ip || 'unknown';
+  const now = Date.now();
+  const current = requestCounts.get(key);
+  if (!current || current.resetAt <= now) {
+    requestCounts.set(key, { count: 1, resetAt: now + windowMs });
+    return next();
+  }
+  if (current.count >= limit) return res.status(429).json({ error: 'Too many requests. Try again shortly.' });
+  current.count += 1;
+  next();
+};
 
 
 // --- STRIPE WEBHOOKS ---
@@ -81,7 +100,7 @@ app.post('/api/stripe-webhook', express.raw({ type: 'application/json' }), async
 });
 
 
-  app.use(express.json());
+  app.use(express.json({ limit: '256kb' }));
   app.use(express.urlencoded({ extended: true }));
 
   // --- AUTH MIDDLEWARE ---
@@ -129,9 +148,9 @@ app.post('/api/stripe-webhook', express.raw({ type: 'application/json' }), async
 
   // --- CONFIGURATION ---
   const config = {
-    businessName: process.env.BUSINESS_NAME || "Hartley Plumbing & Drainage",
-    ownerName: process.env.OWNER_NAME || "Dave",
-    ownerPhone: process.env.OWNER_PHONE || "+61400000000",
+    businessName: process.env.BUSINESS_NAME || "Your Trade Business",
+    ownerName: process.env.OWNER_NAME || "the team",
+    ownerPhone: process.env.OWNER_PHONE || "",
     bookingLink: process.env.BOOKING_LINK || "https://zenna.au/book",
     calloutFee: process.env.CALLOUT_FEE || "$150"
   };
@@ -143,6 +162,29 @@ app.post('/api/stripe-webhook', express.raw({ type: 'application/json' }), async
 
   // --- AI LOGIC (Gemini) ---
   const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY || "demo");
+
+  async function getTenantConfig(tenantId: string) {
+    return {
+      businessName: await getSetting(tenantId, 'businessName', config.businessName),
+      ownerName: await getSetting(tenantId, 'ownerName', config.ownerName),
+      ownerPhone: await getSetting(tenantId, 'ownerPhone', config.ownerPhone),
+      bookingLink: await getSetting(tenantId, 'bookingLink', config.bookingLink),
+      calloutFee: await getSetting(tenantId, 'calloutFee', config.calloutFee),
+      location: await getSetting(tenantId, 'location', ''),
+      serviceTypes: await getSetting(tenantId, 'serviceTypes', 'general trade services'),
+      serviceAreas: await getSetting(tenantId, 'serviceAreas', ''),
+      operatingHours: await getSetting(tenantId, 'operatingHours', 'Monday to Friday, 8am to 5pm')
+    };
+  }
+
+  function receptionistPrompt(tenant: Awaited<ReturnType<typeof getTenantConfig>>, task: string) {
+    return `ROLE: You are Zenna, the AI receptionist for "${tenant.businessName}".
+OWNER: ${tenant.ownerName}. LOCATION: ${tenant.location || 'the local service area'}.
+SERVICES: ${tenant.serviceTypes}. SERVICE AREAS: ${tenant.serviceAreas || 'nearby suburbs'}.
+HOURS: ${tenant.operatingHours}. STANDARD CALL-OUT FEE: ${tenant.calloutFee}.
+BOOKING LINK: ${tenant.bookingLink}.
+Be warm, concise and clear. Qualify the caller's name, address, job type and urgency. Never invent availability or prices. ${task}`;
+  }
 
   async function askZenna(systemPrompt: string, userMessage: string) {
     if (!process.env.GEMINI_API_KEY) {
@@ -166,7 +208,7 @@ app.post('/api/stripe-webhook', express.raw({ type: 'application/json' }), async
   // --- API ROUTES ---
 
   // --- TWILIO AUTO-PROVISIONING ---
-  app.post("/api/setup-tenant", verifyToken, async (req, res) => {
+  app.post("/api/setup-tenant", rateLimit(10, 60_000), verifyToken, async (req, res) => {
     const tenant_id = (req as any).user.uid;
     const { businessName, ownerName, ownerPhone } = req.body;
     
@@ -253,28 +295,25 @@ app.post('/api/stripe-webhook', express.raw({ type: 'application/json' }), async
   });
 
   // --- AUTOMATED ONBOARDING & BUSINESS CONFIGURATION (NZ & AU REGIONS) ---
-  app.get("/api/business-config", verifyToken, async (req, res) => {
+  app.get("/api/business-config", rateLimit(60, 60_000), verifyToken, async (req, res) => {
     const tenant_id = (req as any).user.uid;
+    const tenant = await getTenantConfig(tenant_id);
 
     res.json({
-      businessName: await getSetting(tenant_id, 'businessName', 'Zenna by Hammer & Code'),
-      ownerName: await getSetting(tenant_id, 'ownerName', config.ownerName),
-      ownerPhone: await getSetting(tenant_id, 'ownerPhone', config.ownerPhone),
-      calloutFee: await getSetting(tenant_id, 'calloutFee', '$150'),
-      bookingLink: await getSetting(tenant_id, 'bookingLink', 'https://zenna.au/book'),
+      ...tenant,
       region: await getSetting(tenant_id, 'region', 'NZ'),
       currency: await getSetting(tenant_id, 'currency', 'NZD'),
-      plan: await getSetting(tenant_id, 'plan', 'Solo Tradie ($199/mo)'),
+      plan: await getSetting(tenant_id, 'plan', 'starter'),
       subscriptionStatus: await getSetting(tenant_id, 'subscriptionStatus', 'Active (7-Day Trial)'),
       twilioForwardingNumberNZ: await getSetting(tenant_id, 'twilioForwardingNumberNZ', '+6421912345'),
       twilioForwardingNumberAU: await getSetting(tenant_id, 'twilioForwardingNumberAU', '+61291234567')
     });
   });
 
-  app.post("/api/business-config", verifyToken, async (req, res) => {
+  app.post("/api/business-config", rateLimit(20, 60_000), verifyToken, async (req, res) => {
     const tenant_id = (req as any).user.uid;
 
-    const { businessName, ownerName, ownerPhone, calloutFee, bookingLink, plan, region, currency } = req.body;
+    const { businessName, ownerName, ownerPhone, calloutFee, bookingLink, plan, region, currency, location, serviceTypes, serviceAreas, operatingHours } = req.body;
     if (businessName) await setSetting(tenant_id, 'businessName', businessName);
     if (ownerName) await setSetting(tenant_id, 'ownerName', ownerName);
     if (ownerPhone) await setSetting(tenant_id, 'ownerPhone', ownerPhone);
@@ -283,40 +322,56 @@ app.post('/api/stripe-webhook', express.raw({ type: 'application/json' }), async
     if (plan) await setSetting(tenant_id, 'plan', plan);
     if (region) await setSetting(tenant_id, 'region', region);
     if (currency) await setSetting(tenant_id, 'currency', currency);
+    if (location) await setSetting(tenant_id, 'location', location);
+    if (serviceTypes) await setSetting(tenant_id, 'serviceTypes', serviceTypes);
+    if (serviceAreas) await setSetting(tenant_id, 'serviceAreas', serviceAreas);
+    if (operatingHours) await setSetting(tenant_id, 'operatingHours', operatingHours);
 
+    const tenant = await getTenantConfig(tenant_id);
     res.json({
       success: true,
       message: "Business configuration saved automatically!",
       config: {
-        businessName: await getSetting(tenant_id, 'businessName', 'Zenna by Hammer & Code'),
-        ownerName: await getSetting(tenant_id, 'ownerName', config.ownerName),
-        ownerPhone: await getSetting(tenant_id, 'ownerPhone', config.ownerPhone),
-        calloutFee: await getSetting(tenant_id, 'calloutFee', '$150'),
-        bookingLink: await getSetting(tenant_id, 'bookingLink', 'https://zenna.au/book'),
+        ...tenant,
         region: await getSetting(tenant_id, 'region', 'NZ'),
         currency: await getSetting(tenant_id, 'currency', 'NZD'),
-        plan: await getSetting(tenant_id, 'plan', 'Solo Tradie ($199/mo)')
+        plan: await getSetting(tenant_id, 'plan', 'starter')
       }
     });
   });
 
-  app.post("/api/create-subscription", verifyToken, async (req, res) => {
+  app.post("/api/create-subscription", rateLimit(10, 60_000), verifyToken, async (req, res) => {
     const tenant_id = (req as any).user.uid;
 
-    const { plan, email, businessName, currency } = req.body;
-    const currSymbol = (currency === 'AUD' || currency === 'AUD ($)') ? 'AUD $' : 'NZD $';
-    const planPrice = plan === 'Pro Team' ? `${currSymbol}399` : `${currSymbol}199`;
-    const checkoutUrl = `https://checkout.stripe.com/c/pay/cs_live_zenna_${Date.now()}?plan=${encodeURIComponent(plan || 'Solo Tradie')}&currency=${currency || 'NZD'}`;
-    
-    await setSetting(tenant_id, 'subscriptionStatus', 'Subscribed & Active');
-    if (plan) await setSetting(tenant_id, 'plan', `${plan} (${planPrice}/mo)`);
+    const { plan = 'starter', email, businessName, currency = 'AUD' } = req.body;
+    const selectedPlan = SUBSCRIPTION_PLANS[plan as keyof typeof SUBSCRIPTION_PLANS];
+    if (!selectedPlan) return res.status(400).json({ error: 'Unknown subscription plan' });
+    const priceId = process.env[selectedPlan.priceEnv];
+    if (!priceId || !process.env.STRIPE_SECRET_KEY || process.env.STRIPE_SECRET_KEY === 'sk_test_mock') {
+      return res.status(503).json({ error: 'Stripe billing is not configured. Set the live Stripe price and secret key.' });
+    }
+    const session = await stripe.checkout.sessions.create({
+      mode: 'subscription',
+      line_items: [{ price: priceId, quantity: 1 }],
+      customer_email: email,
+      client_reference_id: tenant_id,
+      subscription_data: {
+        trial_period_days: 7,
+        metadata: { tenant_id, plan: plan }
+      },
+      payment_method_collection: 'always',
+      success_url: process.env.STRIPE_SUCCESS_URL || 'https://zenna.au/dashboard?billing=success',
+      cancel_url: process.env.STRIPE_CANCEL_URL || 'https://zenna.au/dashboard?billing=cancelled'
+    });
+    await setSetting(tenant_id, 'subscriptionStatus', 'Trialing');
+    await setSetting(tenant_id, 'plan', plan);
 
     res.json({
       success: true,
-      plan: plan || 'Solo Tradie',
-      currency: currency || 'NZD',
-      checkoutUrl: checkoutUrl,
-      message: `Automated subscription initialized for ${businessName || 'Business'}. Recurring billing set to ${planPrice}/mo.`
+      plan: selectedPlan.name,
+      currency,
+      checkoutUrl: session.url,
+      message: `Your 7-day trial for ${businessName || 'your business'} is ready. Add a card at checkout; billing starts after the trial.`
     });
   });
 
@@ -357,6 +412,7 @@ app.post('/api/stripe-webhook', express.raw({ type: 'application/json' }), async
   // Voice lookup and simulation endpoint
   app.post("/api/simulate-call", verifyToken, async (req, res) => {
     const tenant_id = (req as any).user.uid;
+    const tenant = await getTenantConfig(tenant_id);
 
     const { phone } = req.body;
     if (!phone) {
@@ -388,16 +444,15 @@ This caller is not in your CRM directory yet. Introduce yourself as Zenna, colle
       lookupGreeting = `Identified new potential caller.`;
     }
 
-    const systemPrompt = `ROLE: You are "Zenna", the elite AI Receptionist for "${config.businessName}" (Owner: ${config.ownerName}).
-TONE: Authentic, helpful, direct Australian trade professionalism ("G'day", "no worries", "too easy").
+   const systemPrompt = receptionistPrompt(tenant, `TONE: Authentic, helpful and direct trade professionalism.
 QUALIFICATION:
-1. Greet caller and ask for Name + Suburb/Address.
-2. Scope of work (burst pipes, blocked drain, maintenance).
-3. Call-out & diagnostic fee: State standard call-out diagnostic fee of ${config.calloutFee} AUD.
+1. Greet the caller and ask for name and suburb/address.
+2. Ask for scope of work and urgency.
+3. State the standard call-out diagnostic fee before booking.
 
 ${clientContext}
 
-Keep the response highly realistic, spoken, professional but warm. Speak in 1-2 smooth, conversational sentences suitable for a live phone conversation.`;
+Keep the response highly realistic, spoken, professional but warm. Speak in 1-2 smooth, conversational sentences suitable for a live phone conversation.`);
 
     const voiceScript = await askZenna(systemPrompt, "The customer has dialed in and call is answered live.");
     
@@ -439,6 +494,7 @@ Keep the response highly realistic, spoken, professional but warm. Speak in 1-2 
 
   app.post("/api/ask", verifyToken, async (req, res) => {
     const tenant_id = (req as any).user.uid;
+    const tenant = await getTenantConfig(tenant_id);
 
     const { question } = req.body;
     const leadsList = (await getLeads(tenant_id)) as any[];
@@ -448,7 +504,7 @@ Keep the response highly realistic, spoken, professional but warm. Speak in 1-2 
       pipelineValue: 14500
     };
     
-    const systemPrompt = `You are Zenna, a business assistant for ${config.ownerName} at ${config.businessName}. 
+    const systemPrompt = `You are Zenna, a business assistant for ${tenant.ownerName} at ${tenant.businessName}.
     Answer questions about the business based on this context: ${JSON.stringify(stats)}. 
     Be concise, warm, and chief-of-staff professional.`;
     
@@ -871,9 +927,12 @@ CRITICAL: Keep your response STRICTLY under 120 characters without emojis or spe
     });
   }
 
-  app.listen(PORT, "0.0.0.0", () => {
-    console.log(`Zenna Server running on http://localhost:${PORT}`);
-  });
+  if (process.env.ZENNA_FUNCTIONS !== 'true') {
+    app.listen(PORT, "0.0.0.0", () => {
+      console.log(`Zenna Server running on http://localhost:${PORT}`);
+    });
+  }
+  return app;
 }
 
-startServer();
+if (process.env.ZENNA_FUNCTIONS !== 'true') startServer();
