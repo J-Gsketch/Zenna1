@@ -11,7 +11,7 @@ import { initDB, getLeads, saveLead, getCalls, logCall, getSetting, setSetting, 
 dotenv.config();
 
 import Stripe from 'stripe';
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || 'sk_test_mock', { apiVersion: '2025-01-27.acacia' });
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || 'sk_test_mock', { apiVersion: '2025-01-27.acacia' as any });
 
 
 // Initialize SQLite database
