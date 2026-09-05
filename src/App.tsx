@@ -106,7 +106,16 @@ const Landing = ({ onGetStarted }: { onGetStarted: () => void }) => {
           transition={{ delay: 0.6 }}
           className="text-muted text-lg max-w-md leading-relaxed"
         >
-          Zenna is your AI receptionist. She catches missed calls, books quotes via SMS, and sends you a daily wrap-up.
+          Zenna is your AI lead multiplier. She catches every missed call, qualifies the job, collects the deposit, and books it — so you book 3X more jobs without hiring.
+        </motion.p>
+
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.7 }}
+          className="text-gold/90 text-sm font-medium tracking-wide"
+        >
+          $99/mo. One saved job pays for the year.
         </motion.p>
 
         <motion.div 
@@ -119,7 +128,7 @@ const Landing = ({ onGetStarted }: { onGetStarted: () => void }) => {
             onClick={onGetStarted}
             className="bg-gold hover:bg-gold-lt text-ink px-8 py-4 rounded font-medium text-sm tracking-widest uppercase transition-all flex items-center gap-2 group"
           >
-            Meet Zenna <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            Start Booking More Jobs <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </button>
           <a href="#how" className="text-muted hover:text-paper transition-colors text-sm tracking-widest uppercase">
             See how it works →
@@ -158,13 +167,14 @@ const Landing = ({ onGetStarted }: { onGetStarted: () => void }) => {
       {/* Steps Section */}
       <section id="how" className="py-32 px-8 max-w-7xl mx-auto border-t border-white/5">
         <p className="text-gold text-xs tracking-widest uppercase mb-6">How it works</p>
-        <h2 className="font-serif text-4xl md:text-5xl mb-20 max-w-xl">Set up once. Zenna runs forever.</h2>
+        <h2 className="font-serif text-4xl md:text-5xl mb-6 max-w-xl">We set it up for you. You're live in 24 hours.</h2>
+        <p className="text-muted text-sm mb-20 max-w-lg leading-relaxed">Answer 5 quick questions and our team configures everything — your number, your AI, your billing. No tech skills needed. You just keep working.</p>
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-1">
           {[
             { num: '01', title: 'A call comes in', desc: "You're on site. Up a ladder. Under a sink. The phone rings and you can't answer." },
-            { num: '02', title: 'Zenna catches it', desc: "Within seconds, Zenna sends a warm, personalised SMS. She knows your business and your hours." },
-            { num: '03', title: 'The lead is alive', desc: "The caller gets a response. Zenna handles the talk, captures details, and logs them to your dashboard." },
+            { num: '02', title: 'Zenna catches it', desc: "Within seconds, Zenna answers, qualifies the job, and texts the caller your booking link and deposit invoice." },
+            { num: '03', title: 'The job is booked', desc: "Confirmed jobs land on your dashboard with the details captured and the deposit handled — you just show up." },
           ].map((step, i) => (
             <div key={i} className="bg-surface/30 p-10 border border-white/5 hover:border-gold/30 transition-colors group">
               <p className="font-serif text-5xl text-gold/20 mb-6 group-hover:text-gold/40 transition-colors">{step.num}</p>
@@ -245,7 +255,8 @@ const Setup = ({ onComplete, setBusinessName }: { onComplete: () => void, setBus
               >
                 <p className="text-gold text-[10px] tracking-[0.2em] uppercase font-medium mb-4">Step 1 of 4</p>
                 <h2 className="font-serif text-4xl mb-4">Tell Zenna about your business.</h2>
-                <p className="text-muted text-sm mb-12">She'll use this to represent you perfectly — every message will sound like it came from your team.</p>
+                <p className="text-muted text-sm mb-4">She'll use this to represent you perfectly — every message will sound like it came from your team.</p>
+                <p className="text-gold/90 text-xs mb-12 uppercase tracking-widest">10 minutes of your time — we handle the technical setup for you.</p>
 
                 <div className="space-y-6">
                   <div>
@@ -318,7 +329,8 @@ const Setup = ({ onComplete, setBusinessName }: { onComplete: () => void, setBus
                   <CheckCircle2 className="w-8 h-8 text-green-500" />
                 </div>
                 <h2 className="font-serif text-4xl mb-4">Zenna's ready.</h2>
-                <p className="text-muted text-sm mb-12">One last step: forward your missed calls to your Zenna number. She starts working the moment the first call comes in.</p>
+                <p className="text-muted text-sm mb-4">One last step: forward your missed calls to your Zenna number. She starts working the moment the first call comes in.</p>
+                <p className="text-gold/90 text-xs mb-12 uppercase tracking-widest">Prefer we do it? Our team will set this up with you on a free 10-minute call.</p>
                 
                 <div className="space-y-4">
                   <div className="bg-white/5 border border-white/10 border-l-gold border-l-2 p-6 rounded-r">
