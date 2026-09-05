@@ -5,6 +5,7 @@ import fs from "fs";
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import dotenv from "dotenv";
 import twilio from "twilio";
+import { rateLimit as expressRateLimit } from "express-rate-limit";
 import { getAuth as getAdminAuth } from "firebase-admin/auth";
 import { initDB, getLeads, saveLead, getCalls, logCall, getSetting, setSetting, getTenantByTwilioNumber } from "./db.js";
 
@@ -102,6 +103,12 @@ app.post('/api/stripe-webhook', express.raw({ type: 'application/json' }), async
 
   app.use(express.json({ limit: '256kb' }));
   app.use(express.urlencoded({ extended: true }));
+  app.use('/api', expressRateLimit({
+    windowMs: 60_000,
+    limit: 120,
+    standardHeaders: 'draft-8',
+    legacyHeaders: false
+  }));
 
   // --- AUTH MIDDLEWARE ---
   const verifyToken = async (req: any, res: any, next: any) => {
