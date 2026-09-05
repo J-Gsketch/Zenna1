@@ -26,3 +26,7 @@ View your app in AI Studio: https://ai.studio/apps/b6b91c21-42f1-486f-a5f7-6ab08
 2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
 3. Run the app:
    `npm run dev`
+
+## Marketing Execution System
+
+The complete go-to-market operating system for Zenna (a Hammer & Code product) lives in [docs/marketing](docs/marketing/README.md): the 12-month $300K MRR Grand Task, the dedicated marketing agent's daily/weekly task system, quarterly phase targets, budget, tools stack, channel playbooks, and the 50+ partner tracker.
