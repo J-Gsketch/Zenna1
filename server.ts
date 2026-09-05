@@ -7,12 +7,23 @@ import dotenv from "dotenv";
 import twilio from "twilio";
 import { getAuth as getAdminAuth } from "firebase-admin/auth";
 import { initDB, getLeads, saveLead, getCalls, logCall, getSetting, setSetting, getTenantByTwilioNumber } from "./db.js";
+import { logger } from "./logger.js";
+import { getPlanById, getStripePriceId } from "./features/copilot/plans/index.js";
 
 dotenv.config();
 
 import Stripe from 'stripe';
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || 'sk_test_mock', { apiVersion: '2025-01-27.acacia' });
 
+// --- BASIC PROCESS-LEVEL MONITORING ---
+// Catches crashes that would otherwise silently kill the server so they show
+// up in logs/hosting provider monitoring instead of disappearing.
+process.on("unhandledRejection", (reason) => {
+  logger.error("Unhandled promise rejection", { reason: String(reason) });
+});
+process.on("uncaughtException", (err) => {
+  logger.error("Uncaught exception", { message: err.message, stack: err.stack });
+});
 
 // Initialize SQLite database
 initDB();
@@ -128,10 +139,14 @@ app.post('/api/stripe-webhook', express.raw({ type: 'application/json' }), async
   }
 
   // --- CONFIGURATION ---
+  // These are fallback defaults used only when a tenant hasn't configured
+  // their own business details yet (see /api/business-config). In a
+  // multi-tenant deployment, per-tenant values from `getSetting()` should
+  // always be preferred over these globals.
   const config = {
-    businessName: process.env.BUSINESS_NAME || "Hartley Plumbing & Drainage",
-    ownerName: process.env.OWNER_NAME || "Dave",
-    ownerPhone: process.env.OWNER_PHONE || "+61400000000",
+    businessName: process.env.BUSINESS_NAME || "Your Business",
+    ownerName: process.env.OWNER_NAME || "Owner",
+    ownerPhone: process.env.OWNER_PHONE || "",
     bookingLink: process.env.BOOKING_LINK || "https://zenna.au/book",
     calloutFee: process.env.CALLOUT_FEE || "$150"
   };
@@ -300,23 +315,72 @@ app.post('/api/stripe-webhook', express.raw({ type: 'application/json' }), async
     });
   });
 
+  // Map legacy/display plan names used by the onboarding UI to our
+  // canonical plan IDs defined in features/copilot/plans/plans.ts
+  function resolvePlanId(planName?: string): "starter" | "pro" | "enterprise" {
+    const normalized = (planName || "").toLowerCase();
+    if (normalized.includes("pro") || normalized.includes("team")) return "pro";
+    if (normalized.includes("enterprise")) return "enterprise";
+    return "starter";
+  }
+
   app.post("/api/create-subscription", verifyToken, async (req, res) => {
     const tenant_id = (req as any).user.uid;
+    const userEmail = (req as any).user.email;
 
     const { plan, email, businessName, currency } = req.body;
+    const planId = resolvePlanId(plan);
+    const tier = getPlanById(planId);
     const currSymbol = (currency === 'AUD' || currency === 'AUD ($)') ? 'AUD $' : 'NZD $';
-    const planPrice = plan === 'Pro Team' ? `${currSymbol}399` : `${currSymbol}199`;
-    const checkoutUrl = `https://checkout.stripe.com/c/pay/cs_live_zenna_${Date.now()}?plan=${encodeURIComponent(plan || 'Solo Tradie')}&currency=${currency || 'NZD'}`;
-    
-    await setSetting(tenant_id, 'subscriptionStatus', 'Subscribed & Active');
+    const planPrice = tier ? `${currSymbol}${(tier.priceCents.month / 100).toFixed(0)}` : `${currSymbol}199`;
+
+    // Real Stripe Checkout Session when Stripe is fully configured; otherwise
+    // fall back to a demo checkout URL so local/dev environments still work
+    // without live Stripe credentials.
+    let checkoutUrl = `https://checkout.stripe.com/c/pay/cs_live_zenna_${Date.now()}?plan=${encodeURIComponent(plan || 'Solo Tradie')}&currency=${currency || 'NZD'}`;
+    const priceId = getStripePriceId(planId, 'month');
+    const isStripeConfigured = Boolean(process.env.STRIPE_SECRET_KEY) && Boolean(priceId) && !priceId?.startsWith('price_starter') && !priceId?.startsWith('price_pro') && !priceId?.startsWith('price_enterprise');
+
+    if (isStripeConfigured) {
+      try {
+        const session = await stripe.checkout.sessions.create({
+          mode: 'subscription',
+          line_items: [{ price: priceId, quantity: 1 }],
+          client_reference_id: tenant_id,
+          customer_email: email || userEmail || undefined,
+          metadata: { tenant_id, plan: planId },
+          success_url: `${config.bookingLink}/dashboard?checkout=success`,
+          cancel_url: `${config.bookingLink}/dashboard?checkout=cancelled`,
+        });
+        if (session.url) checkoutUrl = session.url;
+      } catch (err: any) {
+        logger.error("Stripe checkout session creation failed", { message: err.message, tenant_id });
+      }
+    }
+
     if (plan) await setSetting(tenant_id, 'plan', `${plan} (${planPrice}/mo)`);
+    if (isStripeConfigured) {
+      // Real Stripe is wired up: don't grant "Active" access until the
+      // /api/stripe-webhook handler confirms checkout.session.completed.
+      // Otherwise a customer who abandons the Stripe checkout page would
+      // get a free active subscription.
+      await setSetting(tenant_id, 'subscriptionStatus', 'Pending Payment');
+    } else {
+      // Demo/dev mode (no live Stripe credentials configured) - activate
+      // immediately so local development and the onboarding flow can still
+      // be exercised end-to-end without real billing.
+      await setSetting(tenant_id, 'subscriptionStatus', 'Subscribed & Active (Demo Mode)');
+    }
 
     res.json({
       success: true,
       plan: plan || 'Solo Tradie',
       currency: currency || 'NZD',
       checkoutUrl: checkoutUrl,
-      message: `Automated subscription initialized for ${businessName || 'Business'}. Recurring billing set to ${planPrice}/mo.`
+      demo: !isStripeConfigured,
+      message: isStripeConfigured
+        ? `Redirecting to secure Stripe checkout to activate ${businessName || 'your business'}'s ${planPrice}/mo subscription...`
+        : `Automated subscription initialized for ${businessName || 'Business'} in demo mode (no live Stripe credentials configured). Recurring billing set to ${planPrice}/mo.`
     });
   });
 
@@ -367,6 +431,12 @@ app.post('/api/stripe-webhook', express.raw({ type: 'application/json' }), async
     const leads = (await getLeads(tenant_id)) as any[];
     const matched = leads.find(lead => normalizePhone(lead.phone) === normQuery || normQuery.includes(normalizePhone(lead.phone)) || normalizePhone(lead.phone).includes(normQuery));
 
+    // Per-tenant business details so every customer's Zenna sounds like
+    // their own business, not a hardcoded demo business.
+    const businessName = await getSetting(tenant_id, 'businessName', config.businessName);
+    const ownerName = await getSetting(tenant_id, 'ownerName', config.ownerName);
+    const calloutFee = await getSetting(tenant_id, 'calloutFee', config.calloutFee);
+
     let clientContext = "";
     let lookupGreeting = "";
 
@@ -388,12 +458,12 @@ This caller is not in your CRM directory yet. Introduce yourself as Zenna, colle
       lookupGreeting = `Identified new potential caller.`;
     }
 
-    const systemPrompt = `ROLE: You are "Zenna", the elite AI Receptionist for "${config.businessName}" (Owner: ${config.ownerName}).
+    const systemPrompt = `ROLE: You are "Zenna", the elite AI Receptionist for "${businessName}" (Owner: ${ownerName}).
 TONE: Authentic, helpful, direct Australian trade professionalism ("G'day", "no worries", "too easy").
 QUALIFICATION:
 1. Greet caller and ask for Name + Suburb/Address.
 2. Scope of work (burst pipes, blocked drain, maintenance).
-3. Call-out & diagnostic fee: State standard call-out diagnostic fee of ${config.calloutFee} AUD.
+3. Call-out & diagnostic fee: State standard call-out diagnostic fee of ${calloutFee} AUD.
 
 ${clientContext}
 
@@ -447,8 +517,11 @@ Keep the response highly realistic, spoken, professional but warm. Speak in 1-2 
       newLeads: leadsList.length,
       pipelineValue: 14500
     };
-    
-    const systemPrompt = `You are Zenna, a business assistant for ${config.ownerName} at ${config.businessName}. 
+
+    const businessName = await getSetting(tenant_id, 'businessName', config.businessName);
+    const ownerName = await getSetting(tenant_id, 'ownerName', config.ownerName);
+
+    const systemPrompt = `You are Zenna, a business assistant for ${ownerName} at ${businessName}. 
     Answer questions about the business based on this context: ${JSON.stringify(stats)}. 
     Be concise, warm, and chief-of-staff professional.`;
     
@@ -870,6 +943,17 @@ CRITICAL: Keep your response STRICTLY under 120 characters without emojis or spe
       res.sendFile(path.join(distPath, "index.html"));
     });
   }
+
+  // --- GLOBAL ERROR HANDLER ---
+  // Any route that calls next(err), or an async route wrapped to forward
+  // its rejection, ends up here so failures are logged with request context
+  // and the client gets a safe, generic JSON error instead of a raw stack
+  // trace or a hung connection.
+  app.use((err: any, req: any, res: any, next: any) => {
+    logger.error("Unhandled request error", { message: err?.message, path: req?.path, method: req?.method });
+    if (res.headersSent) return next(err);
+    res.status(500).json({ error: "Internal server error" });
+  });
 
   app.listen(PORT, "0.0.0.0", () => {
     console.log(`Zenna Server running on http://localhost:${PORT}`);

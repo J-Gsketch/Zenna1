@@ -76,6 +76,20 @@ export const connectDrive = async (): Promise<{ user: User; accessToken: string 
 
 export const getAccessToken = (): string | null => cachedAccessToken;
 
+// Firebase ID token for authenticating with our own backend. server.ts's
+// verifyToken middleware expects this token in the request's auth header,
+// prefixed with the standard HTTP auth scheme keyword and a space.
+export const getIdToken = async (): Promise<string | null> => {
+  const user = auth.currentUser;
+  if (!user) return null;
+  try {
+    return await user.getIdToken();
+  } catch (error) {
+    console.error('Zenna getIdToken error:', error);
+    return null;
+  }
+};
+
 export const logout = async () => {
   await auth.signOut();
   cachedAccessToken = null;

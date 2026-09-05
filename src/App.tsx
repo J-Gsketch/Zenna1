@@ -35,7 +35,7 @@ import {
   Wrench
 } from 'lucide-react';
 import { cn } from './lib/utils';
-import { initAuth, login, connectDrive, logout as googleLogout, getAccessToken } from './lib/googleAuth';
+import { initAuth, login, connectDrive, logout as googleLogout, getAccessToken, getIdToken } from './lib/googleAuth';
 import HammerCodeHub from './components/HammerCodeHub';
 import { OnboardingModal } from './components/OnboardingModal';
 import { CyberpunkDashboard } from './components/CyberpunkDashboard';
@@ -139,7 +139,7 @@ const Landing = ({ onGetStarted }: { onGetStarted: () => void }) => {
               <div className="bg-[#1c1c1e] border border-white/5 rounded-2xl p-6 max-w-xs shadow-2xl">
                 <p className="text-[10px] text-gold uppercase tracking-widest mb-2">Zenna</p>
                 <p className="text-sm leading-relaxed text-paper">
-                  G'day! Thanks for calling Hartley Plumbing. Our team is currently on the tools, but we've got your query! What do you need help with? We'll call back soon, or text us here.
+                  G'day! Thanks for calling. Our team is currently on the tools, but we've got your query! What do you need help with? We'll call back soon, or text us here.
                 </p>
                 <p className="text-[10px] text-muted text-right mt-2">Today 2:14 PM · Delivered</p>
               </div>
@@ -428,7 +428,7 @@ const Dashboard = ({ businessName }: { businessName: string }) => {
   // Twilio SMS Relay Settings
   const [twilioEnabled, setTwilioEnabled] = useState(true);
   const [autoDraftCRM, setAutoDraftCRM] = useState(true);
-  const [missedCallTemplate, setMissedCallTemplate] = useState("G'day, sorry we missed your ring. Zenna here from Hartley Plumbing. Our team is on the tools responding to an urgent job right now, but we've got your number. Reply with your job details or book a booking directly: https://calendly.com/hartley-plumbing");
+  const [missedCallTemplate, setMissedCallTemplate] = useState("G'day, sorry we missed your ring. Zenna here from [Your Business]. Our team is on the tools responding to an urgent job right now, but we've got your number. Reply with your job details or book a booking directly: [Your Booking Link]");
   const [isSavingTwilioConfig, setIsSavingTwilioConfig] = useState(false);
 
   // Stripe Trade Billing States
@@ -910,11 +910,18 @@ Compiled by Zenna Business Intelligence Relay.
     }
   };
 
+  const AUTH_SCHEME = 'Bearer';
+  const authHeaders = async (): Promise<Record<string, string>> => {
+    const token = await getIdToken();
+    return token ? { Authorization: AUTH_SCHEME + ' ' + token } : {};
+  };
+
   const fetchData = async () => {
     try {
+      const authHdrs = await authHeaders();
       const [statsRes, leadsRes] = await Promise.all([
-        fetch('/api/stats'),
-        fetch('/api/leads')
+        fetch('/api/stats', { headers: authHdrs }),
+        fetch('/api/leads', { headers: authHdrs })
       ]);
       const statsData = await statsRes.json();
       const leadsData = await leadsRes.json();
@@ -962,7 +969,7 @@ Compiled by Zenna Business Intelligence Relay.
     try {
       const res = await fetch('/api/ask', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json', ...(await authHeaders()) },
         body: JSON.stringify({ question: userMsg })
       });
       const data = await res.json();
@@ -982,7 +989,7 @@ Compiled by Zenna Business Intelligence Relay.
     try {
       const res = await fetch('/api/simulate-call', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json', ...(await authHeaders()) },
         body: JSON.stringify({ phone: phoneNumber })
       });
       const data = await res.json();
@@ -1029,7 +1036,7 @@ Compiled by Zenna Business Intelligence Relay.
       
       const res = await fetch('/api/ask', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json', ...(await authHeaders()) },
         body: JSON.stringify({ question: `The caller said: "${msg}". Generatively answer them.` })
       });
       const data = await res.json();
@@ -1052,7 +1059,7 @@ Compiled by Zenna Business Intelligence Relay.
     try {
       const res = await fetch('/api/leads', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json', ...(await authHeaders()) },
         body: JSON.stringify(leadFormData)
       });
       if (res.ok) {
