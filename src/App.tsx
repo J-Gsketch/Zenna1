@@ -35,7 +35,7 @@ import {
   Wrench
 } from 'lucide-react';
 import { cn } from './lib/utils';
-import { initAuth, login, connectDrive, logout as googleLogout, getAccessToken } from './lib/googleAuth';
+import { initAuth, login, connectDrive, logout as googleLogout, getAccessToken, getIdToken } from './lib/googleAuth';
 import HammerCodeHub from './components/HammerCodeHub';
 import { OnboardingModal } from './components/OnboardingModal';
 import { CyberpunkDashboard } from './components/CyberpunkDashboard';
@@ -910,11 +910,18 @@ Compiled by Zenna Business Intelligence Relay.
     }
   };
 
+  const AUTH_SCHEME = 'Bearer';
+  const authHeaders = async (): Promise<Record<string, string>> => {
+    const token = await getIdToken();
+    return token ? { Authorization: AUTH_SCHEME + ' ' + token } : {};
+  };
+
   const fetchData = async () => {
     try {
+      const authHdrs = await authHeaders();
       const [statsRes, leadsRes] = await Promise.all([
-        fetch('/api/stats'),
-        fetch('/api/leads')
+        fetch('/api/stats', { headers: authHdrs }),
+        fetch('/api/leads', { headers: authHdrs })
       ]);
       const statsData = await statsRes.json();
       const leadsData = await leadsRes.json();
@@ -962,7 +969,7 @@ Compiled by Zenna Business Intelligence Relay.
     try {
       const res = await fetch('/api/ask', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json', ...(await authHeaders()) },
         body: JSON.stringify({ question: userMsg })
       });
       const data = await res.json();
@@ -982,7 +989,7 @@ Compiled by Zenna Business Intelligence Relay.
     try {
       const res = await fetch('/api/simulate-call', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json', ...(await authHeaders()) },
         body: JSON.stringify({ phone: phoneNumber })
       });
       const data = await res.json();
@@ -1029,7 +1036,7 @@ Compiled by Zenna Business Intelligence Relay.
       
       const res = await fetch('/api/ask', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json', ...(await authHeaders()) },
         body: JSON.stringify({ question: `The caller said: "${msg}". Generatively answer them.` })
       });
       const data = await res.json();
@@ -1052,7 +1059,7 @@ Compiled by Zenna Business Intelligence Relay.
     try {
       const res = await fetch('/api/leads', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json', ...(await authHeaders()) },
         body: JSON.stringify(leadFormData)
       });
       if (res.ok) {
