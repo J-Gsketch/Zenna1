@@ -77,7 +77,7 @@ export const OnboardingModal: React.FC<OnboardingModalProps> = ({ isOpen, onClos
               <Zap className="w-5 h-5" />
             </div>
             <div>
-              <h3 className="font-semibold text-lg">Zenna Automated Setup</h3>
+              <h3 className="font-semibold text-lg">Zenna by Hammer &amp; Code Setup</h3>
               <p className="text-xs text-slate-400">Self-Serve Onboarding & Dual-Currency Stripe Setup</p>
             </div>
           </div>
