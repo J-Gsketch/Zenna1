@@ -358,15 +358,29 @@ app.post('/api/stripe-webhook', express.raw({ type: 'application/json' }), async
       }
     }
 
-    await setSetting(tenant_id, 'subscriptionStatus', 'Subscribed & Active');
     if (plan) await setSetting(tenant_id, 'plan', `${plan} (${planPrice}/mo)`);
+    if (isStripeConfigured) {
+      // Real Stripe is wired up: don't grant "Active" access until the
+      // /api/stripe-webhook handler confirms checkout.session.completed.
+      // Otherwise a customer who abandons the Stripe checkout page would
+      // get a free active subscription.
+      await setSetting(tenant_id, 'subscriptionStatus', 'Pending Payment');
+    } else {
+      // Demo/dev mode (no live Stripe credentials configured) - activate
+      // immediately so local development and the onboarding flow can still
+      // be exercised end-to-end without real billing.
+      await setSetting(tenant_id, 'subscriptionStatus', 'Subscribed & Active (Demo Mode)');
+    }
 
     res.json({
       success: true,
       plan: plan || 'Solo Tradie',
       currency: currency || 'NZD',
       checkoutUrl: checkoutUrl,
-      message: `Automated subscription initialized for ${businessName || 'Business'}. Recurring billing set to ${planPrice}/mo.`
+      demo: !isStripeConfigured,
+      message: isStripeConfigured
+        ? `Redirecting to secure Stripe checkout to activate ${businessName || 'your business'}'s ${planPrice}/mo subscription...`
+        : `Automated subscription initialized for ${businessName || 'Business'} in demo mode (no live Stripe credentials configured). Recurring billing set to ${planPrice}/mo.`
     });
   });
 

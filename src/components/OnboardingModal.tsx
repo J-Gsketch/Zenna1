@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { ShieldCheck, Zap, PhoneCall, CheckCircle2, CreditCard, Building2, User, Phone, DollarSign, Globe, Check } from 'lucide-react';
+import { getIdToken } from '../lib/googleAuth';
 
 interface OnboardingModalProps {
   isOpen: boolean;
@@ -18,19 +19,34 @@ export const OnboardingModal: React.FC<OnboardingModalProps> = ({ isOpen, onClos
   const [plan, setPlan] = useState<'Solo Tradie' | 'Pro Team'>('Solo Tradie');
   const [isLoading, setIsLoading] = useState(false);
   const [subscriptionMsg, setSubscriptionMsg] = useState<string | null>(null);
+  const [saveError, setSaveError] = useState<string | null>(null);
+
+  // Helper to build auth headers for our own backend API. Every tenant-scoped
+  // route on the server requires a Firebase ID token, so onboarding/billing
+  // calls must attach it or they will fail with 401 Unauthorized.
+  const AUTH_SCHEME = 'Bearer';
+  const authHeaders = async (): Promise<Record<string, string>> => {
+    const token = await getIdToken();
+    return token
+      ? { 'Content-Type': 'application/json', 'Authorization': AUTH_SCHEME + ' ' + token }
+      : { 'Content-Type': 'application/json' };
+  };
 
   useEffect(() => {
-    fetch('/api/business-config')
-      .then(res => res.json())
-      .then(data => {
+    (async () => {
+      try {
+        const res = await fetch('/api/business-config', { headers: await authHeaders() });
+        const data = await res.json();
         if (data.businessName) setBusinessName(data.businessName);
         if (data.ownerName) setOwnerName(data.ownerName);
         if (data.ownerPhone) setOwnerPhone(data.ownerPhone);
         if (data.calloutFee) setCalloutFee(data.calloutFee);
         if (data.region) setRegion(data.region);
         if (data.currency) setCurrency(data.currency);
-      })
-      .catch(err => console.error('Error fetching config:', err));
+      } catch (err) {
+        console.error('Error fetching config:', err);
+      }
+    })();
   }, []);
 
   if (!isOpen) return null;
@@ -43,24 +59,44 @@ export const OnboardingModal: React.FC<OnboardingModalProps> = ({ isOpen, onClos
   const handleSaveConfig = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
+    setSaveError(null);
     try {
+      const headers = await authHeaders();
+
       await fetch('/api/business-config', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers,
         body: JSON.stringify({ businessName, ownerName, ownerPhone, calloutFee, plan, region, currency })
       });
 
       const subRes = await fetch('/api/create-subscription', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers,
         body: JSON.stringify({ plan, businessName, currency })
       });
       const subData = await subRes.json();
+
+      if (!subRes.ok) {
+        throw new Error(subData?.error || 'Failed to create subscription');
+      }
+
       setSubscriptionMsg(subData.message);
+
+      if (subData.checkoutUrl && !subData.demo) {
+        // Real Stripe is configured: send the customer to Stripe's secure
+        // Checkout page to actually collect payment. Access is only
+        // activated once /api/stripe-webhook confirms payment succeeded.
+        window.location.href = subData.checkoutUrl;
+        return;
+      }
+
+      // Demo mode (no live Stripe credentials yet) - skip straight to the
+      // final step so the onboarding flow can still be exercised locally.
       setStep(3);
       onSaved();
-    } catch (err) {
+    } catch (err: any) {
       console.error('Save failed:', err);
+      setSaveError(err?.message || 'Something went wrong saving your setup. Please try again.');
     } finally {
       setIsLoading(false);
     }
@@ -234,6 +270,12 @@ export const OnboardingModal: React.FC<OnboardingModalProps> = ({ isOpen, onClos
               <span className="flex items-center gap-2"><CreditCard className="w-4 h-4 text-emerald-400" /> 7-Day Free Trial included. Direct payouts to your NZ bank account.</span>
               <span className="text-slate-500">Stripe Billing Active</span>
             </div>
+
+            {saveError && (
+              <div className="p-3 bg-red-950/40 border border-red-800/60 rounded-lg text-xs text-red-300">
+                {saveError}
+              </div>
+            )}
 
             <div className="pt-4 flex justify-between items-center border-t border-slate-800">
               <button onClick={() => setStep(1)} className="text-xs text-slate-400 hover:text-white">← Back</button>
