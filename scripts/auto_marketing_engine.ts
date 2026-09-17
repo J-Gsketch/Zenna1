@@ -27,7 +27,7 @@ export async function runAutonomousMarketingEngine() {
     const inviteText = `G'day ${prospect.name}! Zenna catches your missed calls & texts customers automatically so you never lose jobs on-site in ${prospect.suburb}. Claim 7 days free at https://zenna.au`;
 
     // Log prospect into Zenna CRM
-    saveLead({
+    saveLead('default_tenant', {
       name: prospect.name,
       phone: prospect.phone,
       status: "Prospect Contacted",
@@ -35,7 +35,7 @@ export async function runAutonomousMarketingEngine() {
       notes: `Autonomous Marketing Outreach: "${inviteText}"`
     });
 
-    logCall({
+    logCall('default_tenant', {
       call_id: `outreach_${Date.now()}_${Math.random().toString(36).substr(2, 4)}`,
       from_number: prospect.phone,
       message: inviteText,
@@ -52,8 +52,8 @@ export async function runAutonomousMarketingEngine() {
     });
   }
 
-  setSetting('lastMarketingRun', new Date().toISOString());
-  setSetting('totalProspectsContacted', String(results.length));
+  setSetting('default_tenant', 'lastMarketingRun', new Date().toISOString());
+  setSetting('default_tenant', 'totalProspectsContacted', String(results.length));
 
   console.log(`✅ Autonomous Marketing Run Complete! Contacted ${results.length} prospects.`);
   return {
