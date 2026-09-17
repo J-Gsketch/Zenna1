@@ -305,7 +305,7 @@ app.post('/api/stripe-webhook', express.raw({ type: 'application/json' }), async
 
     const { plan, email, businessName, currency } = req.body;
     const currSymbol = (currency === 'AUD' || currency === 'AUD ($)') ? 'AUD $' : 'NZD $';
-    const planPrice = plan === 'Pro Team' ? `${currSymbol}399` : `${currSymbol}199`;
+    const planPrice = plan === 'Pro Team' ? `${currSymbol}249` : `${currSymbol}99`;
     const checkoutUrl = `https://checkout.stripe.com/c/pay/cs_live_zenna_${Date.now()}?plan=${encodeURIComponent(plan || 'Solo Tradie')}&currency=${currency || 'NZD'}`;
     
     await setSetting(tenant_id, 'subscriptionStatus', 'Subscribed & Active');
