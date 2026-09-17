@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { ShieldCheck, Zap, PhoneCall, CheckCircle2, CreditCard, Building2, User, Phone, DollarSign, Globe, Check } from 'lucide-react';
+import { getIdToken } from '../lib/googleAuth';
 
 interface OnboardingModalProps {
   isOpen: boolean;
@@ -20,17 +21,19 @@ export const OnboardingModal: React.FC<OnboardingModalProps> = ({ isOpen, onClos
   const [subscriptionMsg, setSubscriptionMsg] = useState<string | null>(null);
 
   useEffect(() => {
-    fetch('/api/business-config')
-      .then(res => res.json())
-      .then(data => {
-        if (data.businessName) setBusinessName(data.businessName);
-        if (data.ownerName) setOwnerName(data.ownerName);
-        if (data.ownerPhone) setOwnerPhone(data.ownerPhone);
-        if (data.calloutFee) setCalloutFee(data.calloutFee);
-        if (data.region) setRegion(data.region);
-        if (data.currency) setCurrency(data.currency);
-      })
-      .catch(err => console.error('Error fetching config:', err));
+    getIdToken().then(token => {
+      if (!token) return;
+      return fetch('/api/business-config', { headers: { Authorization: 'Bearer ' + token } })
+        .then(res => res.json())
+        .then(data => {
+          if (data.businessName) setBusinessName(data.businessName);
+          if (data.ownerName) setOwnerName(data.ownerName);
+          if (data.ownerPhone) setOwnerPhone(data.ownerPhone);
+          if (data.calloutFee) setCalloutFee(data.calloutFee);
+          if (data.region) setRegion(data.region);
+          if (data.currency) setCurrency(data.currency);
+        });
+    }).catch(err => console.error('Error fetching config:', err));
   }, []);
 
   if (!isOpen) return null;
@@ -44,15 +47,18 @@ export const OnboardingModal: React.FC<OnboardingModalProps> = ({ isOpen, onClos
     e.preventDefault();
     setIsLoading(true);
     try {
+      const token = await getIdToken();
+      if (!token) throw new Error('Please sign in before configuring Zenna.');
+      const authHeaders = { 'Content-Type': 'application/json', Authorization: 'Bearer ' + token };
       await fetch('/api/business-config', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: authHeaders,
         body: JSON.stringify({ businessName, ownerName, ownerPhone, calloutFee, plan, region, currency })
       });
 
       const subRes = await fetch('/api/create-subscription', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: authHeaders,
         body: JSON.stringify({ plan, businessName, currency })
       });
       const subData = await subRes.json();
