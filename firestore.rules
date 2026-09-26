@@ -1,0 +1,12 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Enterprise Zero-Trust Rule:
+    // Deny all direct client-side SDK reads and writes.
+    // All data access must be authenticated and orchestrated through the
+    // Zenna Node.js backend using the Firebase Admin SDK.
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

@@ -36,10 +36,22 @@ import {
 } from 'lucide-react';
 import { cn } from './lib/utils';
 import { initAuth, login, connectDrive, logout as googleLogout, getAccessToken } from './lib/googleAuth';
-import HammerCodeHub from './components/HammerCodeHub';
-import { OnboardingModal } from './components/OnboardingModal';
-import { CyberpunkDashboard } from './components/CyberpunkDashboard';
-import { AiAdStudio } from './components/AiAdStudio';
+import { MobileNavBar, MobileNavTab } from './components/MobileNavBar';
+
+// Lazy-loaded heavy components for optimal 4G and mobile performance
+const HammerCodeHub = React.lazy(() => import('./components/HammerCodeHub'));
+const OnboardingModal = React.lazy(() => import('./components/OnboardingModal').then(m => ({ default: m.OnboardingModal })));
+const CyberpunkDashboard = React.lazy(() => import('./components/CyberpunkDashboard').then(m => ({ default: m.CyberpunkDashboard })));
+const AiAdStudio = React.lazy(() => import('./components/AiAdStudio').then(m => ({ default: m.AiAdStudio })));
+
+const ComponentLoadingFallback = () => (
+  <div className="flex items-center justify-center p-12 min-h-[250px] w-full">
+    <div className="flex flex-col items-center gap-3">
+      <div className="w-8 h-8 border-2 border-amber-500/30 border-t-amber-500 rounded-full animate-spin" />
+      <span className="text-xs font-mono text-muted tracking-widest uppercase animate-pulse">Loading Module...</span>
+    </div>
+  </div>
+);
 import { 
   Cloud, 
   Folder, 
@@ -361,6 +373,7 @@ const Setup = ({ onComplete, setBusinessName }: { onComplete: () => void, setBus
 // ─────────────────────────────────────────
 const Dashboard = ({ businessName }: { businessName: string }) => {
   const [currentModule, setCurrentModule] = useState<'hammerCode' | 'receptionist'>('hammerCode');
+  const [mobileTab, setMobileTab] = useState<MobileNavTab>('calls');
   const [stats, setStats] = useState({
     confirmedValue: 12700,
     newLeads: 3,
@@ -1166,7 +1179,9 @@ Compiled by Zenna Business Intelligence Relay.
         {/* Content */}
         <div className="flex-1 p-10 overflow-y-auto">
           {currentModule === 'hammerCode' ? (
-            <HammerCodeHub businessName={businessName} />
+            <React.Suspense fallback={<ComponentLoadingFallback />}>
+              <HammerCodeHub businessName={businessName} />
+            </React.Suspense>
           ) : (
             <div className="space-y-10 animate-fade-in">
           {/* Stats */}
@@ -2864,15 +2879,31 @@ Created automatically via Zenna Unified Addons Cloud System. No manual paper-pus
           </div>
         )}
         {/* Onboarding & Subscription Modal */}
-        <OnboardingModal 
-          isOpen={showOnboardingModal} 
-          onClose={() => setShowOnboardingModal(false)} 
-          onSaved={() => {
-            fetchData();
-            setShowOnboardingModal(false);
-          }} 
-        />
+        <React.Suspense fallback={null}>
+          <OnboardingModal 
+            isOpen={showOnboardingModal} 
+            onClose={() => setShowOnboardingModal(false)} 
+            onSaved={() => {
+              fetchData();
+              setShowOnboardingModal(false);
+            }} 
+          />
+        </React.Suspense>
       </AnimatePresence>
+
+      {/* 4G Mobile Navigation Bar */}
+      <MobileNavBar
+        activeTab={mobileTab}
+        badgeCounts={{ calls: stats.callsCaught, leads: stats.newLeads }}
+        onSelectTab={(tab) => {
+          setMobileTab(tab);
+          if (tab === 'settings') {
+            setShowOnboardingModal(true);
+          } else if (tab === 'quote' || tab === 'leads' || tab === 'calls') {
+            setCurrentModule('receptionist');
+          }
+        }}
+      />
     </div>
   );
 };
@@ -2958,7 +2989,9 @@ export default function App() {
         )}
         {page === 'cyberpunk' && user && (
           <motion.div key="cyberpunk" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
-            <CyberpunkDashboard />
+            <React.Suspense fallback={<ComponentLoadingFallback />}>
+              <CyberpunkDashboard />
+            </React.Suspense>
           </motion.div>
         )}
         {page === 'dashboard' && user && (
@@ -2968,7 +3001,9 @@ export default function App() {
         )}
         {page === 'ad_studio' && user && (
           <motion.div key="ad_studio" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
-            <AiAdStudio onBack={() => setPage('cyberpunk')} />
+            <React.Suspense fallback={<ComponentLoadingFallback />}>
+              <AiAdStudio onBack={() => setPage('cyberpunk')} />
+            </React.Suspense>
           </motion.div>
         )}
       </AnimatePresence>

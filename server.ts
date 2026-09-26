@@ -6,18 +6,21 @@ import { GoogleGenerativeAI } from "@google/generative-ai";
 import dotenv from "dotenv";
 import twilio from "twilio";
 import { getAuth as getAdminAuth } from "firebase-admin/auth";
-import { initDB, getLeads, saveLead, getCalls, logCall, getSetting, setSetting, getTenantByTwilioNumber } from "./db.js";
+import { initDB, getLeads, saveLead, getCalls, logCall, getSetting, setSetting, getTenantByTwilioNumber, saveTenant } from "./db.js";
+import { stripeRouter, handleCreateSubscription } from "./src/routes/stripe.js";
+import { voiceRouter } from "./src/routes/voice.js";
+import { quotesRouter } from "./src/routes/quotes.js";
+import { validateTwilioWebhook } from "./src/middleware/twilioAuth.js";
+import { askZennaEngine } from "./src/services/ai.js";
 
 dotenv.config();
 
 import Stripe from 'stripe';
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || 'sk_test_mock', { apiVersion: '2025-01-27.acacia' });
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || 'sk_test_mock', { apiVersion: '2025-01-27.acacia' as any });
 
-
-// Initialize SQLite database
-initDB();
-
+// Start express server
 async function startServer() {
+  initDB().catch(err => console.warn("Background DB init:", err.message));
   
 // --- VIP SLACK LOGGER ---
 const sendSlackAlert = async (message: string, isError = false) => {
@@ -40,49 +43,22 @@ const sendSlackAlert = async (message: string, isError = false) => {
 const app = express();
   const PORT = 3000;
 
-
-// --- STRIPE WEBHOOKS ---
+// --- STRIPE WEBHOOKS (MOUNTED BEFORE STANDARD JSON PARSER) ---
 // We use express.raw to retain the raw body for Stripe signature validation
-app.post('/api/stripe-webhook', express.raw({ type: 'application/json' }), async (req: any, res: any) => {
-  const sig = req.headers['stripe-signature'];
-  const endpointSecret = process.env.STRIPE_WEBHOOK_SECRET;
+app.use('/api/stripe/webhook', express.raw({ type: 'application/json' }), stripeRouter);
+app.use('/api/stripe-webhook', express.raw({ type: 'application/json' }), stripeRouter);
 
-  let event;
-  try {
-    // If running in a Firebase function, req.rawBody is available. Otherwise, fallback to req.body buffer from express.raw.
-    const rawBody = req.rawBody || req.body;
-    if (endpointSecret && endpointSecret !== 'mock_secret') {
-        event = stripe.webhooks.constructEvent(rawBody, sig, endpointSecret);
-    } else {
-        // Fallback for local testing without signature validation
-        event = JSON.parse(req.body.toString());
-    }
-  } catch (err: any) {
-    console.error(`⚠️  Webhook signature verification failed:`, err.message);
-    sendSlackAlert(`🚨 Stripe Webhook Verification Failed: ${err.message}`, true);
-    return res.status(400).send(`Webhook Error: ${err.message}`);
+app.use(express.json({
+  verify: (req: any, _res, buf) => {
+    req.rawBody = buf;
   }
+}));
+app.use(express.urlencoded({ extended: true }));
 
-  // Handle the event
-  if (event.type === 'checkout.session.completed') {
-    const session = event.data.object;
-    const tenant_id = session.client_reference_id || session.metadata?.tenant_id;
-    
-    if (tenant_id) {
-      console.log(`💰 Stripe Session Completed for Tenant: ${tenant_id}`);
-      await setSetting(tenant_id, 'subscriptionStatus', 'Active - Pro');
-      sendSlackAlert(`🎉 NEW PAYING CUSTOMER! Tenant ${tenant_id} just upgraded to Active - Pro via Stripe.`, false);
-    } else {
-      console.error("⚠️  Stripe session completed, but no tenant_id found in metadata.");
-    }
-  }
-
-  res.json({ received: true });
-});
-
-
-  app.use(express.json());
-  app.use(express.urlencoded({ extended: true }));
+// --- MOUNT APPLICATION ROUTERS ---
+app.use('/api/stripe', stripeRouter);
+app.use('/api/voice', voiceRouter);
+app.use('/api/quotes', quotesRouter);
 
   // --- AUTH MIDDLEWARE ---
   const verifyToken = async (req: any, res: any, next: any) => {
@@ -99,13 +75,16 @@ app.post('/api/stripe-webhook', express.raw({ type: 'application/json' }), async
     }
   };
 
-  // --- TWILIO CLIENT ---
+  // --- TWILIO CLIENT (AU/NZ LOW-LATENCY SYDNEY EDGE) ---
   const twilioAccountSid = process.env.TWILIO_ACCOUNT_SID;
   const twilioAuthToken = process.env.TWILIO_AUTH_TOKEN;
   const twilioFromNumber = process.env.TWILIO_FROM_NUMBER;
 
   const twilioClient = (twilioAccountSid && twilioAccountSid.startsWith('AC') && twilioAuthToken) 
-    ? twilio(twilioAccountSid, twilioAuthToken) 
+    ? twilio(twilioAccountSid, twilioAuthToken, {
+        edge: 'sydney', // Low-latency Sydney Edge for AU & NZ telephony routing
+        region: 'au1'
+      }) 
     : null;
 
   async function sendSMS(to: string, body: string) {
@@ -141,26 +120,10 @@ app.post('/api/stripe-webhook', express.raw({ type: 'application/json' }), async
     return num.replace(/\D/g, '').replace(/^61/, '0').replace(/^00/, '0');
   }
 
-  // --- AI LOGIC (Gemini) ---
-  const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY || "demo");
-
-  async function askZenna(systemPrompt: string, userMessage: string) {
-    if (!process.env.GEMINI_API_KEY) {
-      return `G'day! Zenna here from ${config.businessName}. We've caught your call and will text you back shortly! 🤙`;
-    }
-    const modelNames = ["gemini-2.5-flash", "gemini-1.5-flash-latest", "gemini-2.0-flash-exp", "gemini-1.5-pro"];
-    for (const modelName of modelNames) {
-      try {
-        const model = genAI.getGenerativeModel({ model: modelName });
-        const result = await model.generateContent([
-          { text: `${systemPrompt}\n\nUser Message/Trigger: ${userMessage}` }
-        ]);
-        return result.response.text();
-      } catch (err) {
-        // try next model
-      }
-    }
-    return `G'day! Zenna here, ${config.ownerName}'s AI receptionist at ${config.businessName}. We're on the tools right now, how can we get you sorted today?`;
+  // --- AI ENGINE (Local GPU Ollama -> Cloud Gemini -> Rule Engine Fallback) ---
+  async function askZenna(systemPrompt: string, userMessage: string): Promise<string> {
+    const result = await askZennaEngine(systemPrompt, userMessage, config);
+    return result.text;
   }
 
   // --- API ROUTES ---
@@ -187,22 +150,22 @@ app.post('/api/stripe-webhook', express.raw({ type: 'application/json' }), async
       }
 
       const availableNumber = localNumbers[0].phoneNumber;
+      const publicBaseUrl = (process.env.PUBLIC_URL || process.env.PILOT_DOMAIN || 'http://localhost:3000').replace(/\/+$/, '');
       const purchasedNumber = await twilioClient.incomingPhoneNumbers.create({
         phoneNumber: availableNumber,
-        voiceUrl: `https://hammer-and-code.web.app/webhook/missed-call`,
-        smsUrl: `https://hammer-and-code.web.app/webhook/sms`
+        voiceUrl: `${publicBaseUrl}/api/twilio/voice`,
+        smsUrl: `${publicBaseUrl}/api/twilio/sms`
       });
 
       await setSetting(tenant_id, 'twilio_number', purchasedNumber.phoneNumber);
       await setSetting(tenant_id, 'businessName', businessName);
       await setSetting(tenant_id, 'ownerName', ownerName);
       
-      const { getFirestore } = require('firebase-admin/firestore');
-      await getFirestore('zenna-db').collection('tenants').doc(tenant_id).set({
+      await saveTenant(tenant_id, {
         twilio_number: purchasedNumber.phoneNumber,
         businessName,
         ownerPhone
-      }, { merge: true });
+      });
 
       res.json({ success: true, twilioNumber: purchasedNumber.phoneNumber });
     } catch (err: any) {
@@ -301,23 +264,7 @@ app.post('/api/stripe-webhook', express.raw({ type: 'application/json' }), async
   });
 
   app.post("/api/create-subscription", verifyToken, async (req, res) => {
-    const tenant_id = (req as any).user.uid;
-
-    const { plan, email, businessName, currency } = req.body;
-    const currSymbol = (currency === 'AUD' || currency === 'AUD ($)') ? 'AUD $' : 'NZD $';
-    const planPrice = plan === 'Pro Team' ? `${currSymbol}399` : `${currSymbol}199`;
-    const checkoutUrl = `https://checkout.stripe.com/c/pay/cs_live_zenna_${Date.now()}?plan=${encodeURIComponent(plan || 'Solo Tradie')}&currency=${currency || 'NZD'}`;
-    
-    await setSetting(tenant_id, 'subscriptionStatus', 'Subscribed & Active');
-    if (plan) await setSetting(tenant_id, 'plan', `${plan} (${planPrice}/mo)`);
-
-    res.json({
-      success: true,
-      plan: plan || 'Solo Tradie',
-      currency: currency || 'NZD',
-      checkoutUrl: checkoutUrl,
-      message: `Automated subscription initialized for ${businessName || 'Business'}. Recurring billing set to ${planPrice}/mo.`
-    });
+    return handleCreateSubscription(req, res);
   });
 
   // Client lookup endpoint by phone
@@ -714,8 +661,8 @@ You NEVER get stuck. Answer the caller/user clearly, concisely, and naturally. I
     }
   });
 
-  // Twilio Missed Call Webhook
-  app.post("/webhook/missed-call", async (req, res) => {
+  // Twilio Voice / Missed Call Webhook (Protected by Twilio Cryptographic Signature Validation)
+  app.post(["/api/twilio/voice", "/webhook/missed-call"], validateTwilioWebhook, async (req, res) => {
     const { From, To, CallSid } = req.body;
     const callerPhone = From || "Unknown";
     const twilioNumber = To || "";
@@ -753,8 +700,8 @@ Acknowledge that ${ownerName} is on-site / underground right now. Ask what job t
     res.send(`<Response><Message>${smsContent}</Message></Response>`);
   });
 
-  // Twilio SMS Incoming Webhook
-  app.post("/webhook/sms", async (req, res) => {
+  // Twilio SMS Incoming Webhook (Protected by Twilio Cryptographic Signature Validation)
+  app.post(["/api/twilio/sms", "/webhook/sms"], validateTwilioWebhook, async (req, res) => {
     const { From, To, Body } = req.body;
     const callerPhone = From || "Unknown";
     const twilioNumber = To || "";

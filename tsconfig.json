@@ -21,6 +21,20 @@
       ]
     },
     "allowImportingTsExtensions": true,
+    "incremental": true,
+    "tsBuildInfoFile": "./.tsbuildinfo",
     "noEmit": true
-  }
+  },
+  "include": [
+    "src/**/*",
+    "server.ts",
+    "db.ts",
+    "vite.config.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "dist-server",
+    "Zenna1"
+  ]
 }

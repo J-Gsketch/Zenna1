@@ -1,5 +1,7 @@
 {
   "projects": {
-    "default": "gen-lang-client-0496094478"
+    "default": "device-streaming-fdd55bb7",
+    "device_streaming": "device-streaming-fdd55bb7",
+    "gen_lang": "gen-lang-client-0496094478"
   }
 }

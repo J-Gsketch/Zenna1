@@ -12,7 +12,6 @@ You are equipped with the Zenna Toolkit, a custom Antigravity Plugin that provid
 
 The `zenna` MCP server exposes the following tools:
 
-- `get_zenna_status`: Verifies the Zenna system health.
-- `get_ad_copy`: Reads the marketing ad copy from the secured drive files.
-
-Use these tools whenever the user requests marketing information or system health checks!
+- `zenna_status`: Verifies Zenna system health, local JSON database stats, and pilot readiness.
+- `zenna_get_leads`: Inspects recent leads captured by the Zenna AI receptionist.
+- `zenna_get_calls`: Inspects recent call logs and SMS dispatches.
