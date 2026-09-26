@@ -5,3 +5,4 @@
 | Date/time | Owner | ID | Stage | Evidence | Decision / status | Next action |
 |---|---|---|---|---|---|---|
 | 2026-09-27 | Zenna Operations | ROUTE-A-SETUP-001 | Recruitment preparation | Route A source of truth v1.0 | Pilot scope fixed: NZ electricians/sparkies, five customers, staged NZ$125 + NZ$125 bounty | Publish-ready ad and candidate system being generated |
+| 2026-09-27 10:41 NZST | Zenna Operations | CANDIDATE-CYCLE-001 | Candidate screening | Authorised Gmail recruitment search: no SEEK/direct contractor applications found | No candidates to score or action; recruitment pipeline remains empty | Complete SEEK employer submission; then scheduled weekday 09:00 and 16:00 NZST cycles will screen incoming applications |

@@ -2,7 +2,7 @@
 
 **Purpose:** Recruit, screen, onboard, and manage an **independent acquisition contractor** for the approved Route A New Zealand electrician pilot.
 
-**Authority:** This document operationalises `OFFER-SOURCE-OF-TRUTH.md`. If there is any conflict, the offer source of truth wins. It is for pilot recruitment materials only.
+**Authority:** This document operationalises `OFFER-SOURCE-OF-TRUTH.md` for pilot recruitment, candidate screening, and controlled prospect-handoff operations. If there is any conflict, the offer source of truth wins. It does not alter customer terms or replace the separately reviewed contractor agreement.
 
 **Pilot constraint:** Zenna is accepting only the **first five accepted New Zealand electrician/sparky businesses**. A contractor may source and qualify interest; **Zenna Operations alone** decides acceptance, sends the official offer and payment link, handles activation and support, and determines bounty eligibility.
 

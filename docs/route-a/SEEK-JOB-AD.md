@@ -60,7 +60,7 @@ This is a **bounty-based contractor role**, not a salaried role. The total bount
 | **Milestone 1** | **NZ$125** | The customer’s payment has cleared; Zenna Operations has accepted the account; the controlled activation test has passed; and no material sales misrepresentation is found. |
 | **Milestone 2** | **NZ$125** | The customer remains active for 30 days with no refund, chargeback, cancellation, or material onboarding misrepresentation. |
 
-A bounty is approved only where the relevant unique pipeline deal ID and supporting evidence are present. Duplicate, unqualified, unaccepted, refunded, or misrepresented sales are not payable. There is **no trailing commission** during this five-customer pilot.
+A bounty is approved only where the relevant unique pipeline deal ID and supporting evidence are present. **Milestone 1 is not payable** for duplicate, unqualified, unaccepted, or materially misrepresented sales. **Milestone 2 is not payable** if, during its 30-day eligibility period, the customer has a refund, chargeback, cancellation, or material onboarding misrepresentation. There is **no trailing commission** during this five-customer pilot.
 
 The pilot price you may communicate is **NZ$250 per month plus GST only if legally applicable**, billed monthly through the official Zenna payment link. Billing begins only after account acceptance and customer payment clearance; the customer can request cancellation before the next billing date. Do not take payment or change these terms.
 

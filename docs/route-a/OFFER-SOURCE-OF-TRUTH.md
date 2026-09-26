@@ -1,7 +1,8 @@
 # Zenna Route A — NZ Electrician Pilot Offer
 
-**Version:** 1.0 — operational source of truth  
-**Status:** approved for pilot recruitment materials only  
+**Version:** 1.0 — operational source of truth
+**Issued:** 27 September 2026
+**Status:** approved for Route A pilot operations and recruitment materials; it does not replace a New Zealand-lawyer-reviewed contractor agreement
 **Pilot limit:** first five accepted New Zealand electrician/sparky businesses
 
 > Every job ad, contractor briefing, candidate response, customer offer, activation record, and bounty decision must follow this document. If another file differs, this file wins.
@@ -86,7 +87,7 @@ Zenna Operations may decline or defer any prospect before payment for capacity, 
 | **Milestone 1** | NZ$125 | Customer’s payment clears; Zenna Operations accepts the account; controlled activation test passes; no material sales misrepresentation is found. |
 | **Milestone 2** | NZ$125 | Customer remains active for 30 days with no refund, chargeback, cancellation, or material onboarding misrepresentation. |
 
-No trailing commission applies during the five-customer pilot. A bounty is approved only against the relevant unique pipeline deal ID and evidence. Duplicate, unqualified, unaccepted, refunded, or misrepresented sales are not payable.
+No trailing commission applies during the five-customer pilot. A bounty is approved only against the relevant unique pipeline deal ID and evidence. **Milestone 1 is not payable** for duplicate, unqualified, unaccepted, or materially misrepresented sales. **Milestone 2 is not payable** if, during its 30-day eligibility period, the customer has a refund, chargeback, cancellation, or material onboarding misrepresentation. These Milestone 2 events do not retrospectively change an otherwise approved Milestone 1 under this pilot source document.
 
 ## 9. Candidate and customer data minimums
 

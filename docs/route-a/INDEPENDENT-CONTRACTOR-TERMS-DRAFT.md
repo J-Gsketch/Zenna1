@@ -18,9 +18,11 @@
 
 1.2 The Contractor is engaged solely to support customer acquisition for Zenna’s small Route A pilot: a concierge missed-call text-back service for eligible New Zealand electrician/sparky businesses. The pilot is limited to the first five accepted customers.
 
-1.3 The operative commercial offer for this engagement is **Zenna Route A — NZ Electrician Pilot Offer, Version 1.0** (the **Offer Source of Truth**). Every contractor briefing, prospect interaction, pipeline record, handoff, customer offer, activation record, and bounty decision must follow it. If these draft terms conflict with the Offer Source of Truth, the Offer Source of Truth prevails to the extent of the conflict.
+1.3 Before this agreement is issued for signature, Zenna must attach a dated, versioned and immutable copy of **Zenna Route A — NZ Electrician Pilot Offer, Version 1.0, issued 27 September 2026** as **Schedule 1** (the **Offer Schedule**). Every contractor briefing, prospect interaction, pipeline record, handoff, customer offer, activation record, and bounty decision must follow that attached Offer Schedule. If these reviewed terms conflict with the attached Offer Schedule, the reviewed terms prevail to the extent of the conflict.
 
-1.4 The Contractor must use only the approved battle card and approved positioning. The approved 30-second positioning is:
+1.4 No later edit to a working copy of the Offer Source of Truth changes a signed agreement. Any change to the Contractor's scope, price, bounty, duties, customer terms, or other commercial term must be set out in a written variation signed by both parties after New Zealand legal review.
+
+1.5 The Contractor must use only the approved battle card and approved positioning. The approved 30-second positioning is:
 
 > “Zenna is running a small missed-call text-back pilot for Kiwi electricians. If you are on a job and cannot answer, eligible calls can be conditionally forwarded to a Zenna number, which sends the caller a message asking for their name, suburb, and job details. It is not a receptionist or booking service, and availability is confirmed after a quick operations check and test. Would you be open to a short handoff with Zenna Operations to see whether it suits your current setup?”
 
@@ -100,7 +102,7 @@
 | **Milestone 1** | **NZ$125** | The customer’s payment clears; Zenna Operations accepts the account; the controlled activation test passes; and no material sales misrepresentation is found. |
 | **Milestone 2** | **NZ$125** | The customer remains active for 30 days with no refund, chargeback, cancellation, or material onboarding misrepresentation. |
 
-7.3 A bounty is approved only where the relevant unique pipeline deal ID and evidence support the claim. Duplicate, unqualified, unaccepted, refunded, chargeback-affected, cancelled, or misrepresented sales are not payable. No amount is payable for a sale involving material sales misrepresentation or material onboarding misrepresentation.
+7.3 A bounty is approved only where the relevant unique pipeline deal ID and evidence support the claimed milestone. **Milestone 1** is not payable for a duplicate, unqualified, unaccepted, or materially misrepresented sale. **Milestone 2** is not payable if, during the 30-day eligibility period, the customer has a refund, chargeback, cancellation, or material onboarding misrepresentation. These Milestone 2 events do not retrospectively affect an otherwise approved Milestone 1 under these draft terms.
 
 7.4 For clarity, a refund, chargeback, cancellation, or material onboarding misrepresentation within the 30-day period means Milestone 2 is not payable. A material sales misrepresentation means Milestone 1 is not payable. The Contractor must promptly report any facts it learns that may affect bounty eligibility.
 
