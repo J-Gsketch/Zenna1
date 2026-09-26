@@ -1,11 +1,26 @@
 {
-    "editor.codeActions.triggerOnFocusChange": true,
-    "editor.formatOnSave": true,
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "tailwindCSS.experimental.classRegex": [
-        "tw`([^`]*)",
-        "tw=\"([^\"]*)",
-        "tw={\"([^\"}]*)",
-        "tw\\.\\w+`([^`]*)"
-    ]
+  "editor.codeActions.triggerOnFocusChange": true,
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "tailwindCSS.experimental.classRegex": [
+    "tw`([^`]*)",
+    "tw=\"([^\"]*)",
+    "tw={\"([^\"}]*)",
+    "tw\\.\\w+`([^`]*)"
+  ],
+  "gitlens.ai.defaultAgent": "cli:gemini",
+  "gitlens.launchpad.indicator.useColors": true,
+  "gitlens.views.scm.grouped.views": {
+    "commits": true,
+    "worktrees": true,
+    "branches": true,
+    "remotes": true,
+    "stashes": true,
+    "tags": true,
+    "contributors": true,
+    "repositories": true,
+    "fileHistory": true,
+    "launchpad": true,
+    "searchAndCompare": true
+  }
 }
