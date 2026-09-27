@@ -737,16 +737,12 @@ CRITICAL: Keep your response STRICTLY under 120 characters without emojis or spe
     res.send(`<?xml version="1.0" encoding="UTF-8"?><Response><Message>${reply}</Message></Response>`);
   });
 
-  // Autonomous Marketing Campaign Dispatch
+  // Autonomous Marketing Campaign Dispatch (Disabled per scope invariants)
   app.post("/api/run-marketing-campaign", async (req, res) => {
-    try {
-      const { runAutonomousMarketingEngine } = await import("./scripts/auto_marketing_engine.js");
-      const campaignResult = await runAutonomousMarketingEngine();
-      res.json(campaignResult);
-    } catch (error: any) {
-      console.error("Marketing Engine Error:", error);
-      res.status(500).json({ success: false, error: error.message });
-    }
+    res.json({
+      success: false,
+      message: "Autonomous marketing campaigns are disabled per scope invariants."
+    });
   });
 
   // Zenna Hyper-Scaling Engine Endpoint

@@ -10,3 +10,6 @@ dist-server/
 zenna.sqlite
 firebase-applet-config.json.backup
 update_twilio.js
+
+*.vsix
+.tsbuildinfo
