@@ -41,14 +41,15 @@ Click **Reply** (replies go through Craigslist's anonymized relay address direct
 > *(Subscriptions are $199/mo for the tradie, with zero contracts and a 14-day trial).*
 >
 > **Next Step:**
-> Reply with:
-> 1. Your mobile number / WhatsApp
+> Reply to this email OR message me directly on **WhatsApp: 020 4115 3617** (https://wa.me/642041153617) with:
+> 1. Your mobile / WhatsApp number
 > 2. Which city/region you're targeting (Auckland / Wellington / Christchurch / Regional)
 >
 > Once confirmed, I'll issue your personal Rep Tracking Code and onboarding kit so you can start immediately.
 >
 > Cheers,  
 > J. Harris | Zenna Field Operations  
+> WhatsApp: +64 20 4115 3617  
 > NZBN: 9429053991034
 
 ---
@@ -68,10 +69,11 @@ Click **Reply** (replies go through Craigslist's anonymized relay address direct
 > • Your payout: Up to **$175 CASH per closed tradie**  
 > • Target: Any trade contractor losing calls on the job (Plumbers, Sparkies, Roofers, Builders)
 >
-> Let’s get you setup today. What's the best mobile number to text you your rep tracking code and flyer pack?
+> Message me directly on **WhatsApp: 020 4115 3617** (https://wa.me/642041153617) with your name and city, and I'll send your rep tracking code and flyer pack right away.
 >
 > Cheers,  
-> J. Harris | Zenna Field Operations
+> J. Harris | Zenna Field Operations  
+> WhatsApp: +64 20 4115 3617
 
 ---
 
