@@ -29,10 +29,10 @@ Click **Reply** (replies go through Craigslist's anonymized relay address direct
 >
 > Thanks for reaching out about the Zenna Field Rep role.
 >
-> **What Zenna is:** We provide local plumbers, electricians, builders, and tradies with an instant automated SMS text-back engine so they never miss a quote or $2,000+ job while busy on the tools.
+> **What Zenna is:** We provide local plumbers, electricians, builders, and tradies with an instant 3-second cloud call greeting and automated SMS text-back engine so they never miss a quote or $2,000+ job while on the tools.
 >
-> **Try the live text demo right now on your phone:**
-> 💬 Text the word **QUOTE** to **+1 (717) 899-9469** *(SMS / Message only — no calls)* — you’ll get an instant automated text response immediately. This is the exact speed-to-lead experience tradies love.
+> **Try the live demo right now on your phone:**
+> 📞 Dial **+1 (717) 899-9469** from your mobile — you’ll hear the 3-second cloud audio greeting and immediately receive the automated text response. This is the exact speed-to-lead experience tradies love.
 >
 > **Commission Payouts (Direct Cash to You):**
 > • **Tier 1 (1–5 Tradies/mo):** $100 Cash per signup  
@@ -41,15 +41,15 @@ Click **Reply** (replies go through Craigslist's anonymized relay address direct
 > *(Subscriptions are $199/mo for the tradie, with zero contracts and a 14-day trial).*
 >
 > **Next Step:**
-> Reply to this email OR message me directly on **WhatsApp: 020 4115 3617** (https://wa.me/642041153617) *(Message / WhatsApp only — no calls)* with:
-> 1. Your mobile / WhatsApp number
+> Reply to this email OR message me on **WhatsApp: 020 4115 3617** (https://wa.me/642041153617) *(WhatsApp / Text Message Only — please do not call this personal WhatsApp line)* with:
+> 1. Your mobile number (for receiving tracking codes)
 > 2. Which city/region you're targeting (Auckland / Wellington / Christchurch / Regional)
 >
-> Once confirmed, I'll text you your personal Rep Tracking Code and digital flyer pack so you can start immediately.
+> Once confirmed, I'll message your personal Rep Tracking Code and onboarding kit so you can start immediately.
 >
 > Cheers,  
 > J. Harris | Zenna Field Operations  
-> WhatsApp: +64 20 4115 3617 *(Message Only)*  
+> WhatsApp: +64 20 4115 3617 *(Text / WhatsApp Message Only)*  
 > NZBN: 9429053991034
 
 ---
@@ -61,19 +61,19 @@ Click **Reply** (replies go through Craigslist's anonymized relay address direct
 >
 > Great to connect. We are prioritizing reps with direct outreach or field experience.
 >
-> **Live SMS Demo Test:**
-> 💬 Text **DEMO** to **+1 (717) 899-9469** right now from your mobile *(Text only — no calls)* to experience our sub-2 second automated text-back engine.
+> **Live Demo Test:**
+> 📞 Call **+1 (717) 899-9469** from your mobile right now to hear our instant 3-second cloud greeting and receive the immediate text-back demo.
 >
 > **The Model:**
 > • Tradie price: $199/mo (no setup fees, no lock-in)  
 > • Your payout: Up to **$175 CASH per closed tradie**  
-> • Target: Any trade contractor losing jobs when unavailable (Plumbers, Sparkies, Roofers, Builders)
+> • Target: Any trade contractor losing calls on the job (Plumbers, Sparkies, Roofers, Builders)
 >
-> Message me directly on **WhatsApp: 020 4115 3617** (https://wa.me/642041153617) *(Message only)* with your name and city, and I'll message your rep tracking code and flyer pack right away.
+> Message me on **WhatsApp: 020 4115 3617** (https://wa.me/642041153617) *(Text / Message Only — no voice calls to this number)* with your name and city, and I'll text you your rep tracking code and flyer pack right away.
 >
 > Cheers,  
 > J. Harris | Zenna Field Operations  
-> WhatsApp: +64 20 4115 3617 *(Message Only)*
+> WhatsApp: +64 20 4115 3617 *(Text / WhatsApp Message Only)*
 
 ---
 
