@@ -1,0 +1,20 @@
+﻿{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Auto Morning Revenue Sprint",
+      "type": "shell",
+      "command": "npx tsx harness/run_sprint.ts",
+      "runOptions": {
+        "runOn": "folderOpen"
+      },
+      "presentation": {
+        "reveal": "silent",
+        "panel": "shared",
+        "showReuseMessage": false,
+        "clear": true
+      },
+      "problemMatcher": []
+    }
+  ]
+}

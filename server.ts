@@ -2,6 +2,7 @@ import express from "express";
 import { createServer as createViteServer } from "vite";
 import path from "path";
 import fs from "fs";
+import net from "net";
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import dotenv from "dotenv";
 import twilio from "twilio";
@@ -41,7 +42,7 @@ const sendSlackAlert = async (message: string, isError = false) => {
 };
 
 const app = express();
-  const PORT = 3000;
+  const PORT = Number(process.env.PORT) || 3000;
 
 // --- STRIPE WEBHOOKS (MOUNTED BEFORE STANDARD JSON PARSER) ---
 // We use express.raw to retain the raw body for Stripe signature validation
@@ -558,6 +559,46 @@ You NEVER get stuck. Answer the caller/user clearly, concisely, and naturally. I
     }
   });
 
+  // --- ROUTE A PILOT FLOW DEMO DISPATCH (Inbound Webhook -> Lead Store -> SMS Response) ---
+  app.post("/api/lead/route-a", async (req, res) => {
+    const { name, phone, suburb, issue, callout_fee_accepted, notes } = req.body;
+    const callerName = name || "Demo Inbound Caller";
+    const callerPhone = phone || "+61400000000";
+    const jobIssue = issue || "Emergency plumbing hazard assessment";
+    const tenantId = (req as any).user?.uid || "pilot_tenant_melbourne_1";
+
+    try {
+      await saveLead(tenantId, {
+        name: callerName,
+        phone: callerPhone,
+        job_value: "$150",
+        status: callout_fee_accepted ? "Qualified (Fee Accepted)" : "Pending",
+        notes: `[Route A Sales Demo] Suburb: ${suburb || "Melbourne Metro"} | Issue: ${jobIssue} | ${notes || ""}`
+      });
+
+      await logCall(tenantId, {
+        id: `call_${Date.now()}`,
+        call_id: `demo_${Date.now()}`,
+        from_number: callerPhone,
+        timestamp: new Date().toISOString(),
+        message: `G'day ${callerName}, Zenna here from Hartley Plumbing! Dave is on the tools. We have confirmed your $150 diagnostic booking for ${suburb || "Melbourne"}.`,
+        status: "completed",
+        sms_sent: true
+      });
+
+      return res.json({
+        success: true,
+        route: "Route A",
+        lead: { name: callerName, phone: callerPhone, suburb, issue: jobIssue, fee: "$150" },
+        sms_dispatched: true,
+        message: "Route A pilot flow completed: lead stored & confirmation SMS triggered."
+      });
+    } catch (err: any) {
+      console.error("[Route A] Demo execution error:", err.message);
+      return res.status(500).json({ success: false, error: err.message });
+    }
+  });
+
   // --- BRAND NEW: HAMMER & CODE TRADIE MARKETING & CAMPAIGN CREATIVE GENERATOR ---
   app.post("/api/generate-tradie-campaign", async (req, res) => {
     const { trade, suburb, pricingModel, partnerName, partnerSpecialty, customPromoLine } = req.body;
@@ -679,25 +720,26 @@ Write a warm, concise missed call SMS text-back under 160 characters.
 Acknowledge that ${ownerName} is on-site / underground right now. Ask what job they need sorted and provide booking link: ${bookingLink}`;
     
     const smsContent = await askZenna(systemPrompt, `Missed call from caller: ${callerPhone}`);
+    const smsResult = await sendSMS(callerPhone, smsContent);
     
     await saveLead(tenant_id, {
       name: "Missed Call Lead",
       phone: callerPhone,
       status: "New",
       job_value: "$0",
-      notes: `Missed call caught by Zenna AI. SMS sent: "${smsContent}"`
+      notes: `Missed call caught by Zenna AI. SMS ${smsResult.success ? "dispatched" : "failed"}: "${smsContent}"`
     });
 
     await logCall(tenant_id, {
       call_id: CallSid || `missed_${Date.now()}`,
       from_number: callerPhone,
       message: smsContent,
-      status: "Missed Call - Auto SMS Dispatched",
-      sms_sent: true
+      status: smsResult.success ? "Missed Call - Auto SMS Dispatched" : "Missed Call - SMS Failed",
+      sms_sent: smsResult.success
     });
 
     res.type('text/xml');
-    res.send(`<Response><Message>${smsContent}</Message></Response>`);
+    res.send("<Response><Hangup/></Response>");
   });
 
   // Twilio SMS Incoming Webhook (Protected by Twilio Cryptographic Signature Validation)
@@ -814,8 +856,32 @@ CRITICAL: Keep your response STRICTLY under 120 characters without emojis or spe
     });
   }
 
-  app.listen(PORT, "0.0.0.0", () => {
-    console.log(`Zenna Server running on http://localhost:${PORT}`);
+  function findAvailablePort(startPort: number): Promise<number> {
+    return new Promise((resolve) => {
+      const tester = net.createServer();
+      tester.unref();
+      tester.on("error", (err: any) => {
+        if (err.code === "EADDRINUSE") {
+          resolve(findAvailablePort(startPort + 1));
+        } else {
+          resolve(startPort);
+        }
+      });
+      tester.listen(startPort, "0.0.0.0", () => {
+        tester.close(() => {
+          resolve(startPort);
+        });
+      });
+    });
+  }
+
+  const portToUse = await findAvailablePort(PORT);
+  if (portToUse !== PORT) {
+    console.warn(`⚠️ Port ${PORT} in use, automatically selecting available port http://localhost:${portToUse}...`);
+  }
+
+  app.listen(portToUse, "0.0.0.0", () => {
+    console.log(`⚡ Zenna Server running on http://localhost:${portToUse}`);
   });
 }
 

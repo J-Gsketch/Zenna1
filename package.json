@@ -21,6 +21,7 @@
     "@remotion/google-fonts": "^4.0.506",
     "@remotion/player": "^4.0.506",
     "@remotion/renderer": "^4.0.507",
+    "@rollup/rollup-linux-x64-gnu": "^4.63.5",
     "@tailwindcss/postcss": "^4.3.3",
     "@tailwindcss/vite": "^4.1.14",
     "@types/better-sqlite3": "^7.6.13",

@@ -97,11 +97,15 @@ export function validateSubscriptionInput(body: any): SubscriptionValidationResu
   };
 }
 
-function getFirestoreInstance() {
+function getFirestoreInstance(): FirebaseFirestore.Firestore | null {
   try {
     return getFirestore('zenna-db');
   } catch {
-    return getFirestore();
+    try {
+      return getFirestore();
+    } catch {
+      return null;
+    }
   }
 }
 
@@ -247,7 +251,7 @@ export async function handleStripeWebhook(req: Request, res: Response) {
             status: 'canceled',
             updatedAt: new Date().toISOString()
           });
-        } else {
+        } else if (db) {
           // Attempt to find tenant by subscriptionId or customer ID
           const subQuery = await db.collection('tenants')
             .where('subscriptionId', '==', subscription.id)

@@ -4,6 +4,8 @@ import {
   Flame, Sparkles, Terminal, Layers, Cpu, CheckCircle2, Play, RefreshCw, Globe, ArrowUpRight, Megaphone, Share2, Printer, FileText
 } from 'lucide-react';
 
+import { SalesAgentHub } from './SalesAgentHub';
+
 interface Lead {
   id: string;
   name: string;
@@ -21,7 +23,7 @@ export const CyberpunkDashboard: React.FC = () => {
   const [totalCaughtCalls, setTotalCaughtCalls] = useState(1284);
   const [isScaling, setIsScaling] = useState(false);
   const [isMarketing, setIsMarketing] = useState(false);
-  const [activeTab, setActiveTab] = useState<'matrix' | 'ads'>('matrix');
+  const [activeTab, setActiveTab] = useState<'matrix' | 'ads' | 'sales_reps'>('matrix');
   const [metaAdStatus, setMetaAdStatus] = useState<'idle' | 'active'>('idle');
   const [googleAdStatus, setGoogleAdStatus] = useState<'idle' | 'active'>('idle');
   const [leads, setLeads] = useState<Lead[]>([]);
@@ -181,7 +183,7 @@ export const CyberpunkDashboard: React.FC = () => {
           </div>
 
           <div className="flex items-center gap-4 self-end md:self-center">
-            {/* View Switcher: Matrix Deck vs Ad Launcher */}
+            {/* View Switcher: Matrix Deck vs Ad Launcher vs Sales Reps */}
             <div className="bg-[#050E1A] border border-white/10 rounded-xl p-1 flex items-center gap-1">
               <button 
                 onClick={() => setActiveTab('matrix')}
@@ -194,6 +196,12 @@ export const CyberpunkDashboard: React.FC = () => {
                 className={`px-3.5 py-2 rounded-lg text-xs font-mono font-bold transition-all ${activeTab === 'ads' ? 'bg-[#FF6A1A] text-[#0A1F3C]' : 'text-[#8BA3C7] hover:text-white'}`}
               >
                 📣 Ads & Flyers
+              </button>
+              <button 
+                onClick={() => setActiveTab('sales_reps')}
+                className={`px-3.5 py-2 rounded-lg text-xs font-mono font-bold transition-all ${activeTab === 'sales_reps' ? 'bg-[#FF6A1A] text-[#0A1F3C]' : 'text-[#8BA3C7] hover:text-white'}`}
+              >
+                🤝 Sales Reps (SEEK)
               </button>
             </div>
 
@@ -431,7 +439,7 @@ export const CyberpunkDashboard: React.FC = () => {
             </div>
 
           </div>
-        ) : (
+        ) : activeTab === 'ads' ? (
           /* --- AD CAMPAIGN & FLYER LAUNCHER DECK --- */
           <div className="space-y-8">
             
@@ -550,7 +558,9 @@ export const CyberpunkDashboard: React.FC = () => {
             </div>
 
           </div>
-        )}
+        ) : activeTab === 'sales_reps' ? (
+          <SalesAgentHub />
+        ) : null}
 
       </div>
     </div>

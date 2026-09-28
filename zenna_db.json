@@ -1,6 +1,15 @@
 {
   "leads": [
     {
+      "tenant_id": "pilot_tenant_melbourne_1",
+      "phone": "+64215558912",
+      "name": "Sarah Jenkins",
+      "status": "Qualified (Fee Accepted)",
+      "job_value": "$150",
+      "notes": "[Route A Sales Demo] Suburb: Ponsonby, Auckland | Issue: Burst kitchen main pipe - urgent water cutoff required | Found via trade counter card at Carters Auckland",
+      "created_at": "2026-09-28T08:13:53.422Z"
+    },
+    {
       "tenant_id": "heavy_blanket_campaign",
       "phone": "+6421006002",
       "name": "Fendalton Master Sparkies (Jonty)",
@@ -482,6 +491,16 @@
     }
   ],
   "calls": [
+    {
+      "tenant_id": "pilot_tenant_melbourne_1",
+      "id": "1790583233483",
+      "call_id": "demo_1790583233437",
+      "from_number": "+64215558912",
+      "timestamp": "2026-09-28T08:13:53.483Z",
+      "message": "G'day Sarah Jenkins, Zenna here from Hartley Plumbing! Dave is on the tools. We have confirmed your $150 diagnostic booking for Ponsonby, Auckland.",
+      "status": "completed",
+      "sms_sent": true
+    },
     {
       "tenant_id": "heavy_blanket_campaign",
       "id": "1787934833216",
@@ -1454,5 +1473,6 @@
     "heavy_blanket_campaign_total_active_targets": "22",
     "heavy_blanket_campaign_pipeline_mrr_value": "$4378/mo"
   },
-  "tenants": {}
+  "tenants": {},
+  "processed_events": []
 }

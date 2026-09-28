@@ -32,7 +32,8 @@ import {
   CheckSquare,
   Copy,
   Send,
-  Wrench
+  Wrench,
+  ExternalLink
 } from 'lucide-react';
 import { cn } from './lib/utils';
 import { initAuth, login, connectDrive, logout as googleLogout, getAccessToken } from './lib/googleAuth';
@@ -43,6 +44,7 @@ const HammerCodeHub = React.lazy(() => import('./components/HammerCodeHub'));
 const OnboardingModal = React.lazy(() => import('./components/OnboardingModal').then(m => ({ default: m.OnboardingModal })));
 const CyberpunkDashboard = React.lazy(() => import('./components/CyberpunkDashboard').then(m => ({ default: m.CyberpunkDashboard })));
 const AiAdStudio = React.lazy(() => import('./components/AiAdStudio').then(m => ({ default: m.AiAdStudio })));
+const SalesAgentHub = React.lazy(() => import('./components/SalesAgentHub').then(m => ({ default: m.SalesAgentHub })));
 
 const ComponentLoadingFallback = () => (
   <div className="flex items-center justify-center p-12 min-h-[250px] w-full">
@@ -63,7 +65,7 @@ import {
 } from 'lucide-react';
 
 // --- Types ---
-type Page = 'landing' | 'setup' | 'dashboard' | 'cyberpunk' | 'ad_studio';
+type Page = 'landing' | 'setup' | 'dashboard' | 'cyberpunk' | 'ad_studio' | 'sales_reps';
 
 // --- Sub-components ---
 
@@ -75,22 +77,46 @@ const Logo = () => (
 
 // ─────────────────────────────────────────
 // LANDING PAGE
+export type SalesPlatform = 'facebook' | 'craigslist' | 'locanto' | 'trademe' | 'reddit' | 'trade_counter';
+
 // ─────────────────────────────────────────
-const Landing = ({ onGetStarted }: { onGetStarted: () => void }) => {
+const Landing = ({ 
+  onGetStarted,
+  onOpenSalesReps,
+  onOpenCyberpunk
+}: { 
+  onGetStarted: () => void;
+  onOpenSalesReps: (platform?: SalesPlatform) => void;
+  onOpenCyberpunk: () => void;
+}) => {
   return (
     <div className="min-h-screen relative overflow-hidden bg-ink">
       {/* Grainy Noise Overlay */}
       <div className="fixed inset-0 pointer-events-none opacity-[0.03] bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
       
       {/* Nav */}
-      <nav className="fixed top-0 w-full z-50 flex items-center justify-between px-8 py-6 bg-gradient-to-b from-ink to-transparent">
+      <nav className="fixed top-0 w-full z-50 flex items-center justify-between px-6 md:px-8 py-5 bg-gradient-to-b from-ink/95 via-ink/80 to-transparent backdrop-blur-sm border-b border-white/5">
         <Logo />
-        <button 
-          onClick={onGetStarted}
-          className="bg-gold hover:bg-gold-lt text-ink px-6 py-2 rounded font-medium text-sm tracking-wider uppercase transition-colors"
-        >
-          Get Started
-        </button>
+        <div className="flex items-center gap-3">
+          <button 
+            onClick={() => onOpenSalesReps('facebook')}
+            className="bg-[#FF6A1A]/10 hover:bg-[#FF6A1A]/20 border border-[#FF6A1A]/40 text-[#FF6A1A] font-mono px-3.5 py-2 rounded-lg font-bold text-xs tracking-wider uppercase transition-all shadow-sm flex items-center gap-1.5 active:scale-95"
+          >
+            🤝 Sales Rep Portal (No-Verification Ads)
+          </button>
+          <button 
+            onClick={onOpenCyberpunk}
+            className="bg-cyan-500/10 hover:bg-cyan-500/20 border border-cyan-500/40 text-cyan-400 font-mono px-3.5 py-2 rounded-lg font-bold text-xs tracking-wider uppercase transition-all shadow-sm hidden sm:flex items-center gap-1.5 active:scale-95"
+          >
+            ⚡ Cyberpunk OS
+          </button>
+          <button 
+            onClick={onGetStarted}
+            className="bg-gold hover:bg-gold-lt text-ink px-5 py-2 rounded font-medium text-xs tracking-wider uppercase transition-colors font-mono font-bold"
+          >
+            Get Started
+          </button>
+        </div>
       </nav>
 
       <section className="relative pt-40 pb-20 px-8 max-w-7xl mx-auto flex flex-col items-start gap-10">
@@ -165,6 +191,296 @@ const Landing = ({ onGetStarted }: { onGetStarted: () => void }) => {
             </div>
           </div>
         </motion.div>
+      </section>
+
+      {/* --- SALES REP & TRADIE ACQUISITION CHANNELS PORTAL --- */}
+      <section className="py-16 px-6 md:px-8 max-w-7xl mx-auto border-t border-[#FF6A1A]/20">
+        <div className="bg-gradient-to-r from-[#0A1F3C]/90 via-[#0E284D]/90 to-[#0A1F3C]/90 border-2 border-[#FF6A1A]/40 rounded-3xl p-6 md:p-10 relative overflow-hidden shadow-2xl space-y-8">
+          <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+            <div>
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#FF6A1A]/20 border border-[#FF6A1A]/40 text-[#FF6A1A] text-xs font-mono font-bold uppercase tracking-wider mb-2">
+                🤝 Sub-Agent & Sales Rep Acquisition Portals
+              </div>
+              <h2 className="font-mono text-2xl md:text-3xl font-black text-white">
+                Deploy 100% Commission Reps <span className="text-[#FF6A1A]">(Zero Base • Up to $175/Tradie)</span>
+              </h2>
+              <p className="text-[#8BA3C7] text-xs md:text-sm mt-1 max-w-2xl">
+                Ready-to-copy job listings, phone scripts, and live demo tools to onboard local tradies across 6 frictionless channels.
+              </p>
+            </div>
+            <button
+              onClick={() => onOpenSalesReps('facebook')}
+              className="px-5 py-3 rounded-xl bg-[#FF6A1A] hover:bg-[#ff7b33] text-[#0A1F3C] font-bold font-mono text-xs uppercase tracking-wider transition-all flex items-center gap-2 shadow-lg shadow-[#FF6A1A]/20 active:scale-95 shrink-0"
+            >
+              Open Full Rep Portal →
+            </button>
+          </div>
+
+          {/* 6 Zero-Verification & Frictionless Channel Cards */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {/* Card 1: Facebook Tradie Groups */}
+            <div className="bg-[#050E1A] border border-blue-500/30 hover:border-blue-400 p-5 rounded-2xl transition-all space-y-4 shadow-lg flex flex-col justify-between">
+              <div className="space-y-3">
+                <div className="flex items-center justify-between">
+                  <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-blue-500/20 text-blue-400 border border-blue-500/40">
+                    Instant DMs • No Phone 2FA
+                  </span>
+                  <span className="text-xs text-[#FF6A1A] font-bold font-mono">$100–$175 / Tradie</span>
+                </div>
+                <h3 className="font-bold text-white text-sm">
+                  👥 Facebook Tradie Groups & Marketplace
+                </h3>
+                <p className="text-xs text-[#8BA3C7]">
+                  Direct DM outreach and posts for Aussie & Kiwi tradie groups. Zero phone verification barrier—post from your existing profile.
+                </p>
+              </div>
+
+              <div className="space-y-2 pt-2 border-t border-white/10">
+                <div className="flex flex-wrap items-center gap-2 text-[11px] font-mono">
+                  <a
+                    href="https://www.facebook.com/groups/feed/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-2.5 py-1.5 rounded-lg bg-blue-500/20 hover:bg-blue-500/30 text-blue-400 border border-blue-500/40 font-bold flex items-center gap-1 transition-all"
+                  >
+                    <ExternalLink className="w-3 h-3" /> FB Groups Feed
+                  </a>
+                  <a
+                    href="https://www.facebook.com/marketplace/create/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-2.5 py-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-white border border-white/20 font-bold flex items-center gap-1 transition-all"
+                  >
+                    <ExternalLink className="w-3 h-3" /> FB Marketplace
+                  </a>
+                </div>
+                <button
+                  onClick={() => onOpenSalesReps('facebook')}
+                  className="w-full py-2 rounded-xl bg-white/5 hover:bg-white/15 text-blue-400 border border-blue-500/30 font-mono text-xs font-bold transition-all flex items-center justify-center gap-1.5"
+                >
+                  📋 View FB Post & DM Copy →
+                </button>
+              </div>
+            </div>
+
+            {/* Card 2: Craigslist Australia */}
+            <div className="bg-[#050E1A] border border-purple-500/30 hover:border-purple-400 p-5 rounded-2xl transition-all space-y-4 shadow-lg flex flex-col justify-between">
+              <div className="space-y-3">
+                <div className="flex items-center justify-between">
+                  <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-purple-500/20 text-purple-400 border border-purple-500/40">
+                    Email Confirmation Only
+                  </span>
+                  <span className="text-xs text-[#FF6A1A] font-bold font-mono">Up to $250 Bounty</span>
+                </div>
+                <h3 className="font-bold text-white text-sm">
+                  🌐 Craigslist Australia (Syd / Melb / Bris)
+                </h3>
+                <p className="text-xs text-[#8BA3C7]">
+                  High traffic from commission closers. Post into Sydney, Melbourne, Brisbane & Perth gigs with standard email confirmation.
+                </p>
+              </div>
+
+              <div className="space-y-2 pt-2 border-t border-white/10">
+                <div className="flex flex-wrap items-center gap-2 text-[11px] font-mono">
+                  <a
+                    href="https://sydney.craigslist.org/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-2.5 py-1.5 rounded-lg bg-purple-500/20 hover:bg-purple-500/30 text-purple-400 border border-purple-500/40 font-bold flex items-center gap-1 transition-all"
+                  >
+                    <ExternalLink className="w-3 h-3" /> Sydney
+                  </a>
+                  <a
+                    href="https://melbourne.craigslist.org/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-2.5 py-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-white border border-white/20 font-bold flex items-center gap-1 transition-all"
+                  >
+                    <ExternalLink className="w-3 h-3" /> Melbourne
+                  </a>
+                  <a
+                    href="https://brisbane.craigslist.org/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-2.5 py-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-white border border-white/20 font-bold flex items-center gap-1 transition-all"
+                  >
+                    <ExternalLink className="w-3 h-3" /> Brisbane
+                  </a>
+                </div>
+                <button
+                  onClick={() => onOpenSalesReps('craigslist')}
+                  className="w-full py-2 rounded-xl bg-white/5 hover:bg-white/15 text-purple-400 border border-purple-500/30 font-mono text-xs font-bold transition-all flex items-center justify-center gap-1.5"
+                >
+                  📋 View Craigslist Ad Copy →
+                </button>
+              </div>
+            </div>
+
+            {/* Card 3: Locanto Australia */}
+            <div className="bg-[#050E1A] border border-amber-500/30 hover:border-amber-400 p-5 rounded-2xl transition-all space-y-4 shadow-lg flex flex-col justify-between">
+              <div className="space-y-3">
+                <div className="flex items-center justify-between">
+                  <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-amber-500/20 text-amber-400 border border-amber-500/40">
+                    Free • No Phone Required
+                  </span>
+                  <span className="text-xs text-amber-400 font-bold font-mono">100% Free Ads</span>
+                </div>
+                <h3 className="font-bold text-white text-sm">
+                  📝 Locanto Australia Free Classifieds
+                </h3>
+                <p className="text-xs text-[#8BA3C7]">
+                  Free classified network across Australia for sales reps and telemarketers. Requires zero Australian mobile verification.
+                </p>
+              </div>
+
+              <div className="space-y-2 pt-2 border-t border-white/10">
+                <div className="flex flex-wrap items-center gap-2 text-[11px] font-mono">
+                  <a
+                    href="https://www.locanto.com.au/Sales-Retail/J/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-2.5 py-1.5 rounded-lg bg-amber-500/20 hover:bg-amber-500/30 text-amber-400 border border-amber-500/40 font-bold flex items-center gap-1 transition-all"
+                  >
+                    <ExternalLink className="w-3 h-3" /> Post Free Ad on Locanto
+                  </a>
+                </div>
+                <button
+                  onClick={() => onOpenSalesReps('locanto')}
+                  className="w-full py-2 rounded-xl bg-white/5 hover:bg-white/15 text-amber-400 border border-amber-500/30 font-mono text-xs font-bold transition-all flex items-center justify-center gap-1.5"
+                >
+                  📋 View Locanto Listing Copy →
+                </button>
+              </div>
+            </div>
+
+            {/* Card 4: Trade Me NZ */}
+            <div className="bg-[#050E1A] border border-emerald-500/30 hover:border-emerald-400 p-5 rounded-2xl transition-all space-y-4 shadow-lg flex flex-col justify-between">
+              <div className="space-y-3">
+                <div className="flex items-center justify-between">
+                  <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400 border border-emerald-500/40">
+                    NZBN & NZ Mobile Verified
+                  </span>
+                  <span className="text-xs text-emerald-400 font-bold font-mono">Tier 1 NZ Board</span>
+                </div>
+                <h3 className="font-bold text-white text-sm">
+                  🇳🇿 Trade Me NZ Job Listing
+                </h3>
+                <p className="text-xs text-[#8BA3C7]">
+                  Official New Zealand classifieds and job marketplace. Fully verified with your NZBN (9429053991034) and NZ mobile.
+                </p>
+              </div>
+
+              <div className="space-y-2 pt-2 border-t border-white/10">
+                <div className="flex flex-wrap items-center gap-2 text-[11px] font-mono">
+                  <a
+                    href="https://www.trademe.co.nz/a/jobs/list-a-job"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-2.5 py-1.5 rounded-lg bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-400 border border-emerald-500/40 font-bold flex items-center gap-1 transition-all"
+                  >
+                    <ExternalLink className="w-3 h-3" /> List on Trade Me NZ
+                  </a>
+                </div>
+                <button
+                  onClick={() => onOpenSalesReps('trademe')}
+                  className="w-full py-2 rounded-xl bg-white/5 hover:bg-white/15 text-emerald-400 border border-emerald-500/30 font-mono text-xs font-bold transition-all flex items-center justify-center gap-1.5"
+                >
+                  📋 View Trade Me NZ Ad →
+                </button>
+              </div>
+            </div>
+
+            {/* Card 5: Reddit */}
+            <div className="bg-[#050E1A] border border-orange-500/30 hover:border-orange-400 p-5 rounded-2xl transition-all space-y-4 shadow-lg flex flex-col justify-between">
+              <div className="space-y-3">
+                <div className="flex items-center justify-between">
+                  <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-orange-500/20 text-orange-400 border border-orange-500/40">
+                    Zero Barrier • Markdown
+                  </span>
+                  <span className="text-xs text-white font-bold font-mono">Instant Post</span>
+                </div>
+                <h3 className="font-bold text-white text-sm">
+                  🔥 Reddit Sales & Remote Hiring
+                </h3>
+                <p className="text-xs text-[#8BA3C7]">
+                  Post directly into active hiring subreddits (r/australiajobs, r/forhire, r/remotework). Highly responsive commission closers.
+                </p>
+              </div>
+
+              <div className="space-y-2 pt-2 border-t border-white/10">
+                <div className="flex flex-wrap items-center gap-2 text-[11px] font-mono">
+                  <a
+                    href="https://www.reddit.com/r/australiajobs/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-2.5 py-1.5 rounded-lg bg-orange-500/20 hover:bg-orange-500/30 text-orange-400 border border-orange-500/40 font-bold flex items-center gap-1 transition-all"
+                  >
+                    <ExternalLink className="w-3 h-3" /> r/australiajobs
+                  </a>
+                  <a
+                    href="https://www.reddit.com/r/forhire/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-2.5 py-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-white border border-white/20 font-bold flex items-center gap-1 transition-all"
+                  >
+                    <ExternalLink className="w-3 h-3" /> r/forhire
+                  </a>
+                </div>
+                <button
+                  onClick={() => onOpenSalesReps('reddit')}
+                  className="w-full py-2 rounded-xl bg-white/5 hover:bg-white/15 text-orange-400 border border-orange-500/30 font-mono text-xs font-bold transition-all flex items-center justify-center gap-1.5"
+                >
+                  📋 View Reddit Markdown Copy →
+                </button>
+              </div>
+            </div>
+
+            {/* Card 6: Trade Counter Drops */}
+            <div className="bg-[#050E1A] border border-cyan-500/30 hover:border-cyan-400 p-5 rounded-2xl transition-all space-y-4 shadow-lg flex flex-col justify-between">
+              <div className="space-y-3">
+                <div className="flex items-center justify-between">
+                  <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-cyan-500/20 text-cyan-400 border border-cyan-500/40">
+                    6:30 AM Trade Desks
+                  </span>
+                  <span className="text-xs text-[#FF6A1A] font-bold font-mono">50%+ Close Rate</span>
+                </div>
+                <h3 className="font-bold text-white text-sm">
+                  ☕ Reece & Middy's In-Person Protocol
+                </h3>
+                <p className="text-xs text-[#8BA3C7]">
+                  Field script for trade counter morning coffee rush with immediate 30-second live test calls. No internet account needed.
+                </p>
+              </div>
+
+              <div className="space-y-2 pt-2 border-t border-white/10">
+                <div className="flex flex-wrap items-center gap-2 text-[11px] font-mono">
+                  <a
+                    href="https://www.google.com/maps/search/Reece+Plumbing+Australia"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-2.5 py-1.5 rounded-lg bg-cyan-500/20 hover:bg-cyan-500/30 text-cyan-400 border border-cyan-500/40 font-bold flex items-center gap-1 transition-all"
+                  >
+                    <ExternalLink className="w-3 h-3" /> Reece Stores
+                  </a>
+                  <a
+                    href="https://www.google.com/maps/search/Middys+Electrical+Australia"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-2.5 py-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-white border border-white/20 font-bold flex items-center gap-1 transition-all"
+                  >
+                    <ExternalLink className="w-3 h-3" /> Middy's Desks
+                  </a>
+                </div>
+                <button
+                  onClick={() => onOpenSalesReps('trade_counter')}
+                  className="w-full py-2 rounded-xl bg-white/5 hover:bg-white/15 text-cyan-400 border border-cyan-500/30 font-mono text-xs font-bold transition-all flex items-center justify-center gap-1.5"
+                >
+                  📋 View In-Person Field Script →
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
 
       {/* Steps Section */}
@@ -2914,6 +3230,7 @@ Created automatically via Zenna Unified Addons Cloud System. No manual paper-pus
 export default function App() {
   const [page, setPage] = useState<Page>('landing');
   const [businessName, setBusinessName] = useState("Zenna App Studio");
+  const [salesRepPlatform, setSalesRepPlatform] = useState<SalesPlatform>('facebook');
   const [user, setUser] = useState<any>(null);
   const [authLoading, setAuthLoading] = useState(true);
 
@@ -2928,7 +3245,6 @@ export default function App() {
       () => { 
         setUser(null); 
         setAuthLoading(false); 
-        setPage('landing'); // Force landing if logged out
       }
     );
     return () => unsubscribe && unsubscribe();
@@ -2946,40 +3262,87 @@ export default function App() {
 
   return (
     <div className="font-sans min-h-screen bg-slate-950">
-      {/* Top Floating View Toggle (Only show if logged in) */}
-      {user && (
-        <div className="fixed bottom-4 right-4 z-50 flex items-center gap-2 bg-slate-900/90 backdrop-blur-md border border-cyan-500/40 p-1.5 rounded-full shadow-[0_0_20px_rgba(0,240,255,0.2)]">
-          <button
-            onClick={() => setPage('cyberpunk')}
-            className={`px-3 py-1.5 rounded-full text-xs font-mono transition-all ${page === 'cyberpunk' ? 'bg-cyan-500 text-black font-bold shadow-[0_0_10px_rgba(0,240,255,0.5)]' : 'text-slate-400 hover:text-white'}`}
-          >
-            ⚡ Cyberpunk OS (禅那)
-          </button>
-          <button
-            onClick={() => setPage('dashboard')}
-            className={`px-3 py-1.5 rounded-full text-xs font-mono transition-all ${page === 'dashboard' ? 'bg-amber-500 text-black font-bold' : 'text-slate-400 hover:text-white'}`}
-          >
-            📊 Standard CRM
-          </button>
+      {/* Floating View Switcher Dock */}
+      <div className="fixed bottom-4 right-4 z-50 flex items-center gap-1.5 bg-[#0A1F3C]/95 backdrop-blur-md border border-[#FF6A1A]/40 p-1.5 rounded-full shadow-[0_0_20px_rgba(255,106,26,0.25)]">
+        <button
+          onClick={() => setPage('landing')}
+          className={`px-3 py-1.5 rounded-full text-xs font-mono transition-all ${page === 'landing' ? 'bg-[#FF6A1A] text-[#0A1F3C] font-bold shadow-md' : 'text-[#8BA3C7] hover:text-white'}`}
+        >
+          🚀 Home
+        </button>
+        <button
+          onClick={() => {
+            setSalesRepPlatform('facebook');
+            setPage('sales_reps');
+          }}
+          className={`px-3 py-1.5 rounded-full text-xs font-mono transition-all ${page === 'sales_reps' ? 'bg-[#FF6A1A] text-[#0A1F3C] font-bold shadow-md' : 'text-[#8BA3C7] hover:text-white'}`}
+        >
+          🤝 Sales Reps
+        </button>
+        <button
+          onClick={() => setPage('cyberpunk')}
+          className={`px-3 py-1.5 rounded-full text-xs font-mono transition-all ${page === 'cyberpunk' ? 'bg-cyan-500 text-black font-bold shadow-[0_0_10px_rgba(0,240,255,0.5)]' : 'text-slate-400 hover:text-white'}`}
+        >
+          ⚡ Cyberpunk
+        </button>
+        <button
+          onClick={() => setPage('dashboard')}
+          className={`px-3 py-1.5 rounded-full text-xs font-mono transition-all ${page === 'dashboard' ? 'bg-amber-500 text-black font-bold' : 'text-slate-400 hover:text-white'}`}
+        >
+          📊 CRM
+        </button>
+        {user && (
           <button
             onClick={async () => { await googleLogout(); }}
             className={`px-3 py-1.5 rounded-full text-xs font-mono transition-all text-red-400 hover:text-red-300`}
           >
             Log Out
           </button>
-        </div>
-      )}
+        )}
+      </div>
 
       <AnimatePresence mode="wait">
         {page === 'landing' && (
           <motion.div key="landing" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
-            <Landing onGetStarted={async () => {
-              try {
-                await import('./lib/googleAuth').then(m => m.login());
-              } catch(e) {
-                console.error(e);
-              }
-            }} />
+            <Landing 
+              onGetStarted={async () => {
+                try {
+                  await import('./lib/googleAuth').then(m => m.login());
+                } catch(e) {
+                  console.error(e);
+                }
+              }}
+              onOpenSalesReps={(platform) => {
+                if (platform) setSalesRepPlatform(platform);
+                setPage('sales_reps');
+              }}
+              onOpenCyberpunk={() => setPage('cyberpunk')}
+            />
+          </motion.div>
+        )}
+        {page === 'sales_reps' && (
+          <motion.div key="sales_reps" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+            <div className="min-h-screen bg-[#050E1A] p-4 md:p-8">
+              <div className="max-w-7xl mx-auto space-y-6">
+                <div className="flex items-center justify-between pb-4 border-b border-white/10">
+                  <button
+                    onClick={() => setPage('landing')}
+                    className="px-4 py-2 rounded-xl bg-white/10 hover:bg-white/20 text-white font-mono text-xs flex items-center gap-2 border border-white/10 transition-all shadow-md active:scale-95"
+                  >
+                    ← Back to Zenna Home
+                  </button>
+                  <button
+                    onClick={() => setPage('cyberpunk')}
+                    className="px-4 py-2 rounded-xl bg-[#FF6A1A]/20 hover:bg-[#FF6A1A]/30 text-[#FF6A1A] font-mono text-xs font-bold flex items-center gap-2 border border-[#FF6A1A]/40 transition-all shadow-md active:scale-95"
+                  >
+                    ⚡ Cyberpunk Dashboard →
+                  </button>
+                </div>
+                <React.Suspense fallback={<ComponentLoadingFallback />}>
+                  <SalesAgentHub initialPlatform={salesRepPlatform} />
+                </React.Suspense>
+              </div>
+            </div>
           </motion.div>
         )}
         {page === 'setup' && user && (
@@ -2987,19 +3350,19 @@ export default function App() {
             <Setup onComplete={() => setPage('cyberpunk')} setBusinessName={setBusinessName} />
           </motion.div>
         )}
-        {page === 'cyberpunk' && user && (
+        {page === 'cyberpunk' && (
           <motion.div key="cyberpunk" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
             <React.Suspense fallback={<ComponentLoadingFallback />}>
               <CyberpunkDashboard />
             </React.Suspense>
           </motion.div>
         )}
-        {page === 'dashboard' && user && (
+        {page === 'dashboard' && (
           <motion.div key="dashboard" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
             <Dashboard businessName={businessName} />
           </motion.div>
         )}
-        {page === 'ad_studio' && user && (
+        {page === 'ad_studio' && (
           <motion.div key="ad_studio" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
             <React.Suspense fallback={<ComponentLoadingFallback />}>
               <AiAdStudio onBack={() => setPage('cyberpunk')} />
