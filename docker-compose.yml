@@ -1,0 +1,38 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: zenna-app
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      # Add your environment variables here
+      # - DATABASE_URL=your_database_url
+      # - API_KEY=your_api_key
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "node", "-e", "require('http').get('http://localhost:3000/health', (r) => {if (r.statusCode !== 200) throw new Error(r.statusCode)})"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  # Optional: Add additional services below
+  # database:
+  #   image: postgres:15-alpine
+  #   container_name: zenna-db
+  #   environment:
+  #     POSTGRES_DB: zenna
+  #     POSTGRES_USER: postgres
+  #     POSTGRES_PASSWORD: password
+  #   volumes:
+  #     - postgres_data:/var/lib/postgresql/data
+  #   restart: unless-stopped
+
+volumes:
+  # postgres_data:
+  #   driver: local
