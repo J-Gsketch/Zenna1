@@ -1,6 +1,115 @@
 {
   "leads": [
     {
+      "id": "priority_top10_10_1790627330338",
+      "name": "Whitehead Plumbing & Gas",
+      "phone": "info@whiteheadplumbing.co.nz",
+      "status": "Priority 1 Outreach Ready",
+      "job_value": ",200 NZD",
+      "city": "Christchurch",
+      "notes": "Top 10 Target | Contact: info@whiteheadplumbing.co.nz | Demo line: +1 (717) 899-9469 | WhatsApp: +64 20 4115 3617",
+      "created_at": "2026-09-28T20:28:50.338Z"
+    },
+    {
+      "id": "priority_top10_9_1790627330337",
+      "name": "White & Taylor Plumbers",
+      "phone": "office@whiteandtaylor.co.nz",
+      "status": "Priority 1 Outreach Ready",
+      "job_value": ",500 NZD",
+      "city": "Christchurch",
+      "notes": "Top 10 Target | Contact: office@whiteandtaylor.co.nz | Demo line: +1 (717) 899-9469 | WhatsApp: +64 20 4115 3617",
+      "created_at": "2026-09-28T20:28:50.337Z"
+    },
+    {
+      "id": "priority_top10_8_1790627330337",
+      "name": "Heat Force Canterbury",
+      "phone": "sales@heatforce.co.nz",
+      "status": "Priority 1 Outreach Ready",
+      "job_value": ",000 NZD",
+      "city": "Christchurch",
+      "notes": "Top 10 Target | Contact: sales@heatforce.co.nz | Demo line: +1 (717) 899-9469 | WhatsApp: +64 20 4115 3617",
+      "created_at": "2026-09-28T20:28:50.337Z"
+    },
+    {
+      "id": "priority_top10_7_1790627330337",
+      "name": "HPAC Christchurch",
+      "phone": "https://hpac.co.nz",
+      "status": "Priority 1 Outreach Ready",
+      "job_value": ",000 NZD",
+      "city": "Christchurch",
+      "notes": "Top 10 Target | Contact: https://hpac.co.nz | Demo line: +1 (717) 899-9469 | WhatsApp: +64 20 4115 3617",
+      "created_at": "2026-09-28T20:28:50.337Z"
+    },
+    {
+      "id": "priority_top10_6_1790627330337",
+      "name": "The Heat Pump People",
+      "phone": "info@theheatpumppeople.co.nz",
+      "status": "Priority 1 Outreach Ready",
+      "job_value": ",500 NZD",
+      "city": "Christchurch",
+      "notes": "Top 10 Target | Contact: info@theheatpumppeople.co.nz | Demo line: +1 (717) 899-9469 | WhatsApp: +64 20 4115 3617",
+      "created_at": "2026-09-28T20:28:50.337Z"
+    },
+    {
+      "id": "priority_top10_5_1790627330337",
+      "name": "Air Perfection Ltd",
+      "phone": "027 340 0693",
+      "status": "Priority 1 Outreach Ready",
+      "job_value": ",500 NZD",
+      "city": "Auckland",
+      "notes": "Top 10 Target | Contact: 027 340 0693 | Demo line: +1 (717) 899-9469 | WhatsApp: +64 20 4115 3617",
+      "created_at": "2026-09-28T20:28:50.337Z"
+    },
+    {
+      "id": "priority_top10_4_1790627330337",
+      "name": "Auckland Plumbers Group",
+      "phone": "https://aucklandplumbersgroup.co.nz",
+      "status": "Priority 1 Outreach Ready",
+      "job_value": ",000 NZD",
+      "city": "Auckland",
+      "notes": "Top 10 Target | Contact: https://aucklandplumbersgroup.co.nz | Demo line: +1 (717) 899-9469 | WhatsApp: +64 20 4115 3617",
+      "created_at": "2026-09-28T20:28:50.337Z"
+    },
+    {
+      "id": "priority_top10_3_1790627330337",
+      "name": "Response Plumbing 24/7",
+      "phone": "https://responseplumbing.co.nz",
+      "status": "Priority 1 Outreach Ready",
+      "job_value": ",500 NZD",
+      "city": "Auckland",
+      "notes": "Top 10 Target | Contact: https://responseplumbing.co.nz | Demo line: +1 (717) 899-9469 | WhatsApp: +64 20 4115 3617",
+      "created_at": "2026-09-28T20:28:50.337Z"
+    },
+    {
+      "id": "priority_top10_2_1790627330337",
+      "name": "North Shore Heat Pumps",
+      "phone": "office@northshoreheatpumps.co.nz",
+      "status": "Priority 1 Outreach Ready",
+      "job_value": ",200 NZD",
+      "city": "Auckland",
+      "notes": "Top 10 Target | Contact: office@northshoreheatpumps.co.nz | Demo line: +1 (717) 899-9469 | WhatsApp: +64 20 4115 3617",
+      "created_at": "2026-09-28T20:28:50.337Z"
+    },
+    {
+      "id": "priority_top10_1_1790627330333",
+      "name": "Varcoe Heat Pumps",
+      "phone": "https://www.varcoe.co.nz",
+      "status": "Priority 1 Outreach Ready",
+      "job_value": ",000 NZD",
+      "city": "Auckland",
+      "notes": "Top 10 Target | Contact: https://www.varcoe.co.nz | Demo line: +1 (717) 899-9469 | WhatsApp: +64 20 4115 3617",
+      "created_at": "2026-09-28T20:28:50.333Z"
+    },
+    {
+      "tenant_id": "pilot_tenant_melbourne_1",
+      "phone": "+6421123456",
+      "name": "Auckland Heat Pump Prospect",
+      "status": "Pending",
+      "job_value": "$150",
+      "notes": "[Route A Sales Demo] Suburb: Auckland Central | Issue: Ducted system installation quote | ",
+      "created_at": "2026-09-28T19:55:02.339Z"
+    },
+    {
       "tenant_id": "pilot_tenant_melbourne_1",
       "phone": "+64215558912",
       "name": "Sarah Jenkins",
@@ -488,9 +597,1019 @@
       "job_value": "$8,000",
       "notes": "Successfully deployed AI Assistant portal. Highly satisfied repeat enterprise client.",
       "created_at": "2026-07-24T20:46:53.715Z"
+    },
+    {
+      "id": "target_100_1_1790625268800",
+      "name": "Auckland Heat Pump & HVAC Pro #1",
+      "phone": "+64 21 100002",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",800",
+      "city": "Auckland",
+      "notes": "Trade: Heat Pump & HVAC | Region: NZ | Demo Dispatch: G'day Auckland Heat Pump & HVAC Pro #1! Never lose another k+ job to missed calls while on-site in Auckland. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: Text DEMO to +1 (717) 899-9469 or WhatsApp +64 20 4115 3617",
+      "created_at": "2026-09-28T19:54:28.800Z"
+    },
+    {
+      "id": "target_100_2_1790625268803",
+      "name": "Auckland Emergency Plumbing & Gas Pro #2",
+      "phone": "+64 21 100003",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",200",
+      "city": "Auckland",
+      "notes": "Trade: Emergency Plumbing & Gas | Region: NZ | Demo Dispatch: G'day Auckland Emergency Plumbing & Gas Pro #2! Never lose another k+ job to missed calls while on-site in Auckland. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: Text DEMO to +1 (717) 899-9469 or WhatsApp +64 20 4115 3617",
+      "created_at": "2026-09-28T19:54:28.803Z"
+    },
+    {
+      "id": "target_100_3_1790625268803",
+      "name": "Auckland Solar & Electrical Pro #3",
+      "phone": "+64 21 100004",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",500",
+      "city": "Auckland",
+      "notes": "Trade: Solar & Electrical | Region: NZ | Demo Dispatch: G'day Auckland Solar & Electrical Pro #3! Never lose another k+ job to missed calls while on-site in Auckland. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: Text DEMO to +1 (717) 899-9469 or WhatsApp +64 20 4115 3617",
+      "created_at": "2026-09-28T19:54:28.803Z"
+    },
+    {
+      "id": "target_100_4_1790625268803",
+      "name": "Auckland Roofing & Guttering Pro #4",
+      "phone": "+64 21 100005",
+      "status": "Ready for Demo Dispatch",
+      "job_value": "4,000",
+      "city": "Auckland",
+      "notes": "Trade: Roofing & Guttering | Region: NZ | Demo Dispatch: G'day Auckland Roofing & Guttering Pro #4! Never lose another k+ job to missed calls while on-site in Auckland. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: Text DEMO to +1 (717) 899-9469 or WhatsApp +64 20 4115 3617",
+      "created_at": "2026-09-28T19:54:28.803Z"
+    },
+    {
+      "id": "target_100_5_1790625268803",
+      "name": "Auckland Drainlaying & Relining Pro #5",
+      "phone": "+64 21 100006",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",500",
+      "city": "Auckland",
+      "notes": "Trade: Drainlaying & Relining | Region: NZ | Demo Dispatch: G'day Auckland Drainlaying & Relining Pro #5! Never lose another k+ job to missed calls while on-site in Auckland. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: Text DEMO to +1 (717) 899-9469 or WhatsApp +64 20 4115 3617",
+      "created_at": "2026-09-28T19:54:28.803Z"
+    },
+    {
+      "id": "target_100_6_1790625268803",
+      "name": "Auckland Heat Pump & HVAC Pro #6",
+      "phone": "+64 21 100007",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",800",
+      "city": "Auckland",
+      "notes": "Trade: Heat Pump & HVAC | Region: NZ | Demo Dispatch: G'day Auckland Heat Pump & HVAC Pro #6! Never lose another k+ job to missed calls while on-site in Auckland. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: Text DEMO to +1 (717) 899-9469 or WhatsApp +64 20 4115 3617",
+      "created_at": "2026-09-28T19:54:28.803Z"
+    },
+    {
+      "id": "target_100_7_1790625268803",
+      "name": "Auckland Emergency Plumbing & Gas Pro #7",
+      "phone": "+64 21 100008",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",200",
+      "city": "Auckland",
+      "notes": "Trade: Emergency Plumbing & Gas | Region: NZ | Demo Dispatch: G'day Auckland Emergency Plumbing & Gas Pro #7! Never lose another k+ job to missed calls while on-site in Auckland. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: Text DEMO to +1 (717) 899-9469 or WhatsApp +64 20 4115 3617",
+      "created_at": "2026-09-28T19:54:28.803Z"
+    },
+    {
+      "id": "target_100_8_1790625268803",
+      "name": "Auckland Solar & Electrical Pro #8",
+      "phone": "+64 21 100009",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",500",
+      "city": "Auckland",
+      "notes": "Trade: Solar & Electrical | Region: NZ | Demo Dispatch: G'day Auckland Solar & Electrical Pro #8! Never lose another k+ job to missed calls while on-site in Auckland. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: Text DEMO to +1 (717) 899-9469 or WhatsApp +64 20 4115 3617",
+      "created_at": "2026-09-28T19:54:28.803Z"
+    },
+    {
+      "id": "target_100_9_1790625268803",
+      "name": "Auckland Roofing & Guttering Pro #9",
+      "phone": "+64 21 100010",
+      "status": "Ready for Demo Dispatch",
+      "job_value": "4,000",
+      "city": "Auckland",
+      "notes": "Trade: Roofing & Guttering | Region: NZ | Demo Dispatch: G'day Auckland Roofing & Guttering Pro #9! Never lose another k+ job to missed calls while on-site in Auckland. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: Text DEMO to +1 (717) 899-9469 or WhatsApp +64 20 4115 3617",
+      "created_at": "2026-09-28T19:54:28.803Z"
+    },
+    {
+      "id": "target_100_10_1790625268803",
+      "name": "Auckland Drainlaying & Relining Pro #10",
+      "phone": "+64 21 100011",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",500",
+      "city": "Auckland",
+      "notes": "Trade: Drainlaying & Relining | Region: NZ | Demo Dispatch: G'day Auckland Drainlaying & Relining Pro #10! Never lose another k+ job to missed calls while on-site in Auckland. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: Text DEMO to +1 (717) 899-9469 or WhatsApp +64 20 4115 3617",
+      "created_at": "2026-09-28T19:54:28.803Z"
+    },
+    {
+      "id": "target_100_11_1790625268803",
+      "name": "Auckland Heat Pump & HVAC Pro #11",
+      "phone": "+64 21 100012",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",800",
+      "city": "Auckland",
+      "notes": "Trade: Heat Pump & HVAC | Region: NZ | Demo Dispatch: G'day Auckland Heat Pump & HVAC Pro #11! Never lose another k+ job to missed calls while on-site in Auckland. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: Text DEMO to +1 (717) 899-9469 or WhatsApp +64 20 4115 3617",
+      "created_at": "2026-09-28T19:54:28.803Z"
+    },
+    {
+      "id": "target_100_12_1790625268803",
+      "name": "Auckland Emergency Plumbing & Gas Pro #12",
+      "phone": "+64 21 100013",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",200",
+      "city": "Auckland",
+      "notes": "Trade: Emergency Plumbing & Gas | Region: NZ | Demo Dispatch: G'day Auckland Emergency Plumbing & Gas Pro #12! Never lose another k+ job to missed calls while on-site in Auckland. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: Text DEMO to +1 (717) 899-9469 or WhatsApp +64 20 4115 3617",
+      "created_at": "2026-09-28T19:54:28.803Z"
+    },
+    {
+      "id": "target_100_13_1790625268803",
+      "name": "Auckland Solar & Electrical Pro #13",
+      "phone": "+64 21 100014",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",500",
+      "city": "Auckland",
+      "notes": "Trade: Solar & Electrical | Region: NZ | Demo Dispatch: G'day Auckland Solar & Electrical Pro #13! Never lose another k+ job to missed calls while on-site in Auckland. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: Text DEMO to +1 (717) 899-9469 or WhatsApp +64 20 4115 3617",
+      "created_at": "2026-09-28T19:54:28.803Z"
+    },
+    {
+      "id": "target_100_14_1790625268803",
+      "name": "Auckland Roofing & Guttering Pro #14",
+      "phone": "+64 21 100015",
+      "status": "Ready for Demo Dispatch",
+      "job_value": "4,000",
+      "city": "Auckland",
+      "notes": "Trade: Roofing & Guttering | Region: NZ | Demo Dispatch: G'day Auckland Roofing & Guttering Pro #14! Never lose another k+ job to missed calls while on-site in Auckland. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: Text DEMO to +1 (717) 899-9469 or WhatsApp +64 20 4115 3617",
+      "created_at": "2026-09-28T19:54:28.803Z"
+    },
+    {
+      "id": "target_100_15_1790625268803",
+      "name": "Auckland Drainlaying & Relining Pro #15",
+      "phone": "+64 21 100016",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",500",
+      "city": "Auckland",
+      "notes": "Trade: Drainlaying & Relining | Region: NZ | Demo Dispatch: G'day Auckland Drainlaying & Relining Pro #15! Never lose another k+ job to missed calls while on-site in Auckland. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: Text DEMO to +1 (717) 899-9469 or WhatsApp +64 20 4115 3617",
+      "created_at": "2026-09-28T19:54:28.803Z"
+    },
+    {
+      "id": "target_100_16_1790625268803",
+      "name": "Auckland Heat Pump & HVAC Pro #16",
+      "phone": "+64 21 100017",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",800",
+      "city": "Auckland",
+      "notes": "Trade: Heat Pump & HVAC | Region: NZ | Demo Dispatch: G'day Auckland Heat Pump & HVAC Pro #16! Never lose another k+ job to missed calls while on-site in Auckland. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: Text DEMO to +1 (717) 899-9469 or WhatsApp +64 20 4115 3617",
+      "created_at": "2026-09-28T19:54:28.803Z"
+    },
+    {
+      "id": "target_100_17_1790625268803",
+      "name": "Auckland Emergency Plumbing & Gas Pro #17",
+      "phone": "+64 21 100018",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",200",
+      "city": "Auckland",
+      "notes": "Trade: Emergency Plumbing & Gas | Region: NZ | Demo Dispatch: G'day Auckland Emergency Plumbing & Gas Pro #17! Never lose another k+ job to missed calls while on-site in Auckland. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: Text DEMO to +1 (717) 899-9469 or WhatsApp +64 20 4115 3617",
+      "created_at": "2026-09-28T19:54:28.803Z"
+    },
+    {
+      "id": "target_100_18_1790625268803",
+      "name": "Auckland Solar & Electrical Pro #18",
+      "phone": "+64 21 100019",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",500",
+      "city": "Auckland",
+      "notes": "Trade: Solar & Electrical | Region: NZ | Demo Dispatch: G'day Auckland Solar & Electrical Pro #18! Never lose another k+ job to missed calls while on-site in Auckland. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: Text DEMO to +1 (717) 899-9469 or WhatsApp +64 20 4115 3617",
+      "created_at": "2026-09-28T19:54:28.803Z"
+    },
+    {
+      "id": "target_100_19_1790625268803",
+      "name": "Auckland Roofing & Guttering Pro #19",
+      "phone": "+64 21 100020",
+      "status": "Ready for Demo Dispatch",
+      "job_value": "4,000",
+      "city": "Auckland",
+      "notes": "Trade: Roofing & Guttering | Region: NZ | Demo Dispatch: G'day Auckland Roofing & Guttering Pro #19! Never lose another k+ job to missed calls while on-site in Auckland. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: Text DEMO to +1 (717) 899-9469 or WhatsApp +64 20 4115 3617",
+      "created_at": "2026-09-28T19:54:28.803Z"
+    },
+    {
+      "id": "target_100_20_1790625268803",
+      "name": "Auckland Drainlaying & Relining Pro #20",
+      "phone": "+64 21 100021",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",500",
+      "city": "Auckland",
+      "notes": "Trade: Drainlaying & Relining | Region: NZ | Demo Dispatch: G'day Auckland Drainlaying & Relining Pro #20! Never lose another k+ job to missed calls while on-site in Auckland. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: Text DEMO to +1 (717) 899-9469 or WhatsApp +64 20 4115 3617",
+      "created_at": "2026-09-28T19:54:28.803Z"
+    },
+    {
+      "id": "target_100_21_1790625268803",
+      "name": "Auckland Heat Pump & HVAC Pro #21",
+      "phone": "+64 21 100022",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",800",
+      "city": "Auckland",
+      "notes": "Trade: Heat Pump & HVAC | Region: NZ | Demo Dispatch: G'day Auckland Heat Pump & HVAC Pro #21! Never lose another k+ job to missed calls while on-site in Auckland. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: Text DEMO to +1 (717) 899-9469 or WhatsApp +64 20 4115 3617",
+      "created_at": "2026-09-28T19:54:28.803Z"
+    },
+    {
+      "id": "target_100_22_1790625268803",
+      "name": "Auckland Emergency Plumbing & Gas Pro #22",
+      "phone": "+64 21 100023",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",200",
+      "city": "Auckland",
+      "notes": "Trade: Emergency Plumbing & Gas | Region: NZ | Demo Dispatch: G'day Auckland Emergency Plumbing & Gas Pro #22! Never lose another k+ job to missed calls while on-site in Auckland. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: Text DEMO to +1 (717) 899-9469 or WhatsApp +64 20 4115 3617",
+      "created_at": "2026-09-28T19:54:28.803Z"
+    },
+    {
+      "id": "target_100_23_1790625268803",
+      "name": "Auckland Solar & Electrical Pro #23",
+      "phone": "+64 21 100024",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",500",
+      "city": "Auckland",
+      "notes": "Trade: Solar & Electrical | Region: NZ | Demo Dispatch: G'day Auckland Solar & Electrical Pro #23! Never lose another k+ job to missed calls while on-site in Auckland. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: Text DEMO to +1 (717) 899-9469 or WhatsApp +64 20 4115 3617",
+      "created_at": "2026-09-28T19:54:28.803Z"
+    },
+    {
+      "id": "target_100_24_1790625268803",
+      "name": "Auckland Roofing & Guttering Pro #24",
+      "phone": "+64 21 100025",
+      "status": "Ready for Demo Dispatch",
+      "job_value": "4,000",
+      "city": "Auckland",
+      "notes": "Trade: Roofing & Guttering | Region: NZ | Demo Dispatch: G'day Auckland Roofing & Guttering Pro #24! Never lose another k+ job to missed calls while on-site in Auckland. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: Text DEMO to +1 (717) 899-9469 or WhatsApp +64 20 4115 3617",
+      "created_at": "2026-09-28T19:54:28.803Z"
+    },
+    {
+      "id": "target_100_25_1790625268803",
+      "name": "Auckland Drainlaying & Relining Pro #25",
+      "phone": "+64 21 100026",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",500",
+      "city": "Auckland",
+      "notes": "Trade: Drainlaying & Relining | Region: NZ | Demo Dispatch: G'day Auckland Drainlaying & Relining Pro #25! Never lose another k+ job to missed calls while on-site in Auckland. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: Text DEMO to +1 (717) 899-9469 or WhatsApp +64 20 4115 3617",
+      "created_at": "2026-09-28T19:54:28.803Z"
+    },
+    {
+      "id": "target_100_26_1790625268803",
+      "name": "Auckland Heat Pump & HVAC Pro #26",
+      "phone": "+64 21 100027",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",800",
+      "city": "Auckland",
+      "notes": "Trade: Heat Pump & HVAC | Region: NZ | Demo Dispatch: G'day Auckland Heat Pump & HVAC Pro #26! Never lose another k+ job to missed calls while on-site in Auckland. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: Text DEMO to +1 (717) 899-9469 or WhatsApp +64 20 4115 3617",
+      "created_at": "2026-09-28T19:54:28.803Z"
+    },
+    {
+      "id": "target_100_27_1790625268803",
+      "name": "Auckland Emergency Plumbing & Gas Pro #27",
+      "phone": "+64 21 100028",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",200",
+      "city": "Auckland",
+      "notes": "Trade: Emergency Plumbing & Gas | Region: NZ | Demo Dispatch: G'day Auckland Emergency Plumbing & Gas Pro #27! Never lose another k+ job to missed calls while on-site in Auckland. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: Text DEMO to +1 (717) 899-9469 or WhatsApp +64 20 4115 3617",
+      "created_at": "2026-09-28T19:54:28.803Z"
+    },
+    {
+      "id": "target_100_28_1790625268803",
+      "name": "Auckland Solar & Electrical Pro #28",
+      "phone": "+64 21 100029",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",500",
+      "city": "Auckland",
+      "notes": "Trade: Solar & Electrical | Region: NZ | Demo Dispatch: G'day Auckland Solar & Electrical Pro #28! Never lose another k+ job to missed calls while on-site in Auckland. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: Text DEMO to +1 (717) 899-9469 or WhatsApp +64 20 4115 3617",
+      "created_at": "2026-09-28T19:54:28.803Z"
+    },
+    {
+      "id": "target_100_29_1790625268803",
+      "name": "Auckland Roofing & Guttering Pro #29",
+      "phone": "+64 21 100030",
+      "status": "Ready for Demo Dispatch",
+      "job_value": "4,000",
+      "city": "Auckland",
+      "notes": "Trade: Roofing & Guttering | Region: NZ | Demo Dispatch: G'day Auckland Roofing & Guttering Pro #29! Never lose another k+ job to missed calls while on-site in Auckland. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: Text DEMO to +1 (717) 899-9469 or WhatsApp +64 20 4115 3617",
+      "created_at": "2026-09-28T19:54:28.803Z"
+    },
+    {
+      "id": "target_100_30_1790625268803",
+      "name": "Auckland Drainlaying & Relining Pro #30",
+      "phone": "+64 21 100031",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",500",
+      "city": "Auckland",
+      "notes": "Trade: Drainlaying & Relining | Region: NZ | Demo Dispatch: G'day Auckland Drainlaying & Relining Pro #30! Never lose another k+ job to missed calls while on-site in Auckland. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: Text DEMO to +1 (717) 899-9469 or WhatsApp +64 20 4115 3617",
+      "created_at": "2026-09-28T19:54:28.803Z"
+    },
+    {
+      "id": "target_100_31_1790625268803",
+      "name": "Christchurch Heat Pump & HVAC Pro #1",
+      "phone": "+64 21 100032",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",800",
+      "city": "Christchurch",
+      "notes": "Trade: Heat Pump & HVAC | Region: NZ | Demo Dispatch: G'day Christchurch Heat Pump & HVAC Pro #1! Never lose another k+ job to missed calls while on-site in Christchurch. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: Text DEMO to +1 (717) 899-9469 or WhatsApp +64 20 4115 3617",
+      "created_at": "2026-09-28T19:54:28.803Z"
+    },
+    {
+      "id": "target_100_32_1790625268803",
+      "name": "Christchurch Emergency Plumbing & Gas Pro #2",
+      "phone": "+64 21 100033",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",200",
+      "city": "Christchurch",
+      "notes": "Trade: Emergency Plumbing & Gas | Region: NZ | Demo Dispatch: G'day Christchurch Emergency Plumbing & Gas Pro #2! Never lose another k+ job to missed calls while on-site in Christchurch. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: Text DEMO to +1 (717) 899-9469 or WhatsApp +64 20 4115 3617",
+      "created_at": "2026-09-28T19:54:28.803Z"
+    },
+    {
+      "id": "target_100_33_1790625268803",
+      "name": "Christchurch Solar & Electrical Pro #3",
+      "phone": "+64 21 100034",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",500",
+      "city": "Christchurch",
+      "notes": "Trade: Solar & Electrical | Region: NZ | Demo Dispatch: G'day Christchurch Solar & Electrical Pro #3! Never lose another k+ job to missed calls while on-site in Christchurch. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: Text DEMO to +1 (717) 899-9469 or WhatsApp +64 20 4115 3617",
+      "created_at": "2026-09-28T19:54:28.803Z"
+    },
+    {
+      "id": "target_100_34_1790625268803",
+      "name": "Christchurch Roofing & Guttering Pro #4",
+      "phone": "+64 21 100035",
+      "status": "Ready for Demo Dispatch",
+      "job_value": "4,000",
+      "city": "Christchurch",
+      "notes": "Trade: Roofing & Guttering | Region: NZ | Demo Dispatch: G'day Christchurch Roofing & Guttering Pro #4! Never lose another k+ job to missed calls while on-site in Christchurch. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: Text DEMO to +1 (717) 899-9469 or WhatsApp +64 20 4115 3617",
+      "created_at": "2026-09-28T19:54:28.803Z"
+    },
+    {
+      "id": "target_100_35_1790625268803",
+      "name": "Christchurch Drainlaying & Relining Pro #5",
+      "phone": "+64 21 100036",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",500",
+      "city": "Christchurch",
+      "notes": "Trade: Drainlaying & Relining | Region: NZ | Demo Dispatch: G'day Christchurch Drainlaying & Relining Pro #5! Never lose another k+ job to missed calls while on-site in Christchurch. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: Text DEMO to +1 (717) 899-9469 or WhatsApp +64 20 4115 3617",
+      "created_at": "2026-09-28T19:54:28.803Z"
+    },
+    {
+      "id": "target_100_36_1790625268803",
+      "name": "Christchurch Heat Pump & HVAC Pro #6",
+      "phone": "+64 21 100037",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",800",
+      "city": "Christchurch",
+      "notes": "Trade: Heat Pump & HVAC | Region: NZ | Demo Dispatch: G'day Christchurch Heat Pump & HVAC Pro #6! Never lose another k+ job to missed calls while on-site in Christchurch. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: Text DEMO to +1 (717) 899-9469 or WhatsApp +64 20 4115 3617",
+      "created_at": "2026-09-28T19:54:28.803Z"
+    },
+    {
+      "id": "target_100_37_1790625268803",
+      "name": "Christchurch Emergency Plumbing & Gas Pro #7",
+      "phone": "+64 21 100038",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",200",
+      "city": "Christchurch",
+      "notes": "Trade: Emergency Plumbing & Gas | Region: NZ | Demo Dispatch: G'day Christchurch Emergency Plumbing & Gas Pro #7! Never lose another k+ job to missed calls while on-site in Christchurch. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: Text DEMO to +1 (717) 899-9469 or WhatsApp +64 20 4115 3617",
+      "created_at": "2026-09-28T19:54:28.803Z"
+    },
+    {
+      "id": "target_100_38_1790625268803",
+      "name": "Christchurch Solar & Electrical Pro #8",
+      "phone": "+64 21 100039",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",500",
+      "city": "Christchurch",
+      "notes": "Trade: Solar & Electrical | Region: NZ | Demo Dispatch: G'day Christchurch Solar & Electrical Pro #8! Never lose another k+ job to missed calls while on-site in Christchurch. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: Text DEMO to +1 (717) 899-9469 or WhatsApp +64 20 4115 3617",
+      "created_at": "2026-09-28T19:54:28.803Z"
+    },
+    {
+      "id": "target_100_39_1790625268803",
+      "name": "Christchurch Roofing & Guttering Pro #9",
+      "phone": "+64 21 100040",
+      "status": "Ready for Demo Dispatch",
+      "job_value": "4,000",
+      "city": "Christchurch",
+      "notes": "Trade: Roofing & Guttering | Region: NZ | Demo Dispatch: G'day Christchurch Roofing & Guttering Pro #9! Never lose another k+ job to missed calls while on-site in Christchurch. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: Text DEMO to +1 (717) 899-9469 or WhatsApp +64 20 4115 3617",
+      "created_at": "2026-09-28T19:54:28.803Z"
+    },
+    {
+      "id": "target_100_40_1790625268803",
+      "name": "Christchurch Drainlaying & Relining Pro #10",
+      "phone": "+64 21 100041",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",500",
+      "city": "Christchurch",
+      "notes": "Trade: Drainlaying & Relining | Region: NZ | Demo Dispatch: G'day Christchurch Drainlaying & Relining Pro #10! Never lose another k+ job to missed calls while on-site in Christchurch. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: Text DEMO to +1 (717) 899-9469 or WhatsApp +64 20 4115 3617",
+      "created_at": "2026-09-28T19:54:28.803Z"
+    },
+    {
+      "id": "target_100_41_1790625268804",
+      "name": "Christchurch Heat Pump & HVAC Pro #11",
+      "phone": "+64 21 100042",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",800",
+      "city": "Christchurch",
+      "notes": "Trade: Heat Pump & HVAC | Region: NZ | Demo Dispatch: G'day Christchurch Heat Pump & HVAC Pro #11! Never lose another k+ job to missed calls while on-site in Christchurch. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: Text DEMO to +1 (717) 899-9469 or WhatsApp +64 20 4115 3617",
+      "created_at": "2026-09-28T19:54:28.804Z"
+    },
+    {
+      "id": "target_100_42_1790625268804",
+      "name": "Christchurch Emergency Plumbing & Gas Pro #12",
+      "phone": "+64 21 100043",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",200",
+      "city": "Christchurch",
+      "notes": "Trade: Emergency Plumbing & Gas | Region: NZ | Demo Dispatch: G'day Christchurch Emergency Plumbing & Gas Pro #12! Never lose another k+ job to missed calls while on-site in Christchurch. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: Text DEMO to +1 (717) 899-9469 or WhatsApp +64 20 4115 3617",
+      "created_at": "2026-09-28T19:54:28.804Z"
+    },
+    {
+      "id": "target_100_43_1790625268804",
+      "name": "Christchurch Solar & Electrical Pro #13",
+      "phone": "+64 21 100044",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",500",
+      "city": "Christchurch",
+      "notes": "Trade: Solar & Electrical | Region: NZ | Demo Dispatch: G'day Christchurch Solar & Electrical Pro #13! Never lose another k+ job to missed calls while on-site in Christchurch. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: Text DEMO to +1 (717) 899-9469 or WhatsApp +64 20 4115 3617",
+      "created_at": "2026-09-28T19:54:28.804Z"
+    },
+    {
+      "id": "target_100_44_1790625268804",
+      "name": "Christchurch Roofing & Guttering Pro #14",
+      "phone": "+64 21 100045",
+      "status": "Ready for Demo Dispatch",
+      "job_value": "4,000",
+      "city": "Christchurch",
+      "notes": "Trade: Roofing & Guttering | Region: NZ | Demo Dispatch: G'day Christchurch Roofing & Guttering Pro #14! Never lose another k+ job to missed calls while on-site in Christchurch. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: Text DEMO to +1 (717) 899-9469 or WhatsApp +64 20 4115 3617",
+      "created_at": "2026-09-28T19:54:28.804Z"
+    },
+    {
+      "id": "target_100_45_1790625268804",
+      "name": "Christchurch Drainlaying & Relining Pro #15",
+      "phone": "+64 21 100046",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",500",
+      "city": "Christchurch",
+      "notes": "Trade: Drainlaying & Relining | Region: NZ | Demo Dispatch: G'day Christchurch Drainlaying & Relining Pro #15! Never lose another k+ job to missed calls while on-site in Christchurch. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: Text DEMO to +1 (717) 899-9469 or WhatsApp +64 20 4115 3617",
+      "created_at": "2026-09-28T19:54:28.804Z"
+    },
+    {
+      "id": "target_100_46_1790625268804",
+      "name": "Christchurch Heat Pump & HVAC Pro #16",
+      "phone": "+64 21 100047",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",800",
+      "city": "Christchurch",
+      "notes": "Trade: Heat Pump & HVAC | Region: NZ | Demo Dispatch: G'day Christchurch Heat Pump & HVAC Pro #16! Never lose another k+ job to missed calls while on-site in Christchurch. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: Text DEMO to +1 (717) 899-9469 or WhatsApp +64 20 4115 3617",
+      "created_at": "2026-09-28T19:54:28.804Z"
+    },
+    {
+      "id": "target_100_47_1790625268804",
+      "name": "Christchurch Emergency Plumbing & Gas Pro #17",
+      "phone": "+64 21 100048",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",200",
+      "city": "Christchurch",
+      "notes": "Trade: Emergency Plumbing & Gas | Region: NZ | Demo Dispatch: G'day Christchurch Emergency Plumbing & Gas Pro #17! Never lose another k+ job to missed calls while on-site in Christchurch. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: Text DEMO to +1 (717) 899-9469 or WhatsApp +64 20 4115 3617",
+      "created_at": "2026-09-28T19:54:28.804Z"
+    },
+    {
+      "id": "target_100_48_1790625268804",
+      "name": "Christchurch Solar & Electrical Pro #18",
+      "phone": "+64 21 100049",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",500",
+      "city": "Christchurch",
+      "notes": "Trade: Solar & Electrical | Region: NZ | Demo Dispatch: G'day Christchurch Solar & Electrical Pro #18! Never lose another k+ job to missed calls while on-site in Christchurch. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: Text DEMO to +1 (717) 899-9469 or WhatsApp +64 20 4115 3617",
+      "created_at": "2026-09-28T19:54:28.804Z"
+    },
+    {
+      "id": "target_100_49_1790625268804",
+      "name": "Christchurch Roofing & Guttering Pro #19",
+      "phone": "+64 21 100050",
+      "status": "Ready for Demo Dispatch",
+      "job_value": "4,000",
+      "city": "Christchurch",
+      "notes": "Trade: Roofing & Guttering | Region: NZ | Demo Dispatch: G'day Christchurch Roofing & Guttering Pro #19! Never lose another k+ job to missed calls while on-site in Christchurch. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: Text DEMO to +1 (717) 899-9469 or WhatsApp +64 20 4115 3617",
+      "created_at": "2026-09-28T19:54:28.804Z"
+    },
+    {
+      "id": "target_100_50_1790625268804",
+      "name": "Christchurch Drainlaying & Relining Pro #20",
+      "phone": "+64 21 100051",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",500",
+      "city": "Christchurch",
+      "notes": "Trade: Drainlaying & Relining | Region: NZ | Demo Dispatch: G'day Christchurch Drainlaying & Relining Pro #20! Never lose another k+ job to missed calls while on-site in Christchurch. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: Text DEMO to +1 (717) 899-9469 or WhatsApp +64 20 4115 3617",
+      "created_at": "2026-09-28T19:54:28.804Z"
+    },
+    {
+      "id": "target_100_51_1790625268804",
+      "name": "Christchurch Heat Pump & HVAC Pro #21",
+      "phone": "+64 21 100052",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",800",
+      "city": "Christchurch",
+      "notes": "Trade: Heat Pump & HVAC | Region: NZ | Demo Dispatch: G'day Christchurch Heat Pump & HVAC Pro #21! Never lose another k+ job to missed calls while on-site in Christchurch. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: Text DEMO to +1 (717) 899-9469 or WhatsApp +64 20 4115 3617",
+      "created_at": "2026-09-28T19:54:28.804Z"
+    },
+    {
+      "id": "target_100_52_1790625268804",
+      "name": "Christchurch Emergency Plumbing & Gas Pro #22",
+      "phone": "+64 21 100053",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",200",
+      "city": "Christchurch",
+      "notes": "Trade: Emergency Plumbing & Gas | Region: NZ | Demo Dispatch: G'day Christchurch Emergency Plumbing & Gas Pro #22! Never lose another k+ job to missed calls while on-site in Christchurch. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: Text DEMO to +1 (717) 899-9469 or WhatsApp +64 20 4115 3617",
+      "created_at": "2026-09-28T19:54:28.804Z"
+    },
+    {
+      "id": "target_100_53_1790625268804",
+      "name": "Christchurch Solar & Electrical Pro #23",
+      "phone": "+64 21 100054",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",500",
+      "city": "Christchurch",
+      "notes": "Trade: Solar & Electrical | Region: NZ | Demo Dispatch: G'day Christchurch Solar & Electrical Pro #23! Never lose another k+ job to missed calls while on-site in Christchurch. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: Text DEMO to +1 (717) 899-9469 or WhatsApp +64 20 4115 3617",
+      "created_at": "2026-09-28T19:54:28.804Z"
+    },
+    {
+      "id": "target_100_54_1790625268804",
+      "name": "Christchurch Roofing & Guttering Pro #24",
+      "phone": "+64 21 100055",
+      "status": "Ready for Demo Dispatch",
+      "job_value": "4,000",
+      "city": "Christchurch",
+      "notes": "Trade: Roofing & Guttering | Region: NZ | Demo Dispatch: G'day Christchurch Roofing & Guttering Pro #24! Never lose another k+ job to missed calls while on-site in Christchurch. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: Text DEMO to +1 (717) 899-9469 or WhatsApp +64 20 4115 3617",
+      "created_at": "2026-09-28T19:54:28.804Z"
+    },
+    {
+      "id": "target_100_55_1790625268804",
+      "name": "Christchurch Drainlaying & Relining Pro #25",
+      "phone": "+64 21 100056",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",500",
+      "city": "Christchurch",
+      "notes": "Trade: Drainlaying & Relining | Region: NZ | Demo Dispatch: G'day Christchurch Drainlaying & Relining Pro #25! Never lose another k+ job to missed calls while on-site in Christchurch. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: Text DEMO to +1 (717) 899-9469 or WhatsApp +64 20 4115 3617",
+      "created_at": "2026-09-28T19:54:28.804Z"
+    },
+    {
+      "id": "target_100_56_1790625268804",
+      "name": "Wellington Heat Pump & HVAC Pro #1",
+      "phone": "+64 21 100057",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",800",
+      "city": "Wellington",
+      "notes": "Trade: Heat Pump & HVAC | Region: NZ | Demo Dispatch: G'day Wellington Heat Pump & HVAC Pro #1! Never lose another k+ job to missed calls while on-site in Wellington. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: Text DEMO to +1 (717) 899-9469 or WhatsApp +64 20 4115 3617",
+      "created_at": "2026-09-28T19:54:28.804Z"
+    },
+    {
+      "id": "target_100_57_1790625268804",
+      "name": "Wellington Emergency Plumbing & Gas Pro #2",
+      "phone": "+64 21 100058",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",200",
+      "city": "Wellington",
+      "notes": "Trade: Emergency Plumbing & Gas | Region: NZ | Demo Dispatch: G'day Wellington Emergency Plumbing & Gas Pro #2! Never lose another k+ job to missed calls while on-site in Wellington. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: Text DEMO to +1 (717) 899-9469 or WhatsApp +64 20 4115 3617",
+      "created_at": "2026-09-28T19:54:28.804Z"
+    },
+    {
+      "id": "target_100_58_1790625268804",
+      "name": "Wellington Solar & Electrical Pro #3",
+      "phone": "+64 21 100059",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",500",
+      "city": "Wellington",
+      "notes": "Trade: Solar & Electrical | Region: NZ | Demo Dispatch: G'day Wellington Solar & Electrical Pro #3! Never lose another k+ job to missed calls while on-site in Wellington. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: Text DEMO to +1 (717) 899-9469 or WhatsApp +64 20 4115 3617",
+      "created_at": "2026-09-28T19:54:28.804Z"
+    },
+    {
+      "id": "target_100_59_1790625268804",
+      "name": "Wellington Roofing & Guttering Pro #4",
+      "phone": "+64 21 100060",
+      "status": "Ready for Demo Dispatch",
+      "job_value": "4,000",
+      "city": "Wellington",
+      "notes": "Trade: Roofing & Guttering | Region: NZ | Demo Dispatch: G'day Wellington Roofing & Guttering Pro #4! Never lose another k+ job to missed calls while on-site in Wellington. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: Text DEMO to +1 (717) 899-9469 or WhatsApp +64 20 4115 3617",
+      "created_at": "2026-09-28T19:54:28.804Z"
+    },
+    {
+      "id": "target_100_60_1790625268804",
+      "name": "Wellington Drainlaying & Relining Pro #5",
+      "phone": "+64 21 100061",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",500",
+      "city": "Wellington",
+      "notes": "Trade: Drainlaying & Relining | Region: NZ | Demo Dispatch: G'day Wellington Drainlaying & Relining Pro #5! Never lose another k+ job to missed calls while on-site in Wellington. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: Text DEMO to +1 (717) 899-9469 or WhatsApp +64 20 4115 3617",
+      "created_at": "2026-09-28T19:54:28.804Z"
+    },
+    {
+      "id": "target_100_61_1790625268804",
+      "name": "Wellington Heat Pump & HVAC Pro #6",
+      "phone": "+64 21 100062",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",800",
+      "city": "Wellington",
+      "notes": "Trade: Heat Pump & HVAC | Region: NZ | Demo Dispatch: G'day Wellington Heat Pump & HVAC Pro #6! Never lose another k+ job to missed calls while on-site in Wellington. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: Text DEMO to +1 (717) 899-9469 or WhatsApp +64 20 4115 3617",
+      "created_at": "2026-09-28T19:54:28.804Z"
+    },
+    {
+      "id": "target_100_62_1790625268804",
+      "name": "Wellington Emergency Plumbing & Gas Pro #7",
+      "phone": "+64 21 100063",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",200",
+      "city": "Wellington",
+      "notes": "Trade: Emergency Plumbing & Gas | Region: NZ | Demo Dispatch: G'day Wellington Emergency Plumbing & Gas Pro #7! Never lose another k+ job to missed calls while on-site in Wellington. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: Text DEMO to +1 (717) 899-9469 or WhatsApp +64 20 4115 3617",
+      "created_at": "2026-09-28T19:54:28.804Z"
+    },
+    {
+      "id": "target_100_63_1790625268804",
+      "name": "Wellington Solar & Electrical Pro #8",
+      "phone": "+64 21 100064",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",500",
+      "city": "Wellington",
+      "notes": "Trade: Solar & Electrical | Region: NZ | Demo Dispatch: G'day Wellington Solar & Electrical Pro #8! Never lose another k+ job to missed calls while on-site in Wellington. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: Text DEMO to +1 (717) 899-9469 or WhatsApp +64 20 4115 3617",
+      "created_at": "2026-09-28T19:54:28.804Z"
+    },
+    {
+      "id": "target_100_64_1790625268804",
+      "name": "Wellington Roofing & Guttering Pro #9",
+      "phone": "+64 21 100065",
+      "status": "Ready for Demo Dispatch",
+      "job_value": "4,000",
+      "city": "Wellington",
+      "notes": "Trade: Roofing & Guttering | Region: NZ | Demo Dispatch: G'day Wellington Roofing & Guttering Pro #9! Never lose another k+ job to missed calls while on-site in Wellington. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: Text DEMO to +1 (717) 899-9469 or WhatsApp +64 20 4115 3617",
+      "created_at": "2026-09-28T19:54:28.804Z"
+    },
+    {
+      "id": "target_100_65_1790625268804",
+      "name": "Wellington Drainlaying & Relining Pro #10",
+      "phone": "+64 21 100066",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",500",
+      "city": "Wellington",
+      "notes": "Trade: Drainlaying & Relining | Region: NZ | Demo Dispatch: G'day Wellington Drainlaying & Relining Pro #10! Never lose another k+ job to missed calls while on-site in Wellington. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: Text DEMO to +1 (717) 899-9469 or WhatsApp +64 20 4115 3617",
+      "created_at": "2026-09-28T19:54:28.804Z"
+    },
+    {
+      "id": "target_100_66_1790625268805",
+      "name": "Wellington Heat Pump & HVAC Pro #11",
+      "phone": "+64 21 100067",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",800",
+      "city": "Wellington",
+      "notes": "Trade: Heat Pump & HVAC | Region: NZ | Demo Dispatch: G'day Wellington Heat Pump & HVAC Pro #11! Never lose another k+ job to missed calls while on-site in Wellington. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: Text DEMO to +1 (717) 899-9469 or WhatsApp +64 20 4115 3617",
+      "created_at": "2026-09-28T19:54:28.805Z"
+    },
+    {
+      "id": "target_100_67_1790625268805",
+      "name": "Wellington Emergency Plumbing & Gas Pro #12",
+      "phone": "+64 21 100068",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",200",
+      "city": "Wellington",
+      "notes": "Trade: Emergency Plumbing & Gas | Region: NZ | Demo Dispatch: G'day Wellington Emergency Plumbing & Gas Pro #12! Never lose another k+ job to missed calls while on-site in Wellington. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: Text DEMO to +1 (717) 899-9469 or WhatsApp +64 20 4115 3617",
+      "created_at": "2026-09-28T19:54:28.805Z"
+    },
+    {
+      "id": "target_100_68_1790625268805",
+      "name": "Wellington Solar & Electrical Pro #13",
+      "phone": "+64 21 100069",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",500",
+      "city": "Wellington",
+      "notes": "Trade: Solar & Electrical | Region: NZ | Demo Dispatch: G'day Wellington Solar & Electrical Pro #13! Never lose another k+ job to missed calls while on-site in Wellington. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: Text DEMO to +1 (717) 899-9469 or WhatsApp +64 20 4115 3617",
+      "created_at": "2026-09-28T19:54:28.805Z"
+    },
+    {
+      "id": "target_100_69_1790625268805",
+      "name": "Wellington Roofing & Guttering Pro #14",
+      "phone": "+64 21 100070",
+      "status": "Ready for Demo Dispatch",
+      "job_value": "4,000",
+      "city": "Wellington",
+      "notes": "Trade: Roofing & Guttering | Region: NZ | Demo Dispatch: G'day Wellington Roofing & Guttering Pro #14! Never lose another k+ job to missed calls while on-site in Wellington. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: Text DEMO to +1 (717) 899-9469 or WhatsApp +64 20 4115 3617",
+      "created_at": "2026-09-28T19:54:28.805Z"
+    },
+    {
+      "id": "target_100_70_1790625268805",
+      "name": "Wellington Drainlaying & Relining Pro #15",
+      "phone": "+64 21 100071",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",500",
+      "city": "Wellington",
+      "notes": "Trade: Drainlaying & Relining | Region: NZ | Demo Dispatch: G'day Wellington Drainlaying & Relining Pro #15! Never lose another k+ job to missed calls while on-site in Wellington. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: Text DEMO to +1 (717) 899-9469 or WhatsApp +64 20 4115 3617",
+      "created_at": "2026-09-28T19:54:28.805Z"
+    },
+    {
+      "id": "target_100_71_1790625268805",
+      "name": "Wellington Heat Pump & HVAC Pro #16",
+      "phone": "+64 21 100072",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",800",
+      "city": "Wellington",
+      "notes": "Trade: Heat Pump & HVAC | Region: NZ | Demo Dispatch: G'day Wellington Heat Pump & HVAC Pro #16! Never lose another k+ job to missed calls while on-site in Wellington. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: Text DEMO to +1 (717) 899-9469 or WhatsApp +64 20 4115 3617",
+      "created_at": "2026-09-28T19:54:28.805Z"
+    },
+    {
+      "id": "target_100_72_1790625268805",
+      "name": "Wellington Emergency Plumbing & Gas Pro #17",
+      "phone": "+64 21 100073",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",200",
+      "city": "Wellington",
+      "notes": "Trade: Emergency Plumbing & Gas | Region: NZ | Demo Dispatch: G'day Wellington Emergency Plumbing & Gas Pro #17! Never lose another k+ job to missed calls while on-site in Wellington. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: Text DEMO to +1 (717) 899-9469 or WhatsApp +64 20 4115 3617",
+      "created_at": "2026-09-28T19:54:28.805Z"
+    },
+    {
+      "id": "target_100_73_1790625268805",
+      "name": "Wellington Solar & Electrical Pro #18",
+      "phone": "+64 21 100074",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",500",
+      "city": "Wellington",
+      "notes": "Trade: Solar & Electrical | Region: NZ | Demo Dispatch: G'day Wellington Solar & Electrical Pro #18! Never lose another k+ job to missed calls while on-site in Wellington. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: Text DEMO to +1 (717) 899-9469 or WhatsApp +64 20 4115 3617",
+      "created_at": "2026-09-28T19:54:28.805Z"
+    },
+    {
+      "id": "target_100_74_1790625268805",
+      "name": "Wellington Roofing & Guttering Pro #19",
+      "phone": "+64 21 100075",
+      "status": "Ready for Demo Dispatch",
+      "job_value": "4,000",
+      "city": "Wellington",
+      "notes": "Trade: Roofing & Guttering | Region: NZ | Demo Dispatch: G'day Wellington Roofing & Guttering Pro #19! Never lose another k+ job to missed calls while on-site in Wellington. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: Text DEMO to +1 (717) 899-9469 or WhatsApp +64 20 4115 3617",
+      "created_at": "2026-09-28T19:54:28.805Z"
+    },
+    {
+      "id": "target_100_75_1790625268805",
+      "name": "Wellington Drainlaying & Relining Pro #20",
+      "phone": "+64 21 100076",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",500",
+      "city": "Wellington",
+      "notes": "Trade: Drainlaying & Relining | Region: NZ | Demo Dispatch: G'day Wellington Drainlaying & Relining Pro #20! Never lose another k+ job to missed calls while on-site in Wellington. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: Text DEMO to +1 (717) 899-9469 or WhatsApp +64 20 4115 3617",
+      "created_at": "2026-09-28T19:54:28.805Z"
+    },
+    {
+      "id": "target_100_76_1790625268805",
+      "name": "Tauranga/Hamilton Heat Pump & HVAC Pro #1",
+      "phone": "+64 21 100077",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",800",
+      "city": "Tauranga/Hamilton",
+      "notes": "Trade: Heat Pump & HVAC | Region: NZ | Demo Dispatch: G'day Tauranga/Hamilton Heat Pump & HVAC Pro #1! Never lose another k+ job to missed calls while on-site in Tauranga/Hamilton. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: Text DEMO to +1 (717) 899-9469 or WhatsApp +64 20 4115 3617",
+      "created_at": "2026-09-28T19:54:28.805Z"
+    },
+    {
+      "id": "target_100_77_1790625268805",
+      "name": "Tauranga/Hamilton Emergency Plumbing & Gas Pro #2",
+      "phone": "+64 21 100078",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",200",
+      "city": "Tauranga/Hamilton",
+      "notes": "Trade: Emergency Plumbing & Gas | Region: NZ | Demo Dispatch: G'day Tauranga/Hamilton Emergency Plumbing & Gas Pro #2! Never lose another k+ job to missed calls while on-site in Tauranga/Hamilton. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: Text DEMO to +1 (717) 899-9469 or WhatsApp +64 20 4115 3617",
+      "created_at": "2026-09-28T19:54:28.805Z"
+    },
+    {
+      "id": "target_100_78_1790625268805",
+      "name": "Tauranga/Hamilton Solar & Electrical Pro #3",
+      "phone": "+64 21 100079",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",500",
+      "city": "Tauranga/Hamilton",
+      "notes": "Trade: Solar & Electrical | Region: NZ | Demo Dispatch: G'day Tauranga/Hamilton Solar & Electrical Pro #3! Never lose another k+ job to missed calls while on-site in Tauranga/Hamilton. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: Text DEMO to +1 (717) 899-9469 or WhatsApp +64 20 4115 3617",
+      "created_at": "2026-09-28T19:54:28.805Z"
+    },
+    {
+      "id": "target_100_79_1790625268805",
+      "name": "Tauranga/Hamilton Roofing & Guttering Pro #4",
+      "phone": "+64 21 100080",
+      "status": "Ready for Demo Dispatch",
+      "job_value": "4,000",
+      "city": "Tauranga/Hamilton",
+      "notes": "Trade: Roofing & Guttering | Region: NZ | Demo Dispatch: G'day Tauranga/Hamilton Roofing & Guttering Pro #4! Never lose another k+ job to missed calls while on-site in Tauranga/Hamilton. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: Text DEMO to +1 (717) 899-9469 or WhatsApp +64 20 4115 3617",
+      "created_at": "2026-09-28T19:54:28.805Z"
+    },
+    {
+      "id": "target_100_80_1790625268805",
+      "name": "Tauranga/Hamilton Drainlaying & Relining Pro #5",
+      "phone": "+64 21 100081",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",500",
+      "city": "Tauranga/Hamilton",
+      "notes": "Trade: Drainlaying & Relining | Region: NZ | Demo Dispatch: G'day Tauranga/Hamilton Drainlaying & Relining Pro #5! Never lose another k+ job to missed calls while on-site in Tauranga/Hamilton. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: Text DEMO to +1 (717) 899-9469 or WhatsApp +64 20 4115 3617",
+      "created_at": "2026-09-28T19:54:28.805Z"
+    },
+    {
+      "id": "target_100_81_1790625268805",
+      "name": "Tauranga/Hamilton Heat Pump & HVAC Pro #6",
+      "phone": "+64 21 100082",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",800",
+      "city": "Tauranga/Hamilton",
+      "notes": "Trade: Heat Pump & HVAC | Region: NZ | Demo Dispatch: G'day Tauranga/Hamilton Heat Pump & HVAC Pro #6! Never lose another k+ job to missed calls while on-site in Tauranga/Hamilton. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: Text DEMO to +1 (717) 899-9469 or WhatsApp +64 20 4115 3617",
+      "created_at": "2026-09-28T19:54:28.805Z"
+    },
+    {
+      "id": "target_100_82_1790625268805",
+      "name": "Tauranga/Hamilton Emergency Plumbing & Gas Pro #7",
+      "phone": "+64 21 100083",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",200",
+      "city": "Tauranga/Hamilton",
+      "notes": "Trade: Emergency Plumbing & Gas | Region: NZ | Demo Dispatch: G'day Tauranga/Hamilton Emergency Plumbing & Gas Pro #7! Never lose another k+ job to missed calls while on-site in Tauranga/Hamilton. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: Text DEMO to +1 (717) 899-9469 or WhatsApp +64 20 4115 3617",
+      "created_at": "2026-09-28T19:54:28.805Z"
+    },
+    {
+      "id": "target_100_83_1790625268805",
+      "name": "Tauranga/Hamilton Solar & Electrical Pro #8",
+      "phone": "+64 21 100084",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",500",
+      "city": "Tauranga/Hamilton",
+      "notes": "Trade: Solar & Electrical | Region: NZ | Demo Dispatch: G'day Tauranga/Hamilton Solar & Electrical Pro #8! Never lose another k+ job to missed calls while on-site in Tauranga/Hamilton. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: Text DEMO to +1 (717) 899-9469 or WhatsApp +64 20 4115 3617",
+      "created_at": "2026-09-28T19:54:28.805Z"
+    },
+    {
+      "id": "target_100_84_1790625268805",
+      "name": "Tauranga/Hamilton Roofing & Guttering Pro #9",
+      "phone": "+64 21 100085",
+      "status": "Ready for Demo Dispatch",
+      "job_value": "4,000",
+      "city": "Tauranga/Hamilton",
+      "notes": "Trade: Roofing & Guttering | Region: NZ | Demo Dispatch: G'day Tauranga/Hamilton Roofing & Guttering Pro #9! Never lose another k+ job to missed calls while on-site in Tauranga/Hamilton. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: Text DEMO to +1 (717) 899-9469 or WhatsApp +64 20 4115 3617",
+      "created_at": "2026-09-28T19:54:28.805Z"
+    },
+    {
+      "id": "target_100_85_1790625268805",
+      "name": "Tauranga/Hamilton Drainlaying & Relining Pro #10",
+      "phone": "+64 21 100086",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",500",
+      "city": "Tauranga/Hamilton",
+      "notes": "Trade: Drainlaying & Relining | Region: NZ | Demo Dispatch: G'day Tauranga/Hamilton Drainlaying & Relining Pro #10! Never lose another k+ job to missed calls while on-site in Tauranga/Hamilton. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: Text DEMO to +1 (717) 899-9469 or WhatsApp +64 20 4115 3617",
+      "created_at": "2026-09-28T19:54:28.805Z"
+    },
+    {
+      "id": "target_100_86_1790625268805",
+      "name": "Tauranga/Hamilton Heat Pump & HVAC Pro #11",
+      "phone": "+64 21 100087",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",800",
+      "city": "Tauranga/Hamilton",
+      "notes": "Trade: Heat Pump & HVAC | Region: NZ | Demo Dispatch: G'day Tauranga/Hamilton Heat Pump & HVAC Pro #11! Never lose another k+ job to missed calls while on-site in Tauranga/Hamilton. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: Text DEMO to +1 (717) 899-9469 or WhatsApp +64 20 4115 3617",
+      "created_at": "2026-09-28T19:54:28.805Z"
+    },
+    {
+      "id": "target_100_87_1790625268805",
+      "name": "Tauranga/Hamilton Emergency Plumbing & Gas Pro #12",
+      "phone": "+64 21 100088",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",200",
+      "city": "Tauranga/Hamilton",
+      "notes": "Trade: Emergency Plumbing & Gas | Region: NZ | Demo Dispatch: G'day Tauranga/Hamilton Emergency Plumbing & Gas Pro #12! Never lose another k+ job to missed calls while on-site in Tauranga/Hamilton. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: Text DEMO to +1 (717) 899-9469 or WhatsApp +64 20 4115 3617",
+      "created_at": "2026-09-28T19:54:28.805Z"
+    },
+    {
+      "id": "target_100_88_1790625268805",
+      "name": "Tauranga/Hamilton Solar & Electrical Pro #13",
+      "phone": "+64 21 100089",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",500",
+      "city": "Tauranga/Hamilton",
+      "notes": "Trade: Solar & Electrical | Region: NZ | Demo Dispatch: G'day Tauranga/Hamilton Solar & Electrical Pro #13! Never lose another k+ job to missed calls while on-site in Tauranga/Hamilton. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: Text DEMO to +1 (717) 899-9469 or WhatsApp +64 20 4115 3617",
+      "created_at": "2026-09-28T19:54:28.805Z"
+    },
+    {
+      "id": "target_100_89_1790625268805",
+      "name": "Tauranga/Hamilton Roofing & Guttering Pro #14",
+      "phone": "+64 21 100090",
+      "status": "Ready for Demo Dispatch",
+      "job_value": "4,000",
+      "city": "Tauranga/Hamilton",
+      "notes": "Trade: Roofing & Guttering | Region: NZ | Demo Dispatch: G'day Tauranga/Hamilton Roofing & Guttering Pro #14! Never lose another k+ job to missed calls while on-site in Tauranga/Hamilton. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: Text DEMO to +1 (717) 899-9469 or WhatsApp +64 20 4115 3617",
+      "created_at": "2026-09-28T19:54:28.805Z"
+    },
+    {
+      "id": "target_100_90_1790625268805",
+      "name": "Tauranga/Hamilton Drainlaying & Relining Pro #15",
+      "phone": "+64 21 100091",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",500",
+      "city": "Tauranga/Hamilton",
+      "notes": "Trade: Drainlaying & Relining | Region: NZ | Demo Dispatch: G'day Tauranga/Hamilton Drainlaying & Relining Pro #15! Never lose another k+ job to missed calls while on-site in Tauranga/Hamilton. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: Text DEMO to +1 (717) 899-9469 or WhatsApp +64 20 4115 3617",
+      "created_at": "2026-09-28T19:54:28.805Z"
+    },
+    {
+      "id": "target_100_91_1790625268805",
+      "name": "Sydney/Brisbane Heat Pump & HVAC Pro #1",
+      "phone": "+61 411 100092",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",800",
+      "city": "Sydney/Brisbane",
+      "notes": "Trade: Heat Pump & HVAC | Region: AU | Demo Dispatch: G'day Sydney/Brisbane Heat Pump & HVAC Pro #1! Never lose another k+ job to missed calls while on-site in Sydney/Brisbane. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: Text DEMO to +1 (717) 899-9469 or WhatsApp +64 20 4115 3617",
+      "created_at": "2026-09-28T19:54:28.805Z"
+    },
+    {
+      "id": "target_100_92_1790625268805",
+      "name": "Sydney/Brisbane Emergency Plumbing & Gas Pro #2",
+      "phone": "+61 411 100093",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",200",
+      "city": "Sydney/Brisbane",
+      "notes": "Trade: Emergency Plumbing & Gas | Region: AU | Demo Dispatch: G'day Sydney/Brisbane Emergency Plumbing & Gas Pro #2! Never lose another k+ job to missed calls while on-site in Sydney/Brisbane. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: Text DEMO to +1 (717) 899-9469 or WhatsApp +64 20 4115 3617",
+      "created_at": "2026-09-28T19:54:28.805Z"
+    },
+    {
+      "id": "target_100_93_1790625268805",
+      "name": "Sydney/Brisbane Solar & Electrical Pro #3",
+      "phone": "+61 411 100094",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",500",
+      "city": "Sydney/Brisbane",
+      "notes": "Trade: Solar & Electrical | Region: AU | Demo Dispatch: G'day Sydney/Brisbane Solar & Electrical Pro #3! Never lose another k+ job to missed calls while on-site in Sydney/Brisbane. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: Text DEMO to +1 (717) 899-9469 or WhatsApp +64 20 4115 3617",
+      "created_at": "2026-09-28T19:54:28.805Z"
+    },
+    {
+      "id": "target_100_94_1790625268805",
+      "name": "Sydney/Brisbane Roofing & Guttering Pro #4",
+      "phone": "+61 411 100095",
+      "status": "Ready for Demo Dispatch",
+      "job_value": "4,000",
+      "city": "Sydney/Brisbane",
+      "notes": "Trade: Roofing & Guttering | Region: AU | Demo Dispatch: G'day Sydney/Brisbane Roofing & Guttering Pro #4! Never lose another k+ job to missed calls while on-site in Sydney/Brisbane. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: Text DEMO to +1 (717) 899-9469 or WhatsApp +64 20 4115 3617",
+      "created_at": "2026-09-28T19:54:28.805Z"
+    },
+    {
+      "id": "target_100_95_1790625268805",
+      "name": "Sydney/Brisbane Drainlaying & Relining Pro #5",
+      "phone": "+61 411 100096",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",500",
+      "city": "Sydney/Brisbane",
+      "notes": "Trade: Drainlaying & Relining | Region: AU | Demo Dispatch: G'day Sydney/Brisbane Drainlaying & Relining Pro #5! Never lose another k+ job to missed calls while on-site in Sydney/Brisbane. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: Text DEMO to +1 (717) 899-9469 or WhatsApp +64 20 4115 3617",
+      "created_at": "2026-09-28T19:54:28.805Z"
+    },
+    {
+      "id": "target_100_96_1790625268805",
+      "name": "Sydney/Brisbane Heat Pump & HVAC Pro #6",
+      "phone": "+61 411 100097",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",800",
+      "city": "Sydney/Brisbane",
+      "notes": "Trade: Heat Pump & HVAC | Region: AU | Demo Dispatch: G'day Sydney/Brisbane Heat Pump & HVAC Pro #6! Never lose another k+ job to missed calls while on-site in Sydney/Brisbane. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: Text DEMO to +1 (717) 899-9469 or WhatsApp +64 20 4115 3617",
+      "created_at": "2026-09-28T19:54:28.805Z"
+    },
+    {
+      "id": "target_100_97_1790625268805",
+      "name": "Sydney/Brisbane Emergency Plumbing & Gas Pro #7",
+      "phone": "+61 411 100098",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",200",
+      "city": "Sydney/Brisbane",
+      "notes": "Trade: Emergency Plumbing & Gas | Region: AU | Demo Dispatch: G'day Sydney/Brisbane Emergency Plumbing & Gas Pro #7! Never lose another k+ job to missed calls while on-site in Sydney/Brisbane. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: Text DEMO to +1 (717) 899-9469 or WhatsApp +64 20 4115 3617",
+      "created_at": "2026-09-28T19:54:28.805Z"
+    },
+    {
+      "id": "target_100_98_1790625268805",
+      "name": "Sydney/Brisbane Solar & Electrical Pro #8",
+      "phone": "+61 411 100099",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",500",
+      "city": "Sydney/Brisbane",
+      "notes": "Trade: Solar & Electrical | Region: AU | Demo Dispatch: G'day Sydney/Brisbane Solar & Electrical Pro #8! Never lose another k+ job to missed calls while on-site in Sydney/Brisbane. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: Text DEMO to +1 (717) 899-9469 or WhatsApp +64 20 4115 3617",
+      "created_at": "2026-09-28T19:54:28.805Z"
+    },
+    {
+      "id": "target_100_99_1790625268805",
+      "name": "Sydney/Brisbane Roofing & Guttering Pro #9",
+      "phone": "+61 411 100100",
+      "status": "Ready for Demo Dispatch",
+      "job_value": "4,000",
+      "city": "Sydney/Brisbane",
+      "notes": "Trade: Roofing & Guttering | Region: AU | Demo Dispatch: G'day Sydney/Brisbane Roofing & Guttering Pro #9! Never lose another k+ job to missed calls while on-site in Sydney/Brisbane. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: Text DEMO to +1 (717) 899-9469 or WhatsApp +64 20 4115 3617",
+      "created_at": "2026-09-28T19:54:28.805Z"
+    },
+    {
+      "id": "target_100_100_1790625268805",
+      "name": "Sydney/Brisbane Drainlaying & Relining Pro #10",
+      "phone": "+61 411 100101",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",500",
+      "city": "Sydney/Brisbane",
+      "notes": "Trade: Drainlaying & Relining | Region: AU | Demo Dispatch: G'day Sydney/Brisbane Drainlaying & Relining Pro #10! Never lose another k+ job to missed calls while on-site in Sydney/Brisbane. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: Text DEMO to +1 (717) 899-9469 or WhatsApp +64 20 4115 3617",
+      "created_at": "2026-09-28T19:54:28.805Z"
     }
   ],
   "calls": [
+    {
+      "tenant_id": "pilot_tenant_melbourne_1",
+      "id": "1790625302384",
+      "call_id": "demo_1790625302384",
+      "from_number": "+6421123456",
+      "timestamp": "2026-09-28T19:55:02.384Z",
+      "message": "G'day Auckland Heat Pump Prospect, Zenna here from Hartley Plumbing! Dave is on the tools. We have confirmed your $150 diagnostic booking for Auckland Central.",
+      "status": "completed",
+      "sms_sent": true
+    },
     {
       "tenant_id": "pilot_tenant_melbourne_1",
       "id": "1790583233483",
