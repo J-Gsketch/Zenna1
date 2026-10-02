@@ -1,0 +1,2620 @@
+{
+  "leads": [
+    {
+      "id": "lead_CUST_000027_1790929212159",
+      "tenant_id": "tenant_CUST_000027",
+      "name": "Contractor #27 (Auckland)",
+      "phone": "020 4115 027",
+      "status": "Fast-Track Active",
+      "job_value": "$2850",
+      "city": "Auckland",
+      "notes": "Autonomous stress test lead for CUST_000027",
+      "created_at": "2026-10-02T08:20:12.159Z"
+    },
+    {
+      "id": "priority_top10_10_1790627330338",
+      "name": "Whitehead Plumbing & Gas",
+      "phone": "info@whiteheadplumbing.co.nz",
+      "status": "Priority 1 Outreach Ready",
+      "job_value": ",200 NZD",
+      "city": "Christchurch",
+      "notes": "Top 10 Target | Contact: info@whiteheadplumbing.co.nz | Demo line: +64 20 4115 3617 | WhatsApp: +64 20 4115 3617",
+      "created_at": "2026-09-28T20:28:50.338Z"
+    },
+    {
+      "id": "priority_top10_9_1790627330337",
+      "name": "White & Taylor Plumbers",
+      "phone": "office@whiteandtaylor.co.nz",
+      "status": "Priority 1 Outreach Ready",
+      "job_value": ",500 NZD",
+      "city": "Christchurch",
+      "notes": "Top 10 Target | Contact: office@whiteandtaylor.co.nz | Demo line: +64 20 4115 3617 | WhatsApp: +64 20 4115 3617",
+      "created_at": "2026-09-28T20:28:50.337Z"
+    },
+    {
+      "id": "priority_top10_8_1790627330337",
+      "name": "Heat Force Canterbury",
+      "phone": "sales@heatforce.co.nz",
+      "status": "Priority 1 Outreach Ready",
+      "job_value": ",000 NZD",
+      "city": "Christchurch",
+      "notes": "Top 10 Target | Contact: sales@heatforce.co.nz | Demo line: +64 20 4115 3617 | WhatsApp: +64 20 4115 3617",
+      "created_at": "2026-09-28T20:28:50.337Z"
+    },
+    {
+      "id": "priority_top10_7_1790627330337",
+      "name": "HPAC Christchurch",
+      "phone": "https://hpac.co.nz",
+      "status": "Priority 1 Outreach Ready",
+      "job_value": ",000 NZD",
+      "city": "Christchurch",
+      "notes": "Top 10 Target | Contact: https://hpac.co.nz | Demo line: +64 20 4115 3617 | WhatsApp: +64 20 4115 3617",
+      "created_at": "2026-09-28T20:28:50.337Z"
+    },
+    {
+      "id": "priority_top10_6_1790627330337",
+      "name": "The Heat Pump People",
+      "phone": "info@theheatpumppeople.co.nz",
+      "status": "Priority 1 Outreach Ready",
+      "job_value": ",500 NZD",
+      "city": "Christchurch",
+      "notes": "Top 10 Target | Contact: info@theheatpumppeople.co.nz | Demo line: +64 20 4115 3617 | WhatsApp: +64 20 4115 3617",
+      "created_at": "2026-09-28T20:28:50.337Z"
+    },
+    {
+      "id": "priority_top10_5_1790627330337",
+      "name": "Air Perfection Ltd",
+      "phone": "027 340 0693",
+      "status": "Priority 1 Outreach Ready",
+      "job_value": ",500 NZD",
+      "city": "Auckland",
+      "notes": "Top 10 Target | Contact: 027 340 0693 | Demo line: +64 20 4115 3617 | WhatsApp: +64 20 4115 3617",
+      "created_at": "2026-09-28T20:28:50.337Z"
+    },
+    {
+      "id": "priority_top10_4_1790627330337",
+      "name": "Auckland Plumbers Group",
+      "phone": "https://aucklandplumbersgroup.co.nz",
+      "status": "Priority 1 Outreach Ready",
+      "job_value": ",000 NZD",
+      "city": "Auckland",
+      "notes": "Top 10 Target | Contact: https://aucklandplumbersgroup.co.nz | Demo line: +64 20 4115 3617 | WhatsApp: +64 20 4115 3617",
+      "created_at": "2026-09-28T20:28:50.337Z"
+    },
+    {
+      "id": "priority_top10_3_1790627330337",
+      "name": "Response Plumbing 24/7",
+      "phone": "https://responseplumbing.co.nz",
+      "status": "Priority 1 Outreach Ready",
+      "job_value": ",500 NZD",
+      "city": "Auckland",
+      "notes": "Top 10 Target | Contact: https://responseplumbing.co.nz | Demo line: +64 20 4115 3617 | WhatsApp: +64 20 4115 3617",
+      "created_at": "2026-09-28T20:28:50.337Z"
+    },
+    {
+      "id": "priority_top10_2_1790627330337",
+      "name": "North Shore Heat Pumps",
+      "phone": "office@northshoreheatpumps.co.nz",
+      "status": "Priority 1 Outreach Ready",
+      "job_value": ",200 NZD",
+      "city": "Auckland",
+      "notes": "Top 10 Target | Contact: office@northshoreheatpumps.co.nz | Demo line: +64 20 4115 3617 | WhatsApp: +64 20 4115 3617",
+      "created_at": "2026-09-28T20:28:50.337Z"
+    },
+    {
+      "id": "priority_top10_1_1790627330333",
+      "name": "Varcoe Heat Pumps",
+      "phone": "https://www.varcoe.co.nz",
+      "status": "Priority 1 Outreach Ready",
+      "job_value": ",000 NZD",
+      "city": "Auckland",
+      "notes": "Top 10 Target | Contact: https://www.varcoe.co.nz | Demo line: +64 20 4115 3617 | WhatsApp: +64 20 4115 3617",
+      "created_at": "2026-09-28T20:28:50.333Z"
+    },
+    {
+      "tenant_id": "pilot_tenant_melbourne_1",
+      "phone": "+6421123456",
+      "name": "Auckland Heat Pump Prospect",
+      "status": "Pending",
+      "job_value": "$150",
+      "notes": "[Route A Sales Demo] Suburb: Auckland Central | Issue: Ducted system installation quote | ",
+      "created_at": "2026-09-28T19:55:02.339Z"
+    },
+    {
+      "tenant_id": "pilot_tenant_melbourne_1",
+      "phone": "+64215558912",
+      "name": "Sarah Jenkins",
+      "status": "Qualified (Fee Accepted)",
+      "job_value": "$150",
+      "notes": "[Route A Sales Demo] Suburb: Ponsonby, Auckland | Issue: Burst kitchen main pipe - urgent water cutoff required | Found via trade counter card at Carters Auckland",
+      "created_at": "2026-09-28T08:13:53.422Z"
+    },
+    {
+      "tenant_id": "heavy_blanket_campaign",
+      "phone": "+6421006002",
+      "name": "Fendalton Master Sparkies (Jonty)",
+      "status": "High Intent Target",
+      "job_value": "$199 NZD/mo",
+      "notes": "[Heavy Blanket] City: Christchurch | Suburb: Fendalton | Trade: Electrical | Avg Job: $2,600 NZD | Hook: \"EV charging stations & smart home cabling\" | Outreach SMS: \"G'day Jonty! Saw Fendalton Master Sparkies operating around Fendalton. When you're on tools for a EV charging stations & smart home cabling job, missed calls go straight to the next tradie on Google. Zenna AI catches missed calls in 3s, texts your quote/booking link & secures the deposit. Test it free for 7 days: https://zenna.au/demo\"",
+      "created_at": "2026-08-28T16:33:53.198Z"
+    },
+    {
+      "tenant_id": "heavy_blanket_campaign",
+      "phone": "+6421006001",
+      "name": "Merivale Heritage Plumbing (Fergus)",
+      "status": "High Intent Target",
+      "job_value": "$199 NZD/mo",
+      "notes": "[Heavy Blanket] City: Christchurch | Suburb: Merivale | Trade: Plumbing | Avg Job: $2,900 NZD | Hook: \"Post-quake ringmain pipe rehabilitation\" | Outreach SMS: \"G'day Fergus! Saw Merivale Heritage Plumbing operating around Merivale. When you're on tools for a Post-quake ringmain pipe rehabilitation job, missed calls go straight to the next tradie on Google. Zenna AI catches missed calls in 3s, texts your quote/booking link & secures the deposit. Test it free for 7 days: https://zenna.au/demo\"",
+      "created_at": "2026-08-28T16:33:53.158Z"
+    },
+    {
+      "tenant_id": "heavy_blanket_campaign",
+      "phone": "+6421005002",
+      "name": "Thorndon Certified Drainage Co (Lachlan)",
+      "status": "High Intent Target",
+      "job_value": "$199 NZD/mo",
+      "notes": "[Heavy Blanket] City: Wellington | Suburb: Thorndon | Trade: Drainlaying | Avg Job: $3,600 NZD | Hook: \"Slip repair & hillside stormwater management\" | Outreach SMS: \"G'day Lachlan! Saw Thorndon Certified Drainage Co operating around Thorndon. When you're on tools for a Slip repair & hillside stormwater management job, missed calls go straight to the next tradie on Google. Zenna AI catches missed calls in 3s, texts your quote/booking link & secures the deposit. Test it free for 7 days: https://zenna.au/demo\"",
+      "created_at": "2026-08-28T16:33:53.124Z"
+    },
+    {
+      "tenant_id": "heavy_blanket_campaign",
+      "phone": "+6421005001",
+      "name": "Te Aro Central Heating & Heat Pumps (Caleb)",
+      "status": "High Intent Target",
+      "job_value": "$199 NZD/mo",
+      "notes": "[Heavy Blanket] City: Wellington | Suburb: Te Aro | Trade: HVAC | Avg Job: $3,800 NZD | Hook: \"High-efficiency ducted heat pump systems\" | Outreach SMS: \"G'day Caleb! Saw Te Aro Central Heating & Heat Pumps operating around Te Aro. When you're on tools for a High-efficiency ducted heat pump systems job, missed calls go straight to the next tradie on Google. Zenna AI catches missed calls in 3s, texts your quote/booking link & secures the deposit. Test it free for 7 days: https://zenna.au/demo\"",
+      "created_at": "2026-08-28T16:33:53.092Z"
+    },
+    {
+      "tenant_id": "heavy_blanket_campaign",
+      "phone": "+6421004004",
+      "name": "Mount Eden Drainage & Earthworks (Niko)",
+      "status": "High Intent Target",
+      "job_value": "$199 NZD/mo",
+      "notes": "[Heavy Blanket] City: Auckland | Suburb: Mount Eden | Trade: Drainlaying | Avg Job: $4,200 NZD | Hook: \"Council consenting & public sewer connections\" | Outreach SMS: \"G'day Niko! Saw Mount Eden Drainage & Earthworks operating around Mount Eden. When you're on tools for a Council consenting & public sewer connections job, missed calls go straight to the next tradie on Google. Zenna AI catches missed calls in 3s, texts your quote/booking link & secures the deposit. Test it free for 7 days: https://zenna.au/demo\"",
+      "created_at": "2026-08-28T16:33:53.061Z"
+    },
+    {
+      "tenant_id": "heavy_blanket_campaign",
+      "phone": "+6421004003",
+      "name": "Remuera Architectural Roofing NZ (Angus)",
+      "status": "High Intent Target",
+      "job_value": "$199 NZD/mo",
+      "notes": "[Heavy Blanket] City: Auckland | Suburb: Remuera | Trade: Roofing | Avg Job: $7,500 NZD | Hook: \"Longrun metal roofing & fascia installs\" | Outreach SMS: \"G'day Angus! Saw Remuera Architectural Roofing NZ operating around Remuera. When you're on tools for a Longrun metal roofing & fascia installs job, missed calls go straight to the next tradie on Google. Zenna AI catches missed calls in 3s, texts your quote/booking link & secures the deposit. Test it free for 7 days: https://zenna.au/demo\"",
+      "created_at": "2026-08-28T16:33:53.031Z"
+    },
+    {
+      "tenant_id": "heavy_blanket_campaign",
+      "phone": "+6421004002",
+      "name": "Takapuna Master Electricians NZ (Wiremu)",
+      "status": "High Intent Target",
+      "job_value": "$199 NZD/mo",
+      "notes": "[Heavy Blanket] City: Auckland | Suburb: Takapuna | Trade: Electrical | Avg Job: $2,400 NZD | Hook: \"Full villa switchboard modernisation\" | Outreach SMS: \"G'day Wiremu! Saw Takapuna Master Electricians NZ operating around Takapuna. When you're on tools for a Full villa switchboard modernisation job, missed calls go straight to the next tradie on Google. Zenna AI catches missed calls in 3s, texts your quote/booking link & secures the deposit. Test it free for 7 days: https://zenna.au/demo\"",
+      "created_at": "2026-08-28T16:33:53.000Z"
+    },
+    {
+      "tenant_id": "heavy_blanket_campaign",
+      "phone": "+6421004001",
+      "name": "Ponsonby Elite Plumbing & Gas (Hamish)",
+      "status": "High Intent Target",
+      "job_value": "$199 NZD/mo",
+      "notes": "[Heavy Blanket] City: Auckland | Suburb: Ponsonby | Trade: Plumbing | Avg Job: $3,200 NZD | Hook: \"Mains pressure cylinder conversions\" | Outreach SMS: \"G'day Hamish! Saw Ponsonby Elite Plumbing & Gas operating around Ponsonby. When you're on tools for a Mains pressure cylinder conversions job, missed calls go straight to the next tradie on Google. Zenna AI catches missed calls in 3s, texts your quote/booking link & secures the deposit. Test it free for 7 days: https://zenna.au/demo\"",
+      "created_at": "2026-08-28T16:33:52.969Z"
+    },
+    {
+      "tenant_id": "heavy_blanket_campaign",
+      "phone": "+61414003004",
+      "name": "Broadbeach HVAC & Coolrooms (Kane)",
+      "status": "High Intent Target",
+      "job_value": "$199 AUD/mo",
+      "notes": "[Heavy Blanket] City: Gold Coast | Suburb: Broadbeach | Trade: HVAC | Avg Job: $3,500 | Hook: \"Hospitality refrigeration & coolroom repair\" | Outreach SMS: \"G'day Kane! Saw Broadbeach HVAC & Coolrooms operating around Broadbeach. When you're on tools for a Hospitality refrigeration & coolroom repair job, missed calls go straight to the next tradie on Google. Zenna AI catches missed calls in 3s, texts your quote/booking link & secures the deposit. Test it free for 7 days: https://zenna.au/demo\"",
+      "created_at": "2026-08-28T16:33:52.935Z"
+    },
+    {
+      "tenant_id": "heavy_blanket_campaign",
+      "phone": "+61414003003",
+      "name": "Burleigh Heads Roof Leak Specialists (Troy)",
+      "status": "High Intent Target",
+      "job_value": "$199 AUD/mo",
+      "notes": "[Heavy Blanket] City: Gold Coast | Suburb: Burleigh Heads | Trade: Roofing | Avg Job: $3,900 | Hook: \"Cyclone-rated metal roof flashing\" | Outreach SMS: \"G'day Troy! Saw Burleigh Heads Roof Leak Specialists operating around Burleigh Heads. When you're on tools for a Cyclone-rated metal roof flashing job, missed calls go straight to the next tradie on Google. Zenna AI catches missed calls in 3s, texts your quote/booking link & secures the deposit. Test it free for 7 days: https://zenna.au/demo\"",
+      "created_at": "2026-08-28T16:33:52.746Z"
+    },
+    {
+      "tenant_id": "heavy_blanket_campaign",
+      "phone": "+61414003002",
+      "name": "Fortitude Valley Solar & Electrical (Luke)",
+      "status": "High Intent Target",
+      "job_value": "$199 AUD/mo",
+      "notes": "[Heavy Blanket] City: Brisbane | Suburb: Fortitude Valley | Trade: Electrical | Avg Job: $5,200 | Hook: \"10kW commercial solar & battery installs\" | Outreach SMS: \"G'day Luke! Saw Fortitude Valley Solar & Electrical operating around Fortitude Valley. When you're on tools for a 10kW commercial solar & battery installs job, missed calls go straight to the next tradie on Google. Zenna AI catches missed calls in 3s, texts your quote/booking link & secures the deposit. Test it free for 7 days: https://zenna.au/demo\"",
+      "created_at": "2026-08-28T16:33:52.633Z"
+    },
+    {
+      "tenant_id": "heavy_blanket_campaign",
+      "phone": "+61414003001",
+      "name": "New Farm Rapid Plumbing Solutions (Craig)",
+      "status": "High Intent Target",
+      "job_value": "$199 AUD/mo",
+      "notes": "[Heavy Blanket] City: Brisbane | Suburb: New Farm | Trade: Plumbing | Avg Job: $2,600 | Hook: \"Heritage home copper pipe repiping\" | Outreach SMS: \"G'day Craig! Saw New Farm Rapid Plumbing Solutions operating around New Farm. When you're on tools for a Heritage home copper pipe repiping job, missed calls go straight to the next tradie on Google. Zenna AI catches missed calls in 3s, texts your quote/booking link & secures the deposit. Test it free for 7 days: https://zenna.au/demo\"",
+      "created_at": "2026-08-28T16:33:52.602Z"
+    },
+    {
+      "tenant_id": "heavy_blanket_campaign",
+      "phone": "+61413002005",
+      "name": "Cronulla Coastal Drainage & Civil (Matty)",
+      "status": "High Intent Target",
+      "job_value": "$199 AUD/mo",
+      "notes": "[Heavy Blanket] City: Sydney | Suburb: Cronulla | Trade: Drainlaying | Avg Job: $3,800 | Hook: \"Stormwater retention & subsoil drainage\" | Outreach SMS: \"G'day Matty! Saw Cronulla Coastal Drainage & Civil operating around Cronulla. When you're on tools for a Stormwater retention & subsoil drainage job, missed calls go straight to the next tradie on Google. Zenna AI catches missed calls in 3s, texts your quote/booking link & secures the deposit. Test it free for 7 days: https://zenna.au/demo\"",
+      "created_at": "2026-08-28T16:33:51.101Z"
+    },
+    {
+      "tenant_id": "heavy_blanket_campaign",
+      "phone": "+61413002004",
+      "name": "Parramatta Commercial HVAC & Chillers (Ahmed)",
+      "status": "High Intent Target",
+      "job_value": "$199 AUD/mo",
+      "notes": "[Heavy Blanket] City: Sydney | Suburb: Parramatta | Trade: HVAC | Avg Job: $4,800 | Hook: \"Commercial VRF rooftop aircon units\" | Outreach SMS: \"G'day Ahmed! Saw Parramatta Commercial HVAC & Chillers operating around Parramatta. When you're on tools for a Commercial VRF rooftop aircon units job, missed calls go straight to the next tradie on Google. Zenna AI catches missed calls in 3s, texts your quote/booking link & secures the deposit. Test it free for 7 days: https://zenna.au/demo\"",
+      "created_at": "2026-08-28T16:33:51.068Z"
+    },
+    {
+      "tenant_id": "heavy_blanket_campaign",
+      "phone": "+61413002003",
+      "name": "Surry Hills Architectural Roofing (Jack)",
+      "status": "High Intent Target",
+      "job_value": "$199 AUD/mo",
+      "notes": "[Heavy Blanket] City: Sydney | Suburb: Surry Hills | Trade: Roofing | Avg Job: $6,000 | Hook: \"Slate & Colorbond architectural re-roofs\" | Outreach SMS: \"G'day Jack! Saw Surry Hills Architectural Roofing operating around Surry Hills. When you're on tools for a Slate & Colorbond architectural re-roofs job, missed calls go straight to the next tradie on Google. Zenna AI catches missed calls in 3s, texts your quote/booking link & secures the deposit. Test it free for 7 days: https://zenna.au/demo\"",
+      "created_at": "2026-08-28T16:33:50.329Z"
+    },
+    {
+      "tenant_id": "heavy_blanket_campaign",
+      "phone": "+61413002002",
+      "name": "Manly Level 2 Electrical Specialists (Toby)",
+      "status": "High Intent Target",
+      "job_value": "$199 AUD/mo",
+      "notes": "[Heavy Blanket] City: Sydney | Suburb: Manly | Trade: Electrical | Avg Job: $2,700 | Hook: \"Level 2 overhead service connections\" | Outreach SMS: \"G'day Toby! Saw Manly Level 2 Electrical Specialists operating around Manly. When you're on tools for a Level 2 overhead service connections job, missed calls go straight to the next tradie on Google. Zenna AI catches missed calls in 3s, texts your quote/booking link & secures the deposit. Test it free for 7 days: https://zenna.au/demo\"",
+      "created_at": "2026-08-28T16:33:50.300Z"
+    },
+    {
+      "tenant_id": "heavy_blanket_campaign",
+      "phone": "+61413002001",
+      "name": "Bondi Precision Plumbing Co (Callum)",
+      "status": "High Intent Target",
+      "job_value": "$199 AUD/mo",
+      "notes": "[Heavy Blanket] City: Sydney | Suburb: Bondi | Trade: Plumbing | Avg Job: $3,400 | Hook: \"Coastal bathroom renovation rough-ins\" | Outreach SMS: \"G'day Callum! Saw Bondi Precision Plumbing Co operating around Bondi. When you're on tools for a Coastal bathroom renovation rough-ins job, missed calls go straight to the next tradie on Google. Zenna AI catches missed calls in 3s, texts your quote/booking link & secures the deposit. Test it free for 7 days: https://zenna.au/demo\"",
+      "created_at": "2026-08-28T16:33:50.270Z"
+    },
+    {
+      "tenant_id": "heavy_blanket_campaign",
+      "phone": "+61412001005",
+      "name": "Hawthorn Drain Jetting & CCTV (Darren)",
+      "status": "High Intent Target",
+      "job_value": "$199 AUD/mo",
+      "notes": "[Heavy Blanket] City: Melbourne | Suburb: Hawthorn | Trade: Drainlaying | Avg Job: $2,400 | Hook: \"Blocked sewer clearings & pipe relining\" | Outreach SMS: \"G'day Darren! Saw Hawthorn Drain Jetting & CCTV operating around Hawthorn. When you're on tools for a Blocked sewer clearings & pipe relining job, missed calls go straight to the next tradie on Google. Zenna AI catches missed calls in 3s, texts your quote/booking link & secures the deposit. Test it free for 7 days: https://zenna.au/demo\"",
+      "created_at": "2026-08-28T16:33:50.235Z"
+    },
+    {
+      "tenant_id": "heavy_blanket_campaign",
+      "phone": "+61412001004",
+      "name": "South Yarra AirCon & Climate Co (Liam)",
+      "status": "High Intent Target",
+      "job_value": "$199 AUD/mo",
+      "notes": "[Heavy Blanket] City: Melbourne | Suburb: South Yarra | Trade: HVAC | Avg Job: $3,200 | Hook: \"Commercial ducted HVAC installs\" | Outreach SMS: \"G'day Liam! Saw South Yarra AirCon & Climate Co operating around South Yarra. When you're on tools for a Commercial ducted HVAC installs job, missed calls go straight to the next tradie on Google. Zenna AI catches missed calls in 3s, texts your quote/booking link & secures the deposit. Test it free for 7 days: https://zenna.au/demo\"",
+      "created_at": "2026-08-28T16:33:50.200Z"
+    },
+    {
+      "tenant_id": "heavy_blanket_campaign",
+      "phone": "+61412001003",
+      "name": "Brighton Roof & Gutter Restorations (Shane)",
+      "status": "High Intent Target",
+      "job_value": "$199 AUD/mo",
+      "notes": "[Heavy Blanket] City: Melbourne | Suburb: Brighton | Trade: Roofing | Avg Job: $4,500 | Hook: \"Storm damage leak repairs & re-pointing\" | Outreach SMS: \"G'day Shane! Saw Brighton Roof & Gutter Restorations operating around Brighton. When you're on tools for a Storm damage leak repairs & re-pointing job, missed calls go straight to the next tradie on Google. Zenna AI catches missed calls in 3s, texts your quote/booking link & secures the deposit. Test it free for 7 days: https://zenna.au/demo\"",
+      "created_at": "2026-08-28T16:33:50.168Z"
+    },
+    {
+      "tenant_id": "heavy_blanket_campaign",
+      "phone": "+61412001002",
+      "name": "Fitzroy Master Sparkies (Brendan)",
+      "status": "High Intent Target",
+      "job_value": "$199 AUD/mo",
+      "notes": "[Heavy Blanket] City: Melbourne | Suburb: Fitzroy | Trade: Electrical | Avg Job: $1,950 | Hook: \"Switchboard upgrades and rewires\" | Outreach SMS: \"G'day Brendan! Saw Fitzroy Master Sparkies operating around Fitzroy. When you're on tools for a Switchboard upgrades and rewires job, missed calls go straight to the next tradie on Google. Zenna AI catches missed calls in 3s, texts your quote/booking link & secures the deposit. Test it free for 7 days: https://zenna.au/demo\"",
+      "created_at": "2026-08-28T16:33:50.135Z"
+    },
+    {
+      "tenant_id": "heavy_blanket_campaign",
+      "phone": "+61412001001",
+      "name": "Richmond 24/7 Plumbing & Gas (Mick)",
+      "status": "High Intent Target",
+      "job_value": "$199 AUD/mo",
+      "notes": "[Heavy Blanket] City: Melbourne | Suburb: Richmond | Trade: Plumbing | Avg Job: $2,800 | Hook: \"Emergency burst pipe & hot water cylinder replacements\" | Outreach SMS: \"G'day Mick! Saw Richmond 24/7 Plumbing & Gas operating around Richmond. When you're on tools for a Emergency burst pipe & hot water cylinder replacements job, missed calls go straight to the next tradie on Google. Zenna AI catches missed calls in 3s, texts your quote/booking link & secures the deposit. Test it free for 7 days: https://zenna.au/demo\"",
+      "created_at": "2026-08-28T16:33:49.243Z"
+    },
+    {
+      "phone": "+6141102000",
+      "name": "Melbourne Plumbing Specialists #20",
+      "status": "Scale Target Prospect",
+      "job_value": "$199 AUD/mo",
+      "notes": "Zenna Scaling Engine Outreach -> City: Melbourne | Message: \"G'day Melbourne Plumbing Specialists #20! Never lose another $3k+ job to missed calls while on-site in Melbourne. Zenna AI catches missed calls in < 3s & texts customers automatically. 7-Day Free Trial: https://zenna.au\"",
+      "created_at": "2026-08-04T23:25:41.507Z",
+      "last_reply": "2026-08-05T02:10:53.943Z"
+    },
+    {
+      "phone": "+6141101900",
+      "name": "Sydney Drainlaying Specialists #19",
+      "status": "Scale Target Prospect",
+      "job_value": "$199 AUD/mo",
+      "notes": "Zenna Scaling Engine Outreach -> City: Sydney | Message: \"G'day Sydney Drainlaying Specialists #19! Never lose another $3k+ job to missed calls while on-site in Sydney. Zenna AI catches missed calls in < 3s & texts customers automatically. 7-Day Free Trial: https://zenna.au\"",
+      "created_at": "2026-08-04T23:25:41.506Z",
+      "last_reply": "2026-08-05T02:10:53.942Z"
+    },
+    {
+      "phone": "+6421001800",
+      "name": "Auckland Roofing & Guttering Specialists #18",
+      "status": "Scale Target Prospect",
+      "job_value": "$199 NZD/mo",
+      "notes": "Zenna Scaling Engine Outreach -> City: Auckland | Message: \"G'day Auckland Roofing & Guttering Specialists #18! Never lose another $3k+ job to missed calls while on-site in Auckland. Zenna AI catches missed calls in < 3s & texts customers automatically. 7-Day Free Trial: https://zenna.au\"",
+      "created_at": "2026-08-04T23:25:41.506Z",
+      "last_reply": "2026-08-05T02:10:53.941Z"
+    },
+    {
+      "phone": "+6421001700",
+      "name": "Christchurch HVAC & AirCon Specialists #17",
+      "status": "Scale Target Prospect",
+      "job_value": "$199 NZD/mo",
+      "notes": "Zenna Scaling Engine Outreach -> City: Christchurch | Message: \"G'day Christchurch HVAC & AirCon Specialists #17! Never lose another $3k+ job to missed calls while on-site in Christchurch. Zenna AI catches missed calls in < 3s & texts customers automatically. 7-Day Free Trial: https://zenna.au\"",
+      "created_at": "2026-08-04T23:25:41.505Z",
+      "last_reply": "2026-08-05T02:10:53.940Z"
+    },
+    {
+      "phone": "+6141101600",
+      "name": "Brisbane Electrical Services Specialists #16",
+      "status": "Scale Target Prospect",
+      "job_value": "$199 AUD/mo",
+      "notes": "Zenna Scaling Engine Outreach -> City: Brisbane | Message: \"G'day Brisbane Electrical Services Specialists #16! Never lose another $3k+ job to missed calls while on-site in Brisbane. Zenna AI catches missed calls in < 3s & texts customers automatically. 7-Day Free Trial: https://zenna.au\"",
+      "created_at": "2026-08-04T23:25:41.505Z",
+      "last_reply": "2026-08-05T02:10:53.939Z"
+    },
+    {
+      "phone": "+6421001500",
+      "name": "Wellington Plumbing Specialists #15",
+      "status": "Scale Target Prospect",
+      "job_value": "$199 NZD/mo",
+      "notes": "Zenna Scaling Engine Outreach -> City: Wellington | Message: \"G'day Wellington Plumbing Specialists #15! Never lose another $3k+ job to missed calls while on-site in Wellington. Zenna AI catches missed calls in < 3s & texts customers automatically. 7-Day Free Trial: https://zenna.au\"",
+      "created_at": "2026-08-04T23:25:41.504Z",
+      "last_reply": "2026-08-05T02:10:53.938Z"
+    },
+    {
+      "phone": "+6141101400",
+      "name": "Melbourne Drainlaying Specialists #14",
+      "status": "Scale Target Prospect",
+      "job_value": "$199 AUD/mo",
+      "notes": "Zenna Scaling Engine Outreach -> City: Melbourne | Message: \"G'day Melbourne Drainlaying Specialists #14! Never lose another $3k+ job to missed calls while on-site in Melbourne. Zenna AI catches missed calls in < 3s & texts customers automatically. 7-Day Free Trial: https://zenna.au\"",
+      "created_at": "2026-08-04T23:25:41.503Z",
+      "last_reply": "2026-08-05T02:10:53.937Z"
+    },
+    {
+      "phone": "+6141101300",
+      "name": "Sydney Roofing & Guttering Specialists #13",
+      "status": "Scale Target Prospect",
+      "job_value": "$199 AUD/mo",
+      "notes": "Zenna Scaling Engine Outreach -> City: Sydney | Message: \"G'day Sydney Roofing & Guttering Specialists #13! Never lose another $3k+ job to missed calls while on-site in Sydney. Zenna AI catches missed calls in < 3s & texts customers automatically. 7-Day Free Trial: https://zenna.au\"",
+      "created_at": "2026-08-04T23:25:41.503Z",
+      "last_reply": "2026-08-05T02:10:53.935Z"
+    },
+    {
+      "phone": "+6421001200",
+      "name": "Auckland HVAC & AirCon Specialists #12",
+      "status": "Scale Target Prospect",
+      "job_value": "$199 NZD/mo",
+      "notes": "Zenna Scaling Engine Outreach -> City: Auckland | Message: \"G'day Auckland HVAC & AirCon Specialists #12! Never lose another $3k+ job to missed calls while on-site in Auckland. Zenna AI catches missed calls in < 3s & texts customers automatically. 7-Day Free Trial: https://zenna.au\"",
+      "created_at": "2026-08-04T23:25:41.502Z",
+      "last_reply": "2026-08-05T02:10:53.935Z"
+    },
+    {
+      "phone": "+6421001100",
+      "name": "Christchurch Electrical Services Specialists #11",
+      "status": "Scale Target Prospect",
+      "job_value": "$199 NZD/mo",
+      "notes": "Zenna Scaling Engine Outreach -> City: Christchurch | Message: \"G'day Christchurch Electrical Services Specialists #11! Never lose another $3k+ job to missed calls while on-site in Christchurch. Zenna AI catches missed calls in < 3s & texts customers automatically. 7-Day Free Trial: https://zenna.au\"",
+      "created_at": "2026-08-04T23:25:41.502Z",
+      "last_reply": "2026-08-05T02:10:53.934Z"
+    },
+    {
+      "phone": "+6141101000",
+      "name": "Brisbane Plumbing Specialists #10",
+      "status": "Scale Target Prospect",
+      "job_value": "$199 AUD/mo",
+      "notes": "Zenna Scaling Engine Outreach -> City: Brisbane | Message: \"G'day Brisbane Plumbing Specialists #10! Never lose another $3k+ job to missed calls while on-site in Brisbane. Zenna AI catches missed calls in < 3s & texts customers automatically. 7-Day Free Trial: https://zenna.au\"",
+      "created_at": "2026-08-04T23:25:41.501Z",
+      "last_reply": "2026-08-05T02:10:53.933Z"
+    },
+    {
+      "phone": "+642100900",
+      "name": "Wellington Drainlaying Specialists #9",
+      "status": "Scale Target Prospect",
+      "job_value": "$199 NZD/mo",
+      "notes": "Zenna Scaling Engine Outreach -> City: Wellington | Message: \"G'day Wellington Drainlaying Specialists #9! Never lose another $3k+ job to missed calls while on-site in Wellington. Zenna AI catches missed calls in < 3s & texts customers automatically. 7-Day Free Trial: https://zenna.au\"",
+      "created_at": "2026-08-04T23:25:41.500Z",
+      "last_reply": "2026-08-05T02:10:53.932Z"
+    },
+    {
+      "phone": "+614110800",
+      "name": "Melbourne Roofing & Guttering Specialists #8",
+      "status": "Scale Target Prospect",
+      "job_value": "$199 AUD/mo",
+      "notes": "Zenna Scaling Engine Outreach -> City: Melbourne | Message: \"G'day Melbourne Roofing & Guttering Specialists #8! Never lose another $3k+ job to missed calls while on-site in Melbourne. Zenna AI catches missed calls in < 3s & texts customers automatically. 7-Day Free Trial: https://zenna.au\"",
+      "created_at": "2026-08-04T23:25:41.500Z",
+      "last_reply": "2026-08-05T02:10:53.927Z"
+    },
+    {
+      "phone": "+614110700",
+      "name": "Sydney HVAC & AirCon Specialists #7",
+      "status": "Scale Target Prospect",
+      "job_value": "$199 AUD/mo",
+      "notes": "Zenna Scaling Engine Outreach -> City: Sydney | Message: \"G'day Sydney HVAC & AirCon Specialists #7! Never lose another $3k+ job to missed calls while on-site in Sydney. Zenna AI catches missed calls in < 3s & texts customers automatically. 7-Day Free Trial: https://zenna.au\"",
+      "created_at": "2026-08-04T23:25:41.499Z",
+      "last_reply": "2026-08-05T02:10:53.926Z"
+    },
+    {
+      "phone": "+642100600",
+      "name": "Auckland Electrical Services Specialists #6",
+      "status": "Scale Target Prospect",
+      "job_value": "$199 NZD/mo",
+      "notes": "Zenna Scaling Engine Outreach -> City: Auckland | Message: \"G'day Auckland Electrical Services Specialists #6! Never lose another $3k+ job to missed calls while on-site in Auckland. Zenna AI catches missed calls in < 3s & texts customers automatically. 7-Day Free Trial: https://zenna.au\"",
+      "created_at": "2026-08-04T23:25:41.499Z",
+      "last_reply": "2026-08-05T02:10:53.925Z"
+    },
+    {
+      "phone": "+642100500",
+      "name": "Christchurch Plumbing Specialists #5",
+      "status": "Scale Target Prospect",
+      "job_value": "$199 NZD/mo",
+      "notes": "Zenna Scaling Engine Outreach -> City: Christchurch | Message: \"G'day Christchurch Plumbing Specialists #5! Never lose another $3k+ job to missed calls while on-site in Christchurch. Zenna AI catches missed calls in < 3s & texts customers automatically. 7-Day Free Trial: https://zenna.au\"",
+      "created_at": "2026-08-04T23:25:41.497Z",
+      "last_reply": "2026-08-05T02:10:53.924Z"
+    },
+    {
+      "phone": "+614110400",
+      "name": "Brisbane Drainlaying Specialists #4",
+      "status": "Scale Target Prospect",
+      "job_value": "$199 AUD/mo",
+      "notes": "Zenna Scaling Engine Outreach -> City: Brisbane | Message: \"G'day Brisbane Drainlaying Specialists #4! Never lose another $3k+ job to missed calls while on-site in Brisbane. Zenna AI catches missed calls in < 3s & texts customers automatically. 7-Day Free Trial: https://zenna.au\"",
+      "created_at": "2026-08-04T23:25:41.495Z",
+      "last_reply": "2026-08-05T02:10:53.827Z"
+    },
+    {
+      "phone": "+642100300",
+      "name": "Wellington Roofing & Guttering Specialists #3",
+      "status": "Scale Target Prospect",
+      "job_value": "$199 NZD/mo",
+      "notes": "Zenna Scaling Engine Outreach -> City: Wellington | Message: \"G'day Wellington Roofing & Guttering Specialists #3! Never lose another $3k+ job to missed calls while on-site in Wellington. Zenna AI catches missed calls in < 3s & texts customers automatically. 7-Day Free Trial: https://zenna.au\"",
+      "created_at": "2026-08-04T23:25:41.490Z",
+      "last_reply": "2026-08-05T02:10:53.826Z"
+    },
+    {
+      "phone": "+614110200",
+      "name": "Melbourne HVAC & AirCon Specialists #2",
+      "status": "Scale Target Prospect",
+      "job_value": "$199 AUD/mo",
+      "notes": "Zenna Scaling Engine Outreach -> City: Melbourne | Message: \"G'day Melbourne HVAC & AirCon Specialists #2! Never lose another $3k+ job to missed calls while on-site in Melbourne. Zenna AI catches missed calls in < 3s & texts customers automatically. 7-Day Free Trial: https://zenna.au\"",
+      "created_at": "2026-08-04T23:25:41.489Z",
+      "last_reply": "2026-08-05T02:10:53.772Z"
+    },
+    {
+      "phone": "+614110100",
+      "name": "Sydney Electrical Services Specialists #1",
+      "status": "Scale Target Prospect",
+      "job_value": "$199 AUD/mo",
+      "notes": "Zenna Scaling Engine Outreach -> City: Sydney | Message: \"G'day Sydney Electrical Services Specialists #1! Never lose another $3k+ job to missed calls while on-site in Sydney. Zenna AI catches missed calls in < 3s & texts customers automatically. 7-Day Free Trial: https://zenna.au\"",
+      "created_at": "2026-08-04T23:25:41.488Z",
+      "last_reply": "2026-08-05T02:10:53.491Z"
+    },
+    {
+      "phone": "+61411000555",
+      "name": "Brisbane Roofing Specialists",
+      "status": "Prospect Contacted",
+      "job_value": "$199/mo",
+      "notes": "Autonomous Marketing Outreach: \"G'day Brisbane Roofing Specialists! Zenna catches your missed calls & texts customers automatically so you never lose jobs on-site in Fortitude Valley. Claim 7 days free at https://zenna.au\"",
+      "created_at": "2026-08-04T23:23:41.607Z",
+      "last_reply": "2026-08-05T02:11:02.308Z"
+    },
+    {
+      "phone": "+61411000444",
+      "name": "Melbourne Pro HVAC",
+      "status": "Prospect Contacted",
+      "job_value": "$199/mo",
+      "notes": "Autonomous Marketing Outreach: \"G'day Melbourne Pro HVAC! Zenna catches your missed calls & texts customers automatically so you never lose jobs on-site in Richmond. Claim 7 days free at https://zenna.au\"",
+      "created_at": "2026-08-04T23:23:41.606Z",
+      "last_reply": "2026-08-05T02:11:02.307Z"
+    },
+    {
+      "phone": "+61411000333",
+      "name": "Sydney Metro Drain Services",
+      "status": "Prospect Contacted",
+      "job_value": "$199/mo",
+      "notes": "Autonomous Marketing Outreach: \"G'day Sydney Metro Drain Services! Zenna catches your missed calls & texts customers automatically so you never lose jobs on-site in Surry Hills. Claim 7 days free at https://zenna.au\"",
+      "created_at": "2026-08-04T23:23:41.605Z",
+      "last_reply": "2026-08-05T02:11:02.305Z"
+    },
+    {
+      "phone": "+6421000222",
+      "name": "Wellington Electrical Co",
+      "status": "Prospect Contacted",
+      "job_value": "$199/mo",
+      "notes": "Autonomous Marketing Outreach: \"G'day Wellington Electrical Co! Zenna catches your missed calls & texts customers automatically so you never lose jobs on-site in Te Aro. Claim 7 days free at https://zenna.au\"",
+      "created_at": "2026-08-04T23:23:41.605Z",
+      "last_reply": "2026-08-05T02:11:02.304Z"
+    },
+    {
+      "phone": "+6421000111",
+      "name": "Auckland Premium Plumbing",
+      "status": "Prospect Contacted",
+      "job_value": "$199/mo",
+      "notes": "Autonomous Marketing Outreach: \"G'day Auckland Premium Plumbing! Zenna catches your missed calls & texts customers automatically so you never lose jobs on-site in Ponsonby. Claim 7 days free at https://zenna.au\"",
+      "created_at": "2026-08-04T23:23:41.598Z",
+      "last_reply": "2026-08-05T02:11:02.302Z"
+    },
+    {
+      "phone": " 64204406281",
+      "name": "SMS Lead",
+      "status": "Contacted",
+      "job_value": "$0",
+      "notes": "Incoming SMS: \"Can you come out to Ponsonby on Thursday?\" | Zenna Reply: \"G'day! Zenna here, Dave's AI receptionist at Hartley Plumbing & Drainage. We're on the tools right now, how can we get you sorted today?\"",
+      "created_at": "2026-08-04T22:30:16.067Z"
+    },
+    {
+      "phone": "+6421999888",
+      "name": "Potential Lead",
+      "status": "New",
+      "job_value": "$0",
+      "notes": "First call caught by Zenna AI receptionist",
+      "created_at": "2026-08-04T06:52:14.144Z"
+    },
+    {
+      "phone": "+61499111222",
+      "name": "SMS Lead",
+      "status": "Contacted",
+      "job_value": "$0",
+      "notes": "Incoming SMS: \"Gday mate need blocked drain cleared in Toorak\" | Zenna Reply: \"G'day! Zenna here from Hartley Plumbing & Drainage. We've caught your call and will text you back shortly! 🤙\"",
+      "created_at": "2026-07-24T21:16:23.548Z",
+      "last_reply": "2026-07-24T21:16:53.061Z"
+    },
+    {
+      "phone": "+61419999888",
+      "name": "Potential Lead",
+      "status": "New",
+      "job_value": "$0",
+      "notes": "First call caught by Zenna AI receptionist",
+      "created_at": "2026-07-24T20:48:41.604Z"
+    },
+    {
+      "phone": "+61412891044",
+      "name": "Mike Torrence",
+      "status": "New",
+      "job_value": "$12,500",
+      "notes": "Pending proposal on custom mobile SaaS MVP and stripe backend billing workflow.",
+      "created_at": "2026-07-24T20:46:53.715Z"
+    },
+    {
+      "phone": "+61423044112",
+      "name": "Sandra Wu",
+      "status": "Scheduled",
+      "job_value": "$1,800",
+      "notes": "Scheduled developer scoping block for React web app launch tomorrow morning.",
+      "created_at": "2026-07-24T20:46:53.715Z"
+    },
+    {
+      "phone": "+61401553221",
+      "name": "Daniel Nguyen",
+      "status": "Won",
+      "job_value": "$8,000",
+      "notes": "Successfully deployed AI Assistant portal. Highly satisfied repeat enterprise client.",
+      "created_at": "2026-07-24T20:46:53.715Z"
+    },
+    {
+      "id": "target_100_1_1790625268800",
+      "name": "Auckland Heat Pump & HVAC Pro #1",
+      "phone": "+64 21 100002",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",800",
+      "city": "Auckland",
+      "notes": "Trade: Heat Pump & HVAC | Region: NZ | Demo Dispatch: G'day Auckland Heat Pump & HVAC Pro #1! Never lose another k+ job to missed calls while on-site in Auckland. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: WhatsApp +64 20 4115 3617 (Direct Demo & Rep Line)",
+      "created_at": "2026-09-28T19:54:28.800Z"
+    },
+    {
+      "id": "target_100_2_1790625268803",
+      "name": "Auckland Emergency Plumbing & Gas Pro #2",
+      "phone": "+64 21 100003",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",200",
+      "city": "Auckland",
+      "notes": "Trade: Emergency Plumbing & Gas | Region: NZ | Demo Dispatch: G'day Auckland Emergency Plumbing & Gas Pro #2! Never lose another k+ job to missed calls while on-site in Auckland. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: WhatsApp +64 20 4115 3617 (Direct Demo & Rep Line)",
+      "created_at": "2026-09-28T19:54:28.803Z"
+    },
+    {
+      "id": "target_100_3_1790625268803",
+      "name": "Auckland Solar & Electrical Pro #3",
+      "phone": "+64 21 100004",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",500",
+      "city": "Auckland",
+      "notes": "Trade: Solar & Electrical | Region: NZ | Demo Dispatch: G'day Auckland Solar & Electrical Pro #3! Never lose another k+ job to missed calls while on-site in Auckland. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: WhatsApp +64 20 4115 3617 (Direct Demo & Rep Line)",
+      "created_at": "2026-09-28T19:54:28.803Z"
+    },
+    {
+      "id": "target_100_4_1790625268803",
+      "name": "Auckland Roofing & Guttering Pro #4",
+      "phone": "+64 21 100005",
+      "status": "Ready for Demo Dispatch",
+      "job_value": "4,000",
+      "city": "Auckland",
+      "notes": "Trade: Roofing & Guttering | Region: NZ | Demo Dispatch: G'day Auckland Roofing & Guttering Pro #4! Never lose another k+ job to missed calls while on-site in Auckland. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: WhatsApp +64 20 4115 3617 (Direct Demo & Rep Line)",
+      "created_at": "2026-09-28T19:54:28.803Z"
+    },
+    {
+      "id": "target_100_5_1790625268803",
+      "name": "Auckland Drainlaying & Relining Pro #5",
+      "phone": "+64 21 100006",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",500",
+      "city": "Auckland",
+      "notes": "Trade: Drainlaying & Relining | Region: NZ | Demo Dispatch: G'day Auckland Drainlaying & Relining Pro #5! Never lose another k+ job to missed calls while on-site in Auckland. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: WhatsApp +64 20 4115 3617 (Direct Demo & Rep Line)",
+      "created_at": "2026-09-28T19:54:28.803Z"
+    },
+    {
+      "id": "target_100_6_1790625268803",
+      "name": "Auckland Heat Pump & HVAC Pro #6",
+      "phone": "+64 21 100007",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",800",
+      "city": "Auckland",
+      "notes": "Trade: Heat Pump & HVAC | Region: NZ | Demo Dispatch: G'day Auckland Heat Pump & HVAC Pro #6! Never lose another k+ job to missed calls while on-site in Auckland. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: WhatsApp +64 20 4115 3617 (Direct Demo & Rep Line)",
+      "created_at": "2026-09-28T19:54:28.803Z"
+    },
+    {
+      "id": "target_100_7_1790625268803",
+      "name": "Auckland Emergency Plumbing & Gas Pro #7",
+      "phone": "+64 21 100008",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",200",
+      "city": "Auckland",
+      "notes": "Trade: Emergency Plumbing & Gas | Region: NZ | Demo Dispatch: G'day Auckland Emergency Plumbing & Gas Pro #7! Never lose another k+ job to missed calls while on-site in Auckland. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: WhatsApp +64 20 4115 3617 (Direct Demo & Rep Line)",
+      "created_at": "2026-09-28T19:54:28.803Z"
+    },
+    {
+      "id": "target_100_8_1790625268803",
+      "name": "Auckland Solar & Electrical Pro #8",
+      "phone": "+64 21 100009",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",500",
+      "city": "Auckland",
+      "notes": "Trade: Solar & Electrical | Region: NZ | Demo Dispatch: G'day Auckland Solar & Electrical Pro #8! Never lose another k+ job to missed calls while on-site in Auckland. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: WhatsApp +64 20 4115 3617 (Direct Demo & Rep Line)",
+      "created_at": "2026-09-28T19:54:28.803Z"
+    },
+    {
+      "id": "target_100_9_1790625268803",
+      "name": "Auckland Roofing & Guttering Pro #9",
+      "phone": "+64 21 100010",
+      "status": "Ready for Demo Dispatch",
+      "job_value": "4,000",
+      "city": "Auckland",
+      "notes": "Trade: Roofing & Guttering | Region: NZ | Demo Dispatch: G'day Auckland Roofing & Guttering Pro #9! Never lose another k+ job to missed calls while on-site in Auckland. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: WhatsApp +64 20 4115 3617 (Direct Demo & Rep Line)",
+      "created_at": "2026-09-28T19:54:28.803Z"
+    },
+    {
+      "id": "target_100_10_1790625268803",
+      "name": "Auckland Drainlaying & Relining Pro #10",
+      "phone": "+64 21 100011",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",500",
+      "city": "Auckland",
+      "notes": "Trade: Drainlaying & Relining | Region: NZ | Demo Dispatch: G'day Auckland Drainlaying & Relining Pro #10! Never lose another k+ job to missed calls while on-site in Auckland. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: WhatsApp +64 20 4115 3617 (Direct Demo & Rep Line)",
+      "created_at": "2026-09-28T19:54:28.803Z"
+    },
+    {
+      "id": "target_100_11_1790625268803",
+      "name": "Auckland Heat Pump & HVAC Pro #11",
+      "phone": "+64 21 100012",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",800",
+      "city": "Auckland",
+      "notes": "Trade: Heat Pump & HVAC | Region: NZ | Demo Dispatch: G'day Auckland Heat Pump & HVAC Pro #11! Never lose another k+ job to missed calls while on-site in Auckland. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: WhatsApp +64 20 4115 3617 (Direct Demo & Rep Line)",
+      "created_at": "2026-09-28T19:54:28.803Z"
+    },
+    {
+      "id": "target_100_12_1790625268803",
+      "name": "Auckland Emergency Plumbing & Gas Pro #12",
+      "phone": "+64 21 100013",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",200",
+      "city": "Auckland",
+      "notes": "Trade: Emergency Plumbing & Gas | Region: NZ | Demo Dispatch: G'day Auckland Emergency Plumbing & Gas Pro #12! Never lose another k+ job to missed calls while on-site in Auckland. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: WhatsApp +64 20 4115 3617 (Direct Demo & Rep Line)",
+      "created_at": "2026-09-28T19:54:28.803Z"
+    },
+    {
+      "id": "target_100_13_1790625268803",
+      "name": "Auckland Solar & Electrical Pro #13",
+      "phone": "+64 21 100014",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",500",
+      "city": "Auckland",
+      "notes": "Trade: Solar & Electrical | Region: NZ | Demo Dispatch: G'day Auckland Solar & Electrical Pro #13! Never lose another k+ job to missed calls while on-site in Auckland. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: WhatsApp +64 20 4115 3617 (Direct Demo & Rep Line)",
+      "created_at": "2026-09-28T19:54:28.803Z"
+    },
+    {
+      "id": "target_100_14_1790625268803",
+      "name": "Auckland Roofing & Guttering Pro #14",
+      "phone": "+64 21 100015",
+      "status": "Ready for Demo Dispatch",
+      "job_value": "4,000",
+      "city": "Auckland",
+      "notes": "Trade: Roofing & Guttering | Region: NZ | Demo Dispatch: G'day Auckland Roofing & Guttering Pro #14! Never lose another k+ job to missed calls while on-site in Auckland. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: WhatsApp +64 20 4115 3617 (Direct Demo & Rep Line)",
+      "created_at": "2026-09-28T19:54:28.803Z"
+    },
+    {
+      "id": "target_100_15_1790625268803",
+      "name": "Auckland Drainlaying & Relining Pro #15",
+      "phone": "+64 21 100016",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",500",
+      "city": "Auckland",
+      "notes": "Trade: Drainlaying & Relining | Region: NZ | Demo Dispatch: G'day Auckland Drainlaying & Relining Pro #15! Never lose another k+ job to missed calls while on-site in Auckland. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: WhatsApp +64 20 4115 3617 (Direct Demo & Rep Line)",
+      "created_at": "2026-09-28T19:54:28.803Z"
+    },
+    {
+      "id": "target_100_16_1790625268803",
+      "name": "Auckland Heat Pump & HVAC Pro #16",
+      "phone": "+64 21 100017",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",800",
+      "city": "Auckland",
+      "notes": "Trade: Heat Pump & HVAC | Region: NZ | Demo Dispatch: G'day Auckland Heat Pump & HVAC Pro #16! Never lose another k+ job to missed calls while on-site in Auckland. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: WhatsApp +64 20 4115 3617 (Direct Demo & Rep Line)",
+      "created_at": "2026-09-28T19:54:28.803Z"
+    },
+    {
+      "id": "target_100_17_1790625268803",
+      "name": "Auckland Emergency Plumbing & Gas Pro #17",
+      "phone": "+64 21 100018",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",200",
+      "city": "Auckland",
+      "notes": "Trade: Emergency Plumbing & Gas | Region: NZ | Demo Dispatch: G'day Auckland Emergency Plumbing & Gas Pro #17! Never lose another k+ job to missed calls while on-site in Auckland. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: WhatsApp +64 20 4115 3617 (Direct Demo & Rep Line)",
+      "created_at": "2026-09-28T19:54:28.803Z"
+    },
+    {
+      "id": "target_100_18_1790625268803",
+      "name": "Auckland Solar & Electrical Pro #18",
+      "phone": "+64 21 100019",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",500",
+      "city": "Auckland",
+      "notes": "Trade: Solar & Electrical | Region: NZ | Demo Dispatch: G'day Auckland Solar & Electrical Pro #18! Never lose another k+ job to missed calls while on-site in Auckland. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: WhatsApp +64 20 4115 3617 (Direct Demo & Rep Line)",
+      "created_at": "2026-09-28T19:54:28.803Z"
+    },
+    {
+      "id": "target_100_19_1790625268803",
+      "name": "Auckland Roofing & Guttering Pro #19",
+      "phone": "+64 21 100020",
+      "status": "Ready for Demo Dispatch",
+      "job_value": "4,000",
+      "city": "Auckland",
+      "notes": "Trade: Roofing & Guttering | Region: NZ | Demo Dispatch: G'day Auckland Roofing & Guttering Pro #19! Never lose another k+ job to missed calls while on-site in Auckland. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: WhatsApp +64 20 4115 3617 (Direct Demo & Rep Line)",
+      "created_at": "2026-09-28T19:54:28.803Z"
+    },
+    {
+      "id": "target_100_20_1790625268803",
+      "name": "Auckland Drainlaying & Relining Pro #20",
+      "phone": "+64 21 100021",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",500",
+      "city": "Auckland",
+      "notes": "Trade: Drainlaying & Relining | Region: NZ | Demo Dispatch: G'day Auckland Drainlaying & Relining Pro #20! Never lose another k+ job to missed calls while on-site in Auckland. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: WhatsApp +64 20 4115 3617 (Direct Demo & Rep Line)",
+      "created_at": "2026-09-28T19:54:28.803Z"
+    },
+    {
+      "id": "target_100_21_1790625268803",
+      "name": "Auckland Heat Pump & HVAC Pro #21",
+      "phone": "+64 21 100022",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",800",
+      "city": "Auckland",
+      "notes": "Trade: Heat Pump & HVAC | Region: NZ | Demo Dispatch: G'day Auckland Heat Pump & HVAC Pro #21! Never lose another k+ job to missed calls while on-site in Auckland. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: WhatsApp +64 20 4115 3617 (Direct Demo & Rep Line)",
+      "created_at": "2026-09-28T19:54:28.803Z"
+    },
+    {
+      "id": "target_100_22_1790625268803",
+      "name": "Auckland Emergency Plumbing & Gas Pro #22",
+      "phone": "+64 21 100023",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",200",
+      "city": "Auckland",
+      "notes": "Trade: Emergency Plumbing & Gas | Region: NZ | Demo Dispatch: G'day Auckland Emergency Plumbing & Gas Pro #22! Never lose another k+ job to missed calls while on-site in Auckland. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: WhatsApp +64 20 4115 3617 (Direct Demo & Rep Line)",
+      "created_at": "2026-09-28T19:54:28.803Z"
+    },
+    {
+      "id": "target_100_23_1790625268803",
+      "name": "Auckland Solar & Electrical Pro #23",
+      "phone": "+64 21 100024",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",500",
+      "city": "Auckland",
+      "notes": "Trade: Solar & Electrical | Region: NZ | Demo Dispatch: G'day Auckland Solar & Electrical Pro #23! Never lose another k+ job to missed calls while on-site in Auckland. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: WhatsApp +64 20 4115 3617 (Direct Demo & Rep Line)",
+      "created_at": "2026-09-28T19:54:28.803Z"
+    },
+    {
+      "id": "target_100_24_1790625268803",
+      "name": "Auckland Roofing & Guttering Pro #24",
+      "phone": "+64 21 100025",
+      "status": "Ready for Demo Dispatch",
+      "job_value": "4,000",
+      "city": "Auckland",
+      "notes": "Trade: Roofing & Guttering | Region: NZ | Demo Dispatch: G'day Auckland Roofing & Guttering Pro #24! Never lose another k+ job to missed calls while on-site in Auckland. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: WhatsApp +64 20 4115 3617 (Direct Demo & Rep Line)",
+      "created_at": "2026-09-28T19:54:28.803Z"
+    },
+    {
+      "id": "target_100_25_1790625268803",
+      "name": "Auckland Drainlaying & Relining Pro #25",
+      "phone": "+64 21 100026",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",500",
+      "city": "Auckland",
+      "notes": "Trade: Drainlaying & Relining | Region: NZ | Demo Dispatch: G'day Auckland Drainlaying & Relining Pro #25! Never lose another k+ job to missed calls while on-site in Auckland. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: WhatsApp +64 20 4115 3617 (Direct Demo & Rep Line)",
+      "created_at": "2026-09-28T19:54:28.803Z"
+    },
+    {
+      "id": "target_100_26_1790625268803",
+      "name": "Auckland Heat Pump & HVAC Pro #26",
+      "phone": "+64 21 100027",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",800",
+      "city": "Auckland",
+      "notes": "Trade: Heat Pump & HVAC | Region: NZ | Demo Dispatch: G'day Auckland Heat Pump & HVAC Pro #26! Never lose another k+ job to missed calls while on-site in Auckland. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: WhatsApp +64 20 4115 3617 (Direct Demo & Rep Line)",
+      "created_at": "2026-09-28T19:54:28.803Z"
+    },
+    {
+      "id": "target_100_27_1790625268803",
+      "name": "Auckland Emergency Plumbing & Gas Pro #27",
+      "phone": "+64 21 100028",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",200",
+      "city": "Auckland",
+      "notes": "Trade: Emergency Plumbing & Gas | Region: NZ | Demo Dispatch: G'day Auckland Emergency Plumbing & Gas Pro #27! Never lose another k+ job to missed calls while on-site in Auckland. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: WhatsApp +64 20 4115 3617 (Direct Demo & Rep Line)",
+      "created_at": "2026-09-28T19:54:28.803Z"
+    },
+    {
+      "id": "target_100_28_1790625268803",
+      "name": "Auckland Solar & Electrical Pro #28",
+      "phone": "+64 21 100029",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",500",
+      "city": "Auckland",
+      "notes": "Trade: Solar & Electrical | Region: NZ | Demo Dispatch: G'day Auckland Solar & Electrical Pro #28! Never lose another k+ job to missed calls while on-site in Auckland. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: WhatsApp +64 20 4115 3617 (Direct Demo & Rep Line)",
+      "created_at": "2026-09-28T19:54:28.803Z"
+    },
+    {
+      "id": "target_100_29_1790625268803",
+      "name": "Auckland Roofing & Guttering Pro #29",
+      "phone": "+64 21 100030",
+      "status": "Ready for Demo Dispatch",
+      "job_value": "4,000",
+      "city": "Auckland",
+      "notes": "Trade: Roofing & Guttering | Region: NZ | Demo Dispatch: G'day Auckland Roofing & Guttering Pro #29! Never lose another k+ job to missed calls while on-site in Auckland. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: WhatsApp +64 20 4115 3617 (Direct Demo & Rep Line)",
+      "created_at": "2026-09-28T19:54:28.803Z"
+    },
+    {
+      "id": "target_100_30_1790625268803",
+      "name": "Auckland Drainlaying & Relining Pro #30",
+      "phone": "+64 21 100031",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",500",
+      "city": "Auckland",
+      "notes": "Trade: Drainlaying & Relining | Region: NZ | Demo Dispatch: G'day Auckland Drainlaying & Relining Pro #30! Never lose another k+ job to missed calls while on-site in Auckland. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: WhatsApp +64 20 4115 3617 (Direct Demo & Rep Line)",
+      "created_at": "2026-09-28T19:54:28.803Z"
+    },
+    {
+      "id": "target_100_31_1790625268803",
+      "name": "Christchurch Heat Pump & HVAC Pro #1",
+      "phone": "+64 21 100032",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",800",
+      "city": "Christchurch",
+      "notes": "Trade: Heat Pump & HVAC | Region: NZ | Demo Dispatch: G'day Christchurch Heat Pump & HVAC Pro #1! Never lose another k+ job to missed calls while on-site in Christchurch. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: WhatsApp +64 20 4115 3617 (Direct Demo & Rep Line)",
+      "created_at": "2026-09-28T19:54:28.803Z"
+    },
+    {
+      "id": "target_100_32_1790625268803",
+      "name": "Christchurch Emergency Plumbing & Gas Pro #2",
+      "phone": "+64 21 100033",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",200",
+      "city": "Christchurch",
+      "notes": "Trade: Emergency Plumbing & Gas | Region: NZ | Demo Dispatch: G'day Christchurch Emergency Plumbing & Gas Pro #2! Never lose another k+ job to missed calls while on-site in Christchurch. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: WhatsApp +64 20 4115 3617 (Direct Demo & Rep Line)",
+      "created_at": "2026-09-28T19:54:28.803Z"
+    },
+    {
+      "id": "target_100_33_1790625268803",
+      "name": "Christchurch Solar & Electrical Pro #3",
+      "phone": "+64 21 100034",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",500",
+      "city": "Christchurch",
+      "notes": "Trade: Solar & Electrical | Region: NZ | Demo Dispatch: G'day Christchurch Solar & Electrical Pro #3! Never lose another k+ job to missed calls while on-site in Christchurch. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: WhatsApp +64 20 4115 3617 (Direct Demo & Rep Line)",
+      "created_at": "2026-09-28T19:54:28.803Z"
+    },
+    {
+      "id": "target_100_34_1790625268803",
+      "name": "Christchurch Roofing & Guttering Pro #4",
+      "phone": "+64 21 100035",
+      "status": "Ready for Demo Dispatch",
+      "job_value": "4,000",
+      "city": "Christchurch",
+      "notes": "Trade: Roofing & Guttering | Region: NZ | Demo Dispatch: G'day Christchurch Roofing & Guttering Pro #4! Never lose another k+ job to missed calls while on-site in Christchurch. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: WhatsApp +64 20 4115 3617 (Direct Demo & Rep Line)",
+      "created_at": "2026-09-28T19:54:28.803Z"
+    },
+    {
+      "id": "target_100_35_1790625268803",
+      "name": "Christchurch Drainlaying & Relining Pro #5",
+      "phone": "+64 21 100036",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",500",
+      "city": "Christchurch",
+      "notes": "Trade: Drainlaying & Relining | Region: NZ | Demo Dispatch: G'day Christchurch Drainlaying & Relining Pro #5! Never lose another k+ job to missed calls while on-site in Christchurch. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: WhatsApp +64 20 4115 3617 (Direct Demo & Rep Line)",
+      "created_at": "2026-09-28T19:54:28.803Z"
+    },
+    {
+      "id": "target_100_36_1790625268803",
+      "name": "Christchurch Heat Pump & HVAC Pro #6",
+      "phone": "+64 21 100037",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",800",
+      "city": "Christchurch",
+      "notes": "Trade: Heat Pump & HVAC | Region: NZ | Demo Dispatch: G'day Christchurch Heat Pump & HVAC Pro #6! Never lose another k+ job to missed calls while on-site in Christchurch. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: WhatsApp +64 20 4115 3617 (Direct Demo & Rep Line)",
+      "created_at": "2026-09-28T19:54:28.803Z"
+    },
+    {
+      "id": "target_100_37_1790625268803",
+      "name": "Christchurch Emergency Plumbing & Gas Pro #7",
+      "phone": "+64 21 100038",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",200",
+      "city": "Christchurch",
+      "notes": "Trade: Emergency Plumbing & Gas | Region: NZ | Demo Dispatch: G'day Christchurch Emergency Plumbing & Gas Pro #7! Never lose another k+ job to missed calls while on-site in Christchurch. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: WhatsApp +64 20 4115 3617 (Direct Demo & Rep Line)",
+      "created_at": "2026-09-28T19:54:28.803Z"
+    },
+    {
+      "id": "target_100_38_1790625268803",
+      "name": "Christchurch Solar & Electrical Pro #8",
+      "phone": "+64 21 100039",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",500",
+      "city": "Christchurch",
+      "notes": "Trade: Solar & Electrical | Region: NZ | Demo Dispatch: G'day Christchurch Solar & Electrical Pro #8! Never lose another k+ job to missed calls while on-site in Christchurch. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: WhatsApp +64 20 4115 3617 (Direct Demo & Rep Line)",
+      "created_at": "2026-09-28T19:54:28.803Z"
+    },
+    {
+      "id": "target_100_39_1790625268803",
+      "name": "Christchurch Roofing & Guttering Pro #9",
+      "phone": "+64 21 100040",
+      "status": "Ready for Demo Dispatch",
+      "job_value": "4,000",
+      "city": "Christchurch",
+      "notes": "Trade: Roofing & Guttering | Region: NZ | Demo Dispatch: G'day Christchurch Roofing & Guttering Pro #9! Never lose another k+ job to missed calls while on-site in Christchurch. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: WhatsApp +64 20 4115 3617 (Direct Demo & Rep Line)",
+      "created_at": "2026-09-28T19:54:28.803Z"
+    },
+    {
+      "id": "target_100_40_1790625268803",
+      "name": "Christchurch Drainlaying & Relining Pro #10",
+      "phone": "+64 21 100041",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",500",
+      "city": "Christchurch",
+      "notes": "Trade: Drainlaying & Relining | Region: NZ | Demo Dispatch: G'day Christchurch Drainlaying & Relining Pro #10! Never lose another k+ job to missed calls while on-site in Christchurch. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: WhatsApp +64 20 4115 3617 (Direct Demo & Rep Line)",
+      "created_at": "2026-09-28T19:54:28.803Z"
+    },
+    {
+      "id": "target_100_41_1790625268804",
+      "name": "Christchurch Heat Pump & HVAC Pro #11",
+      "phone": "+64 21 100042",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",800",
+      "city": "Christchurch",
+      "notes": "Trade: Heat Pump & HVAC | Region: NZ | Demo Dispatch: G'day Christchurch Heat Pump & HVAC Pro #11! Never lose another k+ job to missed calls while on-site in Christchurch. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: WhatsApp +64 20 4115 3617 (Direct Demo & Rep Line)",
+      "created_at": "2026-09-28T19:54:28.804Z"
+    },
+    {
+      "id": "target_100_42_1790625268804",
+      "name": "Christchurch Emergency Plumbing & Gas Pro #12",
+      "phone": "+64 21 100043",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",200",
+      "city": "Christchurch",
+      "notes": "Trade: Emergency Plumbing & Gas | Region: NZ | Demo Dispatch: G'day Christchurch Emergency Plumbing & Gas Pro #12! Never lose another k+ job to missed calls while on-site in Christchurch. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: WhatsApp +64 20 4115 3617 (Direct Demo & Rep Line)",
+      "created_at": "2026-09-28T19:54:28.804Z"
+    },
+    {
+      "id": "target_100_43_1790625268804",
+      "name": "Christchurch Solar & Electrical Pro #13",
+      "phone": "+64 21 100044",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",500",
+      "city": "Christchurch",
+      "notes": "Trade: Solar & Electrical | Region: NZ | Demo Dispatch: G'day Christchurch Solar & Electrical Pro #13! Never lose another k+ job to missed calls while on-site in Christchurch. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: WhatsApp +64 20 4115 3617 (Direct Demo & Rep Line)",
+      "created_at": "2026-09-28T19:54:28.804Z"
+    },
+    {
+      "id": "target_100_44_1790625268804",
+      "name": "Christchurch Roofing & Guttering Pro #14",
+      "phone": "+64 21 100045",
+      "status": "Ready for Demo Dispatch",
+      "job_value": "4,000",
+      "city": "Christchurch",
+      "notes": "Trade: Roofing & Guttering | Region: NZ | Demo Dispatch: G'day Christchurch Roofing & Guttering Pro #14! Never lose another k+ job to missed calls while on-site in Christchurch. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: WhatsApp +64 20 4115 3617 (Direct Demo & Rep Line)",
+      "created_at": "2026-09-28T19:54:28.804Z"
+    },
+    {
+      "id": "target_100_45_1790625268804",
+      "name": "Christchurch Drainlaying & Relining Pro #15",
+      "phone": "+64 21 100046",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",500",
+      "city": "Christchurch",
+      "notes": "Trade: Drainlaying & Relining | Region: NZ | Demo Dispatch: G'day Christchurch Drainlaying & Relining Pro #15! Never lose another k+ job to missed calls while on-site in Christchurch. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: WhatsApp +64 20 4115 3617 (Direct Demo & Rep Line)",
+      "created_at": "2026-09-28T19:54:28.804Z"
+    },
+    {
+      "id": "target_100_46_1790625268804",
+      "name": "Christchurch Heat Pump & HVAC Pro #16",
+      "phone": "+64 21 100047",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",800",
+      "city": "Christchurch",
+      "notes": "Trade: Heat Pump & HVAC | Region: NZ | Demo Dispatch: G'day Christchurch Heat Pump & HVAC Pro #16! Never lose another k+ job to missed calls while on-site in Christchurch. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: WhatsApp +64 20 4115 3617 (Direct Demo & Rep Line)",
+      "created_at": "2026-09-28T19:54:28.804Z"
+    },
+    {
+      "id": "target_100_47_1790625268804",
+      "name": "Christchurch Emergency Plumbing & Gas Pro #17",
+      "phone": "+64 21 100048",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",200",
+      "city": "Christchurch",
+      "notes": "Trade: Emergency Plumbing & Gas | Region: NZ | Demo Dispatch: G'day Christchurch Emergency Plumbing & Gas Pro #17! Never lose another k+ job to missed calls while on-site in Christchurch. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: WhatsApp +64 20 4115 3617 (Direct Demo & Rep Line)",
+      "created_at": "2026-09-28T19:54:28.804Z"
+    },
+    {
+      "id": "target_100_48_1790625268804",
+      "name": "Christchurch Solar & Electrical Pro #18",
+      "phone": "+64 21 100049",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",500",
+      "city": "Christchurch",
+      "notes": "Trade: Solar & Electrical | Region: NZ | Demo Dispatch: G'day Christchurch Solar & Electrical Pro #18! Never lose another k+ job to missed calls while on-site in Christchurch. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: WhatsApp +64 20 4115 3617 (Direct Demo & Rep Line)",
+      "created_at": "2026-09-28T19:54:28.804Z"
+    },
+    {
+      "id": "target_100_49_1790625268804",
+      "name": "Christchurch Roofing & Guttering Pro #19",
+      "phone": "+64 21 100050",
+      "status": "Ready for Demo Dispatch",
+      "job_value": "4,000",
+      "city": "Christchurch",
+      "notes": "Trade: Roofing & Guttering | Region: NZ | Demo Dispatch: G'day Christchurch Roofing & Guttering Pro #19! Never lose another k+ job to missed calls while on-site in Christchurch. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: WhatsApp +64 20 4115 3617 (Direct Demo & Rep Line)",
+      "created_at": "2026-09-28T19:54:28.804Z"
+    },
+    {
+      "id": "target_100_50_1790625268804",
+      "name": "Christchurch Drainlaying & Relining Pro #20",
+      "phone": "+64 21 100051",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",500",
+      "city": "Christchurch",
+      "notes": "Trade: Drainlaying & Relining | Region: NZ | Demo Dispatch: G'day Christchurch Drainlaying & Relining Pro #20! Never lose another k+ job to missed calls while on-site in Christchurch. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: WhatsApp +64 20 4115 3617 (Direct Demo & Rep Line)",
+      "created_at": "2026-09-28T19:54:28.804Z"
+    },
+    {
+      "id": "target_100_51_1790625268804",
+      "name": "Christchurch Heat Pump & HVAC Pro #21",
+      "phone": "+64 21 100052",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",800",
+      "city": "Christchurch",
+      "notes": "Trade: Heat Pump & HVAC | Region: NZ | Demo Dispatch: G'day Christchurch Heat Pump & HVAC Pro #21! Never lose another k+ job to missed calls while on-site in Christchurch. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: WhatsApp +64 20 4115 3617 (Direct Demo & Rep Line)",
+      "created_at": "2026-09-28T19:54:28.804Z"
+    },
+    {
+      "id": "target_100_52_1790625268804",
+      "name": "Christchurch Emergency Plumbing & Gas Pro #22",
+      "phone": "+64 21 100053",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",200",
+      "city": "Christchurch",
+      "notes": "Trade: Emergency Plumbing & Gas | Region: NZ | Demo Dispatch: G'day Christchurch Emergency Plumbing & Gas Pro #22! Never lose another k+ job to missed calls while on-site in Christchurch. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: WhatsApp +64 20 4115 3617 (Direct Demo & Rep Line)",
+      "created_at": "2026-09-28T19:54:28.804Z"
+    },
+    {
+      "id": "target_100_53_1790625268804",
+      "name": "Christchurch Solar & Electrical Pro #23",
+      "phone": "+64 21 100054",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",500",
+      "city": "Christchurch",
+      "notes": "Trade: Solar & Electrical | Region: NZ | Demo Dispatch: G'day Christchurch Solar & Electrical Pro #23! Never lose another k+ job to missed calls while on-site in Christchurch. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: WhatsApp +64 20 4115 3617 (Direct Demo & Rep Line)",
+      "created_at": "2026-09-28T19:54:28.804Z"
+    },
+    {
+      "id": "target_100_54_1790625268804",
+      "name": "Christchurch Roofing & Guttering Pro #24",
+      "phone": "+64 21 100055",
+      "status": "Ready for Demo Dispatch",
+      "job_value": "4,000",
+      "city": "Christchurch",
+      "notes": "Trade: Roofing & Guttering | Region: NZ | Demo Dispatch: G'day Christchurch Roofing & Guttering Pro #24! Never lose another k+ job to missed calls while on-site in Christchurch. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: WhatsApp +64 20 4115 3617 (Direct Demo & Rep Line)",
+      "created_at": "2026-09-28T19:54:28.804Z"
+    },
+    {
+      "id": "target_100_55_1790625268804",
+      "name": "Christchurch Drainlaying & Relining Pro #25",
+      "phone": "+64 21 100056",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",500",
+      "city": "Christchurch",
+      "notes": "Trade: Drainlaying & Relining | Region: NZ | Demo Dispatch: G'day Christchurch Drainlaying & Relining Pro #25! Never lose another k+ job to missed calls while on-site in Christchurch. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: WhatsApp +64 20 4115 3617 (Direct Demo & Rep Line)",
+      "created_at": "2026-09-28T19:54:28.804Z"
+    },
+    {
+      "id": "target_100_56_1790625268804",
+      "name": "Wellington Heat Pump & HVAC Pro #1",
+      "phone": "+64 21 100057",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",800",
+      "city": "Wellington",
+      "notes": "Trade: Heat Pump & HVAC | Region: NZ | Demo Dispatch: G'day Wellington Heat Pump & HVAC Pro #1! Never lose another k+ job to missed calls while on-site in Wellington. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: WhatsApp +64 20 4115 3617 (Direct Demo & Rep Line)",
+      "created_at": "2026-09-28T19:54:28.804Z"
+    },
+    {
+      "id": "target_100_57_1790625268804",
+      "name": "Wellington Emergency Plumbing & Gas Pro #2",
+      "phone": "+64 21 100058",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",200",
+      "city": "Wellington",
+      "notes": "Trade: Emergency Plumbing & Gas | Region: NZ | Demo Dispatch: G'day Wellington Emergency Plumbing & Gas Pro #2! Never lose another k+ job to missed calls while on-site in Wellington. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: WhatsApp +64 20 4115 3617 (Direct Demo & Rep Line)",
+      "created_at": "2026-09-28T19:54:28.804Z"
+    },
+    {
+      "id": "target_100_58_1790625268804",
+      "name": "Wellington Solar & Electrical Pro #3",
+      "phone": "+64 21 100059",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",500",
+      "city": "Wellington",
+      "notes": "Trade: Solar & Electrical | Region: NZ | Demo Dispatch: G'day Wellington Solar & Electrical Pro #3! Never lose another k+ job to missed calls while on-site in Wellington. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: WhatsApp +64 20 4115 3617 (Direct Demo & Rep Line)",
+      "created_at": "2026-09-28T19:54:28.804Z"
+    },
+    {
+      "id": "target_100_59_1790625268804",
+      "name": "Wellington Roofing & Guttering Pro #4",
+      "phone": "+64 21 100060",
+      "status": "Ready for Demo Dispatch",
+      "job_value": "4,000",
+      "city": "Wellington",
+      "notes": "Trade: Roofing & Guttering | Region: NZ | Demo Dispatch: G'day Wellington Roofing & Guttering Pro #4! Never lose another k+ job to missed calls while on-site in Wellington. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: WhatsApp +64 20 4115 3617 (Direct Demo & Rep Line)",
+      "created_at": "2026-09-28T19:54:28.804Z"
+    },
+    {
+      "id": "target_100_60_1790625268804",
+      "name": "Wellington Drainlaying & Relining Pro #5",
+      "phone": "+64 21 100061",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",500",
+      "city": "Wellington",
+      "notes": "Trade: Drainlaying & Relining | Region: NZ | Demo Dispatch: G'day Wellington Drainlaying & Relining Pro #5! Never lose another k+ job to missed calls while on-site in Wellington. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: WhatsApp +64 20 4115 3617 (Direct Demo & Rep Line)",
+      "created_at": "2026-09-28T19:54:28.804Z"
+    },
+    {
+      "id": "target_100_61_1790625268804",
+      "name": "Wellington Heat Pump & HVAC Pro #6",
+      "phone": "+64 21 100062",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",800",
+      "city": "Wellington",
+      "notes": "Trade: Heat Pump & HVAC | Region: NZ | Demo Dispatch: G'day Wellington Heat Pump & HVAC Pro #6! Never lose another k+ job to missed calls while on-site in Wellington. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: WhatsApp +64 20 4115 3617 (Direct Demo & Rep Line)",
+      "created_at": "2026-09-28T19:54:28.804Z"
+    },
+    {
+      "id": "target_100_62_1790625268804",
+      "name": "Wellington Emergency Plumbing & Gas Pro #7",
+      "phone": "+64 21 100063",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",200",
+      "city": "Wellington",
+      "notes": "Trade: Emergency Plumbing & Gas | Region: NZ | Demo Dispatch: G'day Wellington Emergency Plumbing & Gas Pro #7! Never lose another k+ job to missed calls while on-site in Wellington. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: WhatsApp +64 20 4115 3617 (Direct Demo & Rep Line)",
+      "created_at": "2026-09-28T19:54:28.804Z"
+    },
+    {
+      "id": "target_100_63_1790625268804",
+      "name": "Wellington Solar & Electrical Pro #8",
+      "phone": "+64 21 100064",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",500",
+      "city": "Wellington",
+      "notes": "Trade: Solar & Electrical | Region: NZ | Demo Dispatch: G'day Wellington Solar & Electrical Pro #8! Never lose another k+ job to missed calls while on-site in Wellington. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: WhatsApp +64 20 4115 3617 (Direct Demo & Rep Line)",
+      "created_at": "2026-09-28T19:54:28.804Z"
+    },
+    {
+      "id": "target_100_64_1790625268804",
+      "name": "Wellington Roofing & Guttering Pro #9",
+      "phone": "+64 21 100065",
+      "status": "Ready for Demo Dispatch",
+      "job_value": "4,000",
+      "city": "Wellington",
+      "notes": "Trade: Roofing & Guttering | Region: NZ | Demo Dispatch: G'day Wellington Roofing & Guttering Pro #9! Never lose another k+ job to missed calls while on-site in Wellington. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: WhatsApp +64 20 4115 3617 (Direct Demo & Rep Line)",
+      "created_at": "2026-09-28T19:54:28.804Z"
+    },
+    {
+      "id": "target_100_65_1790625268804",
+      "name": "Wellington Drainlaying & Relining Pro #10",
+      "phone": "+64 21 100066",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",500",
+      "city": "Wellington",
+      "notes": "Trade: Drainlaying & Relining | Region: NZ | Demo Dispatch: G'day Wellington Drainlaying & Relining Pro #10! Never lose another k+ job to missed calls while on-site in Wellington. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: WhatsApp +64 20 4115 3617 (Direct Demo & Rep Line)",
+      "created_at": "2026-09-28T19:54:28.804Z"
+    },
+    {
+      "id": "target_100_66_1790625268805",
+      "name": "Wellington Heat Pump & HVAC Pro #11",
+      "phone": "+64 21 100067",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",800",
+      "city": "Wellington",
+      "notes": "Trade: Heat Pump & HVAC | Region: NZ | Demo Dispatch: G'day Wellington Heat Pump & HVAC Pro #11! Never lose another k+ job to missed calls while on-site in Wellington. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: WhatsApp +64 20 4115 3617 (Direct Demo & Rep Line)",
+      "created_at": "2026-09-28T19:54:28.805Z"
+    },
+    {
+      "id": "target_100_67_1790625268805",
+      "name": "Wellington Emergency Plumbing & Gas Pro #12",
+      "phone": "+64 21 100068",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",200",
+      "city": "Wellington",
+      "notes": "Trade: Emergency Plumbing & Gas | Region: NZ | Demo Dispatch: G'day Wellington Emergency Plumbing & Gas Pro #12! Never lose another k+ job to missed calls while on-site in Wellington. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: WhatsApp +64 20 4115 3617 (Direct Demo & Rep Line)",
+      "created_at": "2026-09-28T19:54:28.805Z"
+    },
+    {
+      "id": "target_100_68_1790625268805",
+      "name": "Wellington Solar & Electrical Pro #13",
+      "phone": "+64 21 100069",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",500",
+      "city": "Wellington",
+      "notes": "Trade: Solar & Electrical | Region: NZ | Demo Dispatch: G'day Wellington Solar & Electrical Pro #13! Never lose another k+ job to missed calls while on-site in Wellington. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: WhatsApp +64 20 4115 3617 (Direct Demo & Rep Line)",
+      "created_at": "2026-09-28T19:54:28.805Z"
+    },
+    {
+      "id": "target_100_69_1790625268805",
+      "name": "Wellington Roofing & Guttering Pro #14",
+      "phone": "+64 21 100070",
+      "status": "Ready for Demo Dispatch",
+      "job_value": "4,000",
+      "city": "Wellington",
+      "notes": "Trade: Roofing & Guttering | Region: NZ | Demo Dispatch: G'day Wellington Roofing & Guttering Pro #14! Never lose another k+ job to missed calls while on-site in Wellington. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: WhatsApp +64 20 4115 3617 (Direct Demo & Rep Line)",
+      "created_at": "2026-09-28T19:54:28.805Z"
+    },
+    {
+      "id": "target_100_70_1790625268805",
+      "name": "Wellington Drainlaying & Relining Pro #15",
+      "phone": "+64 21 100071",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",500",
+      "city": "Wellington",
+      "notes": "Trade: Drainlaying & Relining | Region: NZ | Demo Dispatch: G'day Wellington Drainlaying & Relining Pro #15! Never lose another k+ job to missed calls while on-site in Wellington. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: WhatsApp +64 20 4115 3617 (Direct Demo & Rep Line)",
+      "created_at": "2026-09-28T19:54:28.805Z"
+    },
+    {
+      "id": "target_100_71_1790625268805",
+      "name": "Wellington Heat Pump & HVAC Pro #16",
+      "phone": "+64 21 100072",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",800",
+      "city": "Wellington",
+      "notes": "Trade: Heat Pump & HVAC | Region: NZ | Demo Dispatch: G'day Wellington Heat Pump & HVAC Pro #16! Never lose another k+ job to missed calls while on-site in Wellington. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: WhatsApp +64 20 4115 3617 (Direct Demo & Rep Line)",
+      "created_at": "2026-09-28T19:54:28.805Z"
+    },
+    {
+      "id": "target_100_72_1790625268805",
+      "name": "Wellington Emergency Plumbing & Gas Pro #17",
+      "phone": "+64 21 100073",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",200",
+      "city": "Wellington",
+      "notes": "Trade: Emergency Plumbing & Gas | Region: NZ | Demo Dispatch: G'day Wellington Emergency Plumbing & Gas Pro #17! Never lose another k+ job to missed calls while on-site in Wellington. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: WhatsApp +64 20 4115 3617 (Direct Demo & Rep Line)",
+      "created_at": "2026-09-28T19:54:28.805Z"
+    },
+    {
+      "id": "target_100_73_1790625268805",
+      "name": "Wellington Solar & Electrical Pro #18",
+      "phone": "+64 21 100074",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",500",
+      "city": "Wellington",
+      "notes": "Trade: Solar & Electrical | Region: NZ | Demo Dispatch: G'day Wellington Solar & Electrical Pro #18! Never lose another k+ job to missed calls while on-site in Wellington. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: WhatsApp +64 20 4115 3617 (Direct Demo & Rep Line)",
+      "created_at": "2026-09-28T19:54:28.805Z"
+    },
+    {
+      "id": "target_100_74_1790625268805",
+      "name": "Wellington Roofing & Guttering Pro #19",
+      "phone": "+64 21 100075",
+      "status": "Ready for Demo Dispatch",
+      "job_value": "4,000",
+      "city": "Wellington",
+      "notes": "Trade: Roofing & Guttering | Region: NZ | Demo Dispatch: G'day Wellington Roofing & Guttering Pro #19! Never lose another k+ job to missed calls while on-site in Wellington. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: WhatsApp +64 20 4115 3617 (Direct Demo & Rep Line)",
+      "created_at": "2026-09-28T19:54:28.805Z"
+    },
+    {
+      "id": "target_100_75_1790625268805",
+      "name": "Wellington Drainlaying & Relining Pro #20",
+      "phone": "+64 21 100076",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",500",
+      "city": "Wellington",
+      "notes": "Trade: Drainlaying & Relining | Region: NZ | Demo Dispatch: G'day Wellington Drainlaying & Relining Pro #20! Never lose another k+ job to missed calls while on-site in Wellington. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: WhatsApp +64 20 4115 3617 (Direct Demo & Rep Line)",
+      "created_at": "2026-09-28T19:54:28.805Z"
+    },
+    {
+      "id": "target_100_76_1790625268805",
+      "name": "Tauranga/Hamilton Heat Pump & HVAC Pro #1",
+      "phone": "+64 21 100077",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",800",
+      "city": "Tauranga/Hamilton",
+      "notes": "Trade: Heat Pump & HVAC | Region: NZ | Demo Dispatch: G'day Tauranga/Hamilton Heat Pump & HVAC Pro #1! Never lose another k+ job to missed calls while on-site in Tauranga/Hamilton. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: WhatsApp +64 20 4115 3617 (Direct Demo & Rep Line)",
+      "created_at": "2026-09-28T19:54:28.805Z"
+    },
+    {
+      "id": "target_100_77_1790625268805",
+      "name": "Tauranga/Hamilton Emergency Plumbing & Gas Pro #2",
+      "phone": "+64 21 100078",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",200",
+      "city": "Tauranga/Hamilton",
+      "notes": "Trade: Emergency Plumbing & Gas | Region: NZ | Demo Dispatch: G'day Tauranga/Hamilton Emergency Plumbing & Gas Pro #2! Never lose another k+ job to missed calls while on-site in Tauranga/Hamilton. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: WhatsApp +64 20 4115 3617 (Direct Demo & Rep Line)",
+      "created_at": "2026-09-28T19:54:28.805Z"
+    },
+    {
+      "id": "target_100_78_1790625268805",
+      "name": "Tauranga/Hamilton Solar & Electrical Pro #3",
+      "phone": "+64 21 100079",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",500",
+      "city": "Tauranga/Hamilton",
+      "notes": "Trade: Solar & Electrical | Region: NZ | Demo Dispatch: G'day Tauranga/Hamilton Solar & Electrical Pro #3! Never lose another k+ job to missed calls while on-site in Tauranga/Hamilton. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: WhatsApp +64 20 4115 3617 (Direct Demo & Rep Line)",
+      "created_at": "2026-09-28T19:54:28.805Z"
+    },
+    {
+      "id": "target_100_79_1790625268805",
+      "name": "Tauranga/Hamilton Roofing & Guttering Pro #4",
+      "phone": "+64 21 100080",
+      "status": "Ready for Demo Dispatch",
+      "job_value": "4,000",
+      "city": "Tauranga/Hamilton",
+      "notes": "Trade: Roofing & Guttering | Region: NZ | Demo Dispatch: G'day Tauranga/Hamilton Roofing & Guttering Pro #4! Never lose another k+ job to missed calls while on-site in Tauranga/Hamilton. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: WhatsApp +64 20 4115 3617 (Direct Demo & Rep Line)",
+      "created_at": "2026-09-28T19:54:28.805Z"
+    },
+    {
+      "id": "target_100_80_1790625268805",
+      "name": "Tauranga/Hamilton Drainlaying & Relining Pro #5",
+      "phone": "+64 21 100081",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",500",
+      "city": "Tauranga/Hamilton",
+      "notes": "Trade: Drainlaying & Relining | Region: NZ | Demo Dispatch: G'day Tauranga/Hamilton Drainlaying & Relining Pro #5! Never lose another k+ job to missed calls while on-site in Tauranga/Hamilton. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: WhatsApp +64 20 4115 3617 (Direct Demo & Rep Line)",
+      "created_at": "2026-09-28T19:54:28.805Z"
+    },
+    {
+      "id": "target_100_81_1790625268805",
+      "name": "Tauranga/Hamilton Heat Pump & HVAC Pro #6",
+      "phone": "+64 21 100082",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",800",
+      "city": "Tauranga/Hamilton",
+      "notes": "Trade: Heat Pump & HVAC | Region: NZ | Demo Dispatch: G'day Tauranga/Hamilton Heat Pump & HVAC Pro #6! Never lose another k+ job to missed calls while on-site in Tauranga/Hamilton. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: WhatsApp +64 20 4115 3617 (Direct Demo & Rep Line)",
+      "created_at": "2026-09-28T19:54:28.805Z"
+    },
+    {
+      "id": "target_100_82_1790625268805",
+      "name": "Tauranga/Hamilton Emergency Plumbing & Gas Pro #7",
+      "phone": "+64 21 100083",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",200",
+      "city": "Tauranga/Hamilton",
+      "notes": "Trade: Emergency Plumbing & Gas | Region: NZ | Demo Dispatch: G'day Tauranga/Hamilton Emergency Plumbing & Gas Pro #7! Never lose another k+ job to missed calls while on-site in Tauranga/Hamilton. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: WhatsApp +64 20 4115 3617 (Direct Demo & Rep Line)",
+      "created_at": "2026-09-28T19:54:28.805Z"
+    },
+    {
+      "id": "target_100_83_1790625268805",
+      "name": "Tauranga/Hamilton Solar & Electrical Pro #8",
+      "phone": "+64 21 100084",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",500",
+      "city": "Tauranga/Hamilton",
+      "notes": "Trade: Solar & Electrical | Region: NZ | Demo Dispatch: G'day Tauranga/Hamilton Solar & Electrical Pro #8! Never lose another k+ job to missed calls while on-site in Tauranga/Hamilton. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: WhatsApp +64 20 4115 3617 (Direct Demo & Rep Line)",
+      "created_at": "2026-09-28T19:54:28.805Z"
+    },
+    {
+      "id": "target_100_84_1790625268805",
+      "name": "Tauranga/Hamilton Roofing & Guttering Pro #9",
+      "phone": "+64 21 100085",
+      "status": "Ready for Demo Dispatch",
+      "job_value": "4,000",
+      "city": "Tauranga/Hamilton",
+      "notes": "Trade: Roofing & Guttering | Region: NZ | Demo Dispatch: G'day Tauranga/Hamilton Roofing & Guttering Pro #9! Never lose another k+ job to missed calls while on-site in Tauranga/Hamilton. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: WhatsApp +64 20 4115 3617 (Direct Demo & Rep Line)",
+      "created_at": "2026-09-28T19:54:28.805Z"
+    },
+    {
+      "id": "target_100_85_1790625268805",
+      "name": "Tauranga/Hamilton Drainlaying & Relining Pro #10",
+      "phone": "+64 21 100086",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",500",
+      "city": "Tauranga/Hamilton",
+      "notes": "Trade: Drainlaying & Relining | Region: NZ | Demo Dispatch: G'day Tauranga/Hamilton Drainlaying & Relining Pro #10! Never lose another k+ job to missed calls while on-site in Tauranga/Hamilton. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: WhatsApp +64 20 4115 3617 (Direct Demo & Rep Line)",
+      "created_at": "2026-09-28T19:54:28.805Z"
+    },
+    {
+      "id": "target_100_86_1790625268805",
+      "name": "Tauranga/Hamilton Heat Pump & HVAC Pro #11",
+      "phone": "+64 21 100087",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",800",
+      "city": "Tauranga/Hamilton",
+      "notes": "Trade: Heat Pump & HVAC | Region: NZ | Demo Dispatch: G'day Tauranga/Hamilton Heat Pump & HVAC Pro #11! Never lose another k+ job to missed calls while on-site in Tauranga/Hamilton. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: WhatsApp +64 20 4115 3617 (Direct Demo & Rep Line)",
+      "created_at": "2026-09-28T19:54:28.805Z"
+    },
+    {
+      "id": "target_100_87_1790625268805",
+      "name": "Tauranga/Hamilton Emergency Plumbing & Gas Pro #12",
+      "phone": "+64 21 100088",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",200",
+      "city": "Tauranga/Hamilton",
+      "notes": "Trade: Emergency Plumbing & Gas | Region: NZ | Demo Dispatch: G'day Tauranga/Hamilton Emergency Plumbing & Gas Pro #12! Never lose another k+ job to missed calls while on-site in Tauranga/Hamilton. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: WhatsApp +64 20 4115 3617 (Direct Demo & Rep Line)",
+      "created_at": "2026-09-28T19:54:28.805Z"
+    },
+    {
+      "id": "target_100_88_1790625268805",
+      "name": "Tauranga/Hamilton Solar & Electrical Pro #13",
+      "phone": "+64 21 100089",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",500",
+      "city": "Tauranga/Hamilton",
+      "notes": "Trade: Solar & Electrical | Region: NZ | Demo Dispatch: G'day Tauranga/Hamilton Solar & Electrical Pro #13! Never lose another k+ job to missed calls while on-site in Tauranga/Hamilton. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: WhatsApp +64 20 4115 3617 (Direct Demo & Rep Line)",
+      "created_at": "2026-09-28T19:54:28.805Z"
+    },
+    {
+      "id": "target_100_89_1790625268805",
+      "name": "Tauranga/Hamilton Roofing & Guttering Pro #14",
+      "phone": "+64 21 100090",
+      "status": "Ready for Demo Dispatch",
+      "job_value": "4,000",
+      "city": "Tauranga/Hamilton",
+      "notes": "Trade: Roofing & Guttering | Region: NZ | Demo Dispatch: G'day Tauranga/Hamilton Roofing & Guttering Pro #14! Never lose another k+ job to missed calls while on-site in Tauranga/Hamilton. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: WhatsApp +64 20 4115 3617 (Direct Demo & Rep Line)",
+      "created_at": "2026-09-28T19:54:28.805Z"
+    },
+    {
+      "id": "target_100_90_1790625268805",
+      "name": "Tauranga/Hamilton Drainlaying & Relining Pro #15",
+      "phone": "+64 21 100091",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",500",
+      "city": "Tauranga/Hamilton",
+      "notes": "Trade: Drainlaying & Relining | Region: NZ | Demo Dispatch: G'day Tauranga/Hamilton Drainlaying & Relining Pro #15! Never lose another k+ job to missed calls while on-site in Tauranga/Hamilton. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: WhatsApp +64 20 4115 3617 (Direct Demo & Rep Line)",
+      "created_at": "2026-09-28T19:54:28.805Z"
+    },
+    {
+      "id": "target_100_91_1790625268805",
+      "name": "Sydney/Brisbane Heat Pump & HVAC Pro #1",
+      "phone": "+61 411 100092",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",800",
+      "city": "Sydney/Brisbane",
+      "notes": "Trade: Heat Pump & HVAC | Region: AU | Demo Dispatch: G'day Sydney/Brisbane Heat Pump & HVAC Pro #1! Never lose another k+ job to missed calls while on-site in Sydney/Brisbane. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: WhatsApp +64 20 4115 3617 (Direct Demo & Rep Line)",
+      "created_at": "2026-09-28T19:54:28.805Z"
+    },
+    {
+      "id": "target_100_92_1790625268805",
+      "name": "Sydney/Brisbane Emergency Plumbing & Gas Pro #2",
+      "phone": "+61 411 100093",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",200",
+      "city": "Sydney/Brisbane",
+      "notes": "Trade: Emergency Plumbing & Gas | Region: AU | Demo Dispatch: G'day Sydney/Brisbane Emergency Plumbing & Gas Pro #2! Never lose another k+ job to missed calls while on-site in Sydney/Brisbane. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: WhatsApp +64 20 4115 3617 (Direct Demo & Rep Line)",
+      "created_at": "2026-09-28T19:54:28.805Z"
+    },
+    {
+      "id": "target_100_93_1790625268805",
+      "name": "Sydney/Brisbane Solar & Electrical Pro #3",
+      "phone": "+61 411 100094",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",500",
+      "city": "Sydney/Brisbane",
+      "notes": "Trade: Solar & Electrical | Region: AU | Demo Dispatch: G'day Sydney/Brisbane Solar & Electrical Pro #3! Never lose another k+ job to missed calls while on-site in Sydney/Brisbane. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: WhatsApp +64 20 4115 3617 (Direct Demo & Rep Line)",
+      "created_at": "2026-09-28T19:54:28.805Z"
+    },
+    {
+      "id": "target_100_94_1790625268805",
+      "name": "Sydney/Brisbane Roofing & Guttering Pro #4",
+      "phone": "+61 411 100095",
+      "status": "Ready for Demo Dispatch",
+      "job_value": "4,000",
+      "city": "Sydney/Brisbane",
+      "notes": "Trade: Roofing & Guttering | Region: AU | Demo Dispatch: G'day Sydney/Brisbane Roofing & Guttering Pro #4! Never lose another k+ job to missed calls while on-site in Sydney/Brisbane. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: WhatsApp +64 20 4115 3617 (Direct Demo & Rep Line)",
+      "created_at": "2026-09-28T19:54:28.805Z"
+    },
+    {
+      "id": "target_100_95_1790625268805",
+      "name": "Sydney/Brisbane Drainlaying & Relining Pro #5",
+      "phone": "+61 411 100096",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",500",
+      "city": "Sydney/Brisbane",
+      "notes": "Trade: Drainlaying & Relining | Region: AU | Demo Dispatch: G'day Sydney/Brisbane Drainlaying & Relining Pro #5! Never lose another k+ job to missed calls while on-site in Sydney/Brisbane. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: WhatsApp +64 20 4115 3617 (Direct Demo & Rep Line)",
+      "created_at": "2026-09-28T19:54:28.805Z"
+    },
+    {
+      "id": "target_100_96_1790625268805",
+      "name": "Sydney/Brisbane Heat Pump & HVAC Pro #6",
+      "phone": "+61 411 100097",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",800",
+      "city": "Sydney/Brisbane",
+      "notes": "Trade: Heat Pump & HVAC | Region: AU | Demo Dispatch: G'day Sydney/Brisbane Heat Pump & HVAC Pro #6! Never lose another k+ job to missed calls while on-site in Sydney/Brisbane. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: WhatsApp +64 20 4115 3617 (Direct Demo & Rep Line)",
+      "created_at": "2026-09-28T19:54:28.805Z"
+    },
+    {
+      "id": "target_100_97_1790625268805",
+      "name": "Sydney/Brisbane Emergency Plumbing & Gas Pro #7",
+      "phone": "+61 411 100098",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",200",
+      "city": "Sydney/Brisbane",
+      "notes": "Trade: Emergency Plumbing & Gas | Region: AU | Demo Dispatch: G'day Sydney/Brisbane Emergency Plumbing & Gas Pro #7! Never lose another k+ job to missed calls while on-site in Sydney/Brisbane. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: WhatsApp +64 20 4115 3617 (Direct Demo & Rep Line)",
+      "created_at": "2026-09-28T19:54:28.805Z"
+    },
+    {
+      "id": "target_100_98_1790625268805",
+      "name": "Sydney/Brisbane Solar & Electrical Pro #8",
+      "phone": "+61 411 100099",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",500",
+      "city": "Sydney/Brisbane",
+      "notes": "Trade: Solar & Electrical | Region: AU | Demo Dispatch: G'day Sydney/Brisbane Solar & Electrical Pro #8! Never lose another k+ job to missed calls while on-site in Sydney/Brisbane. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: WhatsApp +64 20 4115 3617 (Direct Demo & Rep Line)",
+      "created_at": "2026-09-28T19:54:28.805Z"
+    },
+    {
+      "id": "target_100_99_1790625268805",
+      "name": "Sydney/Brisbane Roofing & Guttering Pro #9",
+      "phone": "+61 411 100100",
+      "status": "Ready for Demo Dispatch",
+      "job_value": "4,000",
+      "city": "Sydney/Brisbane",
+      "notes": "Trade: Roofing & Guttering | Region: AU | Demo Dispatch: G'day Sydney/Brisbane Roofing & Guttering Pro #9! Never lose another k+ job to missed calls while on-site in Sydney/Brisbane. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: WhatsApp +64 20 4115 3617 (Direct Demo & Rep Line)",
+      "created_at": "2026-09-28T19:54:28.805Z"
+    },
+    {
+      "id": "target_100_100_1790625268805",
+      "name": "Sydney/Brisbane Drainlaying & Relining Pro #10",
+      "phone": "+61 411 100101",
+      "status": "Ready for Demo Dispatch",
+      "job_value": ",500",
+      "city": "Sydney/Brisbane",
+      "notes": "Trade: Drainlaying & Relining | Region: AU | Demo Dispatch: G'day Sydney/Brisbane Drainlaying & Relining Pro #10! Never lose another k+ job to missed calls while on-site in Sydney/Brisbane. Zenna AI catches missed calls in < 3s & texts customers automatically. Live Demo: WhatsApp +64 20 4115 3617 (Direct Demo & Rep Line)",
+      "created_at": "2026-09-28T19:54:28.805Z"
+    }
+  ],
+  "calls": [
+    {
+      "tenant_id": "pilot_tenant_melbourne_1",
+      "id": "1790625302384",
+      "call_id": "demo_1790625302384",
+      "from_number": "+6421123456",
+      "timestamp": "2026-09-28T19:55:02.384Z",
+      "message": "G'day Auckland Heat Pump Prospect, Zenna here from Hartley Plumbing! Dave is on the tools. We have confirmed your $150 diagnostic booking for Auckland Central.",
+      "status": "completed",
+      "sms_sent": true
+    },
+    {
+      "tenant_id": "pilot_tenant_melbourne_1",
+      "id": "1790583233483",
+      "call_id": "demo_1790583233437",
+      "from_number": "+64215558912",
+      "timestamp": "2026-09-28T08:13:53.483Z",
+      "message": "G'day Sarah Jenkins, Zenna here from Hartley Plumbing! Dave is on the tools. We have confirmed your $150 diagnostic booking for Ponsonby, Auckland.",
+      "status": "completed",
+      "sms_sent": true
+    },
+    {
+      "tenant_id": "heavy_blanket_campaign",
+      "id": "1787934833216",
+      "call_id": "hb_1787934833216_cg1q",
+      "from_number": "+6421006002",
+      "timestamp": "2026-08-28T16:33:53.216Z",
+      "message": "G'day Jonty! Saw Fendalton Master Sparkies operating around Fendalton. When you're on tools for a EV charging stations & smart home cabling job, missed calls go straight to the next tradie on Google. Zenna AI catches missed calls in 3s, texts your quote/booking link & secures the deposit. Test it free for 7 days: https://zenna.au/demo",
+      "status": "SMS Outreach Broadcast",
+      "sms_sent": true
+    },
+    {
+      "tenant_id": "heavy_blanket_campaign",
+      "id": "1787934833184",
+      "call_id": "hb_1787934833184_xwpn",
+      "from_number": "+6421006001",
+      "timestamp": "2026-08-28T16:33:53.184Z",
+      "message": "G'day Fergus! Saw Merivale Heritage Plumbing operating around Merivale. When you're on tools for a Post-quake ringmain pipe rehabilitation job, missed calls go straight to the next tradie on Google. Zenna AI catches missed calls in 3s, texts your quote/booking link & secures the deposit. Test it free for 7 days: https://zenna.au/demo",
+      "status": "SMS Outreach Broadcast",
+      "sms_sent": true
+    },
+    {
+      "tenant_id": "heavy_blanket_campaign",
+      "id": "1787934833140",
+      "call_id": "hb_1787934833140_h4ov",
+      "from_number": "+6421005002",
+      "timestamp": "2026-08-28T16:33:53.140Z",
+      "message": "G'day Lachlan! Saw Thorndon Certified Drainage Co operating around Thorndon. When you're on tools for a Slip repair & hillside stormwater management job, missed calls go straight to the next tradie on Google. Zenna AI catches missed calls in 3s, texts your quote/booking link & secures the deposit. Test it free for 7 days: https://zenna.au/demo",
+      "status": "SMS Outreach Broadcast",
+      "sms_sent": true
+    },
+    {
+      "tenant_id": "heavy_blanket_campaign",
+      "id": "1787934833107",
+      "call_id": "hb_1787934833107_95xd",
+      "from_number": "+6421005001",
+      "timestamp": "2026-08-28T16:33:53.107Z",
+      "message": "G'day Caleb! Saw Te Aro Central Heating & Heat Pumps operating around Te Aro. When you're on tools for a High-efficiency ducted heat pump systems job, missed calls go straight to the next tradie on Google. Zenna AI catches missed calls in 3s, texts your quote/booking link & secures the deposit. Test it free for 7 days: https://zenna.au/demo",
+      "status": "SMS Outreach Broadcast",
+      "sms_sent": true
+    },
+    {
+      "tenant_id": "heavy_blanket_campaign",
+      "id": "1787934833077",
+      "call_id": "hb_1787934833077_6tss",
+      "from_number": "+6421004004",
+      "timestamp": "2026-08-28T16:33:53.077Z",
+      "message": "G'day Niko! Saw Mount Eden Drainage & Earthworks operating around Mount Eden. When you're on tools for a Council consenting & public sewer connections job, missed calls go straight to the next tradie on Google. Zenna AI catches missed calls in 3s, texts your quote/booking link & secures the deposit. Test it free for 7 days: https://zenna.au/demo",
+      "status": "SMS Outreach Broadcast",
+      "sms_sent": true
+    },
+    {
+      "tenant_id": "heavy_blanket_campaign",
+      "id": "1787934833045",
+      "call_id": "hb_1787934833045_qrnb",
+      "from_number": "+6421004003",
+      "timestamp": "2026-08-28T16:33:53.045Z",
+      "message": "G'day Angus! Saw Remuera Architectural Roofing NZ operating around Remuera. When you're on tools for a Longrun metal roofing & fascia installs job, missed calls go straight to the next tradie on Google. Zenna AI catches missed calls in 3s, texts your quote/booking link & secures the deposit. Test it free for 7 days: https://zenna.au/demo",
+      "status": "SMS Outreach Broadcast",
+      "sms_sent": true
+    },
+    {
+      "tenant_id": "heavy_blanket_campaign",
+      "id": "1787934833015",
+      "call_id": "hb_1787934833015_3q11",
+      "from_number": "+6421004002",
+      "timestamp": "2026-08-28T16:33:53.015Z",
+      "message": "G'day Wiremu! Saw Takapuna Master Electricians NZ operating around Takapuna. When you're on tools for a Full villa switchboard modernisation job, missed calls go straight to the next tradie on Google. Zenna AI catches missed calls in 3s, texts your quote/booking link & secures the deposit. Test it free for 7 days: https://zenna.au/demo",
+      "status": "SMS Outreach Broadcast",
+      "sms_sent": true
+    },
+    {
+      "tenant_id": "heavy_blanket_campaign",
+      "id": "1787934832983",
+      "call_id": "hb_1787934832983_z6t6",
+      "from_number": "+6421004001",
+      "timestamp": "2026-08-28T16:33:52.983Z",
+      "message": "G'day Hamish! Saw Ponsonby Elite Plumbing & Gas operating around Ponsonby. When you're on tools for a Mains pressure cylinder conversions job, missed calls go straight to the next tradie on Google. Zenna AI catches missed calls in 3s, texts your quote/booking link & secures the deposit. Test it free for 7 days: https://zenna.au/demo",
+      "status": "SMS Outreach Broadcast",
+      "sms_sent": true
+    },
+    {
+      "tenant_id": "heavy_blanket_campaign",
+      "id": "1787934832950",
+      "call_id": "hb_1787934832950_busi",
+      "from_number": "+61414003004",
+      "timestamp": "2026-08-28T16:33:52.950Z",
+      "message": "G'day Kane! Saw Broadbeach HVAC & Coolrooms operating around Broadbeach. When you're on tools for a Hospitality refrigeration & coolroom repair job, missed calls go straight to the next tradie on Google. Zenna AI catches missed calls in 3s, texts your quote/booking link & secures the deposit. Test it free for 7 days: https://zenna.au/demo",
+      "status": "SMS Outreach Broadcast",
+      "sms_sent": true
+    },
+    {
+      "tenant_id": "heavy_blanket_campaign",
+      "id": "1787934832764",
+      "call_id": "hb_1787934832764_qh0u",
+      "from_number": "+61414003003",
+      "timestamp": "2026-08-28T16:33:52.764Z",
+      "message": "G'day Troy! Saw Burleigh Heads Roof Leak Specialists operating around Burleigh Heads. When you're on tools for a Cyclone-rated metal roof flashing job, missed calls go straight to the next tradie on Google. Zenna AI catches missed calls in 3s, texts your quote/booking link & secures the deposit. Test it free for 7 days: https://zenna.au/demo",
+      "status": "SMS Outreach Broadcast",
+      "sms_sent": true
+    },
+    {
+      "tenant_id": "heavy_blanket_campaign",
+      "id": "1787934832648",
+      "call_id": "hb_1787934832648_qjpy",
+      "from_number": "+61414003002",
+      "timestamp": "2026-08-28T16:33:52.648Z",
+      "message": "G'day Luke! Saw Fortitude Valley Solar & Electrical operating around Fortitude Valley. When you're on tools for a 10kW commercial solar & battery installs job, missed calls go straight to the next tradie on Google. Zenna AI catches missed calls in 3s, texts your quote/booking link & secures the deposit. Test it free for 7 days: https://zenna.au/demo",
+      "status": "SMS Outreach Broadcast",
+      "sms_sent": true
+    },
+    {
+      "tenant_id": "heavy_blanket_campaign",
+      "id": "1787934832617",
+      "call_id": "hb_1787934832617_qpxq",
+      "from_number": "+61414003001",
+      "timestamp": "2026-08-28T16:33:52.617Z",
+      "message": "G'day Craig! Saw New Farm Rapid Plumbing Solutions operating around New Farm. When you're on tools for a Heritage home copper pipe repiping job, missed calls go straight to the next tradie on Google. Zenna AI catches missed calls in 3s, texts your quote/booking link & secures the deposit. Test it free for 7 days: https://zenna.au/demo",
+      "status": "SMS Outreach Broadcast",
+      "sms_sent": true
+    },
+    {
+      "tenant_id": "heavy_blanket_campaign",
+      "id": "1787934831118",
+      "call_id": "hb_1787934831118_7meh",
+      "from_number": "+61413002005",
+      "timestamp": "2026-08-28T16:33:51.118Z",
+      "message": "G'day Matty! Saw Cronulla Coastal Drainage & Civil operating around Cronulla. When you're on tools for a Stormwater retention & subsoil drainage job, missed calls go straight to the next tradie on Google. Zenna AI catches missed calls in 3s, texts your quote/booking link & secures the deposit. Test it free for 7 days: https://zenna.au/demo",
+      "status": "SMS Outreach Broadcast",
+      "sms_sent": true
+    },
+    {
+      "tenant_id": "heavy_blanket_campaign",
+      "id": "1787934831085",
+      "call_id": "hb_1787934831085_pvki",
+      "from_number": "+61413002004",
+      "timestamp": "2026-08-28T16:33:51.085Z",
+      "message": "G'day Ahmed! Saw Parramatta Commercial HVAC & Chillers operating around Parramatta. When you're on tools for a Commercial VRF rooftop aircon units job, missed calls go straight to the next tradie on Google. Zenna AI catches missed calls in 3s, texts your quote/booking link & secures the deposit. Test it free for 7 days: https://zenna.au/demo",
+      "status": "SMS Outreach Broadcast",
+      "sms_sent": true
+    },
+    {
+      "tenant_id": "heavy_blanket_campaign",
+      "id": "1787934831041",
+      "call_id": "hb_1787934831041_s17g",
+      "from_number": "+61413002003",
+      "timestamp": "2026-08-28T16:33:51.041Z",
+      "message": "G'day Jack! Saw Surry Hills Architectural Roofing operating around Surry Hills. When you're on tools for a Slate & Colorbond architectural re-roofs job, missed calls go straight to the next tradie on Google. Zenna AI catches missed calls in 3s, texts your quote/booking link & secures the deposit. Test it free for 7 days: https://zenna.au/demo",
+      "status": "SMS Outreach Broadcast",
+      "sms_sent": true
+    },
+    {
+      "tenant_id": "heavy_blanket_campaign",
+      "id": "1787934830313",
+      "call_id": "hb_1787934830313_nnge",
+      "from_number": "+61413002002",
+      "timestamp": "2026-08-28T16:33:50.313Z",
+      "message": "G'day Toby! Saw Manly Level 2 Electrical Specialists operating around Manly. When you're on tools for a Level 2 overhead service connections job, missed calls go straight to the next tradie on Google. Zenna AI catches missed calls in 3s, texts your quote/booking link & secures the deposit. Test it free for 7 days: https://zenna.au/demo",
+      "status": "SMS Outreach Broadcast",
+      "sms_sent": true
+    },
+    {
+      "tenant_id": "heavy_blanket_campaign",
+      "id": "1787934830285",
+      "call_id": "hb_1787934830285_f5ep",
+      "from_number": "+61413002001",
+      "timestamp": "2026-08-28T16:33:50.285Z",
+      "message": "G'day Callum! Saw Bondi Precision Plumbing Co operating around Bondi. When you're on tools for a Coastal bathroom renovation rough-ins job, missed calls go straight to the next tradie on Google. Zenna AI catches missed calls in 3s, texts your quote/booking link & secures the deposit. Test it free for 7 days: https://zenna.au/demo",
+      "status": "SMS Outreach Broadcast",
+      "sms_sent": true
+    },
+    {
+      "tenant_id": "heavy_blanket_campaign",
+      "id": "1787934830251",
+      "call_id": "hb_1787934830251_38b4",
+      "from_number": "+61412001005",
+      "timestamp": "2026-08-28T16:33:50.251Z",
+      "message": "G'day Darren! Saw Hawthorn Drain Jetting & CCTV operating around Hawthorn. When you're on tools for a Blocked sewer clearings & pipe relining job, missed calls go straight to the next tradie on Google. Zenna AI catches missed calls in 3s, texts your quote/booking link & secures the deposit. Test it free for 7 days: https://zenna.au/demo",
+      "status": "SMS Outreach Broadcast",
+      "sms_sent": true
+    },
+    {
+      "tenant_id": "heavy_blanket_campaign",
+      "id": "1787934830218",
+      "call_id": "hb_1787934830218_2pm9",
+      "from_number": "+61412001004",
+      "timestamp": "2026-08-28T16:33:50.218Z",
+      "message": "G'day Liam! Saw South Yarra AirCon & Climate Co operating around South Yarra. When you're on tools for a Commercial ducted HVAC installs job, missed calls go straight to the next tradie on Google. Zenna AI catches missed calls in 3s, texts your quote/booking link & secures the deposit. Test it free for 7 days: https://zenna.au/demo",
+      "status": "SMS Outreach Broadcast",
+      "sms_sent": true
+    },
+    {
+      "tenant_id": "heavy_blanket_campaign",
+      "id": "1787934830184",
+      "call_id": "hb_1787934830184_mzcv",
+      "from_number": "+61412001003",
+      "timestamp": "2026-08-28T16:33:50.184Z",
+      "message": "G'day Shane! Saw Brighton Roof & Gutter Restorations operating around Brighton. When you're on tools for a Storm damage leak repairs & re-pointing job, missed calls go straight to the next tradie on Google. Zenna AI catches missed calls in 3s, texts your quote/booking link & secures the deposit. Test it free for 7 days: https://zenna.au/demo",
+      "status": "SMS Outreach Broadcast",
+      "sms_sent": true
+    },
+    {
+      "tenant_id": "heavy_blanket_campaign",
+      "id": "1787934830151",
+      "call_id": "hb_1787934830151_88g3",
+      "from_number": "+61412001002",
+      "timestamp": "2026-08-28T16:33:50.151Z",
+      "message": "G'day Brendan! Saw Fitzroy Master Sparkies operating around Fitzroy. When you're on tools for a Switchboard upgrades and rewires job, missed calls go straight to the next tradie on Google. Zenna AI catches missed calls in 3s, texts your quote/booking link & secures the deposit. Test it free for 7 days: https://zenna.au/demo",
+      "status": "SMS Outreach Broadcast",
+      "sms_sent": true
+    },
+    {
+      "tenant_id": "heavy_blanket_campaign",
+      "id": "1787934830116",
+      "call_id": "hb_1787934830116_flr4",
+      "from_number": "+61412001001",
+      "timestamp": "2026-08-28T16:33:50.116Z",
+      "message": "G'day Mick! Saw Richmond 24/7 Plumbing & Gas operating around Richmond. When you're on tools for a Emergency burst pipe & hot water cylinder replacements job, missed calls go straight to the next tradie on Google. Zenna AI catches missed calls in 3s, texts your quote/booking link & secures the deposit. Test it free for 7 days: https://zenna.au/demo",
+      "status": "SMS Outreach Broadcast",
+      "sms_sent": true
+    },
+    {
+      "tenant_id": "default_tenant",
+      "id": "1787934289720",
+      "call_id": "call_1787934289720",
+      "from_number": "+61 412 891 044",
+      "timestamp": "2026-08-28T16:24:49.720Z",
+      "message": "G'day! Zenna here, Dave's AI receptionist at Hartley Plumbing & Drainage. We're on the tools right now, but we've got your details and will get you sorted shortly! Standard call-out diagnostic is $150. 🤙",
+      "status": "Live Personalized Answer",
+      "sms_sent": true
+    },
+    {
+      "id": "81",
+      "call_id": "outreach_1785895862308_q523",
+      "from_number": "+61411000555",
+      "timestamp": "2026-08-05T02:11:02.309Z",
+      "message": "G'day Brisbane Roofing Specialists! Zenna catches your missed calls & texts customers automatically so you never lose jobs on-site in Fortitude Valley. Claim 7 days free at https://zenna.au",
+      "status": "Autonomous SMS Campaign Queued",
+      "sms_sent": true
+    },
+    {
+      "id": "80",
+      "call_id": "outreach_1785895862307_wh1g",
+      "from_number": "+61411000444",
+      "timestamp": "2026-08-05T02:11:02.307Z",
+      "message": "G'day Melbourne Pro HVAC! Zenna catches your missed calls & texts customers automatically so you never lose jobs on-site in Richmond. Claim 7 days free at https://zenna.au",
+      "status": "Autonomous SMS Campaign Queued",
+      "sms_sent": true
+    },
+    {
+      "id": "79",
+      "call_id": "outreach_1785895862306_kbii",
+      "from_number": "+61411000333",
+      "timestamp": "2026-08-05T02:11:02.306Z",
+      "message": "G'day Sydney Metro Drain Services! Zenna catches your missed calls & texts customers automatically so you never lose jobs on-site in Surry Hills. Claim 7 days free at https://zenna.au",
+      "status": "Autonomous SMS Campaign Queued",
+      "sms_sent": true
+    },
+    {
+      "id": "78",
+      "call_id": "outreach_1785895862304_srxf",
+      "from_number": "+6421000222",
+      "timestamp": "2026-08-05T02:11:02.304Z",
+      "message": "G'day Wellington Electrical Co! Zenna catches your missed calls & texts customers automatically so you never lose jobs on-site in Te Aro. Claim 7 days free at https://zenna.au",
+      "status": "Autonomous SMS Campaign Queued",
+      "sms_sent": true
+    },
+    {
+      "id": "77",
+      "call_id": "outreach_1785895862303_iioa",
+      "from_number": "+6421000111",
+      "timestamp": "2026-08-05T02:11:02.303Z",
+      "message": "G'day Auckland Premium Plumbing! Zenna catches your missed calls & texts customers automatically so you never lose jobs on-site in Ponsonby. Claim 7 days free at https://zenna.au",
+      "status": "Autonomous SMS Campaign Queued",
+      "sms_sent": true
+    },
+    {
+      "id": "76",
+      "call_id": "scale_1785895853943_20",
+      "from_number": "+6141102000",
+      "timestamp": "2026-08-05T02:10:53.944Z",
+      "message": "G'day Melbourne Plumbing Specialists #20! Never lose another $3k+ job to missed calls while on-site in Melbourne. Zenna AI catches missed calls in < 3s & texts customers automatically. 7-Day Free Trial: https://zenna.au",
+      "status": "Hyper-Scale SMS Dispatched",
+      "sms_sent": true
+    },
+    {
+      "id": "75",
+      "call_id": "scale_1785895853942_19",
+      "from_number": "+6141101900",
+      "timestamp": "2026-08-05T02:10:53.943Z",
+      "message": "G'day Sydney Drainlaying Specialists #19! Never lose another $3k+ job to missed calls while on-site in Sydney. Zenna AI catches missed calls in < 3s & texts customers automatically. 7-Day Free Trial: https://zenna.au",
+      "status": "Hyper-Scale SMS Dispatched",
+      "sms_sent": true
+    },
+    {
+      "id": "74",
+      "call_id": "scale_1785895853942_18",
+      "from_number": "+6421001800",
+      "timestamp": "2026-08-05T02:10:53.942Z",
+      "message": "G'day Auckland Roofing & Guttering Specialists #18! Never lose another $3k+ job to missed calls while on-site in Auckland. Zenna AI catches missed calls in < 3s & texts customers automatically. 7-Day Free Trial: https://zenna.au",
+      "status": "Hyper-Scale SMS Dispatched",
+      "sms_sent": true
+    },
+    {
+      "id": "73",
+      "call_id": "scale_1785895853940_17",
+      "from_number": "+6421001700",
+      "timestamp": "2026-08-05T02:10:53.941Z",
+      "message": "G'day Christchurch HVAC & AirCon Specialists #17! Never lose another $3k+ job to missed calls while on-site in Christchurch. Zenna AI catches missed calls in < 3s & texts customers automatically. 7-Day Free Trial: https://zenna.au",
+      "status": "Hyper-Scale SMS Dispatched",
+      "sms_sent": true
+    },
+    {
+      "id": "72",
+      "call_id": "scale_1785895853939_16",
+      "from_number": "+6141101600",
+      "timestamp": "2026-08-05T02:10:53.940Z",
+      "message": "G'day Brisbane Electrical Services Specialists #16! Never lose another $3k+ job to missed calls while on-site in Brisbane. Zenna AI catches missed calls in < 3s & texts customers automatically. 7-Day Free Trial: https://zenna.au",
+      "status": "Hyper-Scale SMS Dispatched",
+      "sms_sent": true
+    },
+    {
+      "id": "71",
+      "call_id": "scale_1785895853938_15",
+      "from_number": "+6421001500",
+      "timestamp": "2026-08-05T02:10:53.939Z",
+      "message": "G'day Wellington Plumbing Specialists #15! Never lose another $3k+ job to missed calls while on-site in Wellington. Zenna AI catches missed calls in < 3s & texts customers automatically. 7-Day Free Trial: https://zenna.au",
+      "status": "Hyper-Scale SMS Dispatched",
+      "sms_sent": true
+    },
+    {
+      "id": "70",
+      "call_id": "scale_1785895853937_14",
+      "from_number": "+6141101400",
+      "timestamp": "2026-08-05T02:10:53.937Z",
+      "message": "G'day Melbourne Drainlaying Specialists #14! Never lose another $3k+ job to missed calls while on-site in Melbourne. Zenna AI catches missed calls in < 3s & texts customers automatically. 7-Day Free Trial: https://zenna.au",
+      "status": "Hyper-Scale SMS Dispatched",
+      "sms_sent": true
+    },
+    {
+      "id": "69",
+      "call_id": "scale_1785895853936_13",
+      "from_number": "+6141101300",
+      "timestamp": "2026-08-05T02:10:53.936Z",
+      "message": "G'day Sydney Roofing & Guttering Specialists #13! Never lose another $3k+ job to missed calls while on-site in Sydney. Zenna AI catches missed calls in < 3s & texts customers automatically. 7-Day Free Trial: https://zenna.au",
+      "status": "Hyper-Scale SMS Dispatched",
+      "sms_sent": true
+    },
+    {
+      "id": "68",
+      "call_id": "scale_1785895853935_12",
+      "from_number": "+6421001200",
+      "timestamp": "2026-08-05T02:10:53.935Z",
+      "message": "G'day Auckland HVAC & AirCon Specialists #12! Never lose another $3k+ job to missed calls while on-site in Auckland. Zenna AI catches missed calls in < 3s & texts customers automatically. 7-Day Free Trial: https://zenna.au",
+      "status": "Hyper-Scale SMS Dispatched",
+      "sms_sent": true
+    },
+    {
+      "id": "67",
+      "call_id": "scale_1785895853934_11",
+      "from_number": "+6421001100",
+      "timestamp": "2026-08-05T02:10:53.934Z",
+      "message": "G'day Christchurch Electrical Services Specialists #11! Never lose another $3k+ job to missed calls while on-site in Christchurch. Zenna AI catches missed calls in < 3s & texts customers automatically. 7-Day Free Trial: https://zenna.au",
+      "status": "Hyper-Scale SMS Dispatched",
+      "sms_sent": true
+    },
+    {
+      "id": "66",
+      "call_id": "scale_1785895853933_10",
+      "from_number": "+6141101000",
+      "timestamp": "2026-08-05T02:10:53.933Z",
+      "message": "G'day Brisbane Plumbing Specialists #10! Never lose another $3k+ job to missed calls while on-site in Brisbane. Zenna AI catches missed calls in < 3s & texts customers automatically. 7-Day Free Trial: https://zenna.au",
+      "status": "Hyper-Scale SMS Dispatched",
+      "sms_sent": true
+    },
+    {
+      "id": "65",
+      "call_id": "scale_1785895853932_9",
+      "from_number": "+642100900",
+      "timestamp": "2026-08-05T02:10:53.932Z",
+      "message": "G'day Wellington Drainlaying Specialists #9! Never lose another $3k+ job to missed calls while on-site in Wellington. Zenna AI catches missed calls in < 3s & texts customers automatically. 7-Day Free Trial: https://zenna.au",
+      "status": "Hyper-Scale SMS Dispatched",
+      "sms_sent": true
+    },
+    {
+      "id": "64",
+      "call_id": "scale_1785895853931_8",
+      "from_number": "+614110800",
+      "timestamp": "2026-08-05T02:10:53.931Z",
+      "message": "G'day Melbourne Roofing & Guttering Specialists #8! Never lose another $3k+ job to missed calls while on-site in Melbourne. Zenna AI catches missed calls in < 3s & texts customers automatically. 7-Day Free Trial: https://zenna.au",
+      "status": "Hyper-Scale SMS Dispatched",
+      "sms_sent": true
+    },
+    {
+      "id": "63",
+      "call_id": "scale_1785895853927_7",
+      "from_number": "+614110700",
+      "timestamp": "2026-08-05T02:10:53.927Z",
+      "message": "G'day Sydney HVAC & AirCon Specialists #7! Never lose another $3k+ job to missed calls while on-site in Sydney. Zenna AI catches missed calls in < 3s & texts customers automatically. 7-Day Free Trial: https://zenna.au",
+      "status": "Hyper-Scale SMS Dispatched",
+      "sms_sent": true
+    },
+    {
+      "id": "62",
+      "call_id": "scale_1785895853926_6",
+      "from_number": "+642100600",
+      "timestamp": "2026-08-05T02:10:53.926Z",
+      "message": "G'day Auckland Electrical Services Specialists #6! Never lose another $3k+ job to missed calls while on-site in Auckland. Zenna AI catches missed calls in < 3s & texts customers automatically. 7-Day Free Trial: https://zenna.au",
+      "status": "Hyper-Scale SMS Dispatched",
+      "sms_sent": true
+    },
+    {
+      "id": "61",
+      "call_id": "scale_1785895853925_5",
+      "from_number": "+642100500",
+      "timestamp": "2026-08-05T02:10:53.925Z",
+      "message": "G'day Christchurch Plumbing Specialists #5! Never lose another $3k+ job to missed calls while on-site in Christchurch. Zenna AI catches missed calls in < 3s & texts customers automatically. 7-Day Free Trial: https://zenna.au",
+      "status": "Hyper-Scale SMS Dispatched",
+      "sms_sent": true
+    },
+    {
+      "id": "60",
+      "call_id": "scale_1785895853913_4",
+      "from_number": "+614110400",
+      "timestamp": "2026-08-05T02:10:53.914Z",
+      "message": "G'day Brisbane Drainlaying Specialists #4! Never lose another $3k+ job to missed calls while on-site in Brisbane. Zenna AI catches missed calls in < 3s & texts customers automatically. 7-Day Free Trial: https://zenna.au",
+      "status": "Hyper-Scale SMS Dispatched",
+      "sms_sent": true
+    },
+    {
+      "id": "59",
+      "call_id": "scale_1785895853826_3",
+      "from_number": "+642100300",
+      "timestamp": "2026-08-05T02:10:53.826Z",
+      "message": "G'day Wellington Roofing & Guttering Specialists #3! Never lose another $3k+ job to missed calls while on-site in Wellington. Zenna AI catches missed calls in < 3s & texts customers automatically. 7-Day Free Trial: https://zenna.au",
+      "status": "Hyper-Scale SMS Dispatched",
+      "sms_sent": true
+    },
+    {
+      "id": "58",
+      "call_id": "scale_1785895853783_2",
+      "from_number": "+614110200",
+      "timestamp": "2026-08-05T02:10:53.783Z",
+      "message": "G'day Melbourne HVAC & AirCon Specialists #2! Never lose another $3k+ job to missed calls while on-site in Melbourne. Zenna AI catches missed calls in < 3s & texts customers automatically. 7-Day Free Trial: https://zenna.au",
+      "status": "Hyper-Scale SMS Dispatched",
+      "sms_sent": true
+    },
+    {
+      "id": "57",
+      "call_id": "scale_1785895853639_1",
+      "from_number": "+614110100",
+      "timestamp": "2026-08-05T02:10:53.639Z",
+      "message": "G'day Sydney Electrical Services Specialists #1! Never lose another $3k+ job to missed calls while on-site in Sydney. Zenna AI catches missed calls in < 3s & texts customers automatically. 7-Day Free Trial: https://zenna.au",
+      "status": "Hyper-Scale SMS Dispatched",
+      "sms_sent": true
+    },
+    {
+      "id": "56",
+      "call_id": "scale_1785886010390_20",
+      "from_number": "+6141102000",
+      "timestamp": "2026-08-04T23:26:50.390Z",
+      "message": "G'day Melbourne Plumbing Specialists #20! Never lose another $3k+ job to missed calls while on-site in Melbourne. Zenna AI catches missed calls in < 3s & texts customers automatically. 7-Day Free Trial: https://zenna.au",
+      "status": "Hyper-Scale SMS Dispatched",
+      "sms_sent": true
+    },
+    {
+      "id": "55",
+      "call_id": "scale_1785886010389_19",
+      "from_number": "+6141101900",
+      "timestamp": "2026-08-04T23:26:50.389Z",
+      "message": "G'day Sydney Drainlaying Specialists #19! Never lose another $3k+ job to missed calls while on-site in Sydney. Zenna AI catches missed calls in < 3s & texts customers automatically. 7-Day Free Trial: https://zenna.au",
+      "status": "Hyper-Scale SMS Dispatched",
+      "sms_sent": true
+    },
+    {
+      "id": "54",
+      "call_id": "scale_1785886010388_18",
+      "from_number": "+6421001800",
+      "timestamp": "2026-08-04T23:26:50.388Z",
+      "message": "G'day Auckland Roofing & Guttering Specialists #18! Never lose another $3k+ job to missed calls while on-site in Auckland. Zenna AI catches missed calls in < 3s & texts customers automatically. 7-Day Free Trial: https://zenna.au",
+      "status": "Hyper-Scale SMS Dispatched",
+      "sms_sent": true
+    },
+    {
+      "id": "53",
+      "call_id": "scale_1785886010387_17",
+      "from_number": "+6421001700",
+      "timestamp": "2026-08-04T23:26:50.388Z",
+      "message": "G'day Christchurch HVAC & AirCon Specialists #17! Never lose another $3k+ job to missed calls while on-site in Christchurch. Zenna AI catches missed calls in < 3s & texts customers automatically. 7-Day Free Trial: https://zenna.au",
+      "status": "Hyper-Scale SMS Dispatched",
+      "sms_sent": true
+    },
+    {
+      "id": "52",
+      "call_id": "scale_1785886010386_16",
+      "from_number": "+6141101600",
+      "timestamp": "2026-08-04T23:26:50.387Z",
+      "message": "G'day Brisbane Electrical Services Specialists #16! Never lose another $3k+ job to missed calls while on-site in Brisbane. Zenna AI catches missed calls in < 3s & texts customers automatically. 7-Day Free Trial: https://zenna.au",
+      "status": "Hyper-Scale SMS Dispatched",
+      "sms_sent": true
+    },
+    {
+      "id": "51",
+      "call_id": "scale_1785886010385_15",
+      "from_number": "+6421001500",
+      "timestamp": "2026-08-04T23:26:50.386Z",
+      "message": "G'day Wellington Plumbing Specialists #15! Never lose another $3k+ job to missed calls while on-site in Wellington. Zenna AI catches missed calls in < 3s & texts customers automatically. 7-Day Free Trial: https://zenna.au",
+      "status": "Hyper-Scale SMS Dispatched",
+      "sms_sent": true
+    },
+    {
+      "id": "50",
+      "call_id": "scale_1785886010384_14",
+      "from_number": "+6141101400",
+      "timestamp": "2026-08-04T23:26:50.385Z",
+      "message": "G'day Melbourne Drainlaying Specialists #14! Never lose another $3k+ job to missed calls while on-site in Melbourne. Zenna AI catches missed calls in < 3s & texts customers automatically. 7-Day Free Trial: https://zenna.au",
+      "status": "Hyper-Scale SMS Dispatched",
+      "sms_sent": true
+    },
+    {
+      "id": "49",
+      "call_id": "scale_1785886010383_13",
+      "from_number": "+6141101300",
+      "timestamp": "2026-08-04T23:26:50.384Z",
+      "message": "G'day Sydney Roofing & Guttering Specialists #13! Never lose another $3k+ job to missed calls while on-site in Sydney. Zenna AI catches missed calls in < 3s & texts customers automatically. 7-Day Free Trial: https://zenna.au",
+      "status": "Hyper-Scale SMS Dispatched",
+      "sms_sent": true
+    },
+    {
+      "id": "48",
+      "call_id": "scale_1785886010382_12",
+      "from_number": "+6421001200",
+      "timestamp": "2026-08-04T23:26:50.382Z",
+      "message": "G'day Auckland HVAC & AirCon Specialists #12! Never lose another $3k+ job to missed calls while on-site in Auckland. Zenna AI catches missed calls in < 3s & texts customers automatically. 7-Day Free Trial: https://zenna.au",
+      "status": "Hyper-Scale SMS Dispatched",
+      "sms_sent": true
+    },
+    {
+      "id": "47",
+      "call_id": "scale_1785886010380_11",
+      "from_number": "+6421001100",
+      "timestamp": "2026-08-04T23:26:50.381Z",
+      "message": "G'day Christchurch Electrical Services Specialists #11! Never lose another $3k+ job to missed calls while on-site in Christchurch. Zenna AI catches missed calls in < 3s & texts customers automatically. 7-Day Free Trial: https://zenna.au",
+      "status": "Hyper-Scale SMS Dispatched",
+      "sms_sent": true
+    },
+    {
+      "id": "46",
+      "call_id": "scale_1785886010379_10",
+      "from_number": "+6141101000",
+      "timestamp": "2026-08-04T23:26:50.379Z",
+      "message": "G'day Brisbane Plumbing Specialists #10! Never lose another $3k+ job to missed calls while on-site in Brisbane. Zenna AI catches missed calls in < 3s & texts customers automatically. 7-Day Free Trial: https://zenna.au",
+      "status": "Hyper-Scale SMS Dispatched",
+      "sms_sent": true
+    },
+    {
+      "id": "45",
+      "call_id": "scale_1785886010375_9",
+      "from_number": "+642100900",
+      "timestamp": "2026-08-04T23:26:50.375Z",
+      "message": "G'day Wellington Drainlaying Specialists #9! Never lose another $3k+ job to missed calls while on-site in Wellington. Zenna AI catches missed calls in < 3s & texts customers automatically. 7-Day Free Trial: https://zenna.au",
+      "status": "Hyper-Scale SMS Dispatched",
+      "sms_sent": true
+    },
+    {
+      "id": "44",
+      "call_id": "scale_1785886010374_8",
+      "from_number": "+614110800",
+      "timestamp": "2026-08-04T23:26:50.374Z",
+      "message": "G'day Melbourne Roofing & Guttering Specialists #8! Never lose another $3k+ job to missed calls while on-site in Melbourne. Zenna AI catches missed calls in < 3s & texts customers automatically. 7-Day Free Trial: https://zenna.au",
+      "status": "Hyper-Scale SMS Dispatched",
+      "sms_sent": true
+    },
+    {
+      "id": "43",
+      "call_id": "scale_1785886010373_7",
+      "from_number": "+614110700",
+      "timestamp": "2026-08-04T23:26:50.373Z",
+      "message": "G'day Sydney HVAC & AirCon Specialists #7! Never lose another $3k+ job to missed calls while on-site in Sydney. Zenna AI catches missed calls in < 3s & texts customers automatically. 7-Day Free Trial: https://zenna.au",
+      "status": "Hyper-Scale SMS Dispatched",
+      "sms_sent": true
+    },
+    {
+      "id": "42",
+      "call_id": "scale_1785886010373_6",
+      "from_number": "+642100600",
+      "timestamp": "2026-08-04T23:26:50.373Z",
+      "message": "G'day Auckland Electrical Services Specialists #6! Never lose another $3k+ job to missed calls while on-site in Auckland. Zenna AI catches missed calls in < 3s & texts customers automatically. 7-Day Free Trial: https://zenna.au",
+      "status": "Hyper-Scale SMS Dispatched",
+      "sms_sent": true
+    },
+    {
+      "id": "41",
+      "call_id": "scale_1785886010372_5",
+      "from_number": "+642100500",
+      "timestamp": "2026-08-04T23:26:50.372Z",
+      "message": "G'day Christchurch Plumbing Specialists #5! Never lose another $3k+ job to missed calls while on-site in Christchurch. Zenna AI catches missed calls in < 3s & texts customers automatically. 7-Day Free Trial: https://zenna.au",
+      "status": "Hyper-Scale SMS Dispatched",
+      "sms_sent": true
+    },
+    {
+      "id": "40",
+      "call_id": "scale_1785886010371_4",
+      "from_number": "+614110400",
+      "timestamp": "2026-08-04T23:26:50.371Z",
+      "message": "G'day Brisbane Drainlaying Specialists #4! Never lose another $3k+ job to missed calls while on-site in Brisbane. Zenna AI catches missed calls in < 3s & texts customers automatically. 7-Day Free Trial: https://zenna.au",
+      "status": "Hyper-Scale SMS Dispatched",
+      "sms_sent": true
+    },
+    {
+      "id": "39",
+      "call_id": "scale_1785886010371_3",
+      "from_number": "+642100300",
+      "timestamp": "2026-08-04T23:26:50.371Z",
+      "message": "G'day Wellington Roofing & Guttering Specialists #3! Never lose another $3k+ job to missed calls while on-site in Wellington. Zenna AI catches missed calls in < 3s & texts customers automatically. 7-Day Free Trial: https://zenna.au",
+      "status": "Hyper-Scale SMS Dispatched",
+      "sms_sent": true
+    },
+    {
+      "id": "38",
+      "call_id": "scale_1785886010370_2",
+      "from_number": "+614110200",
+      "timestamp": "2026-08-04T23:26:50.370Z",
+      "message": "G'day Melbourne HVAC & AirCon Specialists #2! Never lose another $3k+ job to missed calls while on-site in Melbourne. Zenna AI catches missed calls in < 3s & texts customers automatically. 7-Day Free Trial: https://zenna.au",
+      "status": "Hyper-Scale SMS Dispatched",
+      "sms_sent": true
+    },
+    {
+      "id": "37",
+      "call_id": "scale_1785886010369_1",
+      "from_number": "+614110100",
+      "timestamp": "2026-08-04T23:26:50.369Z",
+      "message": "G'day Sydney Electrical Services Specialists #1! Never lose another $3k+ job to missed calls while on-site in Sydney. Zenna AI catches missed calls in < 3s & texts customers automatically. 7-Day Free Trial: https://zenna.au",
+      "status": "Hyper-Scale SMS Dispatched",
+      "sms_sent": true
+    },
+    {
+      "id": "36",
+      "call_id": "scale_1785885941507_20",
+      "from_number": "+6141102000",
+      "timestamp": "2026-08-04T23:25:41.507Z",
+      "message": "G'day Melbourne Plumbing Specialists #20! Never lose another $3k+ job to missed calls while on-site in Melbourne. Zenna AI catches missed calls in < 3s & texts customers automatically. 7-Day Free Trial: https://zenna.au",
+      "status": "Hyper-Scale SMS Dispatched",
+      "sms_sent": true
+    },
+    {
+      "id": "35",
+      "call_id": "scale_1785885941507_19",
+      "from_number": "+6141101900",
+      "timestamp": "2026-08-04T23:25:41.507Z",
+      "message": "G'day Sydney Drainlaying Specialists #19! Never lose another $3k+ job to missed calls while on-site in Sydney. Zenna AI catches missed calls in < 3s & texts customers automatically. 7-Day Free Trial: https://zenna.au",
+      "status": "Hyper-Scale SMS Dispatched",
+      "sms_sent": true
+    },
+    {
+      "id": "34",
+      "call_id": "scale_1785885941506_18",
+      "from_number": "+6421001800",
+      "timestamp": "2026-08-04T23:25:41.506Z",
+      "message": "G'day Auckland Roofing & Guttering Specialists #18! Never lose another $3k+ job to missed calls while on-site in Auckland. Zenna AI catches missed calls in < 3s & texts customers automatically. 7-Day Free Trial: https://zenna.au",
+      "status": "Hyper-Scale SMS Dispatched",
+      "sms_sent": true
+    },
+    {
+      "id": "33",
+      "call_id": "scale_1785885941505_17",
+      "from_number": "+6421001700",
+      "timestamp": "2026-08-04T23:25:41.505Z",
+      "message": "G'day Christchurch HVAC & AirCon Specialists #17! Never lose another $3k+ job to missed calls while on-site in Christchurch. Zenna AI catches missed calls in < 3s & texts customers automatically. 7-Day Free Trial: https://zenna.au",
+      "status": "Hyper-Scale SMS Dispatched",
+      "sms_sent": true
+    },
+    {
+      "id": "32",
+      "call_id": "scale_1785885941505_16",
+      "from_number": "+6141101600",
+      "timestamp": "2026-08-04T23:25:41.505Z",
+      "message": "G'day Brisbane Electrical Services Specialists #16! Never lose another $3k+ job to missed calls while on-site in Brisbane. Zenna AI catches missed calls in < 3s & texts customers automatically. 7-Day Free Trial: https://zenna.au",
+      "status": "Hyper-Scale SMS Dispatched",
+      "sms_sent": true
+    },
+    {
+      "id": "31",
+      "call_id": "scale_1785885941504_15",
+      "from_number": "+6421001500",
+      "timestamp": "2026-08-04T23:25:41.504Z",
+      "message": "G'day Wellington Plumbing Specialists #15! Never lose another $3k+ job to missed calls while on-site in Wellington. Zenna AI catches missed calls in < 3s & texts customers automatically. 7-Day Free Trial: https://zenna.au",
+      "status": "Hyper-Scale SMS Dispatched",
+      "sms_sent": true
+    },
+    {
+      "id": "30",
+      "call_id": "scale_1785885941504_14",
+      "from_number": "+6141101400",
+      "timestamp": "2026-08-04T23:25:41.504Z",
+      "message": "G'day Melbourne Drainlaying Specialists #14! Never lose another $3k+ job to missed calls while on-site in Melbourne. Zenna AI catches missed calls in < 3s & texts customers automatically. 7-Day Free Trial: https://zenna.au",
+      "status": "Hyper-Scale SMS Dispatched",
+      "sms_sent": true
+    },
+    {
+      "id": "29",
+      "call_id": "scale_1785885941503_13",
+      "from_number": "+6141101300",
+      "timestamp": "2026-08-04T23:25:41.503Z",
+      "message": "G'day Sydney Roofing & Guttering Specialists #13! Never lose another $3k+ job to missed calls while on-site in Sydney. Zenna AI catches missed calls in < 3s & texts customers automatically. 7-Day Free Trial: https://zenna.au",
+      "status": "Hyper-Scale SMS Dispatched",
+      "sms_sent": true
+    },
+    {
+      "id": "28",
+      "call_id": "scale_1785885941503_12",
+      "from_number": "+6421001200",
+      "timestamp": "2026-08-04T23:25:41.503Z",
+      "message": "G'day Auckland HVAC & AirCon Specialists #12! Never lose another $3k+ job to missed calls while on-site in Auckland. Zenna AI catches missed calls in < 3s & texts customers automatically. 7-Day Free Trial: https://zenna.au",
+      "status": "Hyper-Scale SMS Dispatched",
+      "sms_sent": true
+    },
+    {
+      "id": "27",
+      "call_id": "scale_1785885941502_11",
+      "from_number": "+6421001100",
+      "timestamp": "2026-08-04T23:25:41.502Z",
+      "message": "G'day Christchurch Electrical Services Specialists #11! Never lose another $3k+ job to missed calls while on-site in Christchurch. Zenna AI catches missed calls in < 3s & texts customers automatically. 7-Day Free Trial: https://zenna.au",
+      "status": "Hyper-Scale SMS Dispatched",
+      "sms_sent": true
+    },
+    {
+      "id": "26",
+      "call_id": "scale_1785885941501_10",
+      "from_number": "+6141101000",
+      "timestamp": "2026-08-04T23:25:41.501Z",
+      "message": "G'day Brisbane Plumbing Specialists #10! Never lose another $3k+ job to missed calls while on-site in Brisbane. Zenna AI catches missed calls in < 3s & texts customers automatically. 7-Day Free Trial: https://zenna.au",
+      "status": "Hyper-Scale SMS Dispatched",
+      "sms_sent": true
+    },
+    {
+      "id": "25",
+      "call_id": "scale_1785885941500_9",
+      "from_number": "+642100900",
+      "timestamp": "2026-08-04T23:25:41.501Z",
+      "message": "G'day Wellington Drainlaying Specialists #9! Never lose another $3k+ job to missed calls while on-site in Wellington. Zenna AI catches missed calls in < 3s & texts customers automatically. 7-Day Free Trial: https://zenna.au",
+      "status": "Hyper-Scale SMS Dispatched",
+      "sms_sent": true
+    },
+    {
+      "id": "24",
+      "call_id": "scale_1785885941500_8",
+      "from_number": "+614110800",
+      "timestamp": "2026-08-04T23:25:41.500Z",
+      "message": "G'day Melbourne Roofing & Guttering Specialists #8! Never lose another $3k+ job to missed calls while on-site in Melbourne. Zenna AI catches missed calls in < 3s & texts customers automatically. 7-Day Free Trial: https://zenna.au",
+      "status": "Hyper-Scale SMS Dispatched",
+      "sms_sent": true
+    },
+    {
+      "id": "23",
+      "call_id": "scale_1785885941499_7",
+      "from_number": "+614110700",
+      "timestamp": "2026-08-04T23:25:41.499Z",
+      "message": "G'day Sydney HVAC & AirCon Specialists #7! Never lose another $3k+ job to missed calls while on-site in Sydney. Zenna AI catches missed calls in < 3s & texts customers automatically. 7-Day Free Trial: https://zenna.au",
+      "status": "Hyper-Scale SMS Dispatched",
+      "sms_sent": true
+    },
+    {
+      "id": "22",
+      "call_id": "scale_1785885941499_6",
+      "from_number": "+642100600",
+      "timestamp": "2026-08-04T23:25:41.499Z",
+      "message": "G'day Auckland Electrical Services Specialists #6! Never lose another $3k+ job to missed calls while on-site in Auckland. Zenna AI catches missed calls in < 3s & texts customers automatically. 7-Day Free Trial: https://zenna.au",
+      "status": "Hyper-Scale SMS Dispatched",
+      "sms_sent": true
+    },
+    {
+      "id": "21",
+      "call_id": "scale_1785885941498_5",
+      "from_number": "+642100500",
+      "timestamp": "2026-08-04T23:25:41.498Z",
+      "message": "G'day Christchurch Plumbing Specialists #5! Never lose another $3k+ job to missed calls while on-site in Christchurch. Zenna AI catches missed calls in < 3s & texts customers automatically. 7-Day Free Trial: https://zenna.au",
+      "status": "Hyper-Scale SMS Dispatched",
+      "sms_sent": true
+    },
+    {
+      "id": "20",
+      "call_id": "scale_1785885941496_4",
+      "from_number": "+614110400",
+      "timestamp": "2026-08-04T23:25:41.496Z",
+      "message": "G'day Brisbane Drainlaying Specialists #4! Never lose another $3k+ job to missed calls while on-site in Brisbane. Zenna AI catches missed calls in < 3s & texts customers automatically. 7-Day Free Trial: https://zenna.au",
+      "status": "Hyper-Scale SMS Dispatched",
+      "sms_sent": true
+    },
+    {
+      "id": "19",
+      "call_id": "scale_1785885941494_3",
+      "from_number": "+642100300",
+      "timestamp": "2026-08-04T23:25:41.494Z",
+      "message": "G'day Wellington Roofing & Guttering Specialists #3! Never lose another $3k+ job to missed calls while on-site in Wellington. Zenna AI catches missed calls in < 3s & texts customers automatically. 7-Day Free Trial: https://zenna.au",
+      "status": "Hyper-Scale SMS Dispatched",
+      "sms_sent": true
+    },
+    {
+      "id": "18",
+      "call_id": "scale_1785885941489_2",
+      "from_number": "+614110200",
+      "timestamp": "2026-08-04T23:25:41.489Z",
+      "message": "G'day Melbourne HVAC & AirCon Specialists #2! Never lose another $3k+ job to missed calls while on-site in Melbourne. Zenna AI catches missed calls in < 3s & texts customers automatically. 7-Day Free Trial: https://zenna.au",
+      "status": "Hyper-Scale SMS Dispatched",
+      "sms_sent": true
+    },
+    {
+      "id": "17",
+      "call_id": "scale_1785885941488_1",
+      "from_number": "+614110100",
+      "timestamp": "2026-08-04T23:25:41.489Z",
+      "message": "G'day Sydney Electrical Services Specialists #1! Never lose another $3k+ job to missed calls while on-site in Sydney. Zenna AI catches missed calls in < 3s & texts customers automatically. 7-Day Free Trial: https://zenna.au",
+      "status": "Hyper-Scale SMS Dispatched",
+      "sms_sent": true
+    },
+    {
+      "id": "16",
+      "call_id": "outreach_1785885863785_8u26",
+      "from_number": "+61411000555",
+      "timestamp": "2026-08-04T23:24:23.785Z",
+      "message": "G'day Brisbane Roofing Specialists! Zenna catches your missed calls & texts customers automatically so you never lose jobs on-site in Fortitude Valley. Claim 7 days free at https://zenna.au",
+      "status": "Autonomous SMS Campaign Queued",
+      "sms_sent": true
+    },
+    {
+      "id": "15",
+      "call_id": "outreach_1785885863785_zh9w",
+      "from_number": "+61411000444",
+      "timestamp": "2026-08-04T23:24:23.785Z",
+      "message": "G'day Melbourne Pro HVAC! Zenna catches your missed calls & texts customers automatically so you never lose jobs on-site in Richmond. Claim 7 days free at https://zenna.au",
+      "status": "Autonomous SMS Campaign Queued",
+      "sms_sent": true
+    },
+    {
+      "id": "14",
+      "call_id": "outreach_1785885863784_f1jj",
+      "from_number": "+61411000333",
+      "timestamp": "2026-08-04T23:24:23.784Z",
+      "message": "G'day Sydney Metro Drain Services! Zenna catches your missed calls & texts customers automatically so you never lose jobs on-site in Surry Hills. Claim 7 days free at https://zenna.au",
+      "status": "Autonomous SMS Campaign Queued",
+      "sms_sent": true
+    },
+    {
+      "id": "13",
+      "call_id": "outreach_1785885863783_infv",
+      "from_number": "+6421000222",
+      "timestamp": "2026-08-04T23:24:23.783Z",
+      "message": "G'day Wellington Electrical Co! Zenna catches your missed calls & texts customers automatically so you never lose jobs on-site in Te Aro. Claim 7 days free at https://zenna.au",
+      "status": "Autonomous SMS Campaign Queued",
+      "sms_sent": true
+    },
+    {
+      "id": "12",
+      "call_id": "outreach_1785885863782_en2y",
+      "from_number": "+6421000111",
+      "timestamp": "2026-08-04T23:24:23.783Z",
+      "message": "G'day Auckland Premium Plumbing! Zenna catches your missed calls & texts customers automatically so you never lose jobs on-site in Ponsonby. Claim 7 days free at https://zenna.au",
+      "status": "Autonomous SMS Campaign Queued",
+      "sms_sent": true
+    },
+    {
+      "id": "11",
+      "call_id": "outreach_1785885821608_ce16",
+      "from_number": "+61411000555",
+      "timestamp": "2026-08-04T23:23:41.608Z",
+      "message": "G'day Brisbane Roofing Specialists! Zenna catches your missed calls & texts customers automatically so you never lose jobs on-site in Fortitude Valley. Claim 7 days free at https://zenna.au",
+      "status": "Autonomous SMS Campaign Queued",
+      "sms_sent": true
+    },
+    {
+      "id": "10",
+      "call_id": "outreach_1785885821606_nq1k",
+      "from_number": "+61411000444",
+      "timestamp": "2026-08-04T23:23:41.607Z",
+      "message": "G'day Melbourne Pro HVAC! Zenna catches your missed calls & texts customers automatically so you never lose jobs on-site in Richmond. Claim 7 days free at https://zenna.au",
+      "status": "Autonomous SMS Campaign Queued",
+      "sms_sent": true
+    },
+    {
+      "id": "9",
+      "call_id": "outreach_1785885821605_w1si",
+      "from_number": "+61411000333",
+      "timestamp": "2026-08-04T23:23:41.606Z",
+      "message": "G'day Sydney Metro Drain Services! Zenna catches your missed calls & texts customers automatically so you never lose jobs on-site in Surry Hills. Claim 7 days free at https://zenna.au",
+      "status": "Autonomous SMS Campaign Queued",
+      "sms_sent": true
+    },
+    {
+      "id": "8",
+      "call_id": "outreach_1785885821605_dqee",
+      "from_number": "+6421000222",
+      "timestamp": "2026-08-04T23:23:41.605Z",
+      "message": "G'day Wellington Electrical Co! Zenna catches your missed calls & texts customers automatically so you never lose jobs on-site in Te Aro. Claim 7 days free at https://zenna.au",
+      "status": "Autonomous SMS Campaign Queued",
+      "sms_sent": true
+    },
+    {
+      "id": "7",
+      "call_id": "outreach_1785885821599_rzaw",
+      "from_number": "+6421000111",
+      "timestamp": "2026-08-04T23:23:41.599Z",
+      "message": "G'day Auckland Premium Plumbing! Zenna catches your missed calls & texts customers automatically so you never lose jobs on-site in Ponsonby. Claim 7 days free at https://zenna.au",
+      "status": "Autonomous SMS Campaign Queued",
+      "sms_sent": true
+    },
+    {
+      "id": "6",
+      "call_id": "call_1785826334143",
+      "from_number": "+6421999888",
+      "timestamp": "2026-08-04T06:52:14.143Z",
+      "message": "G'day! Zenna here, Dave's AI receptionist at Hartley Plumbing & Drainage. We're on the tools right now, how can we get you sorted today?",
+      "status": "Call Logged & Handled",
+      "sms_sent": true
+    },
+    {
+      "id": "5",
+      "call_id": "call_1785819436570",
+      "from_number": "+61499111222",
+      "timestamp": "2026-08-04T04:57:16.570Z",
+      "message": "G'day! Zenna here, Dave's AI receptionist at Hartley Plumbing & Drainage. We're on the tools right now, how can we get you sorted today?",
+      "status": "Live Personalized Answer",
+      "sms_sent": true
+    },
+    {
+      "id": "4",
+      "call_id": "CA123456789",
+      "from_number": "+61499111222",
+      "timestamp": "2026-07-24T21:16:23.549Z",
+      "message": "G'day! Zenna here from Hartley Plumbing & Drainage. We've caught your call and will text you back shortly! 🤙",
+      "status": "Missed Call - Auto SMS Dispatched",
+      "sms_sent": true
+    },
+    {
+      "id": "3",
+      "call_id": "call_1784926121603",
+      "from_number": "+61419999888",
+      "timestamp": "2026-07-24T20:48:41.603Z",
+      "message": "G'day! Zenna here from Hartley Plumbing & Drainage. We've caught your call and will text you back shortly! 🤙",
+      "status": "Call Logged & Handled",
+      "sms_sent": true
+    },
+    {
+      "id": "1",
+      "call_id": "c-101",
+      "from_number": "+61412891044",
+      "timestamp": "2026-07-24T19:46:53.715Z",
+      "message": "Missed call from Mike Torrence",
+      "status": "Caught & Notified",
+      "sms_sent": true
+    },
+    {
+      "id": "2",
+      "call_id": "c-102",
+      "from_number": "+61423044112",
+      "timestamp": "2026-07-24T18:46:53.715Z",
+      "message": "Live AI reception response",
+      "status": "Live Personalized Response",
+      "sms_sent": true
+    }
+  ],
+  "settings": {
+    "subscriptionStatus": "Subscribed & Active",
+    "plan": "Solo Tradie (NZD $199/mo)",
+    "lastMarketingRun": "2026-08-05T02:11:02.309Z",
+    "totalProspectsContacted": "5",
+    "scalingActive": "true",
+    "targetSubscribers": "180",
+    "targetARR": "$429,840",
+    "heavy_blanket_campaign_last_campaign_date": "2026-08-28T16:33:53.231Z",
+    "heavy_blanket_campaign_total_active_targets": "22",
+    "heavy_blanket_campaign_pipeline_mrr_value": "$4378/mo"
+  },
+  "tenants": {},
+  "processed_events": [],
+  "processed_emails": [
+    "76334",
+    "76335",
+    "76336",
+    "76337",
+    "76338",
+    "76339",
+    "76340",
+    "76341",
+    "76374",
+    "76459"
+  ]
+}

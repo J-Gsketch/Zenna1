@@ -2,6 +2,7 @@ import http from 'http';
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { exec } from 'child_process';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -10,24 +11,39 @@ const PORT = Number(process.env.PORT) || 3000;
 const DIST_DIR = path.join(__dirname, 'dist');
 const DB_PATH = path.join(__dirname, 'zenna_db.json');
 
+let cachedApplicants = [];
+
+import { getAtomicDB, saveAtomicDB, createBackup } from './src/lib/atomicDb.mjs';
+
 function getDB() {
-  try {
-    if (!fs.existsSync(DB_PATH)) {
-      return { leads: [], calls: [], settings: {}, tenants: {} };
-    }
-    return JSON.parse(fs.readFileSync(DB_PATH, 'utf-8'));
-  } catch (err) {
-    return { leads: [], calls: [], settings: {}, tenants: {} };
-  }
+  return getAtomicDB(DB_PATH);
 }
 
 function saveDB(data) {
-  try {
-    fs.writeFileSync(DB_PATH, JSON.stringify(data, null, 2));
-  } catch (err) {
-    console.error('Failed to save DB:', err);
-  }
+  return saveAtomicDB(DB_PATH, data);
 }
+
+function scanCraigslistInbox() {
+  return new Promise((resolve) => {
+    exec('python3 scripts/poll_inbox_json.py', { cwd: __dirname }, (error, stdout, stderr) => {
+      if (error) {
+        console.warn('Inbox scan warning:', error.message);
+        resolve({ error: error.message, applicants: cachedApplicants });
+        return;
+      }
+      try {
+        const data = JSON.parse(stdout.trim());
+        cachedApplicants = data.applicants || [];
+        resolve(data);
+      } catch (e) {
+        resolve({ error: 'Parse error', applicants: cachedApplicants });
+      }
+    });
+  });
+}
+
+// Initial scan
+scanCraigslistInbox().catch(() => {});
 
 const MIME_TYPES = {
   '.html': 'text/html; charset=utf-8',
@@ -75,6 +91,16 @@ const server = http.createServer(async (req, res) => {
     return;
   }
 
+  // --- SPECIAL ROUTE: /outreach -> serve outreach.html ---
+  if (pathname === '/outreach' || pathname === '/outreach/') {
+    const outreachFile = path.join(DIST_DIR, 'outreach.html');
+    if (fs.existsSync(outreachFile)) {
+      res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
+      fs.createReadStream(outreachFile).pipe(res);
+      return;
+    }
+  }
+
   // --- API ROUTES ---
   if (pathname.startsWith('/api/')) {
     res.setHeader('Content-Type', 'application/json');
@@ -82,6 +108,25 @@ const server = http.createServer(async (req, res) => {
     if (pathname === '/api/health') {
       res.writeHead(200);
       res.end(JSON.stringify({ status: 'ok', product: 'Zenna', timestamp: new Date().toISOString() }));
+      return;
+    }
+
+    if (pathname === '/api/outreach/applicants') {
+      if (cachedApplicants.length === 0) {
+        const scanRes = await scanCraigslistInbox();
+        res.writeHead(200);
+        res.end(JSON.stringify(scanRes));
+        return;
+      }
+      res.writeHead(200);
+      res.end(JSON.stringify({ applicants: cachedApplicants, total: cachedApplicants.length }));
+      return;
+    }
+
+    if (pathname === '/api/outreach/poll') {
+      const scanRes = await scanCraigslistInbox();
+      res.writeHead(200);
+      res.end(JSON.stringify(scanRes));
       return;
     }
 
@@ -132,10 +177,10 @@ const server = http.createServer(async (req, res) => {
       res.writeHead(200);
       res.end(JSON.stringify({
         today: {
-          confirmedValue: confirmedValue || 18500,
+          confirmedValue: confirmedValue,
           newLeads: leads.length,
-          callsCaught: calls.length || leads.length,
-          actionRequired: "Review upcoming schedule and site diagnostic dispatches"
+          callsCaught: calls.length,
+          actionRequired: leads.length === 0 ? "System operational. Standing by for incoming calls." : "Review active leads and customer dispatches"
         }
       }));
       return;
@@ -146,17 +191,17 @@ const server = http.createServer(async (req, res) => {
       if (req.method === 'GET') {
         res.writeHead(200);
         res.end(JSON.stringify({
-          businessName: db.settings?.businessName || 'Zenna by Hammer & Code',
-          ownerName: db.settings?.ownerName || 'Dave Hartley',
-          ownerPhone: db.settings?.ownerPhone || '+64 20 4115 3617',
-          calloutFee: db.settings?.calloutFee || '$150',
-          bookingLink: db.settings?.bookingLink || 'https://zenna.au/book',
+          businessName: db.settings?.businessName || process.env.BUSINESS_NAME || 'Hammer & Code',
+          ownerName: db.settings?.ownerName || process.env.OWNER_NAME || 'Joshua Harris',
+          ownerPhone: db.settings?.ownerPhone || process.env.OWNER_PHONE || '+64 20 4115 3617',
+          calloutFee: db.settings?.calloutFee || process.env.CALLOUT_FEE || '$150',
+          bookingLink: db.settings?.bookingLink || process.env.BOOKING_LINK || 'https://zenna.au/book',
           region: db.settings?.region || 'NZ',
           currency: db.settings?.currency || 'NZD',
           plan: db.settings?.plan || 'Solo Tradie ($199/mo)',
-          subscriptionStatus: db.settings?.subscriptionStatus || 'Active (7-Day Trial)',
-          twilioForwardingNumberNZ: db.settings?.twilioForwardingNumberNZ || '+6421912345',
-          twilioForwardingNumberAU: db.settings?.twilioForwardingNumberAU || '+61291234567'
+          subscriptionStatus: db.settings?.subscriptionStatus || 'Active',
+          forwardingNumberNZ: db.settings?.forwardingNumberNZ || '+64 20 4115 3617',
+          forwardingNumberAU: db.settings?.forwardingNumberAU || '+61 412 345 678'
         }));
         return;
       }
@@ -218,6 +263,93 @@ const server = http.createServer(async (req, res) => {
       return;
     }
 
+    if (pathname === '/api/telephony/status') {
+      const username = process.env.CLICKSEND_USERNAME || 'jsaharris@gmail.com';
+      const apiKey = process.env.CLICKSEND_API_KEY || '6F28976A-8EEB-6C9A-46C9-E8FB3DE5EAF1';
+
+      try {
+        const authHeader = 'Basic ' + Buffer.from(`${username}:${apiKey}`).toString('base64');
+        const response = await fetch('https://rest.clicksend.com/v3/account', {
+          headers: { 'Authorization': authHeader }
+        });
+        const data = await response.json();
+        res.writeHead(200);
+        res.end(JSON.stringify({
+          status: data.http_code === 200 ? 'HEALTHY' : 'DEGRADED',
+          provider: 'CLICKSEND',
+          balance: data.data?.balance || '0.00',
+          currency: data.data?._currency?.currency_name_short || 'NZD',
+          accountName: data.data?.account_name || 'Zenna',
+          failoverReady: true
+        }));
+      } catch (err) {
+        res.writeHead(200);
+        res.end(JSON.stringify({
+          status: 'DEGRADED',
+          provider: 'CLICKSEND',
+          error: err.message,
+          failoverReady: true
+        }));
+      }
+      return;
+    }
+
+    if (pathname === '/api/sms/send' && req.method === 'POST') {
+      const body = await parseBody(req);
+      const rawTo = body.to || '+642041153617';
+      const message = body.message || "G'day! This is Zenna AI catching your missed call in < 3s.";
+
+      // E.164 Normalization
+      let target = rawTo.trim().replace(/[\s\-\(\)\.\,\/]/g, '');
+      if (target.startsWith('0') && target.startsWith('02')) {
+        target = '+64' + target.slice(1);
+      } else if (target.startsWith('04')) {
+        target = '+61' + target.slice(1);
+      } else if (target.startsWith('64') && !target.startsWith('+')) {
+        target = '+' + target;
+      } else if (target.startsWith('61') && !target.startsWith('+')) {
+        target = '+' + target;
+      } else if (!target.startsWith('+')) {
+        target = '+64' + target.replace(/^0+/, '');
+      }
+
+      const username = process.env.CLICKSEND_USERNAME || 'jsaharris@gmail.com';
+      const apiKey = process.env.CLICKSEND_API_KEY || '6F28976A-8EEB-6C9A-46C9-E8FB3DE5EAF1';
+
+      try {
+        const authHeader = 'Basic ' + Buffer.from(`${username}:${apiKey}`).toString('base64');
+        const response = await fetch('https://rest.clicksend.com/v3/sms/send', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': authHeader
+          },
+          body: JSON.stringify({
+            messages: [
+              {
+                to: target,
+                body: message,
+                source: 'zenna-speed-to-lead'
+              }
+            ]
+          })
+        });
+        const result = await response.json();
+        res.writeHead(200);
+        res.end(JSON.stringify({
+          success: result.http_code === 200,
+          provider: 'CLICKSEND',
+          normalizedTo: target,
+          result
+        }));
+        return;
+      } catch (err) {
+        res.writeHead(500);
+        res.end(JSON.stringify({ success: false, normalizedTo: target, error: err.message }));
+        return;
+      }
+    }
+
     if (pathname.startsWith('/api/voice/')) {
       res.writeHead(200);
       res.end(JSON.stringify({
@@ -228,19 +360,7 @@ const server = http.createServer(async (req, res) => {
       return;
     }
 
-    if (pathname === '/api/marketing/ad-copy' || pathname === '/api/marketing/video-scripts') {
-      res.writeHead(200);
-      res.end(JSON.stringify({
-        success: true,
-        items: [
-          { title: 'Emergency Trade Missed Calls Ad', hook: 'Never lose a $1,200 plumbing job while under the sink.' },
-          { title: 'Tradie Freedom Script', hook: 'Zenna answers 24/7, quotes instantly, and books the calendar.' }
-        ]
-      }));
-      return;
-    }
-
-    // Default fallback for any other API route
+    // Default fallback
     res.writeHead(200);
     res.end(JSON.stringify({ success: true, message: 'OK' }));
     return;
