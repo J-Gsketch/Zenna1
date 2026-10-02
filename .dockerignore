@@ -1,0 +1,41 @@
+# Dependencies
+node_modules
+npm-debug.log*
+
+# Build artifacts (rebuilt inside the image)
+dist
+dist-server
+
+# Version control
+.git
+.gitignore
+.github
+
+# Environment / secrets
+.env
+.env.*
+!.env.example
+
+# Editor / OS files
+.vscode
+.DS_Store
+*.log
+
+# Docs and misc
+docs
+README.md
+SYSTEM_INSTRUCTIONS.md
+
+# Python helper scripts (unrelated to the Node/TypeScript runtime)
+*.py
+zenna_db.json
+
+# Firebase
+.firebase
+firebase.json
+.firebaserc
+
+# Docker files themselves
+Dockerfile
+docker-compose.yml
+.dockerignore
